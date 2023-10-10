@@ -1,3 +1,6 @@
+<?php require_once('php/functions.php'); ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,29 +20,30 @@
     <link rel="stylesheet" href="/styles/social.css">
 
     <!-- Policies -->
-    <?php include('components/policies_head.php'); ?>
+    <?php include('components/head_policies.html'); ?>
 
     <!-- Only on this page -->
     <style>
-        .bg1 {
-            background-image: url(res/Blog-Thumbnail_Programming-in-a-Low-Code-World.png);
-        }
-
-        .bg2 {
-            background-image: url(res/Blog-Thumbnail_Programming-in-a-Low-Code-World.png);
+        #logo {
+            background-image: url(res/eggsorcist-logo.png);
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
         }
     </style>
 </head>
 <body>
-    <div class="parallax bg1" style="height: 80vh"></div>
+    <div class="header">
+        <div id="logo"></div>
+    </div>
 
     <!-- Navbar -->
-    <?php include('components/navbar.php'); ?>
+    <?php include('components/navbar.html'); ?>
     
     <div class="container">
         <div class="content-tab">
             <h1>Quick links</h1>
-            <div class="row center" id="links">
+            <div class="row center links">
                 <div class="col"></div>
                 <div class="col-lg">
                     <div class="card" style="width: 18rem;">
@@ -51,7 +55,7 @@
                         </div>
                     </div>
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="res/Blog-Thumbnail_Programming-in-a-Low-Code-World.png">
+                        <img class="card-img-top" src="res/depositphotos_123336054-Code-HTML-web-programming-background.jpg">
                         <div class="card-body">
                             <h5 class="card-title">Utilities</h5>
                             <p class="card-text">Web development utilities.</p>
@@ -64,16 +68,16 @@
         </div>
     </div>
 
-    <div class="parallax bg2" style="height: 80px"></div>
+    <div class="parallax separator"></div>
 
     <div class="container">
         <div class="content-tab">
             <h1>Content</h1>
-            <div class="row center" id="links">
+            <div class="row center links">
                 <div class="col"></div>
                 <div class="col-lg">
                     <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="res/Blog-Thumbnail_Programming-in-a-Low-Code-World.png">
+                        <img class="card-img-top" src="res/eggsorcist.png">
                         <div class="card-body">
                             <h5 class="card-title">Portfolio</h5>
                             <p class="card-text">Showcase of websites I developed.</p>
@@ -86,7 +90,9 @@
         </div>
     </div>
 
-    <?php include('components/footer.php'); ?>
+    <div class="parallax separator"></div>
+
+    <?php include('components/footer.html'); ?>
 
     <!-- Boostrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

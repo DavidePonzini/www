@@ -31,10 +31,16 @@ body {
     box-shadow: inset 0px 0px 20px 12px rgba(0,0,0,0.75);
 }
 
+.parallax.separator {
+    height: 120px;
+    background-image: url(../res/HD-wallpaper-digital-technology-background-with-zeros-and-ones-digital-blue-background-binary-code-background-digital-data-binary-code-texture.jpg);
+}
+
 .header {
-    background-image: url(res/);
     height: 80vh;
     box-shadow: none;
+    display: grid;
+    background-color: rgba(0,0,0,0.6);
 }
 
 .center {
@@ -47,7 +53,7 @@ body {
 }
 
 .card {
-    display:inline-block;
+    display: inline-block;
     margin: 12px;
     word-wrap: normal;
     vertical-align: top;
@@ -70,7 +76,7 @@ body {
     display: none!important;
 }
 
-#links {
+.links {
     display: block;
 }
 
