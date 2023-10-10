@@ -1,0 +1,29 @@
+.social {
+    margin-left: 4px;
+    margin-right: 4px;
+    font-size: 50px;
+    transition-timing-function: ease-in-out;
+    transition-duration: .1s;
+}
+
+.social-facebook {
+    color: #4267B2;
+}
+
+.social-instagram {
+    color: #bc2a8d			;
+}
+
+.social-linkedin {
+    color: #0e76a8;
+}
+
+.social-github {
+    color:  #171515;
+}
+
+.social:hover {
+    color: black;
+    text-shadow: 5px 5px 3px slategray;
+}
+

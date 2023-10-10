@@ -1,0 +1,85 @@
+body {
+    background: url(../res/wp11420447.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.content-tab {
+    border-radius: 12px;
+    background-color: rgba(7, 6, 5, .7);
+    padding: 12px;
+    margin-bottom: 12px;
+    color: white;
+}
+
+.container > .content-tab:first-of-type {
+    margin-top: 12px;
+}
+
+.content-tab > h1 {
+    text-align: center;
+    color: white;
+}
+
+.parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0px 0px 20px 12px rgba(0,0,0,0.75);
+}
+
+.header {
+    background-image: url(res/);
+    height: 80vh;
+    box-shadow: none;
+}
+
+.center {
+    text-align: center;
+    place-content: center;
+}
+
+.center-y {
+    align-self: center;
+}
+
+.card {
+    display:inline-block;
+    margin: 12px;
+    word-wrap: normal;
+    vertical-align: top;
+    width:18rem;
+    color: black;
+}
+
+.card .card-text {
+    color: black;
+    height: 80px;
+    overflow-y: auto;
+}
+
+.card .card-img-top {
+    object-fit: cover;
+    height: 200px;
+}
+
+.hidden {
+    display: none!important;
+}
+
+#links {
+    display: block;
+}
+
+.footer {
+    width: 100%;
+    background-color: #fff;
+    padding: 12px;
+}
+
+.footer > .container {
+    display: block;
+}
