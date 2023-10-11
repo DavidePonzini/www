@@ -24,17 +24,20 @@
 
     <!-- Only on this page -->
     <style>
-        .logo {
+        #logo-bg1 {
+            background-image: url("res/pngimg.com - forest_PNG51.png");
+        }
+
+        #logo-eggsorcist {
             background-image: url(res/eggsorcist-logo.png);
-            background-attachment: fixed;
-            background-position: center;
             background-repeat: no-repeat;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <div class="logo parallax-scroll" parallax-scroll-speed="1.5"></div>
+        <div id="logo-bg1" class="logo parallax-scroll" parallax-scroll-speed=".5"></div>
+        <div id="logo-eggsorcist" class="logo parallax-scroll" parallax-scroll-speed=".3"></div>
     </div>
 
     <!-- Navbar -->
