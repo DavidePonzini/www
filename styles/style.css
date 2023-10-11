@@ -29,11 +29,12 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     box-shadow: inset 0px 0px 20px 12px rgba(0,0,0,0.75);
+    padding: 12px;
 }
 
-.parallax.separator {
-    height: 120px;
-    background-image: url(../res/HD-wallpaper-digital-technology-background-with-zeros-and-ones-digital-blue-background-binary-code-background-digital-data-binary-code-texture.jpg);
+.separator {
+    height: 80px;
+    background-color: #212529 ;
 }
 
 .header {

@@ -24,7 +24,7 @@
 
     <!-- Only on this page -->
     <style>
-        #logo {
+        .logo {
             background-image: url(res/eggsorcist-logo.png);
             background-attachment: fixed;
             background-position: center;
@@ -34,63 +34,67 @@
 </head>
 <body>
     <div class="header">
-        <div id="logo"></div>
+        <div class="logo parallax-scroll" parallax-scroll-speed="1.5"></div>
     </div>
 
     <!-- Navbar -->
     <?php include('components/navbar.html'); ?>
     
-    <div class="container">
-        <div class="content-tab">
-            <h1>Quick links</h1>
-            <div class="row center links">
-                <div class="col"></div>
-                <div class="col-lg">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="res/Altervista_Logo_2.png">
-                        <div class="card-body">
-                            <h5 class="card-title">Control Panel</h5>
-                            <p class="card-text">Altervista Control Panel.</p>
-                            <a href="https://it.altervista.org/cplogin.php" class="btn btn-primary">Open</a>
+    <div class="parallax" style="background-image: url(/res/eggsorcist.png)">
+        <div class="container">
+            <div class="content-tab">
+                <h1>Quick links</h1>
+                <div class="row center links">
+                    <div class="col"></div>
+                    <div class="col-lg">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="res/Altervista_Logo_2.png">
+                            <div class="card-body">
+                                <h5 class="card-title">Control Panel</h5>
+                                <p class="card-text">Altervista Control Panel.</p>
+                                <a href="https://it.altervista.org/cplogin.php" class="btn btn-primary">Open</a>
+                            </div>
+                        </div>
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="res/depositphotos_123336054-Code-HTML-web-programming-background.jpg">
+                            <div class="card-body">
+                                <h5 class="card-title">Utilities</h5>
+                                <p class="card-text">Web development utilities.</p>
+                                <a href="utils" class="btn btn-primary">Open</a>
+                            </div>
                         </div>
                     </div>
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="res/depositphotos_123336054-Code-HTML-web-programming-background.jpg">
-                        <div class="card-body">
-                            <h5 class="card-title">Utilities</h5>
-                            <p class="card-text">Web development utilities.</p>
-                            <a href="utils" class="btn btn-primary">Open</a>
-                        </div>
-                    </div>
+                    <div class="col"></div>
                 </div>
-                <div class="col"></div>
             </div>
         </div>
     </div>
 
-    <div class="parallax separator"></div>
+    <div class="separator"></div>
 
-    <div class="container">
-        <div class="content-tab">
-            <h1>Content</h1>
-            <div class="row center links">
-                <div class="col"></div>
-                <div class="col-lg">
-                    <div class="card" style="width: 18rem;">
-                        <img class="card-img-top" src="res/eggsorcist.png">
-                        <div class="card-body">
-                            <h5 class="card-title">Portfolio</h5>
-                            <p class="card-text">Showcase of websites I developed.</p>
-                            <a href="demos" class="btn btn-primary">Open</a>
+    <div class="parallax" style="background-image: url(/res/wp11420447.png)">
+        <div class="container">
+            <div class="content-tab">
+                <h1>Content</h1>
+                <div class="row center links">
+                    <div class="col"></div>
+                    <div class="col-lg">
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="res/eggsorcist.png">
+                            <div class="card-body">
+                                <h5 class="card-title">Portfolio</h5>
+                                <p class="card-text">Showcase of websites I developed.</p>
+                                <a href="demos" class="btn btn-primary">Open</a>
+                            </div>
                         </div>
                     </div>
+                    <div class="col"></div>
                 </div>
-                <div class="col"></div>
             </div>
         </div>
     </div>
 
-    <div class="parallax separator"></div>
+    <div class="separator"></div>
 
     <?php include('components/footer.html'); ?>
 
@@ -99,5 +103,8 @@
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Custom -->
+    <script src="/scripts/parallax.js"></script>
 </body>
 </html>
