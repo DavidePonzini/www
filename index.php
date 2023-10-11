@@ -87,6 +87,14 @@
                                 <a href="demos" class="btn btn-primary">Open</a>
                             </div>
                         </div>
+                        <div class="card" style="width: 18rem;">
+                            <img class="card-img-top" src="qualita_passione/res/Pizza-3007395.jpg">
+                            <div class="card-body">
+                                <h5 class="card-title">Qualità e Passione</h5>
+                                <p class="card-text">Menu digitale, in corso di sviluppo.</p>
+                                <a href="qualita_passione" class="btn btn-primary">Open</a>
+                            </div>
+                        </div>
                     </div>
                     <div class="col"></div>
                 </div>
