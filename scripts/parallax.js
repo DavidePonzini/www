@@ -27,7 +27,9 @@ function update_parallax_element(elem) {
     let coeff = elem.attr('parallax-scroll-speed');
     let window_scroll = $(document).scrollTop();
 
-    let offset = window_scroll * (1 - coeff);
+    let is_fixed = elem.css("position") === "fixed";
+
+    let offset = window_scroll * (is_fixed ? -coeff : (1 - coeff));
 
     elem.css({'transform' : `translateY(${offset}px)`});
 }
