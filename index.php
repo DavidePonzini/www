@@ -24,10 +24,6 @@
 
     <!-- Only on this page -->
     <style>
-        #logo-bg1 {
-            background-image: url("res/pngimg.com - forest_PNG51.png");
-        }
-
         #logo-eggsorcist {
             background-image: url(res/eggsorcist-logo.png);
             background-repeat: no-repeat;
@@ -36,7 +32,6 @@
 </head>
 <body>
     <div class="header">
-        <div id="logo-bg1" class="logo parallax-scroll" parallax-scroll-speed=".5"></div>
         <div id="logo-eggsorcist" class="logo parallax-scroll" parallax-scroll-speed=".3"></div>
     </div>
 
