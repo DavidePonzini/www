@@ -28,11 +28,23 @@
             background-image: url(res/eggsorcist-logo.png);
             background-repeat: no-repeat;
         }
+
+        #logo-bush {
+            background-image: url(res/559dd9116cbfc00560d640dc1be2bbbc-simple-bush-flat.png);
+        }
+        
+        #logo-sun {
+            background-image: url(res/87838d67f8e13ad5aeb892fc320f724f-cute-sun-flat.png);
+            background-position: top right;
+            background-repeat: no-repeat;
+        }
     </style>
 </head>
 <body>
     <div class="header">
-        <div id="logo-eggsorcist" class="logo parallax-scroll" parallax-scroll-speed=".3"></div>
+        <div id="logo-bush" class="logo parallax-scroll" parallax-scroll-speed=".8"></div>
+        <div id="logo-sun" class="logo parallax-scroll" parallax-scroll-speed="0.5"></div>
+        <div id="logo-eggsorcist" class="logo parallax-scroll" parallax-scroll-speed=".62"></div>
     </div>
 
     <!-- Navbar -->
