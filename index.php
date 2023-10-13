@@ -54,9 +54,8 @@
         <div class="container">
             <div class="content-tab">
                 <h1>Quick links</h1>
-                <div class="row center links">
-                    <div class="col"></div>
-                    <div class="col-lg">
+                <div class="row center">
+                    <div class="col-lg links">
                         <div class="card" style="width: 18rem;">
                             <img class="card-img-top" src="res/Altervista_Logo_2.png">
                             <div class="card-body">
@@ -74,21 +73,21 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="separator"></div>
+    <div class="separator">
+        <script>!function(d,l,e,s,c){e=d.createElement("script");e.src="//ad.altervista.org/js.ad/size=728X90/?ref="+encodeURIComponent(l.hostname+l.pathname)+"&r="+Date.now();s=d.scripts;c=d.currentScript||s[s.length-1];c.parentNode.insertBefore(e,c)}(document,location)</script>
+    </div>
 
     <div class="parallax" style="background-image: url(/res/wp11420447.png)">
         <div class="container">
             <div class="content-tab">
                 <h1>Content</h1>
-                <div class="row center links">
-                    <div class="col"></div>
-                    <div class="col-lg">
+                <div class="row center">
+                    <div class="col-lg links">
                         <div class="card" style="width: 18rem;">
                             <img class="card-img-top" src="res/eggsorcist.png">
                             <div class="card-body">
@@ -106,13 +105,14 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col"></div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="separator"></div>
+    <div class="separator">
+        <script>!function(d,l,e,s,c){e=d.createElement("script");e.src="//ad.altervista.org/js.ad/size=728X90/?ref="+encodeURIComponent(l.hostname+l.pathname)+"&r="+Date.now();s=d.scripts;c=d.currentScript||s[s.length-1];c.parentNode.insertBefore(e,c)}(document,location)</script>
+    </div>
 
     <?php include('components/footer.html'); ?>
 
@@ -121,6 +121,9 @@
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <!-- Advertisements -->
+    <script>!function(d,l,e,s,c){e=d.createElement("script");e.src="//ad.altervista.org/js.ad/size=2X2/?ref="+encodeURIComponent(l.hostname+l.pathname)+"&r="+Date.now();s=d.scripts;c=d.currentScript||s[s.length-1];c.parentNode.insertBefore(e,c)}(document,location)</script>
 
     <!-- Custom -->
     <script src="/scripts/parallax.js"></script>
