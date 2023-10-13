@@ -42,8 +42,8 @@
 </head>
 <body>
     <div class="header">
-        <div id="logo-bush" class="logo parallax-scroll" parallax-scroll-speed=".8"></div>
         <div id="logo-sun" class="logo parallax-scroll" parallax-scroll-speed="0.5"></div>
+        <div id="logo-bush" class="logo parallax-scroll" parallax-scroll-speed=".8"></div>
         <div id="logo-eggsorcist" class="logo parallax-scroll" parallax-scroll-speed=".62"></div>
     </div>
 
@@ -79,7 +79,7 @@
     </div>
 
     <div class="separator">
-        <script>!function(d,l,e,s,c){e=d.createElement("script");e.src="//ad.altervista.org/js.ad/size=728X90/?ref="+encodeURIComponent(l.hostname+l.pathname)+"&r="+Date.now();s=d.scripts;c=d.currentScript||s[s.length-1];c.parentNode.insertBefore(e,c)}(document,location)</script>
+        <?php include('components/ads_banner.html'); ?>
     </div>
 
     <div class="parallax" style="background-image: url(/res/wp11420447.png)">
@@ -111,7 +111,7 @@
     </div>
 
     <div class="separator">
-        <script>!function(d,l,e,s,c){e=d.createElement("script");e.src="//ad.altervista.org/js.ad/size=728X90/?ref="+encodeURIComponent(l.hostname+l.pathname)+"&r="+Date.now();s=d.scripts;c=d.currentScript||s[s.length-1];c.parentNode.insertBefore(e,c)}(document,location)</script>
+        <?php include('components/ads_banner.html'); ?>
     </div>
 
     <?php include('components/footer.html'); ?>
