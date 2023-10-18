@@ -7,23 +7,23 @@
 }
 
 .social-facebook {
-    color: #4267B2;
+    color: #4267B2!important;
 }
 
 .social-instagram {
-    color: #bc2a8d			;
+    color: #bc2a8d!important;
 }
 
 .social-linkedin {
-    color: #0e76a8;
+    color: #0e76a8!important;
 }
 
 .social-github {
-    color:  #171515;
+    color:  #171515!important;
 }
 
 .social:hover {
-    color: black;
-    text-shadow: 5px 5px 3px slategray;
+    color: #212529!important;
+    text-shadow: 5px 5px 3px #777;
 }
 

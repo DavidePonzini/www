@@ -1,0 +1,23 @@
+.parallax {
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: inset 0px 0px 20px 12px rgba(0,0,0,0.75);
+    padding: 12px;
+    position: sticky;
+    z-index: 100;
+}
+
+.center {
+    text-align: center;
+    place-content: center;
+}
+
+.center-y {
+    align-self: center;
+}
+
+.hidden {
+    display: none!important;
+}

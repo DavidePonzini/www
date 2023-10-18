@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.0/font/bootstrap-icons.css">
 
     <!-- Custom -->
+    <link rel="stylesheet" href="/styles/_common.css">
     <link rel="stylesheet" href="/styles/style.css">
     <link rel="stylesheet" href="/styles/social.css">
 
@@ -30,11 +31,11 @@
         }
 
         #logo-bush {
-            background-image: url(res/559dd9116cbfc00560d640dc1be2bbbc-simple-bush-flat.png);
+            background-image: url(res/logo-bush.png);
         }
         
         #logo-sun {
-            background-image: url(res/87838d67f8e13ad5aeb892fc320f724f-cute-sun-flat.png);
+            background-image: url(res/logo-sun.png);
             background-position: top right;
             background-repeat: no-repeat;
         }
@@ -56,16 +57,16 @@
                 <h1>Quick links</h1>
                 <div class="row center">
                     <div class="col-lg links">
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="res/Altervista_Logo_2.png">
+                        <div class="card">
+                            <img class="card-img-top" src="res/altervista-logo.png">
                             <div class="card-body">
                                 <h5 class="card-title">Control Panel</h5>
                                 <p class="card-text">Altervista Control Panel.</p>
                                 <a href="https://it.altervista.org/cplogin.php" class="btn btn-primary">Open</a>
                             </div>
                         </div>
-                        <div class="card" style="width: 18rem;">
-                            <img class="card-img-top" src="res/depositphotos_123336054-Code-HTML-web-programming-background.jpg">
+                        <div class="card">
+                            <img class="card-img-top" src="res/html.jpg">
                             <div class="card-body">
                                 <h5 class="card-title">Utilities</h5>
                                 <p class="card-text">Web development utilities.</p>
@@ -82,13 +83,13 @@
         <?php include('components/ads_banner.html'); ?>
     </div>
 
-    <div class="parallax" style="background-image: url(/res/wp11420447.png)">
+    <div class="parallax" style="background-image: url(/res/server.png)">
         <div class="container">
             <div class="content-tab">
                 <h1>Content</h1>
                 <div class="row center">
                     <div class="col-lg links">
-                        <div class="card" style="width: 18rem;">
+                        <div class="card">
                             <img class="card-img-top" src="res/eggsorcist.png">
                             <div class="card-body">
                                 <h5 class="card-title">Portfolio</h5>
@@ -96,7 +97,7 @@
                                 <a href="demos" class="btn btn-primary">Open</a>
                             </div>
                         </div>
-                        <div class="card" style="width: 18rem;">
+                        <div class="card">
                             <img class="card-img-top" src="qualita_passione/res/Pizza-3007395.jpg">
                             <div class="card-body">
                                 <h5 class="card-title">Qualità e Passione</h5>
@@ -123,7 +124,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 
     <!-- Advertisements -->
-    <script>!function(d,l,e,s,c){e=d.createElement("script");e.src="//ad.altervista.org/js.ad/size=2X2/?ref="+encodeURIComponent(l.hostname+l.pathname)+"&r="+Date.now();s=d.scripts;c=d.currentScript||s[s.length-1];c.parentNode.insertBefore(e,c)}(document,location)</script>
+    <?php include('../components/ads_banner.html'); ?>
 
     <!-- Custom -->
     <script src="/scripts/parallax.js"></script>

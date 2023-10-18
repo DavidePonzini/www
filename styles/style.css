@@ -1,5 +1,5 @@
 body {
-    background: url(../res/wp11420447.png) no-repeat center center fixed;
+    background: url(../res/server-bg.png) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -23,17 +23,6 @@ body {
     color: white;
 }
 
-.parallax {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    box-shadow: inset 0px 0px 20px 12px rgba(0,0,0,0.75);
-    padding: 12px;
-    position: sticky;
-    z-index: 100;
-}
-
 .separator {
     min-height: 80px;
     padding: 12px;
@@ -43,21 +32,12 @@ body {
     text-align: center;
 }
 
-.center {
-    text-align: center;
-    place-content: center;
-}
-
-.center-y {
-    align-self: center;
-}
-
 .card {
     display: inline-block;
     margin: 12px;
     word-wrap: normal;
     vertical-align: top;
-    width:18rem;
+    width: 18rem;
     color: black;
 }
 
@@ -69,11 +49,27 @@ body {
 
 .card .card-img-top {
     object-fit: cover;
-    height: 200px;
+    height: 12rem;
 }
 
-.hidden {
-    display: none!important;
+@media (max-width: 767px) {
+    .card {
+        display: inline-block;
+        margin: 12px;
+        word-wrap: normal;
+        vertical-align: top;
+        width: 9rem;
+        color: black;
+    }
+
+    .card .card-img-top {
+        object-fit: cover;
+        height: 6rem;
+    }
+
+    .card .card-title {
+        height: 3rem;
+    }
 }
 
 .links {
@@ -82,10 +78,18 @@ body {
 
 .footer {
     width: 100%;
-    background-color: #fff;
+    background-color: #f4f4f4;
     padding: 12px;
     position: sticky;
     z-index: 101;
+}
+
+.footer a {
+    color: #777;
+}
+
+.footer a:hover {
+    color: black;
 }
 
 .footer > .container {
