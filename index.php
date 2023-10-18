@@ -83,7 +83,7 @@
         <?php include('components/ads_banner.html'); ?>
     </div>
 
-    <div class="parallax" style="background-image: url(/res/server.png)">
+    <div class="parallax" style="background-image: url(/res/server-bg.png)">
         <div class="container">
             <div class="content-tab">
                 <h1>Content</h1>
