@@ -14,10 +14,18 @@
     place-content: center;
 }
 
+.right {
+    text-align: right;
+}
+
 .center-y {
     align-self: center;
 }
 
 .hidden {
     display: none!important;
+}
+
+.monospace {
+    font-family: monospace;
 }
