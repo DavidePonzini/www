@@ -31,11 +31,21 @@
             background-position: top right;
             background-repeat: no-repeat;
         }
+
+        #logo-bg {
+            background-image: url(res/server-bg.png);
+        }
+
+        #logo-bg-shade {
+            background-color: rgba(0,0,0,.6);
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div id="logo-sun" class="logo parallax-scroll" parallax-scroll-speed="0.5"></div>
+    <div class="header bg-image">
+        <div id="logo-bg" class="logo bg-image parallax-scroll" parallax-scroll-speed=".2"></div>
+        <div id="logo-bg-shade" class="logo"></div>
+        <div id="logo-sun" class="logo parallax-scroll" parallax-scroll-speed=".5"></div>
         <div id="logo-bush" class="logo parallax-scroll" parallax-scroll-speed=".8"></div>
         <div id="logo-eggsorcist" class="logo parallax-scroll" parallax-scroll-speed=".62"></div>
     </div>
