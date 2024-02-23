@@ -17,9 +17,13 @@
             </a>
         </div>
 
-        <!-- IP Address -->
+        <!-- User device info -->
         <div class="right monospace">
-            Your IP Address: <?php echo $_SERVER['REMOTE_ADDR']; ?>
+            <br>
+            <i>IP Address: <span id="footer-ip"><?php echo $_SERVER['REMOTE_ADDR']; ?></span></i><br>
+            <i>Location: <span id="footer-location"></span></i><br>
+            <i>Coordinates: <span id="footer-loc"></span></i><br>
+            <?php if (isset($_SERVER['HTTP_SEC_CH_UA_PLATFORM'])) echo '<i>OS: ' . trim($_SERVER['HTTP_SEC_CH_UA_PLATFORM'], '"') . '</i><br>'; ?>
         </div>
 
         <!-- Privacy Policy -->
@@ -27,5 +31,17 @@
         <div class="center">
             <a href="https://www.iubenda.com/privacy-policy/51020868" rel="noreferrer nofollow" target="_blank">Privacy Policy</a> - <a href="#" role="button" class="iubenda-advertising-preferences-link">Personalizza tracciamento pubblicitario</a>
         </div>
+
+        <!-- Boostrap -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+        <!-- Advertisements -->
+        <?php include('../components/ads_banner.html'); ?>
+
+        <!-- Geolocate -->
+        <script src="/scripts/footer-geolocate.js"></script>
     </div>
 </div>
