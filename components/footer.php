@@ -6,8 +6,8 @@
 
         <!-- Social -->
         <div class="center">
-            <a href="mailto:ponzidav@altervista.org" class="bi bi-envelope-at social social-email"></a>
             <a href="https://github.com/DavidePonzini" class="bi bi-github social social-github"></a>
+            <a href="mailto:ponzidav@altervista.org" class="bi bi-envelope-at social social-email"></a>
         </div>
         <div class="right monospace">
             Your IP Address: <?php echo $_SERVER['REMOTE_ADDR']; ?>
