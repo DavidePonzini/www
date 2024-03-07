@@ -59,22 +59,22 @@
                 <h1>Quick links</h1>
                 <div class="row center">
                     <div class="col-lg links">
-                        <div class="card">
+                        <a href="https://it.altervista.org/cplogin.php" class="card">
                             <img class="card-img-top" src="res/altervista-logo.png">
                             <div class="card-body">
                                 <h5 class="card-title">Control Panel</h5>
                                 <p class="card-text">Altervista Control Panel.</p>
-                                <a href="https://it.altervista.org/cplogin.php" class="btn btn-primary">Open</a>
+                                <span class="btn btn-primary">Open</span>
                             </div>
-                        </div>
-                        <div class="card">
+                        </a>
+                        <a href="utils" class="card">
                             <img class="card-img-top" src="res/html.jpg">
                             <div class="card-body">
                                 <h5 class="card-title">Utilities</h5>
                                 <p class="card-text">Web development utilities.</p>
-                                <a href="utils" class="btn btn-primary">Open</a>
+                                <span href="utils" class="btn btn-primary">Open</span>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -91,22 +91,22 @@
                 <h1>Content</h1>
                 <div class="row center">
                     <div class="col-lg links">
-                        <div class="card">
+                        <a href="demos" class="card">
                             <img class="card-img-top" src="res/eggsorcist.png">
                             <div class="card-body">
                                 <h5 class="card-title">Portfolio</h5>
                                 <p class="card-text">Showcase of websites I developed.</p>
-                                <a href="demos" class="btn btn-primary">Open</a>
+                                <span class="btn btn-primary">Open</span>
                             </div>
-                        </div>
-                        <div class="card">
+                        </a>
+                        <a href="qualita_passione" class="card">
                             <img class="card-img-top" src="qualita_passione/res/Pizza-3007395.jpg">
                             <div class="card-body">
                                 <h5 class="card-title">Qualità e Passione</h5>
                                 <p class="card-text">Menu digitale, in corso di sviluppo.</p>
-                                <a href="qualita_passione" class="btn btn-primary">Open</a>
+                                <span class="btn btn-primary">Open</span>
                             </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>

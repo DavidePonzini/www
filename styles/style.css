@@ -47,6 +47,10 @@ body {
     color: black;
 }
 
+a.card {
+    text-decoration: none;
+}
+
 .card .card-text {
     color: black;
     height: 80px;
