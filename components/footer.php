@@ -31,17 +31,17 @@
         <div class="center">
             <a href="https://www.iubenda.com/privacy-policy/51020868" rel="noreferrer nofollow" target="_blank">Privacy Policy</a> - <a href="#" role="button" class="iubenda-advertising-preferences-link">Personalizza tracciamento pubblicitario</a>
         </div>
-
-        <!-- Boostrap -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-        <!-- jQuery -->
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-        <!-- Advertisements -->
-        <?php include('../components/ads_banner.html'); ?>
-
-        <!-- Geolocate -->
-        <!-- <script src="/scripts/footer-geolocate.js"></script> -->
     </div>
 </div>
+
+<!-- Boostrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<!-- jQuery -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+<!-- Advertisements -->
+<?php include('../components/ads_banner.html'); ?>
+
+<!-- Geolocate -->
+<!-- <script src="/scripts/footer-geolocate.js"></script> -->
