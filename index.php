@@ -33,7 +33,7 @@
         }
 
         #logo-bg {
-            background-image: url(res/server-bg.png);
+            background-image: url(res/book-letters.jpg);
         }
 
         #logo-bg-shade {
@@ -53,7 +53,7 @@
     <!-- Navbar -->
     <?php include('components/navbar.html'); ?>
     
-    <div class="parallax" style="background-image: url(/res/eggsorcist.png)">
+    <div class="parallax" style="background-image: url(/res/server-bg.png)">
         <div class="container">
             <div class="content-tab">
                 <h1>Quick links</h1>
@@ -85,13 +85,13 @@
         <?php include('components/ads_banner.html'); ?>
     </div>
 
-    <div class="parallax" style="background-image: url(/res/server-bg.png)">
+    <div class="parallax" style="background-image: url(/res/eggsorcist.png)">
         <div class="container">
             <div class="content-tab">
                 <h1>Content</h1>
                 <div class="row center">
                     <div class="col-lg links">
-                        <a href="demos" class="card">
+                        <a href="portfolio" class="card">
                             <img class="card-img-top" src="res/eggsorcist.png">
                             <div class="card-body">
                                 <h5 class="card-title">Portfolio</h5>
