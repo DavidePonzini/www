@@ -1,5 +1,5 @@
 [submodule "demos"]
-	path = demos
+	path = portfolio
 	url = git@github.com:DavidePonzini/www-demos.git
 [submodule "utils"]
 	path = utils
