@@ -25,7 +25,7 @@
         #logo-bush {
             background-image: url(res/logo-bush.png);
         }
-        
+
         #logo-sun {
             background-image: url(res/logo-sun.png);
             background-position: top right;
@@ -43,16 +43,17 @@
 </head>
 <body>
     <div class="header bg-image">
-        <div id="logo-bg" class="logo bg-image parallax-scroll" parallax-scroll-speed=".2"></div>
-        <div id="logo-bg-shade" class="logo"></div>
-        <div id="logo-sun" class="logo parallax-scroll" parallax-scroll-speed=".5"></div>
-        <div id="logo-bush" class="logo parallax-scroll" parallax-scroll-speed=".8"></div>
-        <div id="logo-eggsorcist" class="logo parallax-scroll" parallax-scroll-speed=".62"></div>
+	<!-- <div id="logo-bg" class="logo bg-image parallax-scroll" parallax-scroll-speed=".2"></div> -->
+        <div id="logo-bg" class="logo bg-image parallax-scroll" parallax-scroll-speed=".75"></div>
+        <!-- <div id="logo-bg-shade" class="logo"></div> -->
+        <!-- <div id="logo-sun" class="logo parallax-scroll" parallax-scroll-speed=".5"></div> -->
+        <!-- <div id="logo-bush" class="logo parallax-scroll" parallax-scroll-speed=".8"></div> -->
+        <!-- <div id="logo-eggsorcist" class="logo parallax-scroll" parallax-scroll-speed=".62"></div> -->
     </div>
 
     <!-- Navbar -->
     <?php include('components/navbar.html'); ?>
-    
+
     <div class="parallax" style="background-image: url(/res/server-bg.png)">
         <div class="container">
             <div class="content-tab">
