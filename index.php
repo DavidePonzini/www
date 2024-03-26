@@ -17,38 +17,38 @@
 
     <!-- Only on this page -->
     <style>
-        #logo-eggsorcist {
-            background-image: url(res/eggsorcist-logo.png);
-            background-repeat: no-repeat;
-        }
+        #banner {
+        position: relative;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+        background: #101010;
+    }
 
-        #logo-bush {
-            background-image: url(res/logo-bush.png);
-        }
+    #book {
+        position: absolute;
+        bottom: 24px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 50%; /* Adjust size as needed */
+        z-index: 1;
+    }
 
-        #logo-sun {
-            background-image: url(res/logo-sun.png);
-            background-position: top right;
-            background-repeat: no-repeat;
-        }
-
-        #logo-bg {
-            background-image: url(res/book-letters.jpg);
-        }
-
-        #logo-bg-shade {
-            background-color: rgba(0,0,0,.6);
-        }
+    #flowing-letters {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
     </style>
 </head>
 <body>
-    <div class="header bg-image">
-	<!-- <div id="logo-bg" class="logo bg-image parallax-scroll" parallax-scroll-speed=".2"></div> -->
-        <div id="logo-bg" class="logo bg-image parallax-scroll" parallax-scroll-speed=".75"></div>
-        <!-- <div id="logo-bg-shade" class="logo"></div> -->
-        <!-- <div id="logo-sun" class="logo parallax-scroll" parallax-scroll-speed=".5"></div> -->
-        <!-- <div id="logo-bush" class="logo parallax-scroll" parallax-scroll-speed=".8"></div> -->
-        <!-- <div id="logo-eggsorcist" class="logo parallax-scroll" parallax-scroll-speed=".62"></div> -->
+    <div id="banner">
+        <img id="book" src="res/book.png" alt="Book">
+        <canvas id="flowing-letters"></canvas>
     </div>
 
     <!-- Navbar -->
@@ -122,5 +122,6 @@
 
     <!-- Custom -->
     <script src="/scripts/parallax.js"></script>
+    <script src="/scripts/book.js"></script>
 </body>
 </html>
