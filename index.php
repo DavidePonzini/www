@@ -57,7 +57,7 @@
     <div class="parallax" style="background-image: url(/res/server-bg.png)">
         <div class="container">
             <div class="content-tab">
-                <h1>Quick links</h1>
+                <h1>Pinned</h1>
                 <div class="row center">
                     <div class="col-lg links">
                         <a href="https://it.altervista.org/cplogin.php" class="card">
@@ -105,6 +105,14 @@
                             <div class="card-body">
                                 <h5 class="card-title">Qualità e Passione</h5>
                                 <p class="card-text">Menu digitale, in corso di sviluppo.</p>
+                                <span class="btn btn-primary">Open</span>
+                            </div>
+                        </a>
+                        <a href="decomp" class="card">
+                            <img class="card-img-top" src="res/server-bg.png">
+                            <div class="card-body">
+                                <h5 class="card-title">Problem decomposition</h5>
+                                <p class="card-text">Decomposition tool for complex problems (Work in progress)</p>
                                 <span class="btn btn-primary">Open</span>
                             </div>
                         </a>

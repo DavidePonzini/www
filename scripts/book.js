@@ -24,7 +24,8 @@ canvas.height = window.innerHeight;
 
 const letters = [];
 const maxLetters = 500;
-const letterSpeed = 1;
+const letter_min_speed = 1;
+const letter_max_speed = 2;
 const book_height = 75;
 const min_spawn_height = 200;
 const letter_min_size = 5;
@@ -32,22 +33,35 @@ const letter_max_size = 50;
 
 // Create letters
 for (let i = 0; i < maxLetters; i++) {
-    let color = Math.random() * 255;
+    let x = Math.random() * canvas.width;
+    let y = Math.random() * (canvas.height - min_spawn_height);
+    
     letters.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * (canvas.height - min_spawn_height),
+        start_x: x,
+        start_y: y,
+        x: x,
+        y: y,
         rotation: Math.random() * Math.PI * 2, // Random rotation
         char: generateRandomLetter(),
         size: Math.random() * (letter_max_size - letter_min_size) + letter_min_size,
-        speed: Math.random() * letterSpeed + 0.5,
+        speed: letter_min_speed + Math.random() * (letter_max_speed - letter_min_speed),
         color: `rgba(255, 255, 255, ${Math.random()})`, // Constant gray color
     });
 }
 
 // Draw letters
 function draw() {
+    bookPosition = { x: canvas.width / 2, y: canvas.height - book_height }; // Adjust book position
+    
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    letters.forEach(letter => {
+    
+    letters.forEach(function(letter) {
+        const dx = bookPosition.x - letter.x;
+        const dy = bookPosition.y - letter.y;
+        const distanceToBook = Math.sqrt(dx * dx + dy * dy);
+        if (distanceToBook < 10)    // don't draw letters that are too close to the book
+            return;
+
         ctx.save();
         ctx.font = `${letter.size}px Times New Roman`; // Set font size and family
         ctx.fillStyle = letter.color; // Color of the letters
@@ -62,20 +76,43 @@ function draw() {
 // Update letter positions
 function update() {
     bookPosition = { x: canvas.width / 2, y: canvas.height - book_height }; // Adjust book position
+    let scrollAmount = Math.min(1, window.scrollY / canvas.height);
 
     letters.forEach(letter => {
-        const dx = bookPosition.x - letter.x;
-        const dy = bookPosition.y - letter.y;
-        const distanceToBook = Math.sqrt(dx * dx + dy * dy);
-        const speedX = dx / distanceToBook * letter.speed;
-        const speedY = dy / distanceToBook * letter.speed;
-        letter.x += speedX;
-        letter.y += speedY;
-        if (distanceToBook < 10) {
-            letter.x = Math.random() * canvas.width;
-            letter.y = Math.random() * (canvas.height - min_spawn_height);
-        }
+        // const dx = bookPosition.x - letter.x;
+        // const dy = bookPosition.y - letter.y;
+        // const distanceToBook = Math.sqrt(dx * dx + dy * dy);
+        // const speedX = dx / distanceToBook * letter.speed;
+        // const speedY = dy / distanceToBook * letter.speed;
+        // letter.x += speedX;
+        // letter.y += speedY;
+        let new_x = letter.start_x - (letter.start_x - bookPosition.x) * scrollAmount * letter.speed;
+        let new_y = letter.start_y - (letter.start_y - bookPosition.y) * scrollAmount * letter.speed;
+
+        new_x = clamp(new_x, letter.start_x, bookPosition.x);
+        new_y = clamp(new_y, letter.start_y, bookPosition.y);
+
+        letter.x = new_x; 
+        letter.y = new_y;
+
+        // if (distanceToBook < 10) {
+        //     letter.x = Math.random() * canvas.width;
+        //     letter.y = Math.random() * (canvas.height - min_spawn_height);
+        // }
     });
+}
+
+function clamp(val, limit1, limit2) {
+    let min, max;
+    if (limit1 < limit2) {
+        min = limit1;
+        max = limit2;
+    } else {
+        min = limit2;
+        max = limit1;
+    }
+
+    return Math.min(Math.max(val, min), max);
 }
 
 // Animation loop
@@ -88,7 +125,7 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-animate();
+// animate();
 
 // Adjust canvas size on window resize
 window.addEventListener('resize', () => {
@@ -100,4 +137,10 @@ window.addEventListener('resize', () => {
 window.addEventListener('scroll', () => {
 //     canvas.width = window.innerWidth;
 //     canvas.height = window.innerHeight;
+    if (window.scrollY < canvas.height) {   // only update if visible
+        update();
+        draw();
+    }
 });
+
+draw();
