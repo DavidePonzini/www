@@ -26,8 +26,8 @@ const letters = [];
 const maxLetters = 500;
 const letter_min_speed = 1;
 const letter_max_speed = 2;
-const book_height = 75;
-const min_spawn_height = 200;
+const book_height = 300;
+const min_spawn_height = 0;
 const letter_min_size = 5;
 const letter_max_size = 50;
 
@@ -51,7 +51,10 @@ for (let i = 0; i < maxLetters; i++) {
 
 // Draw letters
 function draw() {
-    bookPosition = { x: canvas.width / 2, y: canvas.height - book_height }; // Adjust book position
+    let scrollAmount = Math.min(1, window.scrollY / canvas.height);
+    let bookPosition = { x: canvas.width / 2, y: canvas.height - book_height * (1-scrollAmount) }; // Adjust book position
+    // $('#book').css({'transform' : `translateY(${book_height * scrollAmount}px)`});
+    // bookPosition = { x: canvas.width / 2, y: canvas.height - book_height }; // Adjust book position
     
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
@@ -75,8 +78,8 @@ function draw() {
 
 // Update letter positions
 function update() {
-    bookPosition = { x: canvas.width / 2, y: canvas.height - book_height }; // Adjust book position
     let scrollAmount = Math.min(1, window.scrollY / canvas.height);
+    let bookPosition = { x: canvas.width / 2, y: canvas.height - book_height * (1-scrollAmount) }; // Adjust book position
 
     letters.forEach(letter => {
         // const dx = bookPosition.x - letter.x;
