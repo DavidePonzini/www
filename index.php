@@ -28,13 +28,10 @@
     #book {
         position: absolute;
 
-        left: 25%;
+        left: 50%;
         bottom: 300px;
-
-        /* bottom: 24px; */
-        /* left: 50%; */
-        /* transform: translateX(-50%); */
-        width: 50%; /* Adjust size as needed */
+        transform: translate(-50%, 0px);
+        width: 300px; /* Adjust size as needed */
         z-index: 1;
     }
 
@@ -51,7 +48,7 @@
 </head>
 <body>
     <div id="banner">
-        <img class="parallax-scroll" parallax-scroll-speed=".6" id="book" src="res/book.png" alt="Book">
+        <img id="book" src="res/book.png" alt="Book">
         <canvas id="flowing-letters"></canvas>
     </div>
 
