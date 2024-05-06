@@ -101,7 +101,7 @@
                                 <span class="btn btn-primary">Open</span>
                             </div>
                         </a>
-                        <a href="qualita_passione" class="card">
+                        <a href="https://qualitaepassione.altervista.org/" class="card">
                             <img class="card-img-top" src="qualita_passione/res/Pizza-3007395.jpg">
                             <div class="card-body">
                                 <h5 class="card-title">Qualità e Passione</h5>

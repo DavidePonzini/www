@@ -56,6 +56,7 @@ function init() {
         });
     }
 
+    update();   // in case the page is already scrolled
     draw();
 }
 
