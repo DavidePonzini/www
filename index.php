@@ -102,14 +102,14 @@
                             </div>
                         </a>
                         <a href="https://qualitaepassione.altervista.org/" class="card">
-                            <img class="card-img-top" src="qualita_passione/res/Pizza-3007395.jpg">
+                            <img class="card-img-top" src="https://qualitaepassione.altervista.org/res/Pizza-3007395.jpg">
                             <div class="card-body">
                                 <h5 class="card-title">Qualità e Passione</h5>
                                 <p class="card-text">Menu digitale, in corso di sviluppo.</p>
                                 <span class="btn btn-primary">Open</span>
                             </div>
                         </a>
-                        <a href="decomp" class="card">
+                        <a href="problem-decomposition" class="card">
                             <img class="card-img-top" src="res/server-bg.png">
                             <div class="card-body">
                                 <h5 class="card-title">Problem decomposition</h5>
