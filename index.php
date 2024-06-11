@@ -61,14 +61,22 @@
                 <h1>Pinned</h1>
                 <div class="row center">
                     <div class="col-lg links">
-                        <a href="https://it.altervista.org/cplogin.php" class="card">
+                    <a href="problem-decomposition/testo.pdf" class="card">
+                            <img class="card-img-top" src="res/server-bg.png">
+                            <div class="card-body">
+                                <h5 class="card-title">PCTO</h5>
+                                <p class="card-text">Decomposition tool for teaching computational thought</p>
+                                <span class="btn btn-primary">Open</span>
+                            </div>
+                        </a>
+                        <!-- <a href="https://it.altervista.org/cplogin.php" class="card">
                             <img class="card-img-top" src="res/altervista-logo.png">
                             <div class="card-body">
                                 <h5 class="card-title">Control Panel</h5>
                                 <p class="card-text">Altervista Control Panel.</p>
                                 <span class="btn btn-primary">Open</span>
                             </div>
-                        </a>
+                        </a> -->
                         <a href="utils" class="card">
                             <img class="card-img-top" src="res/html.jpg">
                             <div class="card-body">
