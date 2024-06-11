@@ -64,7 +64,7 @@
                     <a href="problem-decomposition/testo.pdf" class="card">
                             <img class="card-img-top" src="res/problem-decomposition.png">
                             <div class="card-body">
-                                <h5 class="card-title">PCTO - Problem decomposition</h5>
+                                <h5 class="card-title">PCTO</h5>
                                 <p class="card-text">Decomposition tool for learning computational thought</p>
                                 <span class="btn btn-primary">Open</span>
                             </div>
