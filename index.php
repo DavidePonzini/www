@@ -62,10 +62,10 @@
                 <div class="row center">
                     <div class="col-lg links">
                     <a href="problem-decomposition/testo.pdf" class="card">
-                            <img class="card-img-top" src="res/server-bg.png">
+                            <img class="card-img-top" src="res/problem-decomposition.png">
                             <div class="card-body">
-                                <h5 class="card-title">PCTO</h5>
-                                <p class="card-text">Decomposition tool for teaching computational thought</p>
+                                <h5 class="card-title">PCTO - Problem decomposition</h5>
+                                <p class="card-text">Decomposition tool for learning computational thought</p>
                                 <span class="btn btn-primary">Open</span>
                             </div>
                         </a>
@@ -118,10 +118,10 @@
                             </div>
                         </a>
                         <a href="problem-decomposition" class="card">
-                            <img class="card-img-top" src="res/server-bg.png">
+                            <img class="card-img-top" src="res/problem-decomposition.png">
                             <div class="card-body">
                                 <h5 class="card-title">Problem decomposition</h5>
-                                <p class="card-text">Decomposition tool for complex problems (Work in progress)</p>
+                                <p class="card-text">Decomposition tool for learning computational thought</p>
                                 <span class="btn btn-primary">Open</span>
                             </div>
                         </a>
