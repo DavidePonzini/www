@@ -24,7 +24,10 @@ body {
 
 
 h1 {
-    text-align: center;
+    margin-top: 12px;
+    text-align: left;
+    background-image: url(https://nomanssky.azureedge.net/app/themes/nomanssky/dist/images/headings-aligned/heading-border-left-2.png);
+    background-position: bottom left;
 }
 
 .separator {
