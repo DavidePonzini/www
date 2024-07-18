@@ -57,69 +57,53 @@
 
     <div class="parallax" style="background-image: url(/res/server-bg.png)">
         <div class="container-md container-light">
-            <!-- <div class="content-tab"> -->
-                <h1>Pinned</h1>
-                <div class="row center">
-                    <div class="col-lg links">
-                        <!-- <a href="https://it.altervista.org/cplogin.php" class="card">
-                            <img class="card-img-top" src="res/altervista-logo.png">
-                            <div class="card-body">
-                                <h5 class="card-title">Control Panel</h5>
-                                <p class="card-text">Altervista Control Panel.</p>
-                                <span class="btn btn-primary">Open</span>
-                            </div>
-                        </a> -->
-                        <a href="utils" class="card">
-                            <img class="card-img-top" src="res/html.jpg">
-                            <div class="card-body">
-                                <h5 class="card-title">Utilities</h5>
-                                <p class="card-text">Web development utilities.</p>
-                                <span href="utils" class="btn btn-primary">Open</span>
-                            </div>
-                        </a>
-                    </div>
+            <h1>Pinned</h1>
+            <div class="row center">
+                <div class="col-lg links">
+                    <a href="utils" class="card">
+                        <img class="card-img-top" src="res/html.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">Utilities</h5>
+                            <p class="card-text">Web development utilities.</p>
+                            <span href="utils" class="btn btn-primary">Open</span>
+                        </div>
+                    </a>
                 </div>
-            <!-- </div> -->
+            </div>
         </div>
     </div>
 
-    <!-- <div class="separator">
-        <?php include('components/ads_banner.html'); ?>
-    </div> -->
-
     <div class="parallax" style="background-image: url(/res/eggsorcist.png)">
         <div class="container-md container-dark">
-            <!-- <div class="content-tab"> -->
-                <h1>Content</h1>
-                <div class="row center">
-                    <div class="col-lg links">
-                        <a href="portfolio" class="card">
-                            <img class="card-img-top" src="res/eggsorcist.png">
-                            <div class="card-body">
-                                <h5 class="card-title">Portfolio</h5>
-                                <p class="card-text">Showcase of websites I developed.</p>
-                                <span class="btn btn-primary">Open</span>
-                            </div>
-                        </a>
-                        <a href="https://qualitaepassione.altervista.org/" class="card">
-                            <img class="card-img-top" src="https://qualitaepassione.altervista.org/res/Pizza-3007395.jpg">
-                            <div class="card-body">
-                                <h5 class="card-title">Qualità e Passione</h5>
-                                <p class="card-text">Menu digitale, in corso di sviluppo.</p>
-                                <span class="btn btn-primary">Open</span>
-                            </div>
-                        </a>
-                        <a href="gpt4ct" class="card">
-                            <img class="card-img-top" src="res/problem-decomposition.png">
-                            <div class="card-body">
-                                <h5 class="card-title">GPT4CT</h5>
-                                <p class="card-text">Tool for problem decomposition and learning computational thought</p>
-                                <span class="btn btn-primary">Open</span>
-                            </div>
-                        </a>
-                    </div>
+            <h1>Content</h1>
+            <div class="row center">
+                <div class="col-lg links">
+                    <a href="portfolio" class="card">
+                        <img class="card-img-top" src="res/eggsorcist.png">
+                        <div class="card-body">
+                            <h5 class="card-title">Portfolio</h5>
+                            <p class="card-text">Showcase of websites I developed.</p>
+                            <span class="btn btn-primary">Open</span>
+                        </div>
+                    </a>
+                    <a href="https://qualitaepassione.altervista.org/" class="card">
+                        <img class="card-img-top" src="https://qualitaepassione.altervista.org/res/Pizza-3007395.jpg">
+                        <div class="card-body">
+                            <h5 class="card-title">Qualità e Passione</h5>
+                            <p class="card-text">Menu digitale, in corso di sviluppo.</p>
+                            <span class="btn btn-primary">Open</span>
+                        </div>
+                    </a>
+                    <a href="gpt4ct" class="card">
+                        <img class="card-img-top" src="res/problem-decomposition.png">
+                        <div class="card-body">
+                            <h5 class="card-title">GPT4CT</h5>
+                            <p class="card-text">Tool for problem decomposition and learning computational thought</p>
+                            <span class="btn btn-primary">Open</span>
+                        </div>
+                    </a>
                 </div>
-            <!-- </div> -->
+            </div>
         </div>
     </div>
 
