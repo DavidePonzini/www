@@ -56,8 +56,8 @@
     <?php include('components/navbar.html'); ?>
 
     <div class="parallax" style="background-image: url(/res/server-bg.png)">
-        <div class="container">
-            <div class="content-tab">
+        <div class="container container-light">
+            <!-- <div class="content-tab"> -->
                 <h1>Pinned</h1>
                 <div class="row center">
                     <div class="col-lg links">
@@ -79,17 +79,17 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 
-    <div class="separator">
+    <!-- <div class="separator">
         <?php include('components/ads_banner.html'); ?>
-    </div>
+    </div> -->
 
     <div class="parallax" style="background-image: url(/res/eggsorcist.png)">
-        <div class="container">
-            <div class="content-tab">
+        <div class="container container-dark">
+            <!-- <div class="content-tab"> -->
                 <h1>Content</h1>
                 <div class="row center">
                     <div class="col-lg links">
@@ -119,7 +119,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            <!-- </div> -->
         </div>
     </div>
 
