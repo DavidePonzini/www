@@ -12,21 +12,19 @@ body {
     -o-background-size: cover;
 }
 
-.content-tab {
-    border-radius: 12px;
+.container.container-light {
+    background-color: rgba(200, 200, 200, .7);
+    color: black;
+}
+
+.container.container.container-dark {
     background-color: rgba(7, 6, 5, .7);
-    padding: 12px;
-    margin-bottom: 12px;
     color: white;
 }
 
-.container > .content-tab:first-of-type {
-    margin-top: 12px;
-}
 
-.content-tab > h1 {
+h1 {
     text-align: center;
-    color: white;
 }
 
 .separator {
