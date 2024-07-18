@@ -56,7 +56,7 @@
     <?php include('components/navbar.html'); ?>
 
     <div class="parallax" style="background-image: url(/res/server-bg.png)">
-        <div class="container container-light">
+        <div class="container-md container-light">
             <!-- <div class="content-tab"> -->
                 <h1>Pinned</h1>
                 <div class="row center">
@@ -88,7 +88,7 @@
     </div> -->
 
     <div class="parallax" style="background-image: url(/res/eggsorcist.png)">
-        <div class="container container-dark">
+        <div class="container-md container-dark">
             <!-- <div class="content-tab"> -->
                 <h1>Content</h1>
                 <div class="row center">
