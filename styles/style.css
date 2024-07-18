@@ -17,7 +17,7 @@ body {
     color: black;
 }
 
-.container-md.container.container-dark {
+.container-md.container-dark {
     background-color: rgba(7, 6, 5, .7);
     color: white;
 }
