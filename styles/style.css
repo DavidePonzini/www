@@ -64,26 +64,6 @@ a.card {
     height: 12rem;
 }
 
-@media (max-width: 767px) {
-    .card {
-        display: inline-block;
-        margin: 12px;
-        word-wrap: normal;
-        vertical-align: top;
-        width: 9rem;
-        color: black;
-    }
-
-    .card .card-img-top {
-        object-fit: cover;
-        height: 6rem;
-    }
-
-    .card .card-title {
-        height: 3rem;
-    }
-}
-
 .links {
     display: block;
 }
