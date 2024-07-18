@@ -20,7 +20,7 @@
         #banner {
         position: relative;
         width: 100%;
-        height: 100vh;
+        height: calc(100vh - 56px);
         overflow: hidden;
         background: #101010;
     }
@@ -61,14 +61,6 @@
                 <h1>Pinned</h1>
                 <div class="row center">
                     <div class="col-lg links">
-                    <a href="problem-decomposition/testo.pdf" class="card">
-                            <img class="card-img-top" src="res/problem-decomposition.png">
-                            <div class="card-body">
-                                <h5 class="card-title">PCTO</h5>
-                                <p class="card-text">Decomposition tool for learning computational thought</p>
-                                <span class="btn btn-primary">Open</span>
-                            </div>
-                        </a>
                         <!-- <a href="https://it.altervista.org/cplogin.php" class="card">
                             <img class="card-img-top" src="res/altervista-logo.png">
                             <div class="card-body">
@@ -117,11 +109,11 @@
                                 <span class="btn btn-primary">Open</span>
                             </div>
                         </a>
-                        <a href="problem-decomposition" class="card">
+                        <a href="gpt4ct" class="card">
                             <img class="card-img-top" src="res/problem-decomposition.png">
                             <div class="card-body">
-                                <h5 class="card-title">Problem decomposition</h5>
-                                <p class="card-text">Decomposition tool for learning computational thought</p>
+                                <h5 class="card-title">GPT4CT</h5>
+                                <p class="card-text">Tool for problem decomposition and learning computational thought</p>
                                 <span class="btn btn-primary">Open</span>
                             </div>
                         </a>
