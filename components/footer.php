@@ -22,9 +22,9 @@
         <!-- User device info -->
         <div class="monospace">
             <br>
-            <i>> <abbr title="Required by web server to send back response to your device">IP Address</abbr>: <span id="footer-ip"><?php echo $_SERVER['REMOTE_ADDR']; ?></span></i><br>
-            <i>> <abbr title="Derived from IP address">Location</abbr>: <span id="footer-location"></span></i><br>
-            <i>> <abbr title="Derived from IP address">Coordinates</abbr>: <span id="footer-loc"></span></i><br>
+            <i>> <abbr title="Required by web server to send back response to your device">IP Address</abbr>: <?php echo $_SERVER['REMOTE_ADDR']; ?></i><br>
+            <i id="footer-location">> <abbr title="Derived from IP address">Location</abbr>: <span id="footer-location-text"></span></i><br>
+            <i id="footer-loc">> <abbr title="Derived from IP address">Coordinates</abbr>: <span id="footer-loc-text"></span></i><br>
             <?php if (isset($_SERVER['HTTP_SEC_CH_UA_PLATFORM'])) echo '<i>> <abbr title="Sent automatically by your device">OS</abbr>: ' . trim($_SERVER['HTTP_SEC_CH_UA_PLATFORM'], '"') . '</i><br>'; ?>
         </div>
 

@@ -9,13 +9,14 @@ $(document).ready(function() {
 function show_ip_location(data) {
     // data = JSON.parse(data);
 
-    $('#footer-ip').text(data['ip'])
-    $('#footer-location').text(`${data['city']}, ${data['region']} - ${data['country']}`);
-    
+    $('#footer-location-text').text(`${data['city']}, ${data['region']} - ${data['country']}`);
+    $('#footer-location').show();
+
     let loc = $('<a></a>');
     loc.prop('href', `https://www.google.com/maps/@${data['loc']}`);
     loc.prop('target', '_blank');   // open in new tab
     loc.text(data['loc']);
 
-    $('#footer-loc').append(loc);
+    $('#footer-loc-text').append(loc);
+    $('#footer-loc').show();
 }
