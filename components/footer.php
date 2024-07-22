@@ -1,5 +1,5 @@
 <div class="footer">
-    <div class="container">
+    <div class="container-fluid">
         <div class="center monospace">
             Website developed by Davide Ponzini.
         </div>
