@@ -14,6 +14,7 @@ function show_ip_location(data) {
     
     let loc = $('<a></a>');
     loc.prop('href', `https://www.google.com/maps/@${data['loc']}`);
+    loc.prop('target', '_blank');   // open in new tab
     loc.text(data['loc']);
 
     $('#footer-loc').append(loc);
