@@ -30,10 +30,17 @@ body {
 h1 {
     padding: 2rem 0 3rem 4rem;
     text-align: left;
-    background-image: url(/res/heading-border-left-2.png);
     background-position: bottom left;
     background-repeat: no-repeat;
     margin-bottom: 2rem;
+}
+
+.container-light h1 {
+    background-image: url(/res/heading-border-left-2.png);
+}
+
+.container-dark h1 {
+    background-image: url(/res/heading-border-left-2.png);
 }
 
 .separator {

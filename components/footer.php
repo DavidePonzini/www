@@ -13,7 +13,9 @@
         <!-- Donations -->
         <div class="center">
             <a class="social-donation" href="https://www.paypal.me/davideponzini95">    
-                <i class="bi bi-cup-straw social-donation"></i>Buy me a drink!<i class="bi bi-cup-straw social-donation"></i>
+                <i class="fa-solid fa-martini-glass-citrus"></i>
+                Buy me a drink!
+                <i class="fa-solid fa-martini-glass-citrus"></i>
             </a>
         </div>
 
