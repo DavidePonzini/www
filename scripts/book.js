@@ -62,8 +62,6 @@ function init() {
 
 // Draw letters
 function draw() {
-    console.log('draw')
-
     let scrollAmount = Math.min(1, window.scrollY / canvas.height);
     let bookPosition = { x: canvas.width / 2, y: canvas.height - book_height * (1-scrollAmount) }; // Adjust book position
     $('#book').css({'transform' : `translate(-50%, ${book_height * scrollAmount + book_offset_y}px)`});
