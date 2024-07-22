@@ -23,8 +23,8 @@
         <div class="right monospace">
             <br>
             <i>IP Address: <abbr title="Required by web server to send back response to your device" id="footer-ip"><?php echo $_SERVER['REMOTE_ADDR']; ?></abbr></i><br>
-            <!-- <i>Location: <abbr title="Derived from IP address" id="footer-location"></abbr></i><br>
-            <i>Coordinates: <abbr title="Derived from IP address" id="footer-loc"></abbr></i><br> -->
+            <i>Location: <abbr title="Derived from IP address" id="footer-location"></abbr></i><br>
+            <i>Coordinates: <abbr title="Derived from IP address" id="footer-loc"></abbr></i><br>
             <?php if (isset($_SERVER['HTTP_SEC_CH_UA_PLATFORM'])) echo '<i>OS: <abbr title="Sent automatically by your device">' . trim($_SERVER['HTTP_SEC_CH_UA_PLATFORM'], '"') . '</abbr></i><br>'; ?>
         </div>
 
@@ -48,4 +48,4 @@
 <?php include('../components/ads_banner.html'); ?>
 
 <!-- Geolocate -->
-<!-- <script src="/scripts/footer-geolocate.js"></script> -->
+<script src="/scripts/footer-geolocate.js"></script>
