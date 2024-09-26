@@ -43,15 +43,6 @@ h1 {
     background-image: url(/res/heading-border-left-2.png);
 }
 
-.separator {
-    min-height: 80px;
-    padding: 12px;
-    background-color: #212529 ;
-    position: sticky;
-    z-index: 150;
-    text-align: center;
-}
-
 .card {
     display: inline-block;
     margin: 12px;

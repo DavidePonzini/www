@@ -1,0 +1,63 @@
+---
+import Card from '../components/Card.astro';
+import Navbar from '../components/Navbar.astro';
+import Section from '../components/Section.astro';
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="-- PonziDav --">
+    <div id="banner">
+        <img id="book" src="/res/book.png" alt="Book">
+        <canvas id="flowing-letters"></canvas>
+    </div>
+
+    <Navbar></Navbar>
+
+    <Section title='Pinned' img='/res/server-bg.png'>
+        <Card title='Utilities' href='utils' img='/res/html.jpg'>
+            Web development utilities
+        </Card>
+    </Section>
+
+    <Section title='Content' img='/res/eggsorcist.png' is_dark>
+        <Card title='Portfolio' href='portfolio' img='/res/eggsorcist.png'>
+            Showcase of websites I developed
+        </Card>
+
+        <Card title='GPT4CT' href='gpt4ct' img='/res/problem-decomposition.png'>
+            Tool for problem decomposition and learning computational thought
+        </Card>
+    </Section>
+</Layout>
+
+<style>
+    #banner {
+        position: relative;
+        width: 100%;
+        height: calc(100vh - 56px);
+        overflow: hidden;
+        background: #101010;
+    }
+
+    #book {
+        position: absolute;
+
+        left: 50%;
+        bottom: 300px;
+        transform: translate(-50%, 0px);
+        width: 300px; /* Adjust size as needed */
+        z-index: 1;
+    }
+
+    #flowing-letters {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+    }
+</style>
+
+<script is:inline src="/scripts/book.js"></script>

@@ -1,4 +1,10 @@
+DIR=/var/www/html/
+
 init:
 	git submodule update --init --recursive
-copy:
-	cp -rv * /var/www/html/
+
+build:
+	npx astro build
+
+copy: build
+	cp -r dist/* $(DIR)

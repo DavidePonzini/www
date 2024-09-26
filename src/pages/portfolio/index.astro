@@ -1,0 +1,28 @@
+---
+import Card from '../../components/Card.astro';
+import Navbar from '../../components/Navbar.astro';
+import Section from '../../components/Section.astro';
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="Portfolio">
+    <Navbar></Navbar>
+
+    <Section title='Websites' img='/res/server-bg.png'>
+        <Card title='Sito brutto' href='2016-sito-brutto' img='2016-sito-brutto/antonio.jpg'>
+            Badly designed webpage, using only HTML and CSS (2016)
+        </Card>
+
+        <Card title='Scenarios from the Future' href='2018-scenarios-from-the-future' img='2018-scenarios-from-the-future/res/chart-linechart.png'>
+            Visualization tools for complex data, developed as final project of Data Visualization course (2018)
+        </Card>
+
+        <Card title='Chicken Chasers' href='2019-chicken-chasers' img='2019-chicken-chasers/res/chicken_kicking.jpg'>
+            Chicken-based website, developed as didactic exercise during my first year teaching Computer Science (2019)
+        </Card>
+
+        <Card title='Danicucina Web Tutorial' href='2022-web-tutorial' img='2022-web-tutorial/res/DSC_0653b-1024x1536.jpg'>
+            Websited based on recipes from Danicucina, to teach website developement (2022)
+        </Card>
+    </Section>
+</Layout>

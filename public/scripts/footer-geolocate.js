@@ -1,5 +1,11 @@
 $(document).ready(function() {
     $.ajax({
+        url: `/api/my-ip.php`,
+        success: show_ip_address,
+        error: console.error
+    });
+
+    $.ajax({
         url: `https://ipinfo.io/json`,
         success: show_ip_location,
         error: console.error
@@ -19,4 +25,9 @@ function show_ip_location(data) {
 
     $('#footer-loc-text').append(loc);
     $('#footer-loc').removeClass('hidden');
+}
+
+function show_ip_address(data) {
+    $('#footer-ip-text').text(data);
+    $('#footer-ip').removeClass('hidden');
 }

@@ -1,0 +1,28 @@
+---
+interface Props {
+	title: string;
+    img: string;
+    is_dark?: boolean;
+}
+
+const { title, img, is_dark = false } = Astro.props;
+const bg_img = `url(${img})`
+
+---
+
+<div class="parallax">
+    <div class={is_dark ? 'container-md container-dark' : 'container-md container-light'}>
+        <h1>{title}</h1>
+        <div class="row center">
+            <div class="col-lg links">
+                <slot></slot>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style define:vars={{bg_img}}>
+    .parallax {
+        background-image: var(--bg_img);
+    }
+</style>

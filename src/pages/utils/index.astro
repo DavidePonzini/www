@@ -1,0 +1,44 @@
+---
+import Card from '../../components/Card.astro';
+import Navbar from '../../components/Navbar.astro';
+import Section from '../../components/Section.astro';
+import Layout from '../../layouts/Layout.astro';
+---
+
+<Layout title="// Utils">
+    <Navbar />
+
+    <Section title="Common" img="/res/server-bg.png">
+        <Card title="Password generator" href="pwd-gen/" img="/res/010101.jpg">
+            Random password generator.
+        </Card>
+    </Section>
+
+    <Section title="Web development" img="/res/010101.jpg" is_dark>
+        <Card title="Password hasher" href="pwd-hash.php" img="/res/010101.jpg">
+            Calculate password hash for a given plain string.
+        </Card>
+
+        <Card title="HTTP Code" href="http-code.php" img="/res/html.jpg">
+            HTTP response code selector.
+        </Card>
+
+        <Card title="PHP Request" href="request.php" img="/res/server-bg.png">
+            Display server-side request data.
+        </Card>
+
+        <Card title="PHP Request (simplified)" href="request-simple.php" img="/res/server-bg.png">
+            Display server-side HTTP request data. Only GET/POST/FILES are shown.
+        </Card>
+
+        <Card title="PHP $_SERVER" href="server.php" img="/res/server-bg.png">
+            Display the content of $_SERVER.
+        </Card>
+    </Section>
+
+    <Section title="Other" img="/res/server-bg.png">
+        <Card title="Regex" href="regex/" img="/res/html.jpg">
+            Run any Regex on given text.
+        </Card>
+    </Section>
+</Layout>
