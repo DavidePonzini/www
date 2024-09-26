@@ -4,6 +4,7 @@ DIR=/var/www/html/
 #	git submodule add <url> public/...
 
 init:
+	npm install
 	git submodule update --init --recursive
 
 build:
