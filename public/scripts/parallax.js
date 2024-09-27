@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
     // update all initial positions (in case page has already been scrolled)
     update_parallax();
 

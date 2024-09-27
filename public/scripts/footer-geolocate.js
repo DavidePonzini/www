@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(function() {
     $.ajax({
         url: `/api/my-ip.php`,
         success: show_ip_address,

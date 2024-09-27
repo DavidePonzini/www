@@ -131,6 +131,4 @@ window.addEventListener('scroll', () => {
     }
 });
 
-$(document).ready(function() {
-    init();
-});
+$(init);
