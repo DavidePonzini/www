@@ -8,10 +8,10 @@ import Layout from "../../layouts/Layout.astro";
     <Navbar></Navbar>
 
     <Section title="Password generator" img="/res/010101.jpg">
-        <div class="row">
-            <div class="col"></div>
-            <div class="col-lg">
-                <form action="pwd-gen.php" method="get">
+        <form action="pwd-gen.php" method="get">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-lg">
                     <div class="input-group mb-3">
                         <span class="input-group-text">Password length</span>
                         <input type="number" class="form-control" id="len" name="len" value="16" min="1" max="255">
@@ -49,17 +49,14 @@ import Layout from "../../layouts/Layout.astro";
                         <input type="text" class="form-control" value="Symbols" disabled>
                     </div>
                     <button type="submit" id="submit" class="btn btn-primary mb-3">Generate password</button>
-
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control center monospace" id="result" readonly>
-                        <button class="btn btn-primary" type="button" id="copy">Copy</button>
-                    </div>
-                      
-
-                </form>
+                </div>
+                <div class="col"></div>
             </div>
-            <div class="col"></div>
-        </div>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control center monospace" id="result" readonly>
+                <button class="btn btn-primary" type="button" id="copy">Copy</button>
+            </div>
+        </form>
     </Section>
 </Layout>
 
