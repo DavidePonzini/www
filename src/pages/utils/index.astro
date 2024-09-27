@@ -10,35 +10,40 @@ import Layout from '../../layouts/Layout.astro';
 
     <Section title="Common" img="/res/server-bg.png">
         <Card title="Password generator" href="pwd-gen/" img="/res/010101.jpg">
-            Random password generator.
+            Random password generator
         </Card>
     </Section>
 
     <Section title="Web development" img="/res/010101.jpg" dark>
         <Card title="Password hasher" href="pwd-hash.php" img="/res/010101.jpg">
-            Calculate password hash for a given plain string.
+            Calculate password hash for a given plain string
         </Card>
 
         <Card title="HTTP Code" href="http-code.php" img="/res/html.jpg">
-            HTTP response code selector.
+            HTTP response code selector
         </Card>
 
         <Card title="PHP Request" href="request.php" img="/res/server-bg.png">
-            Display server-side request data.
+            Display server-side request data
         </Card>
 
         <Card title="PHP Request (simplified)" href="request-simple.php" img="/res/server-bg.png">
-            Display server-side HTTP request data. Only GET/POST/FILES are shown.
+            Display server-side HTTP request data
+            (only
+                <span class="monospace">$_GET</span>,
+                <span class="monospace">$_POST</span>,
+                <span class="monospace">$_FILES</span>
+            are shown)
         </Card>
 
         <Card title="PHP $_SERVER" href="server.php" img="/res/server-bg.png">
-            Display the content of $_SERVER.
+            Display the content of <span class="monospace">$_SERVER</span>
         </Card>
     </Section>
 
     <Section title="Other" img="/res/server-bg.png">
         <Card title="Regex" href="regex/" img="/res/html.jpg">
-            Run any Regex on given text.
+            Run any Regex on given text
         </Card>
     </Section>
 </Layout>
