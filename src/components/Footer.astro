@@ -55,3 +55,40 @@
 
 <!-- Geolocate -->
 <script is:inline src="/scripts/footer-geolocate.js"></script>
+
+
+<style>
+    .footer {
+		width: 100%;
+		background-color: #f4f4f4;
+		padding: 12px;
+		position: sticky;
+		z-index: 101;
+	}
+
+	.footer a {
+		color: #777;
+	}
+
+	.footer a:hover {
+		color: black;
+	}
+
+	.footer > .container {
+		display: block;
+	}
+
+	#footer-device-info {
+		list-style: none;
+	}
+
+	#footer-device-info li {
+		padding-left: 1em;
+		text-indent: -1em;
+	}
+
+	#footer-device-info li::before {
+		content: ">";
+		padding-right: 5px;
+	}
+</style>

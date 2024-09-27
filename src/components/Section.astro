@@ -2,16 +2,16 @@
 interface Props {
 	title: string;
     img: string;
-    is_dark?: boolean;
+    dark?: boolean;
 }
 
-const { title, img, is_dark = false } = Astro.props;
+const { title, img, dark = false } = Astro.props;
 const bg_img = `url(${img})`
 
 ---
 
 <div class="parallax">
-    <div class={is_dark ? 'container-md container-dark' : 'container-md container-light'}>
+    <div class={dark ? 'container-md dark' : 'container-md light'}>
         <h1>{title}</h1>
         <div class="row center">
             <div class="col-lg links">
@@ -25,4 +25,31 @@ const bg_img = `url(${img})`
     .parallax {
         background-image: var(--bg_img);
     }
+
+    .light {
+		background-color: rgba(211, 212, 213, .8);
+		color: black;
+	}
+
+	.dark {
+		background-color: rgba(7, 6, 5, .8);
+		color: white;
+	}
+
+    h1 {
+		padding: 2rem 0 3rem 4rem;
+		text-align: left;
+		background-position: bottom left;
+		background-repeat: no-repeat;
+		margin-bottom: 2rem;
+	}
+
+	.light h1 {
+		background-image: url(/res/heading-border-left-2.png);
+	}
+
+	.dark h1 {
+		background-image: url(/res/heading-border-left-2.png);
+	}
+
 </style>

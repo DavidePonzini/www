@@ -18,3 +18,29 @@ const { href, title, img } = Astro.props;
 		<span class="btn btn-primary">Open</span>
 	</div>
 </a>
+
+<style>
+	.card {
+		display: inline-block;
+		margin: 12px;
+		word-wrap: normal;
+		vertical-align: top;
+		width: 18rem;
+		color: black;
+	}
+
+	a.card {
+		text-decoration: none;
+	}
+
+	.card .card-text {
+		color: black;
+		height: 80px;
+		overflow-y: auto;
+	}
+
+	.card .card-img-top {
+		object-fit: cover;
+		height: 12rem;
+	}
+</style>
