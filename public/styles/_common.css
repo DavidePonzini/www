@@ -1,12 +1,3 @@
-.parallax {
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: sticky;
-    z-index: 100;
-}
-
 .center {
     text-align: center;
     place-content: center;

@@ -7,10 +7,9 @@ interface Props {
 
 const { title, img, dark = false } = Astro.props;
 const bg_img = `url(${img})`
-
 ---
 
-<div class="parallax">
+<div class="section">
     <div class={dark ? 'container-md dark' : 'container-md light'}>
         <h1>{title}</h1>
         <div class="row center">
@@ -22,8 +21,14 @@ const bg_img = `url(${img})`
 </div>
 
 <style define:vars={{bg_img}}>
-    .parallax {
+    .section {
         background-image: var(--bg_img);
+		background-attachment: fixed;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		position: sticky;
+		z-index: 100;
     }
 
     .light {
@@ -57,3 +62,4 @@ const bg_img = `url(${img})`
 		box-shadow: 0 2px 4px 1px rgba(0, 0, 0, .2);
 	}
 </style>
+
