@@ -1,0 +1,82 @@
+---
+
+---
+
+<ul id="footer-device-info" class="monospace">
+    <li id="footer-ip" class="hidden">
+        IP Address:
+        <span id="footer-ip-text"></span>
+        <span data-bs-toggle="tooltip" data-bs-placement="right" title="Required by web server to send back response to your device">
+            <i class="fa-solid fa-circle-question"></i>
+        </span>
+    </li>
+    <li id="footer-location" class="hidden">
+        Location:
+        <span id="footer-location-text"></span>
+        <span data-bs-toggle="tooltip" data-bs-placement="right" title="Derived from IP address">
+            <i class="fa-solid fa-circle-question"></i>
+        </span>
+    </li>
+    <li id="footer-loc" class="hidden">
+        Coordinates:
+        <span id="footer-loc-text"></span>
+        <span data-bs-toggle="tooltip" data-bs-placement="right" title="Derived from IP address">
+            <i class="fa-solid fa-circle-question"></i>
+        </span>
+    </li>
+</ul>
+
+<script>
+    $(function() {
+        $.ajax({
+            url: `/api/my-ip.php`,
+            success: show_ip_address,
+            error: console.error
+        });
+
+        $.ajax({
+            url: `https://ipinfo.io/json`,
+            success: show_ip_location,
+            error: console.error
+        });
+    })
+
+    function show_ip_location(data: any) {
+        // data = JSON.parse(data);
+
+        $('#footer-location-text').text(`${data['city']}, ${data['region']} - ${data['country']}`);
+        $('#footer-location').removeClass('hidden');
+
+        let loc = $('<a></a>');
+        loc.prop('href', `https://www.google.com/maps/@${data['loc']}`);
+        loc.prop('target', '_blank');   // open in new tab
+        loc.text(data['loc']);
+
+        $('#footer-loc-text').append(loc);
+        $('#footer-loc').removeClass('hidden');
+    }
+
+    function show_ip_address(data: string) {
+        $('#footer-ip-text').text(data);
+        $('#footer-ip').removeClass('hidden');
+    }
+</script>
+
+<style>
+    ul {
+		list-style: none;
+	}
+
+	ul li::before {
+		content: ">";
+		padding-right: 1rem;
+	}
+
+    [data-bs-toggle="tooltip"] {
+        cursor: pointer;
+    }
+
+    i {
+        color: darkgray;
+    }
+</style>

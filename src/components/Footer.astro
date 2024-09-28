@@ -1,4 +1,9 @@
 ---
+import FooterDeviceInfo from "./FooterDeviceInfo.astro";
+import FooterDonations from "./FooterDonations.astro";
+import FooterSocial from "./FooterSocial.astro";
+
+
 
 ---
 
@@ -8,54 +13,19 @@
             Website developed by Davide Ponzini.
         </div>
 
-        <!-- Social -->
         <div class="center">
-            <a href="https://github.com/DavidePonzini" class="bi bi-github social social-github"></a>
-            <a href="mailto:ponzidav@altervista.org" class="bi bi-envelope-at social social-email"></a>
+            <FooterSocial></FooterSocial>
         </div>
 
-        <!-- Donations -->
         <div class="center">
-            <a class="social-donation" href="https://www.paypal.me/davideponzini95">    
-                <i class="fa-solid fa-martini-glass-citrus"></i>
-                Buy me a drink!
-                <i class="fa-solid fa-martini-glass-citrus"></i>
-            </a>
+            <FooterDonations></FooterDonations>
         </div>
 
-        <!-- User device info -->
-        <ul id="footer-device-info" class="monospace">
-            <li id="footer-ip" class="hidden">
-                <i>
-                    <abbr title="Required by web server to send back response to your device">IP Address</abbr>:
-                    <span id="footer-ip-text"></span>
-                </i>
-            </li>
-            <li id="footer-location" class="hidden">
-                <i>
-                    <abbr title="Derived from IP address">Location</abbr>:
-                    <span id="footer-location-text"></span>
-                </i>
-            </li>
-            <li id="footer-loc" class="hidden">
-                <i>
-                    <abbr title="Derived from IP address">Coordinates</abbr>:
-                    <span id="footer-loc-text"></span>
-                </i>
-            </li>
-        </ul>
+        <div>
+            <FooterDeviceInfo></FooterDeviceInfo>
+        </div>
     </div>
 </div>
-
-<!-- Boostrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-<!-- jQuery -->
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-
-<!-- Geolocate -->
-<script is:inline src="/scripts/footer-geolocate.js"></script>
-
 
 <style>
     .footer {
@@ -76,19 +46,5 @@
 
 	.footer > .container {
 		display: block;
-	}
-
-	#footer-device-info {
-		list-style: none;
-	}
-
-	#footer-device-info li {
-		padding-left: 1em;
-		text-indent: -1em;
-	}
-
-	#footer-device-info li::before {
-		content: ">";
-		padding-right: 5px;
 	}
 </style>
