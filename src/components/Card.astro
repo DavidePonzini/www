@@ -9,7 +9,9 @@ const { href, title, img } = Astro.props;
 ---
 
 <a href={href} class="card">
-	<img class="card-img-top" src={img}>
+	<div class="img-container">
+		<img class="card-img-top" src={img}>
+	</div>
 	<div class="card-body">
 		<h5 class="card-title">{title}</h5>
 		<p class="card-text">
@@ -42,5 +44,17 @@ const { href, title, img } = Astro.props;
 	.card .card-img-top {
 		object-fit: cover;
 		height: 12rem;
+	}
+
+	.card-img-top {
+		transition: transform 1s;
+	}
+
+	.img-container {
+		overflow: hidden;
+	}
+
+	.card:hover .card-img-top {
+		transform: scale(1.1);
 	}
 </style>
