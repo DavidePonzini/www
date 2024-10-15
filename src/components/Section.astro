@@ -42,18 +42,25 @@ const bg_img = `url(${img})`
 	}
 
     h1 {
-		padding: 2rem 0 3rem 4rem;
+		padding: 2rem 0 2rem 4rem;
 		text-align: left;
-		background-position: bottom left;
-		background-repeat: no-repeat;
-		margin-bottom: 2rem;
+		display: table;
+		white-space: nowrap;
 	}
 
-	.light h1 {
+	h1::after {
+		content: '';
+		display: table-cell;
+		width: 100%;
+		background-repeat: no-repeat;
+		background-position: center left;
+	}
+
+	.light h1::after {
 		background-image: url(/res/heading-border-left-2.png);
 	}
 
-	.dark h1 {
+	.dark h1::after {
 		background-image: url(/res/heading-border-left-2.png);
 	}
 
