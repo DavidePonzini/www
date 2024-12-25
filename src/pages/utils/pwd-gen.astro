@@ -1,4 +1,5 @@
 ---
+import Background from "../../components/Background.astro";
 import Navbar from "../../components/Navbar.astro";
 import Section from "../../components/Section.astro";
 import Layout from "../../layouts/Layout.astro";
@@ -7,57 +8,61 @@ import Layout from "../../layouts/Layout.astro";
 <Layout title="Password generator">
     <Navbar></Navbar>
 
-    <Section title="Password generator" img="/res/010101.jpg">
-        <form action="pwd-gen.php" method="get">
-            <div class="row">
-                <div class="col"></div>
-                <div class="col-lg">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text">Password length</span>
-                        <input type="number" class="form-control" id="len" name="len" value="16" min="1" max="255">
-                    </div>
-                    <div class="input-group mb-1">
-                        <div class="input-group-text">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="charactersL" name="charactersL" checked>
-                            </div>        
+    <Background img="/res/010101.jpg">
+
+
+        <Section title="Password generator">
+            <form action="pwd-gen.php" method="get">
+                <div class="row">
+                    <div class="col"></div>
+                    <div class="col-lg">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Password length</span>
+                            <input type="number" class="form-control" id="len" name="len" value="16" min="1" max="255">
                         </div>
-                        <input type="text" class="form-control" value="Lowercase" disabled>
-                    </div>
-                    <div class="input-group mb-1">
-                        <div class="input-group-text">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="charactersU" name="charactersU" checked>
-                            </div>        
+                        <div class="input-group mb-1">
+                            <div class="input-group-text">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="charactersL" name="charactersL" checked>
+                                </div>        
+                            </div>
+                            <input type="text" class="form-control" value="Lowercase" disabled>
                         </div>
-                        <input type="text" class="form-control" value="Uppercase" disabled>
-                    </div>
-                    <div class="input-group mb-1">
-                        <div class="input-group-text">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="charactersD" name="charactersD" checked>
-                            </div>        
+                        <div class="input-group mb-1">
+                            <div class="input-group-text">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="charactersU" name="charactersU" checked>
+                                </div>        
+                            </div>
+                            <input type="text" class="form-control" value="Uppercase" disabled>
                         </div>
-                        <input type="text" class="form-control" value="Digits" disabled>
-                    </div>
-                    <div class="input-group mb-3">
-                        <div class="input-group-text">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="charactersS" name="charactersS" checked>
-                            </div>        
+                        <div class="input-group mb-1">
+                            <div class="input-group-text">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="charactersD" name="charactersD" checked>
+                                </div>        
+                            </div>
+                            <input type="text" class="form-control" value="Digits" disabled>
                         </div>
-                        <input type="text" class="form-control" value="Symbols" disabled>
+                        <div class="input-group mb-3">
+                            <div class="input-group-text">
+                                <div class="form-check form-switch">
+                                    <input class="form-check-input" type="checkbox" id="charactersS" name="charactersS" checked>
+                                </div>        
+                            </div>
+                            <input type="text" class="form-control" value="Symbols" disabled>
+                        </div>
+                        <button type="submit" id="submit" class="btn btn-primary mb-3">Generate password</button>
                     </div>
-                    <button type="submit" id="submit" class="btn btn-primary mb-3">Generate password</button>
+                    <div class="col"></div>
                 </div>
-                <div class="col"></div>
-            </div>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control center monospace" id="result" readonly>
-                <button class="btn btn-primary" type="button" id="copy">Copy</button>
-            </div>
-        </form>
-    </Section>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control center monospace" id="result" readonly>
+                    <button class="btn btn-primary" type="button" id="copy">Copy</button>
+                </div>
+            </form>
+        </Section>
+    </Background>
 </Layout>
 
 <script>

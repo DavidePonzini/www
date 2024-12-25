@@ -2,6 +2,7 @@
 import Banner from '../components/Banner.astro';
 import Card from '../components/Card.astro';
 import Navbar from '../components/Navbar.astro';
+import Background from '../components/Background.astro';
 import Section from '../components/Section.astro';
 import Layout from '../layouts/Layout.astro';
 ---
@@ -11,20 +12,22 @@ import Layout from '../layouts/Layout.astro';
 
     <Navbar></Navbar>
 
-    <Section title='Content' img='/res/eggsorcist.png' dark>
-        <Card title='Utilities' href='utils' img='/res/html.jpg'>
-            Web development utilities
-        </Card>
-        
-        <Card title='Portfolio' href='portfolio' img='/res/eggsorcist.png'>
-            Showcase of websites I developed
-        </Card>
-    </Section>
+    <Background img="/res/bg_glass.jpg">
+        <Section title="Content" dark>
+            <Card title="Utilities" href="utils" img="/res/html.jpg">
+                Web development utilities
+            </Card>
+            
+            <Card title="Portfolio" href="portfolio" img="/res/eggsorcist.png">
+                Showcase of websites I developed
+            </Card>
+        </Section>
 
-    <Section title='Works in progress' img='/res/server-bg.png'>
-        <Card title='GPT4CT' href='gpt4ct' img='/res/problem-decomposition.png'>
-            Tool for problem decomposition and learning computational thought
-        </Card>
-    </Section>
+        <Section title="Works in progress">
+            <Card title="GPT4CT" href="gpt4ct" img="/res/problem-decomposition.png">
+                Tool for problem decomposition and learning computational thought
+            </Card>
+        </Section>
 
+    </Background>
 </Layout>

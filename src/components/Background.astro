@@ -1,0 +1,25 @@
+---
+interface Props {
+    img: string;
+}
+
+const { img } = Astro.props;
+const bg_img = `url(${img})`
+---
+
+<div class="background">
+    <slot></slot>
+</div>
+
+<style define:vars={{bg_img}}>
+    .background {
+        background-image: var(--bg_img);
+		background-attachment: fixed;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		position: sticky;
+		z-index: 100;
+    }
+</style>
+

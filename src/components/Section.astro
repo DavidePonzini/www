@@ -1,36 +1,22 @@
 ---
 interface Props {
 	title: string;
-    img: string;
     dark?: boolean;
 }
 
-const { title, img, dark = false } = Astro.props;
-const bg_img = `url(${img})`
+const { title, dark = false } = Astro.props;
 ---
 
-<div class="section">
-    <div class={dark ? 'container-md dark' : 'container-md light'}>
-        <h1>{title}</h1>
-        <div class="row center">
-            <div class="col-lg links">
-                <slot></slot>
-            </div>
-        </div>
-    </div>
+<div class={dark ? 'container-md dark' : 'container-md light'}>
+	<h1>{title}</h1>
+	<div class="row center">
+		<div class="col-lg links">
+			<slot></slot>
+		</div>
+	</div>
 </div>
 
-<style define:vars={{bg_img}}>
-    .section {
-        background-image: var(--bg_img);
-		background-attachment: fixed;
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: cover;
-		position: sticky;
-		z-index: 100;
-    }
-
+<style>
     .light {
 		background-color: rgba(211, 212, 213, .8);
 		color: black;
