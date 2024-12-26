@@ -9,15 +9,21 @@ const { href, title, img } = Astro.props;
 ---
 
 <a href={href} class="card">
-	<div class="img-container">
-		<img class="card-img-top" src={img}>
-	</div>
-	<div class="card-body">
-		<h5 class="card-title">{title}</h5>
-		<p class="card-text">
-			<slot>{title}</slot>
-		</p>
-		<span class="btn btn-primary">Open</span>
+	<div class="row">
+		<div class="col-6">
+			<div class="img-container">
+				<img class="card-img-top" src={img}>
+			</div>
+			<div class="card-body">
+				<h5 class="card-title">{title}</h5>
+				<p class="card-text">
+					<slot>{title}</slot>
+				</p>
+				<span class="btn btn-primary">Open</span>
+			</div>
+		</div>
+		<div class="col-6">
+		</div>
 	</div>
 </a>
 
@@ -28,7 +34,10 @@ const { href, title, img } = Astro.props;
 		word-wrap: normal;
 		vertical-align: top;
 		width: 18rem;
+		margin-left: 9rem;
+		margin-right: 9rem;
 		color: black;
+		/* transition: width .2s; */
 	}
 
 	a.card {
@@ -57,4 +66,27 @@ const { href, title, img } = Astro.props;
 	.card:hover .card-img-top {
 		transform: scale(1.1);
 	}
+
+	.card:hover {
+		width: 36rem;
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	.card .col-6:first-child {
+		width: 100%;
+	}
+
+	.card:hover .col-6:first-child {
+		width: 50%;
+	}
+
+	.card .col-6:last-child {
+		display: none;
+	}
+
+	.card:hover .col-6:last-child {
+		display: block;
+	}
+
 </style>
