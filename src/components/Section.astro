@@ -1,32 +1,19 @@
 ---
 interface Props {
 	title: string;
-    dark?: boolean;
 }
 
-const { title, dark = false } = Astro.props;
+const { title } = Astro.props;
 ---
 
-<div class={dark ? 'container-md dark' : 'container-md light'}>
-	<h1>{title}</h1>
-	<div class="row center">
-		<div class="col-lg links">
-			<slot></slot>
-		</div>
+<h1>{title}</h1>
+<div class="row center">
+	<div class="col-lg links">
+		<slot></slot>
 	</div>
 </div>
 
 <style>
-    .light {
-		background-color: rgba(211, 212, 213, .8);
-		color: black;
-	}
-
-	.dark {
-		background-color: rgba(7, 6, 5, .8);
-		color: white;
-	}
-
     h1 {
 		padding: 2rem 0 2rem 4rem;
 		text-align: left;
@@ -42,17 +29,9 @@ const { title, dark = false } = Astro.props;
 		background-position: center left;
 	}
 
-	.light h1::after {
+	h1::after {
 		background-image: url(/res/heading-border-left-2.png);
 	}
-
-	.dark h1::after {
-		background-image: url(/res/heading-border-left-2.png);
-	}
-
-    .container-md {
-		padding-bottom: 2rem;
-		box-shadow: 0 2px 4px 1px rgba(0, 0, 0, .2);
-	}
+    
 </style>
 
