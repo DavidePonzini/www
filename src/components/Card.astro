@@ -16,13 +16,15 @@ const { href, title, img } = Astro.props;
 			</div>
 			<div class="card-body">
 				<h5 class="card-title">{title}</h5>
-				<p class="card-text">
-					<slot>{title}</slot>
-				</p>
 				<span class="btn btn-primary">Open</span>
 			</div>
 		</div>
 		<div class="col-6">
+			<div class="card-body">
+				<p class="card-text">
+					<slot>{title}</slot>
+				</p>
+			</div>
 		</div>
 	</div>
 </a>
@@ -33,20 +35,21 @@ const { href, title, img } = Astro.props;
 		margin: 12px;
 		word-wrap: normal;
 		vertical-align: top;
-		width: 18rem;
-		margin-left: 9rem;
-		margin-right: 9rem;
+		width: 36rem;
 		color: black;
-		/* transition: width .2s; */
 	}
 
 	a.card {
 		text-decoration: none;
 	}
 
+	.card .card-title {
+		height: 104px;
+	}
+
 	.card .card-text {
 		color: black;
-		height: 80px;
+		height: 100%;
 		overflow-y: auto;
 	}
 
@@ -67,25 +70,13 @@ const { href, title, img } = Astro.props;
 		transform: scale(1.1);
 	}
 
-	.card:hover {
-		width: 36rem;
-		margin-left: 0;
-		margin-right: 0;
-	}
-
 	.card .col-6:first-child {
-		width: 100%;
-	}
-
-	.card:hover .col-6:first-child {
 		width: 50%;
+		display: block;
 	}
 
 	.card .col-6:last-child {
-		display: none;
-	}
-
-	.card:hover .col-6:last-child {
+		width: 50%;
 		display: block;
 	}
 
