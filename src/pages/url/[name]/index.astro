@@ -1,0 +1,17 @@
+---
+export function getStaticPaths() {
+  return [
+    // { params: { name: 'e' }, props: { target: 'https://www.example.com' } },
+  ];
+}
+
+const { target } = Astro.props;
+---
+
+<body>
+  <p>Redirecting to <a href={target}>{target}</a>...</p>
+
+  <script is:inline define:vars={{ target }}>
+    window.location.href = target;
+  </script>
+</body>
