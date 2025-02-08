@@ -1,14 +1,11 @@
 ---
 import Background from '../../components/Background.astro';
 import ItemCard from '../../components/ItemCard.astro';
-import Navbar from '../../components/Navbar.astro';
 import Section from '../../components/Section.astro';
-import Layout from '../../layouts/Layout.astro';
+import Page from '../../layouts/Page.astro';
 ---
 
-<Layout title="// Utils">
-    <Navbar></Navbar>
-
+<Page title="// Utils">
     <Background img="/res/bg_webdev.jpg">
         <Section title="Helpers">
             <ItemCard title="Password generator" href="pwd-gen.html" img="/res/password.jpg">
@@ -54,4 +51,4 @@ import Layout from '../../layouts/Layout.astro';
         </Section>
 
     </Background>
-</Layout>
+</Page>

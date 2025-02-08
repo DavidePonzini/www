@@ -1,13 +1,10 @@
 ---
 import Background from "../../components/Background.astro";
-import Navbar from "../../components/Navbar.astro";
 import Section from "../../components/Section.astro";
-import Layout from "../../layouts/Layout.astro";
+import Page from "../../layouts/Page.astro";
 ---
 
-<Layout title="Password generator">
-    <Navbar></Navbar>
-
+<Page title="Password generator">
     <Background img="/res/010101.jpg">
 
 
@@ -63,7 +60,7 @@ import Layout from "../../layouts/Layout.astro";
             </form>
         </Section>
     </Background>
-</Layout>
+</Page>
 
 <script>
     $(function() {

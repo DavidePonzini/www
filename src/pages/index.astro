@@ -1,16 +1,13 @@
 ---
 import Banner from '../components/Banner.astro';
 import ItemCard from '../components/ItemCard.astro';
-import Navbar from '../components/Navbar.astro';
 import Background from '../components/Background.astro';
 import Section from '../components/Section.astro';
-import Layout from '../layouts/Layout.astro';
+import Page from '../layouts/Page.astro';
 ---
 
-<Layout title="-- PonziDav --">
-    <Banner></Banner>
-
-    <Navbar></Navbar>
+<Page title="-- PonziDav --">
+    <Banner slot="banner"></Banner>
 
     <Background img="/res/bg_glass.jpg">
         <Section title="Content">
@@ -33,4 +30,4 @@ import Layout from '../layouts/Layout.astro';
         </Section>
 
     </Background>
-</Layout>
+</Page>

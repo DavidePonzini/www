@@ -11,6 +11,7 @@ build:
 	npx astro build
 
 copy: build
+	rm -rf $(DIR)/url
 	cp -r dist/* $(DIR)
 
 clean:

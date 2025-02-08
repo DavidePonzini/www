@@ -1,14 +1,11 @@
 ---
 import Background from '../../components/Background.astro';
 import ItemCard from '../../components/ItemCard.astro';
-import Navbar from '../../components/Navbar.astro';
 import Section from '../../components/Section.astro';
-import Layout from '../../layouts/Layout.astro';
+import Page from '../../layouts/Page.astro';
 ---
 
-<Layout title="Portfolio">
-    <Navbar></Navbar>
-
+<Page title="Portfolio">
     <Background img='/res/eggsorcist.png'>
         <Section title='Websites'>
             <ItemCard title='Sito brutto' href='2016-sito-brutto' img='2016-sito-brutto/antonio.jpg'>
@@ -28,4 +25,4 @@ import Layout from '../../layouts/Layout.astro';
             </ItemCard>
         </Section>
     </Background>
-</Layout>
+</Page>
