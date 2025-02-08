@@ -1,11 +1,26 @@
 ---
-import { redirects } from "../../../data/redirects";
+import mysql from 'mysql2/promise';
 
-export function getStaticPaths() {
-    return redirects.map(({ name, target }) => ({
-        params: { name },
-        props: { target },
-    }));
+export async function getStaticPaths() {
+    // Create a connection pool
+    const connection = await mysql.createConnection({
+        host: 'localhost',
+        user: 'dba',
+        password: 'dav',
+        database: 'www_config',
+    });
+
+    try {
+        const [rows] = await connection.query('SELECT name, target FROM redirects');
+
+        return rows.map(row => ({
+            params: { name: row.name },
+            props: { target: row.target }
+        }));
+
+    } finally {
+        connection.end();
+    }
 }
 
 const { target } = Astro.props;

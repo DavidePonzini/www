@@ -1,6 +1,6 @@
 ---
 import Background from '../../components/Background.astro';
-import Card from '../../components/Card.astro';
+import ItemCard from '../../components/ItemCard.astro';
 import Navbar from '../../components/Navbar.astro';
 import Section from '../../components/Section.astro';
 import Layout from '../../layouts/Layout.astro';
@@ -11,46 +11,46 @@ import Layout from '../../layouts/Layout.astro';
 
     <Background img="/res/bg_webdev.jpg">
         <Section title="Helpers">
-            <Card title="Password generator" href="pwd-gen.html" img="/res/password.jpg">
+            <ItemCard title="Password generator" href="pwd-gen.html" img="/res/password.jpg">
                 Random password generator
-            </Card>
+            </ItemCard>
         </Section>
 
         <Section title="Web development">
-            <Card title="PHPMyAdmin" href="/phpmyadmin" img="/res/database.jpg">
+            <ItemCard title="PHPMyAdmin" href="/phpmyadmin" img="/res/database.jpg">
                 Access local database
-            </Card>
+            </ItemCard>
 
-            <Card title="Password hasher" href="pwd-hash.php" img="/res/password.jpg">
+            <ItemCard title="Password hasher" href="pwd-hash.php" img="/res/password.jpg">
                 Calculate password hash for a given plain string
-            </Card>
+            </ItemCard>
 
-            <Card title="HTTP Code" href="http-code.php" img="/res/html.jpg">
+            <ItemCard title="HTTP Code" href="http-code.php" img="/res/html.jpg">
                 HTTP response code selector
-            </Card>
+            </ItemCard>
 
-            <Card title="PHP Request" href="request.php" img="/res/bg_server.png">
+            <ItemCard title="PHP Request" href="request.php" img="/res/bg_server.png">
                 Display server-side request data
-            </Card>
+            </ItemCard>
 
-            <Card title="PHP Request (simplified)" href="request-simple.php" img="/res/server-bg.png">
+            <ItemCard title="PHP Request (simplified)" href="request-simple.php" img="/res/server-bg.png">
                 Display server-side HTTP request data
                 (only
                     <span class="monospace">$_GET</span>,
                     <span class="monospace">$_POST</span>,
                     <span class="monospace">$_FILES</span>
                 are shown)
-            </Card>
+            </ItemCard>
 
-            <Card title="PHP $_SERVER" href="server.php" img="/res/bg_server.png">
+            <ItemCard title="PHP $_SERVER" href="server.php" img="/res/bg_server.png">
                 Display the content of <span class="monospace">$_SERVER</span>
-            </Card>
+            </ItemCard>
         </Section>
 
         <Section title="Other">
-            <Card title="Regex" href="regex/" img="/res/regex.jpg">
+            <ItemCard title="Regex" href="regex/" img="/res/regex.jpg">
                 Run any Regex on given text
-            </Card>
+            </ItemCard>
         </Section>
 
     </Background>
