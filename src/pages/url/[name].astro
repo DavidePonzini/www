@@ -1,0 +1,14 @@
+---
+export function getStaticPaths() {
+  return [
+    {params: {name: 'example', url: 'www.example.com'}},
+    {params: {name: 'google', url: 'www.google.com'}},
+  ];
+}
+
+const { name, url } = Astro.params;
+
+return Astro.redirect(url);
+---
+
+<a href={url}>Click me</a>
