@@ -5,6 +5,11 @@ DIR=/var/www/html/
 
 .PHONY: init build copy clean
 
+
+copy: build
+	rm -rf $(DIR)/url
+	cp -r dist/* $(DIR)
+
 init:
 	npm install
 	git submodule update --init --recursive
@@ -12,9 +17,6 @@ init:
 build:
 	npx astro build
 
-copy: build
-	rm -rf $(DIR)/url
-	cp -r dist/* $(DIR)
 
 clean:
 	rm -rf dist
