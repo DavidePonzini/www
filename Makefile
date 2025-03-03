@@ -1,4 +1,5 @@
 DIR=/var/www/html/
+SECRET=SECRET
 
 # To add submodules use in root directory:
 #	git submodule add <url> public/...
@@ -14,9 +15,12 @@ init:
 	npm install
 	git submodule update --init --recursive
 
-build:
-	npx astro build
+build: $(SECRET)
+	source $(SECRET) && npx astro build
 
 
 clean:
 	rm -rf dist
+
+$(SECRET):
+	cp SECRET.template $(SECRET)
