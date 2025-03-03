@@ -1,3 +1,4 @@
+SHELL=/bin/bash
 DIR=/var/www/html/
 SECRET=SECRET
 
