@@ -1,5 +1,6 @@
 # custom
 package-lock.json
+SECRET
 
 # build output
 dist/
