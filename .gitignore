@@ -1,6 +1,6 @@
 # custom
 package-lock.json
-SECRET
+.env
 
 # build output
 dist/

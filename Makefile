@@ -1,6 +1,6 @@
 SHELL=/bin/bash
-DIR=/var/www/html/
-SECRET=SECRET
+DIR=/var/www/html
+SECRET=.env
 
 # To add submodules use in root directory:
 #	git submodule add <url> public/...
@@ -10,7 +10,7 @@ SECRET=SECRET
 
 copy: build
 	rm -rf $(DIR)/url
-	cp -r dist/* $(DIR)
+	cp -r dist/* $(DIR)/
 
 init:
 	npm install
