@@ -7,7 +7,7 @@ interface Props {
 
 const { img, dark, color } = Astro.props;
 
-const bg_img = `url(${img})`;
+const bg_img = `url(${import.meta.env.BASE_URL}/${img})`;
 const text_color = dark ? 'white' : 'black';
 
 let bg_color = color;
