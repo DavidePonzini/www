@@ -15,7 +15,7 @@ const bg_img_path = `${import.meta.env.BASE_URL}/res/heading-border-left-2.png`;
 	</div>
 </div>
 
-<style define:vars="{bg_img_path}">
+<style define:vars={{bg_img_path: `url('${bg_img_path}')`}}>
     h1 {
 		padding: 2rem 0 2rem 4rem;
 		text-align: left;
@@ -32,7 +32,7 @@ const bg_img_path = `${import.meta.env.BASE_URL}/res/heading-border-left-2.png`;
 	}
 
 	h1::after {
-		background-image: url(var(--bg_img_path));
+		background-image: var(--bg_img_path);
 	}
 </style>
 

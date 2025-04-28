@@ -6,7 +6,8 @@ interface Props {
 }
 
 const { href, title, img } = Astro.props;
-const img_path = `${import.meta.env.BASE_URL}/${img}`;
+const img_path = img.startsWith('/') ? `${import.meta.env.BASE_URL}${img}` : img;
+
 ---
 
 <div class="item-card">
