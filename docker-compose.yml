@@ -22,6 +22,14 @@ services:
     image: davideponzini/daniwebtutorial_webui
     container_name: www_daniwebtutorial_webui
     restart: unless-stopped
+    environment:
+      DB_HOST: portfolio_daniwebtutorial_db
+      DB_PORT: 3306
+      DB_NAME: dani_web_tutorial
+      DB_USER: daniadmin
+      DB_PASSWORD: password
+    depends_on:
+      - portfolio_daniwebtutorial_db
     ports:
       - "10010:80"
 
