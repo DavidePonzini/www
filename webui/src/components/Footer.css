@@ -1,0 +1,11 @@
+.footer a {
+    color: #777;
+}
+
+.footer a:hover {
+    color: black;
+}
+
+.footer > .container {
+    display: block;
+}

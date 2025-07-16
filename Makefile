@@ -1,27 +1,33 @@
-SHELL=/bin/bash
-DIR=/var/www/html
-SECRET=.env
+SHELL := /bin/bash
 
-# To add submodules use in root directory:
-#	git submodule add <url> public/...
+VENV=./venv
+REQUIREMENTS_SERVER=server/requirements.txt
 
-.PHONY: init build copy clean
+ifeq ($(OS),Windows_NT)
+	VENV_BIN=$(VENV)/Scripts
+else
+	VENV_BIN=$(VENV)/bin
+endif
+
+DEV_DOCKER_COMPOSE_FILE = docker-compose.yml
+PROD_DOCKER_COMPOSE_FILE = docker-compose.prod.yml
+
+.PHONY: $(VENV)_upgrade start deploy
+
+start:
+	docker compose -f $(DEV_DOCKER_COMPOSE_FILE) down
+	docker compose -f $(DEV_DOCKER_COMPOSE_FILE) up --build
+
+deploy:
+	docker compose -f $(PROD_DOCKER_COMPOSE_FILE) down
+	docker compose -f $(PROD_DOCKER_COMPOSE_FILE) up -d --build
 
 
-copy: build
-	rm -rf $(DIR)/url
-	cp -r dist/* $(DIR)/
+$(VENV):
+	python -m venv $(VENV)
+	$(VENV_BIN)/python -m pip install --upgrade -r $(REQUIREMENTS_SERVER)
 
-init:
-	npm install
-	git submodule update --init --recursive
-
-build: $(SECRET)
-	source $(SECRET) && npx astro build
+$(VENV)_upgrade: $(VENV)
+	$(VENV_BIN)/python -m pip install --upgrade -r $(REQUIREMENTS_SERVER)
 
 
-clean:
-	rm -rf dist
-
-$(SECRET):
-	cp SECRET.template $(SECRET)

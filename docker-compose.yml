@@ -1,0 +1,48 @@
+services:
+  nginx:
+    build: ./nginx
+    container_name: www_nginx
+    restart: unless-stopped
+    depends_on:
+      - webui
+      - utils_apache
+      - portfolio_daniwebtutorial_webui
+      - portfolio_daniwebtutorial_db
+    ports:
+      - "10000:80"
+
+  webui:
+    build: ./webui
+    container_name: www_webui
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+
+  portfolio_daniwebtutorial_webui:
+    image: davideponzini/daniwebtutorial_webui
+    container_name: www_daniwebtutorial_webui
+    restart: unless-stopped
+    ports:
+      - "10010:80"
+
+  portfolio_daniwebtutorial_db:
+    image: davideponzini/daniwebtutorial_db
+    container_name: www_daniwebtutorial_db
+    restart: unless-stopped
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: "true"
+      MYSQL_DATABASE: dani_web_tutorial
+      MYSQL_USER: daniadmin
+      MYSQL_PASSWORD: password
+    volumes:
+      - daniwebtutorial_mysql_data:/var/lib/mysql
+
+  utils_apache:
+    image: davideponzini/www_apache_utils
+    container_name: www_apache_utils
+    restart: unless-stopped
+    ports:
+      - "10011:80"
+
+volumes:
+  daniwebtutorial_mysql_data:

@@ -1,6 +1,0 @@
-[submodule "public/utils"]
-	path = public/utils
-	url = git@github.com:DavidePonzini/www-util.git
-[submodule "public/portfolio"]
-	path = public/portfolio
-	url = git@github.com:DavidePonzini/www-portfolio.git
