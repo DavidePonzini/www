@@ -1,5 +1,5 @@
 import Navbar from './Navbar';
-import Footer from './Footer';
+import Footer from './footer/Footer';
 import Separator from './Separator';
 
 function Layout({ children, banner = null }) {

@@ -5,7 +5,3 @@ footer a {
 footer a:hover {
     color: black;
 }
-
-footer > .container {
-    display: block;
-}
