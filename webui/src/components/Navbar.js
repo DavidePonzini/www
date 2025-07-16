@@ -15,7 +15,7 @@ function Navbar() {
                     <div className="navbar-nav me-auto mb-2 mb-lg-0">
                         <NavLink className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} to="/" end>Home</NavLink>
                         <NavLink className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} to="/utils">Utilities</NavLink>
-                        <NavLink className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} to="/portfolio">Porfolio</NavLink>
+                        <NavLink className={({ isActive }) => (isActive ? "nav-link active" : "nav-link")} to="/portfolio">Portfolio</NavLink>
                     </div>
 
                     {/* <div className="navbar-text">
