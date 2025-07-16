@@ -74,7 +74,7 @@ function ItemCard({ title, href, img, isExternal = false, children }) {
                 borderRadius: isHovered && !isMobile ? '0.25rem 0 0 0.25rem' : '0.25rem'
             }}>
                 <LinkExternal href={href} isExternal={isExternal}>
-                    <div style={{ overflow: 'hidden' }}>
+                    <div style={{ overflow: 'hidden', borderTopLeftRadius: '0.25rem' }}>
                         <Card.Img
                             src={img}
                             alt={title}

@@ -58,7 +58,7 @@ function FooterDeviceInfo() {
 function Footer() {
     return (
 
-        <div className="footer" style={{
+        <footer style={{
             width: '100%',
             backgroundColor: 'var(--bg-color)',
             padding: '12px',
@@ -83,7 +83,7 @@ function Footer() {
                     <FooterDeviceInfo />
                 </div>
             </div>
-        </div>
+        </footer>
     );
 }
 
