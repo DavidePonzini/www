@@ -1,0 +1,28 @@
+.button {
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.button-green {
+    background-color: #4CAF50;
+}
+
+.button-red {
+    background-color: #dc3545;
+}
+
+.button-blue {
+    background-color: #007bff;
+}
+
+.button-gray {
+    background-color: #f8f9fa;
+    color: black;
+}

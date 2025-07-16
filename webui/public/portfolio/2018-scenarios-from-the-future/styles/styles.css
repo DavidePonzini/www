@@ -1,0 +1,104 @@
+body {
+    background-color: #e0e0e0!important;
+    margin: 0;
+}
+
+
+
+.buttons {
+    background-color: darkgray;
+    position: relative;
+    text-align: center;
+    height: auto;
+    width: 100%;
+}
+
+.button-top {
+    margin: 1vh 0.5vh;
+}
+
+
+.nav-tabs .nav-link {
+    border: 1px solid gray !important;
+}
+
+a.nav-link.active {
+    color: aliceblue !important;
+    background-color: #bebebe !important;
+    font-weight: bold;
+}
+
+a.nav-link {
+    color: black;
+    background-color: lightgray;
+}
+
+.selected {
+    font-weight: bold;
+
+}
+
+
+.label-domain {
+    font-size: 12px;
+}
+
+.heatmap-cell {
+    border-radius: 10px;
+    stroke-width: 1px;
+    rx: 4px;
+    ry: 4px;
+}
+
+.legend-gradient {
+    alignment-baseline: central;
+    font-size: 12px;
+}
+
+.legend-unit {
+    font-weight: bold;
+}
+
+
+
+
+.grat {
+    stroke: grey;
+    stroke-width: 1px;
+    opacity: .2;
+    fill: none
+}
+
+.countries {
+    stroke: grey;
+    fill: grey;
+}
+
+
+#tooltip {
+    position: absolute;
+    text-align: center;
+    width: 80px;
+    height: 36px;
+    padding: 2px;
+    font: 14px sans-serif;
+    background: #82b1ff;
+    border: 0px;
+    border-radius: 8px;
+    pointer-events: none;
+    opacity: 0;
+}
+
+.dropdown-menu {
+    padding: 0;
+    background-color: #bebebe;
+}
+
+.dropdown-menu a {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.list-group-item {
+    cursor: pointer;
+}

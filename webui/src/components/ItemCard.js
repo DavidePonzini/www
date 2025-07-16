@@ -11,7 +11,7 @@ function LinkExternal({ href, isExternal = false, children }) {
 
     if (isExternal) {
         return (
-            <a href={href} target="_blank" rel="noopener noreferrer" style={style}>
+            <a href={href} style={style}>
                 {children}
             </a>
         );

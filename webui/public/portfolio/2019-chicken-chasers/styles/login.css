@@ -1,0 +1,19 @@
+﻿form button {
+    background-color: #28a745;
+    border-radius: 12px;
+    border: none;
+    padding: 12px 20px;
+    color: #fff;
+}
+
+form button:hover {
+    box-shadow: 0 0 0 0.2rem rgba(72,180,97,.5);
+}
+
+fieldset {
+    border-radius: 12px;
+}
+
+input {
+    width: 75%;
+}

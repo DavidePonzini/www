@@ -1,0 +1,6 @@
+[submodule "web-tutorial"]
+	path = 2022-web-tutorial
+	url = git@github.com:DavidePonzini/web-tutorial.git
+[submodule "2018-scenarios-from-the-future"]
+	path = 2018-scenarios-from-the-future
+	url = git@github.com:DavidePonzini/scenarios-from-the-future.git

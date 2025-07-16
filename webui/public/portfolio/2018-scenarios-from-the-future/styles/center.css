@@ -1,0 +1,37 @@
+.center {
+    position: absolute;
+    float: left;
+    width: 60%;
+    margin-left: 20%;
+    height: auto;
+}
+
+.center > div, .center > svg {
+    margin-top: 1vh;
+}
+
+.where-am-i {
+    border-radius: .35rem;
+    border: 1px solid rgba(0,0,0,.125);
+    padding-left: 1vh;
+    background-color: #bebebe;
+    height: 5vh;
+}
+
+.chart {
+    height: 80vh;
+    width: 100%;
+    background-color: #bebebe;
+}
+
+.legend {
+    font-size: small;
+}
+
+.tick text {
+    font-size: 13px;
+}
+
+svg circle {
+    r: 3px;
+}

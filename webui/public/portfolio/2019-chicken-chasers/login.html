@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="styles/content.css" />
+    <link rel="stylesheet" type="text/css" href="styles/navbar.css" />
+    <link rel="stylesheet" type="text/css" href="styles/button.css" />
+    <link rel="stylesheet" type="text/css" href="styles/login.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<title>Chicken Chasers</title>
+</head>
+<body>
+    <div class="navbar">
+        <span class="navbar-title">Chicken Chasers</span>
+        <a class="navbar-item button" href="index.html">Home</a>
+        <a class="navbar-item button" href="chickens.html">Our chickens</a>
+        <a class="navbar-item button" href="login.html"><i class="fa fa-sign-in"></i> Login</a>
+    </div>
+
+    <div class="content">
+        <div class="content-tab content-small">
+            <h1>Login</h1>
+            <form autocomplete="off">
+                <fieldset>
+                    Email:<br />
+                    <input type="email" placeholder="user@chickenchasers.com" /><br />
+                    Password:<br />
+                    <input type="password" placeholder="Password" /><br />
+                    <br />
+                    <button type="button" onclick="alert('Login successful (maybe)')">Login</button>
+                </fieldset>
+            </form>
+        </div>
+        <div class="content-tab content-small">
+            <h1>Register</h1>
+            <form autocomplete="off">
+                <fieldset>
+                    First name:<br />
+                    <input type="text" placeholder="First name" /><br />
+                    Last name:<br />
+                    <input type="text" placeholder="Last name" /><br />
+                    Sex:
+                    <select>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                    <br />
+                    <br />
+
+                    Email:<br />
+                    <input type="email" placeholder="user@chickenchasers.com" /><br />
+                    <br />
+                    Password:<br />
+                    <input type="password" placeholder="Password" /><br />
+                    Confirm password:<br />
+                    <input type="password" placeholder="Password" /><br />
+                    <br />
+                    <button type="button" onclick="alert('User registered (maybe)')">Register</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+    <script src="scripts/resize.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous"></script>
+</body>
+</html>

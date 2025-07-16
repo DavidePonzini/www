@@ -1,0 +1,279 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Scenarios from the Future</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
+    <link rel="stylesheet" href="styles/preloader.css" />
+    <link rel="stylesheet" href="styles/leftbar.css" />
+    <link rel="stylesheet" href="styles/center.css" />
+    <link rel="stylesheet" href="styles/rightbar.css" />
+    <link rel="stylesheet" href="styles/slider.css" />
+</head>
+
+<body onload="load_data()">
+    <div id="preloader" hidden>
+        <img src="res/preloader.gif" alt="preloader" />
+    </div>
+    <ul class="nav nav-tabs nav-justified">
+        <li class="nav-item">
+            <a class="nav-link active show" data-toggle="tab" href="#pane-models">Compare Models</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#pane-scenarios">Compare Scenarios</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#pane-regions">Compare Regions</a>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <!-- Compare Models Panel -->
+        <div id="pane-models" class="tab-pane fade active show">
+            <div class="d-flex flex-wrap buttons">
+                <div class="flex-fill">
+                    <button type="button" class="btn button-top" scenario="SSP1" onclick="models_scenario_selected(this)">SSP1</button>
+                </div>
+                <div class="flex-fill">
+                    <button type="button" class="btn button-top" scenario="SSP2" onclick="models_scenario_selected(this)">SSP2</button>
+                </div>
+                <div class="flex-fill">
+                    <button type="button" class="btn button-top" scenario="SSP3" onclick="models_scenario_selected(this)">SSP3</button>
+                </div>
+                <div class="flex-fill">
+                    <button type="button" class="btn button-top" scenario="SSP4" onclick="models_scenario_selected(this)">SSP4</button>
+                </div>
+                <div class="flex-fill">
+                    <button type="button" class="btn button-top" scenario="SSP5" onclick="models_scenario_selected(this)">SSP5</button>
+                </div>
+            </div>
+
+            <div id="models-variables" class="list-group left-bar"></div>
+
+            <div class="center" hidden>
+                <div class="where-am-i" id="models-where-am-i"></div>
+                <svg id="models-chart" class="chart"></svg>
+            </div>
+
+            <div class="right-bar" hidden>
+                <div id="models-charts">
+                    <p>Charts</p>
+                    <img class="chart-icon" type="linechart" src="res/chart-linechart.png" onclick="switch_charts_to_detailed(this, 'models')" />
+                    <img class="chart-icon chart-selected" type="heatmap" src="res/chart-heatmap.png" onclick="switch_charts_to_detailed(this, 'models')" />
+                </div>
+                <div>
+                    <fieldset id="models-regions">
+                        <p>Region</p>
+                        <label class="form-check-label" for="models-regions-world" region="World">
+                            <input type="radio" name="models-region" id="models-regions-world" onchange="region_change(this.parentElement, 'models')">
+                            World
+                        </label>
+                        <label class="form-check-label" for="models-regions-asia" region="R5.2ASIA">
+                            <input type="radio" name="models-region" id="models-regions-asia" onchange="region_change(this.parentElement, 'models')">
+                            ASIA
+                        </label>
+                        <label class="form-check-label" for="models-regions-maf" region="R5.2MAF">
+                            <input type="radio" name="models-region" id="models-regions-maf" onchange="region_change(this.parentElement, 'models')">
+                            MAF
+                        </label>
+                        <label class="form-check-label" for="models-regions-lam" region="R5.2LAM">
+                            <input type="radio" name="models-region" id="models-regions-lam" onchange="region_change(this.parentElement, 'models')">
+                            LAM
+                        </label>
+                        <label class="form-check-label" for="models-regions-ref" region="R5.2REF">
+                            <input type="radio" name="models-region" id="models-regions-ref" onchange="region_change(this.parentElement, 'models')">
+                            REF
+                        </label>
+                        <label class="form-check-label" for="models-regions-oecd" region="R5.2OECD">
+                            <input type="radio" name="models-region" id="models-regions-oecd" onchange="region_change(this.parentElement, 'models')">
+                            OECD
+                        </label>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <!-- End Compare Models Panel -->
+        <!-- Compare Scenarios Panel -->
+        <div id="pane-scenarios" class="tab-pane fade">
+            <div class="d-flex flex-wrap buttons">
+                <div class="flex-fill">
+                    <button type="button" class="btn button-top" scenario="AIM/CGE" onclick="scenarios_model_selected(this)">AIM/CGE</button>
+                </div>
+                <div class="flex-fill">
+                    <button type="button" class="btn button-top" scenario="GCAM4" onclick="scenarios_model_selected(this)">GCAM4</button>
+                </div>
+                <div class="flex-fill">
+                    <button type="button" class="btn button-top" scenario="IMAGE" onclick="scenarios_model_selected(this)">IMAGE</button>
+                </div>
+                <div class="flex-fill">
+                    <button type="button" class="btn button-top" scenario="MESSAGE-GLOBIOM" onclick="scenarios_model_selected(this)">MESSAGE-GLOBIOM</button>
+                </div>
+                <div class="flex-fill">
+                    <button type="button" class="btn button-top" scenario="REMIND-MAGPIE" onclick="scenarios_model_selected(this)">REMIND-MAGPIE</button>
+                </div>
+                <div class="flex-fill">
+                    <button type="button" class="btn button-top" scenario="WITCH-GLOBIOM" onclick="scenarios_model_selected(this)">WITCH-GLOBIOM</button>
+                </div>
+            </div>
+
+            <div id="scenarios-variables" class="list-group left-bar"></div>
+
+            <div class="center" hidden>
+                <div class="where-am-i" id="scenarios-where-am-i"></div>
+                <svg id="scenarios-chart" class="chart"></svg>
+            </div>
+
+            <div class="right-bar" hidden>
+                <div id="scenarios-charts">
+                    <p>Charts</p>
+                    <img class="chart-icon" type="linechart" src="res/chart-linechart.png" onclick="switch_charts_to_detailed(this, 'scenarios')" />
+                    <img class="chart-icon chart-selected" type="heatmap" src="res/chart-heatmap.png" onclick="switch_charts_to_detailed(this, 'scenarios')" />
+                </div>
+                <div>
+                    <fieldset id="scenarios-regions">
+                        <p>Region</p>
+                        <label class="form-check-label" for="scenarios-regions-world" region="World">
+                            <input type="radio" name="scenarios-region" id="scenarios-regions-world" onchange="region_change(this.parentElement, 'scenarios')">
+                            World
+                        </label>
+                        <label class="form-check-label" for="scenarios-regions-asia" region="R5.2ASIA">
+                            <input type="radio" name="scenarios-region" id="scenarios-regions-asia" onchange="region_change(this.parentElement, 'scenarios')">
+                            ASIA
+                        </label>
+                        <label class="form-check-label" for="scenarios-regions-maf" region="R5.2MAF">
+                            <input type="radio" name="scenarios-region" id="scenarios-regions-maf" onchange="region_change(this.parentElement, 'scenarios')">
+                            MAF
+                        </label>
+                        <label class="form-check-label" for="scenarios-regions-lam" region="R5.2LAM">
+                            <input type="radio" name="scenarios-region" id="scenarios-regions-lam" onchange="region_change(this.parentElement, 'scenarios')">
+                            LAM
+                        </label>
+                        <label class="form-check-label" for="scenarios-regions-ref" region="R5.2REF">
+                            <input type="radio" name="scenarios-region" id="scenarios-regions-ref" onchange="region_change(this.parentElement, 'scenarios')">
+                            REF
+                        </label>
+                        <label class="form-check-label" for="scenarios-regions-oecd" region="R5.2OECD">
+                            <input type="radio" name="scenarios-region" id="scenarios-regions-oecd" onchange="region_change(this.parentElement, 'scenarios')">
+                            OECD
+                        </label>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <!-- End Compare Scenarios Panel -->
+        <!-- Compare Regions Panel -->
+        <div id="pane-regions" class="tab-pane fade">
+            <div class="d-flex flex-wrap buttons">
+                <div class="flex-fill">
+                    <div class="dropdown" id="regions-dropdown-model">
+                        <button class="btn btn-default dropdown-toggle button-top" type="button" data-toggle="dropdown">
+                            Select Model
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class='list-group-item list-level-0' onclick="regions_model_selected(this.getAttribute('model'))" model="AIM/CGE">AIM/CGE</a></li>
+                            <li><a class='list-group-item list-level-0' onclick="regions_model_selected(this.getAttribute('model'))" model="GCAM4">GCAM4</a></li>
+                            <li><a class='list-group-item list-level-0' onclick="regions_model_selected(this.getAttribute('model'))" model="IMAGE">IMAGE</a></li>
+                            <li><a class='list-group-item list-level-0' onclick="regions_model_selected(this.getAttribute('model'))" model="MESSAGE-GLOBIOM">MESSAGE-GLOBIOM</a></li>
+                            <li><a class='list-group-item list-level-0' onclick="regions_model_selected(this.getAttribute('model'))" model="REMIND-MAGPIE">REMIND-MAGPIE</a></li>
+                            <li><a class='list-group-item list-level-0' onclick="regions_model_selected(this.getAttribute('model'))" model="WITCH-GLOBIOM">WITCH-GLOBIOM</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="flex-fill">
+                    <div class="dropdown" id="regions-dropdown-scenario">
+                        <button class="btn btn-default dropdown-toggle button-top disabled" type="button" data-toggle="dropdown">
+                            Select Scenario
+                            <span class="caret"></span>
+                        </button>
+                        <ul class="dropdown-menu"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div id="regions-variables" class="list-group left-bar"></div>
+
+            <div class="center" hidden>
+                <div class="where-am-i" id="regions-where-am-i"></div>
+                <svg id="regions-chart" class="chart"></svg>
+            </div>
+
+            <div class="right-bar" hidden>
+                <div id="regions-charts">
+                    <p>Charts</p>
+                    <img class="chart-icon" type="linechart" src="res/chart-linechart.png" onclick="switch_charts_to_detailed(this, 'regions')" />
+                    <img class="chart-icon chart-selected" type="heatmap" src="res/chart-heatmap.png" onclick="switch_charts_to_detailed(this, 'regions')" />
+                    <img class="chart-icon" type="worldmap" src="res/chart-worldmap_all_years.png" onclick="switch_charts_to_aggregate(this, 'regions')" />
+                    <img class="chart-icon" type="worldmap_year" src="res/chart-worldmap_year.png" onclick="switch_charts_to_aggregate(this, 'regions')" />
+                </div>
+                <div id="regions-slider">
+                    <div>
+                        <p>Year</p>
+                        <p class="year">2010</p>
+                    </div>
+                    <input type="range" min="2010" max="2100" value="2010" class="slider" step="10" onchange="change_year('regions', this.value)" oninput="move_slider('regions', this.value)">
+                </div>
+                <!--
+                <div id="regions-slider">
+                    <p>Year</p>
+                    <span class="year">
+                        <i class="fa fa-minus" onclick="change_year('regions', -10)"></i>
+                        <p>2010</p>
+                        <i class="fa fa-plus" onclick="change_year('regions', +10)"></i>
+                    </span>
+                </div>
+                -->
+                <div id="play-animation" hidden>
+                    <span class='play'>
+                        <i class='fa fa-play-circle' onclick="play_animation()"></i>
+                        <p>Play</p>
+                    </span>
+                    <span class='stop' hidden>
+                        <i class='fa fa-stop-circle' onclick="stop_animation()"></i>
+                        <p>Stop</p>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- End Compare Regions Panel -->
+    </div>
+    <div id='tooltip'></div>
+
+    <!-- d3 -->
+    <script src="scripts/d3/d3.js"></script>
+    <script src="scripts/d3/d3-selection-multi.js"></script>
+    <script src="scripts/d3/topojson.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.js"></script>
+    <script src="https://unpkg.com/topojson-client@3"></script>
+    <script src="https://unpkg.com/topojson-simplify@3"></script>
+    <!-- Bootstrap -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <!-- Data -->
+    <script src="scripts/globals.js"></script>
+    <script src="scripts/data/data.js"></script>
+    <!-- Charts -->
+    <script src="scripts/charts/charts.js"></script>
+    <script src="scripts/charts/switch_charts.js"></script>
+    <script src="scripts/charts/tooltip.js"></script>
+
+    <script src="scripts/charts/detailed/detailed_charts.js"></script>
+    <script src="scripts/charts/detailed/linechart.js"></script>
+
+    <script src="scripts/charts/aggregate/aggregate_charts.js"></script>
+    <script src="scripts/charts/aggregate/worldmap.js"></script>
+    <script src="scripts/charts/aggregate/heatmap.js"></script>
+    <!-- Panels -->
+    <script src="scripts/panels/variables.js"></script>
+    <script src="scripts/panels/regions_list.js"></script>
+    <script src="scripts/panels/models.js"></script>
+    <script src="scripts/panels/scenarios.js"></script>
+    <script src="scripts/panels/regions.js"></script>
+
+
+</body>
+</html>
