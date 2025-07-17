@@ -37,7 +37,7 @@ function Redirects() {
                     <tr key={index}>
                         <td style={{ fontFamily: 'monospace', alignContent: 'center', textAlign: 'start' }}>{redirect.source}</td>
                         <td style={{ fontFamily: 'monospace', alignContent: 'center', textAlign: 'start' }}>
-                            <a href={redirect.target}>{redirect.target}</a>
+                            <a href={redirect.target} target='_blank' rel='noopener noreferrer'>{redirect.target}</a>
                         </td>
                         <td style={{ alignContent: 'center' }}>
                             <RedirectsUpdate source={redirect.source} target={redirect.target} refresh={fetchRedirects} className='mx-1 mb-1' />
