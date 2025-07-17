@@ -2,7 +2,7 @@ import './Footer.css';
 
 import FooterSocial from './FooterSocial';
 import FooterDonations from './FooterDonations';
-import FooterDeviceInfo from './FooterDeviceInfo';
+// import FooterDeviceInfo from './FooterDeviceInfo';
 
 function Footer() {
     return (

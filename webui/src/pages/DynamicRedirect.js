@@ -1,26 +1,30 @@
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import useAuth from '../hooks/useAuth';
 
 function DynamicRedirect() {
     const { url } = useParams();
+    const { apiRequest } = useAuth();
+
     const [redirectTo, setRedirectTo] = useState(null);
-    const [notFound, setNotFound] = useState(false);
+    const [message, setMessage] = useState('');
 
     useEffect(() => {
-        // Simulate fetching from DB — replace this with actual logic
-        const fakeDB = {
-            'github': 'https://github.com',
-            'site': 'https://ponzidav.com',
-        };
+        const fetchRedirect = async () => {
+            const result = await apiRequest(`/api/redirects/${url}`, 'GET');
 
-        const result = fakeDB[url];
+            console.log(result)
 
-        if (result) {
-            setRedirectTo(result);
-        } else {
-            setNotFound(true);
+            if (result.success) {
+                setMessage('');
+                setRedirectTo(result.target);
+            } else {
+                setMessage(result.message || 'Redirect not found');
+            }
         }
-    }, [url]);
+
+        fetchRedirect();
+    }, [url, apiRequest]);
 
     useEffect(() => {
         if (redirectTo) {
@@ -28,11 +32,17 @@ function DynamicRedirect() {
         }
     }, [redirectTo]);
 
-    if (notFound) {
-        return <p>Redirect not found</p>;
+    if (message) {
+        return <p>{message}</p>;
     }
 
-    return <p>Redirecting...</p>;
+    return (
+        <h4>
+            Redirecting to &nbsp;
+            <a href={redirectTo}>{redirectTo}</a>
+            ...
+        </h4>
+    );
 }
 
 export default DynamicRedirect;

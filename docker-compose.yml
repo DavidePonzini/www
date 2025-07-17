@@ -3,13 +3,33 @@ services:
     build: ./nginx
     container_name: www_nginx
     restart: unless-stopped
-    depends_on:
-      - webui
-      - utils_apache
-      - portfolio_daniwebtutorial_webui
-      - portfolio_daniwebtutorial_db
     ports:
       - "10000:80"
+
+  server:
+    build: ./server
+    container_name: www_server
+    restart: unless-stopped
+    depends_on:
+      - db
+    environment:
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=password
+      - DB_NAME=postgres
+      - MAX_CONTENT_LENGTH=20971520
+    env_file:
+      - server/.env
+
+  db:
+    build: ./db
+    container_name: www_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_PASSWORD: password
+    volumes:
+      - www_db_data:/var/lib/postgresql/data
 
   webui:
     build: ./webui
@@ -28,8 +48,6 @@ services:
       DB_NAME: dani_web_tutorial
       DB_USER: daniadmin
       DB_PASSWORD: password
-    depends_on:
-      - portfolio_daniwebtutorial_db
     ports:
       - "10010:80"
 
@@ -43,7 +61,7 @@ services:
       MYSQL_USER: daniadmin
       MYSQL_PASSWORD: password
     volumes:
-      - daniwebtutorial_mysql_data:/var/lib/mysql
+      - www_daniwebtutorial_mysql_data:/var/lib/mysql
 
   utils_apache:
     image: davideponzini/www_apache_utils
@@ -53,4 +71,5 @@ services:
       - "10011:80"
 
 volumes:
-  daniwebtutorial_mysql_data:
+  www_daniwebtutorial_mysql_data:
+  www_db_data:

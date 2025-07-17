@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, useCallback } from 'react';
+import { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 
 const AuthContext = createContext();
 
@@ -12,7 +12,7 @@ class RequestSizeError extends Error {
 
 
 function AuthProvider({ children }) {
-    const MAX_REQUEST_SIZE = 1024 * 1000; // a bit less than 1MB
+    const MAX_REQUEST_SIZE = 1024 * 1024 * 20; // 20 MB
 
     const [accessToken, setAccessToken] = useState(sessionStorage.getItem('access_token'));
     const [refreshToken, setRefreshToken] = useState(sessionStorage.getItem('refresh_token'));
@@ -36,13 +36,13 @@ function AuthProvider({ children }) {
         setUserInfo(null);
     }
 
-    async function refreshAccessToken() {
+    const refreshAccessToken = useCallback(async () => {
         if (!refreshToken) {
             logout();
             throw new Error('No refresh token.');
         }
 
-        const response = await fetch('/api/refresh', {
+        const response = await fetch('/api/auth/refresh', {
             method: 'POST',
             headers: { 'Authorization': 'Bearer ' + refreshToken, 'Content-Type': 'application/json' },
         });
@@ -56,9 +56,9 @@ function AuthProvider({ children }) {
             logout();
             throw new Error('Refresh token invalid.');
         }
-    }
+    }, [refreshToken]);
 
-    async function apiRequest(endpoint, method = 'GET', body = null, { stream = false } = {}) {
+    const apiRequest = useCallback(async (endpoint, method = 'GET', body = null, { stream = false } = {}) => {
         let token = accessToken;
 
         async function doRequest(currentToken) {
@@ -69,7 +69,10 @@ function AuthProvider({ children }) {
 
             return fetch(endpoint, {
                 method,
-                headers: { 'Authorization': 'Bearer ' + currentToken, 'Content-Type': 'application/json' },
+                headers: {
+                    'Authorization': 'Bearer ' + currentToken,
+                    'Content-Type': 'application/json'
+                },
                 body: content,
             });
         }
@@ -95,18 +98,21 @@ function AuthProvider({ children }) {
         } else {
             return response.json(); // Standard JSON handling
         }
-    }
+    }, [accessToken, refreshAccessToken, MAX_REQUEST_SIZE]);
 
 
     // Load user info safely and only once if needed
     const loadUserInfo = useCallback(async () => {
-        if (!accessToken) return;
+        if (!accessToken)
+            return;
+        
         setLoadingUser(true);
+        
         try {
-            const response = await apiRequest('/api/me');
+            const response = await apiRequest('/api/users/info');
+
             setUserInfo({
                 username: response.username,
-                isTeacher: response.is_teacher,
                 isAdmin: response.is_admin,
             });
         } catch (err) {
@@ -115,7 +121,7 @@ function AuthProvider({ children }) {
         } finally {
             setLoadingUser(false);
         }
-    }, [accessToken]);      // eslint-disable-line react-hooks/exhaustive-deps
+    }, [accessToken, apiRequest]);
 
     // Auto-load user info on login
     useEffect(() => {
@@ -124,18 +130,18 @@ function AuthProvider({ children }) {
         }
     }, [accessToken, userInfo, loadUserInfo]);
 
+    const value = useMemo(() => ({
+        isLoggedIn: !!accessToken,
+        userInfo,
+        loadingUser,
+        saveTokens,
+        logout,
+        apiRequest,
+        loadUserInfo,
+    }), [accessToken, userInfo, loadingUser, apiRequest, loadUserInfo]);
+
     return (
-        <AuthContext.Provider value={{
-            isLoggedIn: !!accessToken,
-            userInfo,
-            loadingUser,
-            saveTokens,
-            logout,
-            apiRequest,
-            loadUserInfo,
-        }}>
-            {children}
-        </AuthContext.Provider>
+        <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
     );
 }
 
