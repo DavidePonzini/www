@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useCallback } from 'react';
 
 import book from '../res/book.png';
 
@@ -17,23 +17,25 @@ const Banner = () => {
     const maxLetters = 500;
     const letterMinSpeed = 1;
     const letterMaxSpeed = 2;
-    const bookHeight = 300;
+    const bookHeight = .3; // Percentage of viewport height
     const bookRadius = 10;
     const bookOffsetY = 25;
     const letterMinSize = 5;
     const letterMaxSize = 50;
 
-    const generateRandomLetter = () =>
-        characters.charAt(Math.floor(Math.random() * characters.length));
+    const updatePositions = useCallback(() => {
+        function lerp(start, end, t) {
+            return t < 1 ? start + (end - start) * t : end;
+        }
 
-    const lerp = (start, end, t) =>
-        t < 1 ? start + (end - start) * t : end;
+        const canvas = canvasRef.current;
+        if (!canvas)
+            return;
 
-    const update = (canvas) => {
         const scrollAmount = Math.min(1, window.scrollY / canvas.height);
         const bookPos = {
-            x: canvas.width / 2,
-            y: canvas.height - bookHeight * (1 - scrollAmount),
+            x: .5,
+            y: 1 - bookHeight * (1 - scrollAmount),
         };
 
         for (const letter of letters.current) {
@@ -43,17 +45,23 @@ const Banner = () => {
         }
 
         if (bookRef.current) {
-            bookRef.current.style.transform = `translate(-50%, ${
-                bookHeight * scrollAmount + bookOffsetY
-            }px)`;
+            bookRef.current.style.transform = `translate(-50%, ${bookHeight * canvas.height * scrollAmount + bookOffsetY}px)`;
         }
-    };
+    }, [bookHeight, bookOffsetY]);
 
-    const draw = (ctx, canvas) => {
+    function draw() {
+        const canvas = canvasRef.current;
+        if (!canvas)
+            return;
+
+        const ctx = canvas.getContext('2d');
+        if (!ctx)
+            return;
+
         const scrollAmount = Math.min(1, window.scrollY / canvas.height);
         const bookPos = {
-            x: canvas.width / 2,
-            y: canvas.height - bookHeight * (1 - scrollAmount),
+            x: .5,
+            y: 1 - bookHeight * (1 - scrollAmount),
         };
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -61,33 +69,42 @@ const Banner = () => {
         for (const letter of letters.current) {
             const dx = bookPos.x - letter.x;
             const dy = bookPos.y - letter.y;
-            const distance = Math.hypot(dx, dy);
-            if (distance < bookRadius) continue;
+            const distance = Math.hypot(dx * canvas.width, dy * canvas.height);
+
+            // Skip drawing letters that are too close to the book
+            if (distance < bookRadius)
+                continue;
 
             ctx.save();
             ctx.font = `${letter.size}px Times New Roman`;
             ctx.fillStyle = letter.color;
-            ctx.translate(letter.x, letter.y);
+            ctx.translate(canvas.width * letter.x, canvas.height * letter.y);
             ctx.rotate(letter.rotation);
             ctx.fillText(letter.char, 0, 0);
             ctx.restore();
         }
-    };
+    }
 
-    const initialize = () => {
+    // Initialize the canvas and set up the letters in their initial positions
+    const initialize = useCallback(() => {
+        const generateRandomLetter = () =>
+            characters.charAt(Math.floor(Math.random() * characters.length));
+
         const canvas = canvasRef.current;
-        if (!canvas) return;
+        if (!canvas)
+            return;
 
         const ctx = canvas.getContext('2d');
-        if (!ctx) return;
+        if (!ctx)
+            return;
 
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         letters.current = [];
 
         for (let i = 0; i < maxLetters; i++) {
-            const x = Math.random() * canvas.width;
-            const y = Math.random() * canvas.height;
+            const x = Math.random();    // Percentage of width
+            const y = Math.random();    // Percentage of height
             letters.current.push({
                 startX: x,
                 startY: y,
@@ -95,58 +112,52 @@ const Banner = () => {
                 y,
                 rotation: Math.random() * Math.PI * 2,
                 char: generateRandomLetter(),
-                size:
-                    Math.random() * (letterMaxSize - letterMinSize) +
-                    letterMinSize,
-                speed:
-                    letterMinSpeed +
-                    Math.random() * (letterMaxSpeed - letterMinSpeed),
+                size: Math.random() * (letterMaxSize - letterMinSize) + letterMinSize,
+                speed: Math.random() * (letterMaxSpeed - letterMinSpeed) + letterMinSpeed,
                 color: `rgba(255, 255, 255, ${Math.random()})`,
             });
         }
 
-        update(canvas);
-        draw(ctx, canvas);
-    };
+        updatePositions();
+        draw();
+    }, [maxLetters, letterMinSize, letterMaxSize, letterMinSpeed, letterMaxSpeed, updatePositions]);
 
+    // Initialize the canvas and set up event listeners
     useEffect(() => {
-        const canvas = canvasRef.current;
-        if (!canvas) return;
         initialize();
 
-        const handleResize = () => {
+        function handleResize() {
             clearTimeout(resizeTimeout.current);
-            resizeTimeout.current = window.setTimeout(() => {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-                update(canvas);
-                const ctx = canvas.getContext('2d');
-                if (ctx) draw(ctx, canvas);
-            }, 200);
-        };
 
-        const handleScroll = () => {
+            resizeTimeout.current = window.setTimeout(() => {
+                canvasRef.current.width = window.innerWidth;
+                canvasRef.current.height = window.innerHeight;
+                
+                updatePositions();
+                draw();
+            }, 200);
+        }
+        window.addEventListener('resize', handleResize);
+
+        function handleScroll() {
             if (!ticking.current) {
                 requestAnimationFrame(() => {
-                    if (window.scrollY < canvas.height) {
-                        update(canvas);
-                        const ctx = canvas.getContext('2d');
-                        if (ctx) draw(ctx, canvas);
+                    if (window.scrollY < canvasRef.current.height) {
+                        updatePositions();
+                        draw();
                     }
                     ticking.current = false;
                 });
                 ticking.current = true;
             }
-        };
-
-        window.addEventListener('resize', handleResize);
+        }
         window.addEventListener('scroll', handleScroll);
 
         return () => {
             window.removeEventListener('resize', handleResize);
             window.removeEventListener('scroll', handleScroll);
         };
-    }, []);     // eslint-disable-line react-hooks/exhaustive-deps
+    }, [initialize, updatePositions]);
 
     return (
         <div id="banner" style={styles.banner}>
