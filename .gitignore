@@ -1,6 +1,7 @@
 # custom
 package-lock.json
 .env
+venv/
 
 # build output
 dist/
