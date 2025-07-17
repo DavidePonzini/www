@@ -1,10 +1,21 @@
 services:
-  nginx:
-    build: ./nginx
-    container_name: www_nginx
+  nginx_prod:
+    build: .
+    container_name: www_nginx_prod
     restart: unless-stopped
     ports:
       - "10000:80"
+    profiles:
+      - prod
+
+  nginx_dev:
+    build: ./nginx
+    container_name: www_nginx_dev
+    restart: unless-stopped
+    ports:
+      - "10000:80"
+    profiles:
+      - dev
 
   server:
     build: ./server
@@ -37,6 +48,8 @@ services:
     restart: unless-stopped
     ports:
       - "3000:3000"
+    profiles:
+      - dev
 
   portfolio_daniwebtutorial_webui:
     image: davideponzini/daniwebtutorial_webui
