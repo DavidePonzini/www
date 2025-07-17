@@ -36,7 +36,9 @@ function Redirects() {
                 {redirects.map((redirect, index) => (
                     <tr key={index}>
                         <td style={{ fontFamily: 'monospace', alignContent: 'center', textAlign: 'start' }}>{redirect.source}</td>
-                        <td style={{ fontFamily: 'monospace', alignContent: 'center', textAlign: 'start' }}>{redirect.target}</td>
+                        <td style={{ fontFamily: 'monospace', alignContent: 'center', textAlign: 'start' }}>
+                            <a href={redirect.target}>{redirect.target}</a>
+                        </td>
                         <td style={{ alignContent: 'center' }}>
                             <RedirectsUpdate source={redirect.source} target={redirect.target} refresh={fetchRedirects} className='mx-1 mb-1' />
                             <RedirectsDelete source={redirect.source} refresh={fetchRedirects} className='mx-1 mb-1' />
