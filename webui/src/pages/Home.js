@@ -34,7 +34,7 @@ function Home() {
                             AI-powered tool for learning SQL
                         </ItemCard>
 
-                        <ItemCard title="GPT4CT" href="/gpt4ct" isExternal img={bgGPT4CT}>
+                        <ItemCard title="GPT4CT" href="https://gpt4ct.ponzidav.com" isExternal img={bgGPT4CT}>
                             Tool for problem decomposition and learning computational thought
                         </ItemCard>
                     </Section>
