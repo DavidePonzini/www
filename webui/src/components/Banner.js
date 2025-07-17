@@ -181,7 +181,7 @@ const styles = {
     banner: {
         position: 'relative',
         width: '100%',
-        height: 'calc(100vh - 56px)',
+        height: 'calc(100vh - 70px)',
         overflow: 'hidden',
         background: '#101010',
     },
