@@ -1,5 +1,4 @@
 # custom
-package-lock.json
 .env
 venv/
 __pycache__/
