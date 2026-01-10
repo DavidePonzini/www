@@ -10,6 +10,7 @@ import bgGPT4CT from '../res/problem-decomposition.png';
 import bgUtilities from '../res/html.jpg';
 import bgPortfolio from '../res/eggsorcist.png';
 import bgLensql from '../res/database.jpg';
+import bgRecipes from '../res/ragu-di-carne.jpg';
 
 function Home() {
     return (
@@ -24,6 +25,10 @@ function Home() {
 
                         <ItemCard title="Portfolio" href="/portfolio" img={bgPortfolio}>
                             Showcase of websites I developed
+                        </ItemCard>
+
+                        <ItemCard title="Recipes" href="/recipes" img={bgRecipes}>
+                            Personal collection of recipes
                         </ItemCard>
                     </Section>
                 </SectionBackground>

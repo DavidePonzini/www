@@ -30,6 +30,11 @@ function Navbar() {
                                 Portfolio
                             </NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink className={({ isActive }) => (isActive ? 'nav-link active' : 'nav-link')} to="/recipes">
+                                Recipes
+                            </NavLink>
+                        </li>
 
                         {userInfo?.isAdmin && (
                             <li className="nav-item">
