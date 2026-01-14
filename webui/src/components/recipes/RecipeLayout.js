@@ -91,7 +91,7 @@ function RecipeLayout({
                         >
                             {formatQuantity(servings)}
                         </EditableValue>
-                        
+
                         {formatQuantity(servings) === 1 ? servingsUnitSingular : servingsUnitPlural}
                     </Servings>
                 </div>
@@ -101,70 +101,70 @@ function RecipeLayout({
                         <Source>{source}</Source>
                     </div>
                 )}
-        </div>
-
-            {/* Preparation + Ingredients */ }
-    <div className='row'>
-        {instructions && (
-            <div className='col-lg-6 order-2 order-lg-1'>
-                <h3>Preparazione</h3>
-
-                <ol>
-                    {instructions}
-                </ol>
             </div>
-        )}
 
-        {ingredients && (
-            <div className='col-lg-6 order-1 order-lg-2'>
-                <h3>Ingredienti</h3>
-
-                <table>
-                    <tbody>
-                        {ingredients.map((ingredient, index) => (
-                            <tr key={index}>
-                                <td style={{ paddingRight: '1rem', textAlign: 'right', whiteSpace: 'nowrap' }}>
-                                    {ingredient.quantity === undefined ?
-                                        '—' :
-                                        <EditableValue
-                                            onChange={newQuantity => onQuantityChange(index, parseFloat(newQuantity))}
-                                        >
-                                            {formatQuantity(ingredient.quantity)}
-                                        </EditableValue>
-                                    }
-                                    {` ${ingredient.unit || ''}`}
-                                </td>
-                                <td>{ingredient.name}</td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
-        )}
-    </div>
-
-    {/* Suggestions */ }
-    {
-        notes && (
+            {/* Preparation + Ingredients */}
             <div className='row'>
-                <div className='col-12 mt-4'>
-                    <ul>{notes}</ul>
-                </div>
-            </div>
-        )
-    }
+                {instructions && (
+                    <div className='col-lg-6 order-2 order-lg-1'>
+                        <h3>Preparazione</h3>
 
-    {/* Notes */ }
-    {
-        remark && (
-            <div className='row'>
-                <div className='col-12 mt-4'>
-                    <h3>Nota</h3>
-                    {remark}
-                </div>
+                        <ol>
+                            {instructions}
+                        </ol>
+                    </div>
+                )}
+
+                {ingredients && (
+                    <div className='col-lg-6 order-1 order-lg-2'>
+                        <h3>Ingredienti</h3>
+
+                        <table>
+                            <tbody>
+                                {ingredients.map((ingredient, index) => (
+                                    <tr key={index}>
+                                        <td style={{ paddingRight: '1rem', textAlign: 'right', whiteSpace: 'nowrap' }}>
+                                            {ingredient.quantity === undefined ?
+                                                '—' :
+                                                <EditableValue
+                                                    onChange={newQuantity => onQuantityChange(index, parseFloat(newQuantity))}
+                                                >
+                                                    {formatQuantity(ingredient.quantity)}
+                                                </EditableValue>
+                                            }
+                                            {` ${ingredient.unit || ''}`}
+                                        </td>
+                                        <td>{ingredient.name}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                )}
             </div>
-        )
-    }
+
+            {/* Suggestions */}
+            {
+                notes && (
+                    <div className='row'>
+                        <div className='col-12 mt-4'>
+                            <ul>{notes}</ul>
+                        </div>
+                    </div>
+                )
+            }
+
+            {/* Notes */}
+            {
+                remark && (
+                    <div className='row'>
+                        <div className='col-12 mt-4'>
+                            <h3>Nota</h3>
+                            {remark}
+                        </div>
+                    </div>
+                )
+            }
         </SectionBackground >
     );
 }
