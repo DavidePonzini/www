@@ -1,7 +1,12 @@
 import { useSearchParams } from 'react-router-dom';
 
-import SectionBackground from '../SectionBackground';
+import EditableValue from './EditableValue';
+import Source from './Source';
+import Servings from './Servings';
 
+
+
+import SectionBackground from '../SectionBackground';
 
 function RecipeLayout({
     title,
@@ -55,6 +60,24 @@ function RecipeLayout({
         }, { replace: true });
     }
 
+    function onServingsChange(newServings) {
+        if (isNaN(newServings) || newServings < 0) {
+            setSearchParams(prev => {
+                const next = new URLSearchParams(prev);
+                next.set('scale', '-1');
+                return next;
+            }, { replace: true });
+        }
+
+        const newScale = newServings / servings;
+
+        setSearchParams(prev => {
+            const next = new URLSearchParams(prev);
+            next.set('scale', String(newScale));
+            return next;
+        }, { replace: true });
+    }
+
     return (
         <SectionBackground img={null}>
             <h2>{title}</h2>
@@ -62,86 +85,87 @@ function RecipeLayout({
             {/* Header */}
             <div className='row mb-4'>
                 <div className='col-lg-6'>
-                    <p>
-                        <strong>Servings:</strong> {formatQuantity(servings)} {formatQuantity(servings) === 1 ? servingsUnitSingular : servingsUnitPlural}
-                    </p>
+                    <Servings>
+                        <EditableValue
+                            onChange={onServingsChange}
+                        >
+                            {formatQuantity(servings)}
+                        </EditableValue>
+                        
+                        {formatQuantity(servings) === 1 ? servingsUnitSingular : servingsUnitPlural}
+                    </Servings>
                 </div>
 
                 {source && (
                     <div className='col-lg-6 text-lg-end'>
-                        <p>
-                            <strong>Source:</strong> {source}
-                        </p>
+                        <Source>{source}</Source>
                     </div>
                 )}
-            </div>
+        </div>
 
-            {/* Preparation + Ingredients */}
+            {/* Preparation + Ingredients */ }
+    <div className='row'>
+        {instructions && (
+            <div className='col-lg-6 order-2 order-lg-1'>
+                <h3>Preparazione</h3>
+
+                <ol>
+                    {instructions}
+                </ol>
+            </div>
+        )}
+
+        {ingredients && (
+            <div className='col-lg-6 order-1 order-lg-2'>
+                <h3>Ingredienti</h3>
+
+                <table>
+                    <tbody>
+                        {ingredients.map((ingredient, index) => (
+                            <tr key={index}>
+                                <td style={{ paddingRight: '1rem', textAlign: 'right', whiteSpace: 'nowrap' }}>
+                                    {ingredient.quantity === undefined ?
+                                        '—' :
+                                        <EditableValue
+                                            onChange={newQuantity => onQuantityChange(index, parseFloat(newQuantity))}
+                                        >
+                                            {formatQuantity(ingredient.quantity)}
+                                        </EditableValue>
+                                    }
+                                    {` ${ingredient.unit || ''}`}
+                                </td>
+                                <td>{ingredient.name}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        )}
+    </div>
+
+    {/* Suggestions */ }
+    {
+        notes && (
             <div className='row'>
-                {instructions && (
-                    <div className='col-lg-6 order-2 order-lg-1'>
-                        <h3>Preparazione</h3>
-
-                        <ol>
-                            {instructions}
-                        </ol>
-                    </div>
-                )}
-
-                {ingredients && (
-                    <div className='col-lg-6 order-1 order-lg-2'>
-                        <h3>Ingredienti</h3>
-
-                        <table>
-                            <tbody>
-                                {ingredients.map((ingredient, index) => (
-                                    <tr key={index}>
-                                        <td style={{ paddingRight: '1rem', textAlign: 'right', whiteSpace: 'nowrap' }}>
-                                            {ingredient.quantity === undefined ?
-                                                '—' :
-                                                <span
-                                                    contentEditable={true}
-                                                    suppressContentEditableWarning={true}
-                                                    style={{
-                                                        // borderBottom: '1px dashed #000',
-                                                        cursor: 'text',
-                                                        padding: '0 0.2rem',
-                                                    }}
-                                                    onBlur={e => onQuantityChange(index, parseFloat(e.target.innerText))}
-                                                >
-                                                    {formatQuantity(ingredient.quantity)}
-                                                </span>
-                                            }
-                                            {` ${ingredient.unit || ''}`}
-                                        </td>
-                                        <td>{ingredient.name}</td>
-                                    </tr>
-                                ))}
-                            </tbody>
-                        </table>
-                    </div>
-                )}
+                <div className='col-12 mt-4'>
+                    <ul>{notes}</ul>
+                </div>
             </div>
+        )
+    }
 
-            {/* Suggestions */}
-            {notes && (
-                <div className='row'>
-                    <div className='col-12 mt-4'>
-                        <ul>{notes}</ul>
-                    </div>
+    {/* Notes */ }
+    {
+        remark && (
+            <div className='row'>
+                <div className='col-12 mt-4'>
+                    <h3>Nota</h3>
+                    {remark}
                 </div>
-            )}
-
-            {/* Notes */}
-            {remark && (
-                <div className='row'>
-                    <div className='col-12 mt-4'>
-                        <h3>Nota</h3>
-                        {remark}
-                    </div>
-                </div>
-            )}
-        </SectionBackground>
+            </div>
+        )
+    }
+        </SectionBackground >
     );
 }
 
