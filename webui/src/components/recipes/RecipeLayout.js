@@ -1,18 +1,139 @@
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams } from 'react-router-dom';
 
-import SectionBackground from "../SectionBackground";
+import SectionBackground from '../SectionBackground';
+
 
 function RecipeLayout({
     title,
+    servings = 1,
+    servingsUnitSingular = 'porzione',
+    servingsUnitPlural = 'porzioni',
+    source,
+    ingredients = [],
+    instructions = null,
+    notes = null,
+    remark = null,
+
 }) {
-    const [searchParams] = useSearchParams();
-    const scale = searchParams.get('scale') || 1;
+    const [searchParams, setSearchParams] = useSearchParams();
+    const scale = Number(searchParams.get('scale') ?? 1);
+
+    function formatQuantity(quantity) {
+        if (isNaN(scale) || scale < 0)
+                return '';
+        
+        if (quantity === undefined || quantity === null)
+            return quantity;
+        if (typeof quantity !== 'number' || Number.isNaN(quantity))
+            return quantity;
+
+        const scaled = quantity * scale;
+
+        if (Math.floor(scaled * 100) % 100 === 0) {
+            return Math.floor(scaled);
+        }
+
+        return Math.round(scaled * 100) / 100;
+    }
+
+    function onQuantityChange(idx, newQuantity) {
+        
+        if (isNaN(newQuantity) || newQuantity < 0) {
+            setSearchParams(prev => {
+                const next = new URLSearchParams(prev);
+                next.set('scale', '-1');
+                return next;
+            }, { replace: true });
+        }
+
+        const newScale = newQuantity / ingredients[idx].quantity;
+
+        setSearchParams(prev => {
+            const next = new URLSearchParams(prev);
+            next.set('scale', String(newScale));
+            return next;
+        }, { replace: true });
+    }
 
     return (
         <SectionBackground img={null}>
             <h2>{title}</h2>
 
-            <p>Scale: {scale}</p>
+            {/* Header */}
+            <div className='row mb-4'>
+                <div className='col-lg-6'>
+                    <p>
+                        <strong>Servings:</strong> {formatQuantity(servings)} {formatQuantity(servings) === 1 ? servingsUnitSingular : servingsUnitPlural}
+                    </p>
+                </div>
+
+                {source && (
+                    <div className='col-lg-6 text-lg-end'>
+                        <p>
+                            <strong>Source:</strong> {source}
+                        </p>
+                    </div>
+                )}
+            </div>
+
+            {/* Preparation + Ingredients */}
+            <div className='row'>
+                {instructions && (
+                    <div className='col-lg-6 order-2 order-lg-1'>
+                        <h3>Preparazione</h3>
+
+                        <ol>
+                            {instructions}
+                        </ol>
+                    </div>
+                )}
+
+                {ingredients && (
+                    <div className='col-lg-6 order-1 order-lg-2'>
+                        <h3>Ingredienti</h3>
+
+                        <table>
+                            <tbody>
+                                {ingredients.map((ingredient, index) => (
+                                    <tr key={index}>
+                                        <td style={{ paddingRight: '1rem', textAlign: 'right', whiteSpace: 'nowrap' }}>
+                                            {ingredient.quantity === undefined ?
+                                                '—' :
+                                                <input
+                                                    type='number'
+                                                    value={formatQuantity(ingredient.quantity)}
+                                                    onChange={e => onQuantityChange(index, parseFloat(e.target.value))}
+                                                />
+                                            }
+                                            {` ${ingredient.unit || ''}`}
+                                        </td>
+                                        <td>{ingredient.name}</td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                )}
+            </div>
+
+            {/* Suggestions */}
+            {notes && (
+                <div className='row'>
+                    <div className='col-12 mt-4'>
+                        <ul>{notes}</ul>
+                    </div>
+                </div>
+            )}
+
+            {/* Notes */}
+            {remark && (
+                <div className='row'>
+                    <div className='col-12 mt-4'>
+                        <h3>Nota</h3>
+                        {remark}
+                    </div>
+                </div>
+            )}
         </SectionBackground>
     );
 }
