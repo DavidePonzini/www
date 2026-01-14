@@ -20,8 +20,8 @@ function RecipeLayout({
 
     function formatQuantity(quantity) {
         if (isNaN(scale) || scale < 0)
-                return '';
-        
+            return '';
+
         if (quantity === undefined || quantity === null)
             return quantity;
         if (typeof quantity !== 'number' || Number.isNaN(quantity))
@@ -37,7 +37,7 @@ function RecipeLayout({
     }
 
     function onQuantityChange(idx, newQuantity) {
-        
+
         if (isNaN(newQuantity) || newQuantity < 0) {
             setSearchParams(prev => {
                 const next = new URLSearchParams(prev);
@@ -99,11 +99,18 @@ function RecipeLayout({
                                         <td style={{ paddingRight: '1rem', textAlign: 'right', whiteSpace: 'nowrap' }}>
                                             {ingredient.quantity === undefined ?
                                                 '—' :
-                                                <input
-                                                    type='number'
-                                                    value={formatQuantity(ingredient.quantity)}
-                                                    onChange={e => onQuantityChange(index, parseFloat(e.target.value))}
-                                                />
+                                                <span
+                                                    contentEditable={true}
+                                                    suppressContentEditableWarning={true}
+                                                    style={{
+                                                        // borderBottom: '1px dashed #000',
+                                                        cursor: 'text',
+                                                        padding: '0 0.2rem',
+                                                    }}
+                                                    onBlur={e => onQuantityChange(index, parseFloat(e.target.innerText))}
+                                                >
+                                                    {formatQuantity(ingredient.quantity)}
+                                                </span>
                                             }
                                             {` ${ingredient.unit || ''}`}
                                         </td>
