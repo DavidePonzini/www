@@ -9,15 +9,16 @@ else
 	VENV_BIN=$(VENV)/bin
 endif
 
-.PHONY: $(VENV)_upgrade start deploy clean
+.PHONY: $(VENV)_upgrade dev prod clean
 
-start:
-	docker compose --profile dev down
+dev: stop
 	docker compose --profile dev up --build
 
-deploy:
-	docker compose --profile prod down
+prod: stop
 	docker compose --profile prod up -d --build
+
+stop:
+	docker compose --profile dev --profile prod down
 
 psql:
 	docker exec -it www_db psql -U postgres
