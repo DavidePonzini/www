@@ -7,6 +7,8 @@ services:
       - "10000:80"
     profiles:
       - prod
+    volumes:
+      - ./public:/srv/files:ro
 
   nginx_dev:
     build: ./nginx
