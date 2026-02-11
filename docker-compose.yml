@@ -19,6 +19,15 @@ services:
     profiles:
       - dev
 
+  nginx_maintenance:
+    image: davideponzini/www_nginx_maintenance
+    container_name: www_nginx_maintenance
+    restart: unless-stopped
+    ports:
+      - "10000:80"
+    profiles:
+      - maintenance
+
   server:
     build: ./server
     container_name: www_server

@@ -9,7 +9,7 @@ else
 	VENV_BIN=$(VENV)/bin
 endif
 
-.PHONY: $(VENV)_upgrade dev prod clean
+.PHONY: $(VENV)_upgrade dev prod clean stop psql maintenance maintenance_stop
 
 dev: stop
 	docker compose --profile dev up --build
@@ -22,6 +22,14 @@ stop:
 
 psql:
 	docker exec -it www_db psql -U postgres
+
+maintenance:
+	docker compose down nginx_prod nginx_dev
+	docker compose up -d nginx_maintenance
+
+maintenance_stop:
+	docker compose down nginx_maintenance
+
 
 
 $(VENV):
