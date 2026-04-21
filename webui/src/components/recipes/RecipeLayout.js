@@ -4,8 +4,6 @@ import EditableValue from './EditableValue';
 import Source from './Source';
 import Servings from './Servings';
 
-
-
 import SectionBackground from '../SectionBackground';
 
 function RecipeLayout({
@@ -14,7 +12,7 @@ function RecipeLayout({
     servingsUnitSingular = 'porzione',
     servingsUnitPlural = 'porzioni',
     source,
-    ingredients = [],
+    ingredients = [],       // [{name: string, quantity: number, unit: string}]
     instructions = null,
     notes = null,
     remark = null,
@@ -94,13 +92,12 @@ function RecipeLayout({
 
                         {formatQuantity(servings) === 1 ? servingsUnitSingular : servingsUnitPlural}
                     </Servings>
+
+                    <Source>{source}</Source>
                 </div>
 
-                {source && (
-                    <div className='col-lg-6 text-lg-end'>
-                        <Source>{source}</Source>
-                    </div>
-                )}
+                <div className='col-lg-6'>
+                </div>
             </div>
 
             {/* Preparation + Ingredients */}
