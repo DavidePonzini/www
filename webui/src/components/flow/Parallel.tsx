@@ -31,6 +31,15 @@ function Parallel({
     });
 
     const branchStartIds = branches.map(function(_, index) {
+        const branch = branches[index];
+        const branchChildren = Children.toArray(branch.props.children).filter(isValidElement);
+        const firstChild = branchChildren[0];
+        const firstChildType = (firstChild?.type as { __FLOW_TYPE__?: string } | undefined)?.__FLOW_TYPE__;
+
+        if (firstChildType === 'parallel') {
+            return makeId('fork', [...indexPath, 'branch', index, 0]);
+        }
+
         return makeId('step', [...indexPath, 'branch', index, 0]);
     });
 
