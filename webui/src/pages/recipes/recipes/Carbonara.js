@@ -1,6 +1,14 @@
-import RecipeLayout from "../../../components/recipes/RecipeLayout";
-import Note from "../../../components/recipes/Note";
-import { CookingTime, PreparationTime, PreparationWait, BakingTimeFan, BakingTimeBottom, BakingTimeTop, BakingTimeTopbottom } from "../../../components/recipes/RecipeTime";
+import {
+    BakingTimeBottom,
+    BakingTimeFan,
+    BakingTimeTop,
+    BakingTimeTopbottom,
+    CookingTime,
+    Suggestion,
+    PreparationTime,
+    PreparationWait,
+    RecipeLayout,
+} from "../../../components/recipes";
 import { Step, Parallel, Branch } from "../../../components/flow";
 
 function Carbonara() {
@@ -55,12 +63,12 @@ function Carbonara() {
                 <Step>step 4</Step>
             </>
             }
-            notes={<>
-                <Note>Usare guanciale autentico per il miglior sapore.</Note>
-                <Note>Non usare panna; la cremosità deve venire dalle uova e dal formaggio.</Note>
-                <Note>Servire subito per gustare al meglio la carbonara.</Note>
+            suggestions={<>
+                <Suggestion>Usare guanciale autentico per il miglior sapore.</Suggestion>
+                <Suggestion>Non usare panna; la cremosità deve venire dalle uova e dal formaggio.</Suggestion>
+                <Suggestion>Servire subito per gustare al meglio la carbonara.</Suggestion>
             </>}
-            remark='<3'
+            notes='<3'
         />
     );
 }
