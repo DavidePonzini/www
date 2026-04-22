@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef } from 'react';
 
 import { useFlow } from './FlowContext';
 
@@ -10,11 +10,15 @@ function Step({
     id,
     nextId = null
 }) {
-    const { registerAnchor, requestLayoutUpdate } = useFlow();
+    const {
+        checkedSteps,
+        registerAnchor,
+        requestLayoutUpdate,
+        toggleStepChecked
+    } = useFlow();
     const anchorRef = useRef(null);
     const rowRef = useRef(null);
-
-    const [checked, setChecked] = useState(false);
+    const checked = Boolean(checkedSteps[id]);
 
     useEffect(function() {
         registerAnchor(id, anchorRef.current, {
@@ -50,9 +54,7 @@ function Step({
         <div
             ref={rowRef}
             onClick={function() {
-                setChecked(function(value) {
-                    return !value;
-                });
+                toggleStepChecked(id);
             }}
             style={{
                 display: 'flex',

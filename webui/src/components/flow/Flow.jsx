@@ -1,17 +1,52 @@
-import { useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import { FlowContext } from './FlowContext';
 import FlowOverlay from './FlowOverlay';
-import { getRelativeRect } from './FlowUtils';
+import {
+    getFlowStorageKey,
+    getRelativeRect,
+    readFlowCheckedState,
+    writeFlowCheckedState
+} from './FlowUtils';
 
-function Flow({ children }) {
+function Flow({ children, storageKey: storageKeyProp = null }) {
+    const location = useLocation();
     const containerRef = useRef(null);
     const anchorsRef = useRef(new Map());
     const [layoutVersion, setLayoutVersion] = useState(0);
+    const storageKey = storageKeyProp || getFlowStorageKey(location.pathname);
     const [containerSize, setContainerSize] = useState({
         width: 0,
         height: 0
     });
+    const [checkedSteps, setCheckedSteps] = useState(function() {
+        return readFlowCheckedState(storageKey);
+    });
+
+    useEffect(function() {
+        setCheckedSteps(readFlowCheckedState(storageKey));
+    }, [storageKey]);
+
+    useEffect(function() {
+        writeFlowCheckedState(storageKey, checkedSteps);
+    }, [checkedSteps, storageKey]);
+
+    useEffect(function() {
+        function handleReset(event) {
+            if (event.detail?.storageKey !== storageKey) {
+                return;
+            }
+
+            setCheckedSteps({});
+        }
+
+        window.addEventListener('flow-reset', handleReset);
+
+        return function() {
+            window.removeEventListener('flow-reset', handleReset);
+        };
+    }, [storageKey]);
 
     const registerAnchor = useCallback(function(id, element, meta) {
         if (!element) {
@@ -28,6 +63,46 @@ function Flow({ children }) {
     const requestLayoutUpdate = useCallback(function() {
         setLayoutVersion(function(value) {
             return value + 1;
+        });
+    }, []);
+
+    const setStepChecked = useCallback(function(id, checked) {
+        setCheckedSteps(function(currentState) {
+            if (!checked && !currentState[id]) {
+                return currentState;
+            }
+
+            if (checked && currentState[id]) {
+                return currentState;
+            }
+
+            const nextState = {
+                ...currentState
+            };
+
+            if (checked) {
+                nextState[id] = true;
+            } else {
+                delete nextState[id];
+            }
+
+            return nextState;
+        });
+    }, []);
+
+    const toggleStepChecked = useCallback(function(id) {
+        setCheckedSteps(function(currentState) {
+            const nextState = {
+                ...currentState
+            };
+
+            if (nextState[id]) {
+                delete nextState[id];
+            } else {
+                nextState[id] = true;
+            }
+
+            return nextState;
         });
     }, []);
 
@@ -97,9 +172,15 @@ function Flow({ children }) {
     const contextValue = useMemo(function() {
         return {
             registerAnchor,
-            requestLayoutUpdate
+            requestLayoutUpdate,
+            checkedSteps,
+            setStepChecked,
+            toggleStepChecked,
+            resetCheckedSteps: function() {
+                setCheckedSteps({});
+            }
         };
-    }, [registerAnchor, requestLayoutUpdate]);
+    }, [checkedSteps, registerAnchor, requestLayoutUpdate, setStepChecked, toggleStepChecked]);
 
     return (
         <FlowContext.Provider value={contextValue}>

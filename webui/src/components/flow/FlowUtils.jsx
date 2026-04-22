@@ -2,6 +2,49 @@ function makeId(prefix, indexPath) {
     return `${prefix}-${indexPath.join('-')}`;
 }
 
+function getFlowStorageKey(pathname) {
+    return `recipe-flow:${pathname || 'default'}`;
+}
+
+function readFlowCheckedState(storageKey) {
+    if (typeof window === 'undefined') {
+        return {};
+    }
+
+    const rawValue = window.sessionStorage.getItem(storageKey);
+
+    if (!rawValue) {
+        return {};
+    }
+
+    try {
+        const parsedValue = JSON.parse(rawValue);
+
+        if (parsedValue && typeof parsedValue === 'object' && !Array.isArray(parsedValue)) {
+            return parsedValue;
+        }
+    } catch (error) {
+        window.sessionStorage.removeItem(storageKey);
+    }
+
+    return {};
+}
+
+function writeFlowCheckedState(storageKey, checkedState) {
+    if (typeof window === 'undefined') {
+        return;
+    }
+
+    const hasCheckedItems = Object.values(checkedState).some(Boolean);
+
+    if (!hasCheckedItems) {
+        window.sessionStorage.removeItem(storageKey);
+        return;
+    }
+
+    window.sessionStorage.setItem(storageKey, JSON.stringify(checkedState));
+}
+
 function getRelativeRect(element, container) {
     const elementRect = element.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
@@ -46,6 +89,9 @@ function edgePath(from, to, radius, options = {}) {
 
 export {
     makeId,
+    getFlowStorageKey,
+    readFlowCheckedState,
+    writeFlowCheckedState,
     getRelativeRect,
     edgePath
 };

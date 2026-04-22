@@ -1,10 +1,11 @@
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 
 import EditableValue from './EditableValue';
 import Source from './Source';
 import Servings from './Servings';
 
 import SectionBackground from '../SectionBackground';
+import { getFlowStorageKey } from '../flow/FlowUtils';
 
 function RecipeLayout({
     title,
@@ -18,8 +19,10 @@ function RecipeLayout({
     remark = null,
 
 }) {
+    const location = useLocation();
     const [searchParams, setSearchParams] = useSearchParams();
     const scale = Number(searchParams.get('scale') ?? 1);
+    const flowStorageKey = getFlowStorageKey(location.pathname);
 
     function formatQuantity(quantity) {
         if (isNaN(scale) || scale < 0)
@@ -76,6 +79,15 @@ function RecipeLayout({
         }, { replace: true });
     }
 
+    function onResetPreparation() {
+        window.sessionStorage.removeItem(flowStorageKey);
+        window.dispatchEvent(new CustomEvent('flow-reset', {
+            detail: {
+                storageKey: flowStorageKey
+            }
+        }));
+    }
+
     return (
         <SectionBackground img={null}>
             <h2>{title}</h2>
@@ -104,7 +116,24 @@ function RecipeLayout({
             <div className='row'>
                 {instructions && (
                     <div className='col-lg-6 order-2 order-lg-1'>
-                        <h3>Preparazione</h3>
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'center',
+                                gap: '12px',
+                                marginBottom: '1rem'
+                            }}
+                        >
+                            <h3 style={{ marginBottom: 0 }}>Preparazione</h3>
+
+                            <button
+                                type='button'
+                                className='btn btn-outline-secondary btn-sm'
+                                onClick={onResetPreparation}
+                            >
+                                Reset
+                            </button>
+                        </div>
 
                         <ol>
                             {instructions}
