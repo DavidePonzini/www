@@ -18,9 +18,11 @@ function edgePath(from, to, radius, options = {}) {
     if (options.targetKind === 'join' && from.y < to.y) {
         const startY = from.y + radius;
         const endY = to.y - radius;
-        const dy = Math.max((endY - startY) / 2, 14);
+        const verticalSpan = Math.max(endY - startY, 0);
+        const turnY = startY + Math.min(Math.max(verticalSpan * 0.22, 10), 18);
+        const approachY = Math.max(endY - 10, turnY);
 
-        return `M ${from.x} ${startY} C ${from.x} ${startY + dy}, ${to.x} ${endY - dy}, ${to.x} ${endY}`;
+        return `M ${from.x} ${startY} C ${from.x} ${turnY}, ${to.x} ${turnY}, ${to.x} ${approachY} L ${to.x} ${endY}`;
     }
 
     if (Math.abs(from.x - to.x) < 0.5) {
