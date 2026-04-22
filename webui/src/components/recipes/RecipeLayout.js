@@ -101,41 +101,90 @@ function RecipeNote({ children }) {
                 marginTop: '1.5rem',
             }}
         >
-            <RecipeSectionDivider title='Note' accent='#303f6f' />
+            <RecipeSectionDivider title='Consigli' accent='#303f6f' />
             <div>{children}</div>
         </div>
     );
 }
 
+function RemarkDash({ x, y, width, height }) {
+    return (
+        <span
+            style={{
+                position: 'absolute',
+                left: x,
+                top: y,
+                width: width,
+                height: height,
+                backgroundColor: '#b32020',
+            }}
+        />
+    );
+}
+
 function RecipeRemark({ children }) {
     return (
-        <div
-            style={{
-                marginTop: '2rem',
-            }}
-        >
+        <div style={{ marginBottom: '1rem' }}>
             <div
                 aria-hidden='true'
                 style={{
-                    width: '4rem',
-                    height: '.7rem',
-                    marginBottom: '.75rem',
-                    borderLeft: '3px solid #b32020',
-                    borderTop: '3px solid #b32020',
+                    position: 'relative',
+                    width: '100%',
+                    height: '8rem',
+                    marginBottom: '-8rem',
                 }}
-            />
+            >
+                {/* Vertical line */}
+                <RemarkDash
+                    x='30px' y='0px'
+                    width='2px' height='10px'
+                />
+                <RemarkDash
+                    x='30px' y='15px'
+                    width='2px' height='80%'
+                />
+                <RemarkDash
+                    x='30px' y='calc(15px + 80% + 5px)'
+                    width='2px' height='10px'
+                />
+
+                {/* Horizontal line */}
+                <RemarkDash
+                    x='0rem' y='30px'
+                    width='10px' height='2px'
+                />
+                <RemarkDash
+                    x='15px' y='30px'
+                    width='80%' height='2px'
+                />
+                <RemarkDash
+                    x='calc(15px + 80% + 5px)' y='30px'
+                    width='10px' height='2px'
+                />
+            </div>
 
             <div
                 style={{
-                    paddingLeft: '1rem',
-                    borderLeft: '3px solid #b32020',
+                    paddingLeft: '2.5rem',
+                    paddingTop: '2.5rem',
                     color: '#7f2318',
                     fontFamily: '"Georgia", "Times New Roman", serif',
-                    fontStyle: 'italic',
-                    lineHeight: 1.8,
                 }}
             >
-                {children}
+                <div
+                    style={{
+                        marginBottom: '.2rem',
+                        fontSize: '1.5rem',
+                        fontWeight: 700,
+                        color: '#b32020',
+                    }}
+                >
+                    Note
+                </div>
+
+                <div style={{ fontStyle: 'italic' }}>
+                    {children}
+                </div>
             </div>
         </div>
     );
