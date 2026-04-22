@@ -1,6 +1,9 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { useFlow } from './FlowContext';
+
+const CHECKED_COLOR = '#2f9e44';
+const UNCHECKED_COLOR = '#f08c00';
 
 function Step({
     children,
@@ -11,10 +14,13 @@ function Step({
     const anchorRef = useRef(null);
     const rowRef = useRef(null);
 
+    const [checked, setChecked] = useState(false);
+
     useEffect(function() {
         registerAnchor(id, anchorRef.current, {
             kind: 'step',
-            nextIds: nextId ? [nextId] : []
+            nextIds: nextId ? [nextId] : [],
+            checked
         });
 
         requestLayoutUpdate();
@@ -22,7 +28,7 @@ function Step({
         return function() {
             registerAnchor(id, null, null);
         };
-    }, [id, nextId, registerAnchor, requestLayoutUpdate]);
+    }, [checked, id, nextId, registerAnchor, requestLayoutUpdate]);
 
     useEffect(function() {
         if (!rowRef.current) {
@@ -43,12 +49,18 @@ function Step({
     return (
         <div
             ref={rowRef}
+            onClick={function() {
+                setChecked(function(value) {
+                    return !value;
+                });
+            }}
             style={{
                 display: 'flex',
                 alignItems: 'flex-start',
                 gap: '16px',
                 width: '100%',
-                position: 'relative'
+                position: 'relative',
+                cursor: 'pointer'
             }}
         >
             <div
@@ -64,7 +76,9 @@ function Step({
                     ref={anchorRef}
                     style={{
                         width: '12px',
-                        height: '12px'
+                        height: '12px',
+                        borderRadius: '999px',
+                        backgroundColor: checked ? CHECKED_COLOR : UNCHECKED_COLOR
                     }}
                 />
             </div>
@@ -72,7 +86,10 @@ function Step({
             <div
                 style={{
                     minWidth: 0,
-                    flex: '0 1 auto'
+                    flex: '0 1 auto',
+                    color: checked ? 'rgba(0, 0, 0, 0.45)' : 'inherit',
+                    textDecoration: checked ? 'line-through' : 'none',
+                    textDecorationThickness: checked ? '1.5px' : undefined
                 }}
             >
                 {children}
