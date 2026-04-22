@@ -1,15 +1,29 @@
+import type { ChangeEvent } from 'react';
 import { useEffect, useState } from 'react';
+
+type AssignmentItem = {
+    id: string;
+    label: string;
+    isAssigned: boolean;
+};
+
+type ItemAssignmentListProps = {
+    fetchItems: () => Promise<AssignmentItem[]>;
+    assignAction: (id: string, value: boolean) => Promise<void>;
+    title?: string;
+    disabledItems?: string[];
+};
 
 function ItemAssignmentList({
     fetchItems,             // async () => [{ id, label, isAssigned }]
     assignAction,           // async (id: string, value: boolean) => void
     title = 'Assign to',    // UI label above the list
     disabledItems = [],     // List of items that should be disabled
-}) {
-    const [items, setItems] = useState([]);
+}: ItemAssignmentListProps) {
+    const [items, setItems] = useState<AssignmentItem[]>([]);
     const [selectAll, setSelectAll] = useState(false);
 
-    async function handleAssign(id, value) {
+    async function handleAssign(id: string, value: boolean) {
         await assignAction(id, value);
 
         setItems((prev) =>
@@ -17,7 +31,7 @@ function ItemAssignmentList({
         );
     }
 
-    async function handleSelectAll(value) {
+    async function handleSelectAll(value: boolean) {
         setSelectAll(value);
 
         // Update UI optimistically, skipping the disabled items
@@ -57,7 +71,7 @@ function ItemAssignmentList({
                         type="checkbox"
                         id="select-all"
                         checked={selectAll}
-                        onChange={(e) => handleSelectAll(e.target.checked)}
+                        onChange={(event: ChangeEvent<HTMLInputElement>) => handleSelectAll(event.currentTarget.checked)}
                     />
                     <label className="form-check-label" htmlFor="select-all">
                         Select All
@@ -73,7 +87,7 @@ function ItemAssignmentList({
                         checked={item.isAssigned}
                         id={`item-${item.id}`}
                         disabled={disabledItems.includes(item.id)}
-                        onChange={(e) => handleAssign(item.id, e.target.checked)}
+                        onChange={(event: ChangeEvent<HTMLInputElement>) => handleAssign(item.id, event.currentTarget.checked)}
                     />
                     <label className="form-check-label" htmlFor={`item-${item.id}`}>
                         {item.label}

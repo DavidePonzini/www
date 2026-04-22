@@ -1,5 +1,26 @@
+import type { ReactNode } from "react";
 import { useState } from "react";
 import { Modal, Button } from "react-bootstrap";
+
+type FooterButton = {
+    text: ReactNode;
+    variant?: string;
+    disabled?: boolean;
+    onClick?: () => void;
+    autoClose?: boolean;
+};
+
+type ButtonModalProps = {
+    variant?: string;
+    className?: string;
+    title: ReactNode;
+    buttonText: ReactNode;
+    children: ReactNode;
+    footerButtons?: FooterButton[];
+    size?: "sm" | "md" | "lg" | "xl";
+    fullscreen?: boolean;
+    disabled?: boolean;
+};
 
 function ButtonModal({
     variant = "primary",
@@ -11,7 +32,7 @@ function ButtonModal({
     size = "md",
     fullscreen = false,
     disabled = false,
-}) {
+}: ButtonModalProps) {
     const [showModal, setShowModal] = useState(false);
 
     function handleClose() { setShowModal(false); }
@@ -23,7 +44,13 @@ function ButtonModal({
                 {buttonText}
             </Button>
 
-            <Modal show={showModal} onHide={(handleClose)} centered size={size} fullscreen={fullscreen}>
+            <Modal
+                show={showModal}
+                onHide={handleClose}
+                centered
+                size={size === "md" ? undefined : size}
+                fullscreen={fullscreen || undefined}
+            >
                 <Modal.Header closeButton>
                     <Modal.Title>{title}</Modal.Title>
                 </Modal.Header>

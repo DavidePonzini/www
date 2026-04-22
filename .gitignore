@@ -1,5 +1,6 @@
 # custom
 .env
+.codex
 venv/
 __pycache__/
 

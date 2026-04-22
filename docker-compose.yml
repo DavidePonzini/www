@@ -51,7 +51,7 @@ services:
     environment:
       POSTGRES_PASSWORD: password
     volumes:
-      - www_db_data:/var/lib/postgresql/data
+      - www_db_data:/var/lib/postgresql
 
   webui:
     build: ./webui

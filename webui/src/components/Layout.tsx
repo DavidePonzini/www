@@ -1,8 +1,14 @@
+import type { PropsWithChildren, ReactNode } from 'react';
+
 import Navbar from './Navbar';
 import Footer from './footer/Footer';
 import Separator from './Separator';
 
-function Layout({ children, banner = null }) {
+type LayoutProps = PropsWithChildren<{
+    banner?: ReactNode;
+}>;
+
+function Layout({ children, banner = null }: LayoutProps) {
     return (
         <>
             {banner && banner}

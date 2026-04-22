@@ -1,9 +1,14 @@
+import type { ChangeEvent, FormEvent } from 'react';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import useAuth from '../hooks/useAuth';
+import { useNavigate, Link } from 'react-router-dom';
 
 import bg from '../res/database.jpg';
 
-function Register() {
+function Login() {
+    const navigate = useNavigate();
+    const { saveTokens } = useAuth();
+
     const [usernameInput, setUsernameInput] = useState('');
     const [usernameError, setUsernameError] = useState('');
     const [isUsernameValid, setIsUsernameValid] = useState(false);
@@ -14,15 +19,14 @@ function Register() {
     const [isPasswordValid, setIsPasswordValid] = useState(false);
 
     const [error, setError] = useState('');
-    const [success, setSuccess] = useState(false);
 
-    function checkUsername(username) {
+    function checkUsername(username: string) {
         setUsernameInput(username);
 
         if (!username) {
             setIsUsernameValid(false);
             setUsernameError('Please enter a username.');
-            return false;
+            return;
         }
 
         setIsUsernameValid(true);
@@ -30,43 +34,13 @@ function Register() {
         return true;
     }
 
-    function checkPassword(password) {
+    function checkPassword(password: string) {
         setPasswordInput(password);
 
         if (!password) {
             setIsPasswordValid(false);
             setPasswordError('Please enter a password.');
-            return false;
-        }
-
-        if (password.length < 8) {
-            setIsPasswordValid(false);
-            setPasswordError('Password must be at least 8 characters long.');
-            return false;
-        }
-
-        if (!/[A-Z]/.test(password)) {
-            setIsPasswordValid(false);
-            setPasswordError('Password must contain at least one uppercase letter.');
-            return false;
-        }
-
-        if (!/[a-z]/.test(password)) {
-            setIsPasswordValid(false);
-            setPasswordError('Password must contain at least one lowercase letter.');
-            return false;
-        }
-
-        if (!/[0-9]/.test(password)) {
-            setIsPasswordValid(false);
-            setPasswordError('Password must contain at least one number.');
-            return false;
-        }
-
-        if (!/[!@#$%^&*(),.?":{}|<>]/.test(password)) {
-            setIsPasswordValid(false);
-            setPasswordError('Password must contain at least one special character.');
-            return false;
+            return;
         }
 
         setIsPasswordValid(true);
@@ -74,29 +48,34 @@ function Register() {
         return true;
     }
 
-    async function handleRegister(event) {
+    async function handleLogin(event: FormEvent<HTMLFormElement> | FormEvent<HTMLButtonElement>) {
         event.preventDefault();
 
+        const hasUsername = usernameInput.trim();
+        const hasPassword = passwordInput.trim();
+
+        if (!hasUsername || !hasPassword) {
+            setError('Please fill in both fields.');
+            return;
+        }
+
         try {
-            const response = await fetch('/api/auth/register', {
+            const response = await fetch('/api/auth/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify({
-                    username: usernameInput,
-                    password: passwordInput,
-                })
+                body: JSON.stringify({ username: usernameInput, password: passwordInput })
             });
 
             const data = await response.json();
-            console.log(data);
 
             if (data.success) {
                 setError('');
-                setSuccess(true);
+                saveTokens(data.access_token, data.refresh_token);
+                navigate('/');
             } else {
-                setError(data.message || 'Registration failed');
+                setError(data.message || 'Login failed');
             }
         } catch (error) {
             setError('Could not connect to the server.');
@@ -119,28 +98,21 @@ function Register() {
                     }}></div>
                     <div className="col-md-6 col-lg-7 d-flex align-items-center">
                         <div className="card-body p-4 p-lg-5 text-black">
-                            <form onSubmit={handleRegister} noValidate>
+                            <form onSubmit={handleLogin} noValidate>
                                 <div className="d-flex align-items-center mb-3 pb-1">
                                     <i className="fas fa-search fa-2x me-3" style={{ color: 'var(--logo-color)' }} />
                                     <span className="h1 fw-bold mb-0">LensQL</span>
                                 </div>
-                                <h5 className="fw-normal mb-1" style={{ letterSpacing: 1 }}>Register a new account</h5>
+                                <h5 className="fw-normal mb-1" style={{ letterSpacing: 1 }}>Sign into your account</h5>
 
-                                <Link to="/login" className="text-muted mb-4 d-block">
-                                    Already have an account? Log in here
+                                <Link to="/register" className="text-muted mb-4 d-block">
+                                    Don't have an account? Register here
                                 </Link>
+
 
                                 {error && (
                                     <div className="alert alert-danger" role="alert">
                                         {error}
-                                    </div>
-                                )}
-
-                                {success && (
-                                    <div className="alert alert-success" role="alert">
-                                        Registration successful! You can now log in with your new account.
-                                        <br />
-                                        <Link to="/login" className="alert-link">Go to Login</Link>
                                     </div>
                                 )}
 
@@ -154,7 +126,7 @@ function Register() {
                                         className={`form-control form-control-lg ${usernameError ? 'is-invalid' : ''}`}
                                         placeholder="Username"
                                         value={usernameInput}
-                                        onInput={(e) => checkUsername(e.target.value)}
+                                        onChange={(event: ChangeEvent<HTMLInputElement>) => checkUsername(event.currentTarget.value)}
                                         autoFocus={true}
                                     />
                                     {usernameError && (
@@ -176,10 +148,10 @@ function Register() {
                                             className={`form-control form-control-lg pe-5 ${passwordError ? 'is-invalid' : ''}`}
                                             placeholder="Password"
                                             value={passwordInput}
-                                            onInput={(e) => checkPassword(e.target.value)}
+                                            onChange={(event: ChangeEvent<HTMLInputElement>) => checkPassword(event.currentTarget.value)}
                                         />
                                         <div
-                                            className='input-group-text'
+                                            className="input-group-text"
                                             style={{ cursor: 'pointer' }}
                                         >
                                             <i
@@ -200,13 +172,10 @@ function Register() {
                                 <div className="pt-1 mb-4">
                                     <button
                                         className="btn btn-primary btn-lg btn-block w-100"
-                                        onClick={handleRegister}
-                                        disabled={
-                                            !isUsernameValid ||
-                                            !isPasswordValid
-                                        }
+                                        onClick={handleLogin}
+                                        disabled={!isUsernameValid || !isPasswordValid}
                                     >
-                                        Register
+                                        Login
                                     </button>
                                 </div>
                             </form>
@@ -218,4 +187,4 @@ function Register() {
     );
 }
 
-export default Register;
+export default Login;
