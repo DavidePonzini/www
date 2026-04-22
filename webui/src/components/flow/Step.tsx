@@ -2,7 +2,7 @@ import type { PropsWithChildren } from 'react';
 import { useEffect, useRef } from 'react';
 
 import { useFlow, useFlowColor } from './FlowContext';
-import { COMPLETED_FLOW_COLOR } from './FlowUtils';
+import { COMPLETED_FLOW_COLOR, COMPLETED_TEXT_COLOR } from './FlowUtils';
 
 type StepProps = PropsWithChildren<{
     id?: string;
@@ -105,7 +105,7 @@ function Step({
                 style={{
                     minWidth: 0,
                     flex: '0 1 auto',
-                    color: checked ? COMPLETED_FLOW_COLOR : 'inherit',
+                    color: checked ? COMPLETED_TEXT_COLOR : 'inherit',
                 }}
             >
                 {children}
