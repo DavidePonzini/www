@@ -13,6 +13,7 @@ function Step({
 
     useEffect(function() {
         registerAnchor(id, anchorRef.current, {
+            kind: 'step',
             nextIds: nextId ? [nextId] : []
         });
 

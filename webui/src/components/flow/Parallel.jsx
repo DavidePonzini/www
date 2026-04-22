@@ -26,10 +26,12 @@ function Parallel({
 
     useEffect(function() {
         registerAnchor(forkId, forkRef.current, {
+            kind: 'fork',
             nextIds: branchStartIds
         });
 
         registerAnchor(joinId, joinRef.current, {
+            kind: 'join',
             nextIds: nextId ? [nextId] : []
         });
 

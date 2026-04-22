@@ -14,7 +14,9 @@ function FlowOverlay({ anchors, width, height, nodeRadius = 6, strokeWidth = 2 }
         const nextIds = anchor.meta?.nextIds || [];
 
         nextIds.forEach(function(nextId) {
-            if (!anchorMap.has(nextId)) {
+            const nextAnchor = anchorMap.get(nextId);
+
+            if (!nextAnchor) {
                 return;
             }
 
@@ -28,7 +30,10 @@ function FlowOverlay({ anchors, width, height, nodeRadius = 6, strokeWidth = 2 }
 
             renderedEdges.push({
                 id: edgeKey,
-                d: edgePath(anchor, anchorMap.get(nextId), nodeRadius)
+                d: edgePath(anchor, nextAnchor, nodeRadius, {
+                    sourceKind: anchor.meta?.kind,
+                    targetKind: nextAnchor.meta?.kind
+                })
             });
         });
     });

@@ -14,7 +14,15 @@ function getRelativeRect(element, container) {
     };
 }
 
-function edgePath(from, to, radius) {
+function edgePath(from, to, radius, options = {}) {
+    if (options.targetKind === 'join' && from.y < to.y) {
+        const startY = from.y + radius;
+        const endY = to.y - radius;
+        const dy = Math.max((endY - startY) / 2, 14);
+
+        return `M ${from.x} ${startY} C ${from.x} ${startY + dy}, ${to.x} ${endY - dy}, ${to.x} ${endY}`;
+    }
+
     if (Math.abs(from.x - to.x) < 0.5) {
         const startY = from.y < to.y ? from.y + radius : from.y - radius;
         const endY = from.y < to.y ? to.y - radius : to.y + radius;
@@ -26,7 +34,7 @@ function edgePath(from, to, radius) {
 
     const startX = movingRight ? from.x + radius : from.x - radius;
     const endX = movingRight ? to.x - radius : to.x + radius;
-    const dx = Math.max(Math.abs(endX - startX) / 2, 24);
+    const dx = Math.max(Math.abs(endX - startX) / 2, 14);
 
     const c1x = movingRight ? startX + dx : startX - dx;
     const c2x = movingRight ? endX - dx : endX + dx;
