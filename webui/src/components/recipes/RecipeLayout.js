@@ -8,6 +8,139 @@ import SectionBackground from '../SectionBackground';
 import { getFlowStorageKey } from '../flow/FlowUtils';
 import { Flow, Sequence } from '../flow';
 
+const sectionHeadingStyle = {
+    marginBottom: '.9rem',
+    fontFamily: '"Georgia", "Times New Roman", serif',
+    fontSize: '1.9rem',
+    fontWeight: 700,
+    letterSpacing: '.04em',
+    color: '#7f2318',
+};
+
+function RecipeSectionDivider({ title, accent = '#8f2d1f' }) {
+    return (
+        <div
+            style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '1rem',
+                margin: '.5rem 0 1rem',
+            }}
+        >
+            <span
+                aria-hidden='true'
+                style={{
+                    flex: 1,
+                    maxWidth: '9rem',
+                    height: '2px',
+                    background: `linear-gradient(90deg, transparent, ${accent})`,
+                }}
+            />
+
+            <div
+                style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '.75rem',
+                    color: accent,
+                }}
+            >
+                <span
+                    aria-hidden='true'
+                    style={{
+                        width: '.5rem',
+                        height: '.5rem',
+                        borderRadius: '50%',
+                        backgroundColor: accent,
+                        boxShadow: `0 0 0 4px ${accent}1f`,
+                    }}
+                />
+
+                <span
+                    style={{
+                        fontFamily: '"Georgia", "Times New Roman", serif',
+                        fontSize: '1.15rem',
+                        fontWeight: 700,
+                        letterSpacing: '.2em',
+                        textTransform: 'uppercase',
+                    }}
+                >
+                    {title}
+                </span>
+
+                <span
+                    aria-hidden='true'
+                    style={{
+                        width: '.5rem',
+                        height: '.5rem',
+                        borderRadius: '50%',
+                        backgroundColor: accent,
+                        boxShadow: `0 0 0 4px ${accent}1f`,
+                    }}
+                />
+            </div>
+
+            <span
+                aria-hidden='true'
+                style={{
+                    flex: 1,
+                    maxWidth: '9rem',
+                    height: '2px',
+                    background: `linear-gradient(90deg, ${accent}, transparent)`,
+                }}
+            />
+        </div>
+    );
+}
+
+function RecipeNote({ children }) {
+    return (
+        <div
+            style={{
+                marginTop: '1.5rem',
+            }}
+        >
+            <RecipeSectionDivider title='Note' accent='#303f6f' />
+            <div>{children}</div>
+        </div>
+    );
+}
+
+function RecipeRemark({ children }) {
+    return (
+        <div
+            style={{
+                marginTop: '2rem',
+            }}
+        >
+            <div
+                aria-hidden='true'
+                style={{
+                    width: '4rem',
+                    height: '.7rem',
+                    marginBottom: '.75rem',
+                    borderLeft: '3px solid #b32020',
+                    borderTop: '3px solid #b32020',
+                }}
+            />
+
+            <div
+                style={{
+                    paddingLeft: '1rem',
+                    borderLeft: '3px solid #b32020',
+                    color: '#7f2318',
+                    fontFamily: '"Georgia", "Times New Roman", serif',
+                    fontStyle: 'italic',
+                    lineHeight: 1.8,
+                }}
+            >
+                {children}
+            </div>
+        </div>
+    );
+}
+
 function RecipeLayout({
     title,
     servings = 1,
@@ -19,7 +152,7 @@ function RecipeLayout({
     ingredients = [],       // [{name: string, quantity: number, unit: string}]
     instructions = null,
     notes = null,
-    remark = null,
+    remark = '',
 
 }) {
     const location = useLocation();
@@ -107,14 +240,59 @@ function RecipeLayout({
         return formatQuantity(servings) === 1 ? servingsUnitSingular : servingsUnitPlural;
     }
 
+    const hasRemark = typeof remark === 'string' && remark.trim() !== '';
+
     return (
         <SectionBackground img={null}>
-            <h1>{title}</h1>
+            <header
+                style={{
+                    paddingTop: '2rem',
+                    textAlign: 'center',
+                }}
+            >
+                <h1
+                    style={{
+                        marginBottom: '.5rem',
+                        fontFamily: '"Georgia", "Times New Roman", serif',
+                        fontSize: 'clamp(2.6rem, 6vw, 4.4rem)',
+                        fontWeight: 700,
+                        letterSpacing: '.06em',
+                        color: '#6e2418',
+                        textShadow: '0 2px 0 rgba(255,255,255,0.8)',
+                    }}
+                >
+                    {title}
+                </h1>
+
+                <div
+                    aria-hidden='true'
+                    style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '.75rem',
+                        marginBottom: '.75rem',
+                        color: '#8f2d1f',
+                    }}
+                >
+                    <span style={{ width: '3.5rem', height: '1px', backgroundColor: 'currentColor', opacity: .5 }} />
+                    <span
+                        style={{
+                            width: '.65rem',
+                            height: '.65rem',
+                            transform: 'rotate(45deg)',
+                            border: '1px solid currentColor',
+                            opacity: .75,
+                        }}
+                    />
+                    <span style={{ width: '3.5rem', height: '1px', backgroundColor: 'currentColor', opacity: .5 }} />
+                </div>
+            </header>
 
             {/* Header */}
             <div className='row'>
                 <div className='col-lg-6 mt-4'>
-                    <h2>Informazioni</h2>
+                    <h2 style={sectionHeadingStyle}>Informazioni</h2>
                     <table>
                         <tbody>
                             <RecipeMetaItem icon='fa-solid fa-utensils'>
@@ -142,7 +320,7 @@ function RecipeLayout({
                 <div className='col-lg-6 mt-4'>
                     {times && (
                         <>
-                            <h2>Tempi</h2>
+                            <h2 style={sectionHeadingStyle}>Tempi</h2>
                             <table
                             >
                                 <tbody>{times}</tbody>
@@ -164,7 +342,7 @@ function RecipeLayout({
                                 marginBottom: '.5rem'
                             }}
                         >
-                            <h2>Preparazione</h2>
+                            <h2 style={sectionHeadingStyle}>Preparazione</h2>
 
                             <button
                                 type='button'
@@ -188,7 +366,7 @@ function RecipeLayout({
 
                 {ingredients && (
                     <div className='col-lg-6 order-1 order-lg-2 mt-4'>
-                        <h2>Ingredienti</h2>
+                        <h2 style={sectionHeadingStyle}>Ingredienti</h2>
 
                         <table>
                             <tbody>
@@ -223,7 +401,17 @@ function RecipeLayout({
                 notes && (
                     <div className='row'>
                         <div className='col-12 mt-4'>
-                            <ul>{notes}</ul>
+                            <RecipeNote>
+                                <ul
+                                    style={{
+                                        margin: 0,
+                                        paddingLeft: '1.5rem',
+                                        lineHeight: 1.7,
+                                    }}
+                                >
+                                    {notes}
+                                </ul>
+                            </RecipeNote>
                         </div>
                     </div>
                 )
@@ -231,11 +419,12 @@ function RecipeLayout({
 
             {/* Notes */}
             {
-                remark && (
+                hasRemark && (
                     <div className='row'>
                         <div className='col-12 mt-4'>
-                            <h2>Nota</h2>
-                            {remark}
+                            <RecipeRemark>
+                                {remark}
+                            </RecipeRemark>
                         </div>
                     </div>
                 )
