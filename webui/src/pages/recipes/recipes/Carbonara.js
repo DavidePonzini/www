@@ -9,15 +9,15 @@ function Carbonara() {
             title='Carbonara'
             servings={2}
             source='Davide Ponzini'
-            addedOn='22 aprile 2026'
+            addedOn='2025-5-2'
             times={<>
-                <PreparationTime time='10 min' />
-                <CookingTime time='8 min' flame='media' />
-                <BakingTimeFan time='2 min' temperature='180'/>
-                <BakingTimeBottom time='2 min' temperature='180'/>
-                <BakingTimeTop time='2 min' temperature='180'/>
-                <BakingTimeTopbottom time='2 min' temperature='180'/>
-                <PreparationWait time='2 min' description='Frigo'/>
+                <PreparationTime time='00:10:00' />
+                <CookingTime time='00:08:00' flame='media' />
+                <BakingTimeFan time='00:02:00' temperature='180'/>
+                <BakingTimeBottom time='00:02:00' temperature='180'/>
+                <BakingTimeTop time='00:02:00' temperature='180'/>
+                <BakingTimeTopbottom time='00:02:00' temperature='180'/>
+                <PreparationWait time='00:02:00' description='Frigo'/>
             </>}
             ingredients={[
                 { name: 'Spaghetti', quantity: 200, unit: 'g' },

@@ -2,6 +2,7 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 
 import EditableValue from './EditableValue';
 import RecipeMetaItem from './RecipeMetaItem';
+import { formatRecipeDate } from './RecipeFormat';
 
 import SectionBackground from '../SectionBackground';
 import { getFlowStorageKey } from '../flow/FlowUtils';
@@ -132,7 +133,7 @@ function RecipeLayout({
                             </RecipeMetaItem>
 
                             <RecipeMetaItem icon='fa-solid fa-calendar-days'>
-                                {addedOn}
+                                {formatRecipeDate(addedOn)}
                             </RecipeMetaItem>
                         </tbody>
                     </table>
