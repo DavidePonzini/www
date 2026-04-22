@@ -133,7 +133,7 @@ function RecipeLayout({
                                 display: 'flex',
                                 alignItems: 'center',
                                 gap: '12px',
-                                marginBottom: '1rem'
+                                marginBottom: '.5rem'
                             }}
                         >
                             <h3 style={{ marginBottom: 0 }}>Preparazione</h3>
