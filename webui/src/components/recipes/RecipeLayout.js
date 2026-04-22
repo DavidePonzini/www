@@ -111,29 +111,34 @@ function RecipeLayout({
             <h1>{title}</h1>
 
             {/* Header */}
-            <div className='row mb-4'>
-                <div className='col-lg-6'>
-                    <RecipeMetaItem icon='fa-solid fa-utensils'>
-                        <span>
-                            <EditableValue
-                                onChange={onServingsChange}
-                            >
-                                {formatQuantity(servings)}
-                            </EditableValue>
-                            {` ${getServingsUnitLabel()}`}
-                        </span>
-                    </RecipeMetaItem>
+            <div className='row'>
+                <div className='col-lg-6 mt-4'>
+                    <h2>Informazioni</h2>
+                    <table>
+                        <tbody>
+                            <RecipeMetaItem icon='fa-solid fa-utensils'>
+                                <span>
+                                    <EditableValue
+                                        onChange={onServingsChange}
+                                    >
+                                        {formatQuantity(servings)}
+                                    </EditableValue>
+                                    {` ${getServingsUnitLabel()}`}
+                                </span>
+                            </RecipeMetaItem>
 
-                    <RecipeMetaItem icon='fa-solid fa-address-book'>
-                        {source}
-                    </RecipeMetaItem>
+                            <RecipeMetaItem icon='fa-solid fa-address-book'>
+                                {source}
+                            </RecipeMetaItem>
 
-                    <RecipeMetaItem icon='fa-solid fa-calendar-days'>
-                        {addedOn}
-                    </RecipeMetaItem>
+                            <RecipeMetaItem icon='fa-solid fa-calendar-days'>
+                                {addedOn}
+                            </RecipeMetaItem>
+                        </tbody>
+                    </table>
                 </div>
 
-                <div className='col-lg-6'>
+                <div className='col-lg-6 mt-4'>
                     {times && (
                         <>
                             <h2>Tempi</h2>
@@ -149,7 +154,7 @@ function RecipeLayout({
             {/* Preparation + Ingredients */}
             <div className='row'>
                 {instructions && (
-                    <div className='col-lg-6 order-2 order-lg-1'>
+                    <div className='col-lg-6 order-2 order-lg-1 mt-4'>
                         <div
                             style={{
                                 display: 'flex',
@@ -158,12 +163,15 @@ function RecipeLayout({
                                 marginBottom: '.5rem'
                             }}
                         >
-                            <h2 style={{ marginBottom: 0 }}>Preparazione</h2>
+                            <h2>Preparazione</h2>
 
                             <button
                                 type='button'
                                 className='btn btn-outline-secondary btn-sm'
                                 onClick={onResetPreparation}
+                                style={{
+                                    marginBottom: '.5rem'
+                                }}
                             >
                                 Reset
                             </button>
@@ -178,7 +186,7 @@ function RecipeLayout({
                 )}
 
                 {ingredients && (
-                    <div className='col-lg-6 order-1 order-lg-2'>
+                    <div className='col-lg-6 order-1 order-lg-2 mt-4'>
                         <h2>Ingredienti</h2>
 
                         <table>

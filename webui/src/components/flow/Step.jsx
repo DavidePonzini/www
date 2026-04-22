@@ -53,7 +53,11 @@ function Step({
     return (
         <div
             ref={rowRef}
-            onClick={function() {
+            onClick={function(event) {
+                if (event.target instanceof Element && event.target.closest('a')) {
+                    return;
+                }
+
                 toggleStepChecked(id);
             }}
             style={{
@@ -90,8 +94,6 @@ function Step({
                     minWidth: 0,
                     flex: '0 1 auto',
                     color: checked ? 'rgba(0, 0, 0, 0.45)' : 'inherit',
-                    textDecoration: checked ? 'line-through' : 'none',
-                    textDecorationThickness: checked ? '1.5px' : undefined
                 }}
             >
                 {children}
