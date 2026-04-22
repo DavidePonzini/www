@@ -1,9 +1,9 @@
 import type { PropsWithChildren, ReactElement } from 'react';
 import { Children, isValidElement, useEffect, useRef } from 'react';
 
-import { useFlow } from './FlowContext';
+import { FlowColorContext, useFlow, useFlowColor } from './FlowContext';
 import Sequence from './Sequence';
-import { makeId } from './FlowUtils';
+import { getBranchColor, makeId } from './FlowUtils';
 
 type BranchElement = ReactElement<PropsWithChildren>;
 
@@ -22,6 +22,7 @@ function Parallel({
     indexPath = [0]
 }: ParallelProps) {
     const { registerAnchor, requestLayoutUpdate } = useFlow();
+    const inheritedColor = useFlowColor();
     const forkRef = useRef<HTMLDivElement | null>(null);
     const joinRef = useRef<HTMLDivElement | null>(null);
     const wrapperRef = useRef<HTMLDivElement | null>(null);
@@ -50,12 +51,14 @@ function Parallel({
 
         registerAnchor(forkId, forkRef.current, {
             kind: 'fork',
-            nextIds: branchStartIds
+            nextIds: branchStartIds,
+            color: inheritedColor
         });
 
         registerAnchor(joinId, joinRef.current, {
             kind: 'join',
-            nextIds: nextId ? [nextId] : []
+            nextIds: nextId ? [nextId] : [],
+            color: inheritedColor
         });
 
         requestLayoutUpdate();
@@ -64,7 +67,7 @@ function Parallel({
             registerAnchor(forkId, null, null);
             registerAnchor(joinId, null, null);
         };
-    }, [forkId, joinId, nextId, branchStartIds, registerAnchor, requestLayoutUpdate]);
+    }, [branchStartIds, forkId, inheritedColor, joinId, nextId, registerAnchor, requestLayoutUpdate]);
 
     useEffect(function() {
         if (!wrapperRef.current) {
@@ -130,15 +133,20 @@ function Parallel({
                     }}
                 >
                     {branches.map(function(branch, index) {
+                        const branchIndexPath = [...indexPath, 'branch', index];
+                        const branchColor = getBranchColor(branchIndexPath);
+
                         return (
-                            <div key={index} style={{ minWidth: 0 }}>
-                                <Sequence
-                                    indexPath={[...indexPath, 'branch', index]}
-                                    exitToId={joinId ?? null}
-                                >
-                                    {branch.props.children}
-                                </Sequence>
-                            </div>
+                            <FlowColorContext.Provider key={index} value={branchColor}>
+                                <div style={{ minWidth: 0 }}>
+                                    <Sequence
+                                        indexPath={branchIndexPath}
+                                        exitToId={joinId ?? null}
+                                    >
+                                        {branch.props.children}
+                                    </Sequence>
+                                </div>
+                            </FlowColorContext.Provider>
                         );
                     })}
                 </div>

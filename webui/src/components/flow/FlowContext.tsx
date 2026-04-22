@@ -1,9 +1,12 @@
 import { createContext, useContext } from 'react';
 
+import { DEFAULT_FLOW_COLOR } from './FlowUtils';
+
 type FlowAnchorMeta = {
     kind: 'step' | 'fork' | 'join';
     nextIds: string[];
     checked?: boolean;
+    color?: string;
 };
 
 type FlowCheckedState = Record<string, boolean>;
@@ -18,6 +21,7 @@ type FlowContextValue = {
 };
 
 const FlowContext = createContext<FlowContextValue | null>(null);
+const FlowColorContext = createContext<string>(DEFAULT_FLOW_COLOR);
 
 function useFlow() {
     const context = useContext(FlowContext);
@@ -29,5 +33,9 @@ function useFlow() {
     return context;
 }
 
-export { FlowContext, useFlow };
+function useFlowColor() {
+    return useContext(FlowColorContext);
+}
+
+export { FlowContext, FlowColorContext, useFlow, useFlowColor };
 export type { FlowAnchorMeta, FlowCheckedState, FlowContextValue };

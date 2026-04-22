@@ -1,12 +1,10 @@
-import { edgePath } from './FlowUtils';
-
-const CHECKED_COLOR = '#2f9e44';
-const UNCHECKED_COLOR = '#f08c00';
+import { COMPLETED_FLOW_COLOR, DEFAULT_FLOW_COLOR, edgePath } from './FlowUtils';
 
 type FlowAnchorMeta = {
     kind: 'step' | 'fork' | 'join';
     nextIds: string[];
     checked?: boolean;
+    color?: string;
 };
 
 type FlowOverlayAnchor = {
@@ -80,12 +78,20 @@ function FlowOverlay({ anchors, width, height, nodeRadius = 6, strokeWidth = 2 }
     }
 
     function getAnchorColor(anchor: FlowOverlayAnchor) {
-        return isAnchorChecked(anchor.id) ? CHECKED_COLOR : UNCHECKED_COLOR;
+        if (isAnchorChecked(anchor.id)) {
+            return COMPLETED_FLOW_COLOR;
+        }
+
+        return anchor.meta?.color || DEFAULT_FLOW_COLOR;
     }
 
     function getEdgeColor(sourceAnchor: FlowOverlayAnchor, targetAnchor: FlowOverlayAnchor) {
         if (sourceAnchor.meta?.kind === 'step') {
             return getAnchorColor(sourceAnchor);
+        }
+
+        if (sourceAnchor.meta?.kind === 'fork') {
+            return getAnchorColor(targetAnchor);
         }
 
         if (targetAnchor.meta?.kind === 'step') {

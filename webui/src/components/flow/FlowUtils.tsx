@@ -17,8 +17,65 @@ type EdgePathOptions = {
     targetKind?: 'step' | 'fork' | 'join';
 };
 
+const DEFAULT_FLOW_COLOR = '#f08c00';
+const COMPLETED_FLOW_COLOR = '#8a8f98';
+const BRANCH_FLOW_COLOR_FAMILIES = [
+    [
+        ['#c2255c', '#a61e4d', '#e64980'],
+        ['#862e9c', '#9c36b5', '#ae3ec9'],
+        ['#5f3dc4', '#6741d9', '#7950f2']
+    ],
+    [
+        ['#1971c2', '#1864ab', '#228be6'],
+        ['#0b7285', '#0c8599', '#1098ad'],
+        ['#099268', '#0ca678', '#12b886']
+    ],
+    [
+        ['#2b8a3e', '#2f9e44', '#40c057'],
+        ['#5c940d', '#66a80f', '#74b816'],
+        ['#e67700', '#f08c00', '#f59f00']
+    ],
+    [
+        ['#d9480f', '#e8590c', '#f76707'],
+        ['#c92a2a', '#e03131', '#f03e3e'],
+        ['#c2255c', '#d6336c', '#e64980']
+    ]
+];
+
 function makeId(prefix: string, indexPath: Array<string | number>) {
     return `${prefix}-${indexPath.join('-')}`;
+}
+
+function getBranchColor(indexPath: Array<string | number>) {
+    const branchMarkers = indexPath.reduce<Array<number>>(function(result, part, index) {
+        if (part === 'branch') {
+            result.push(index);
+        }
+
+        return result;
+    }, []);
+    const depth = Math.min(Math.max(branchMarkers.length - 1, 0), 2);
+    const familyPath = branchMarkers.length === 0
+        ? indexPath
+        : indexPath.slice(0, branchMarkers[0] + 2);
+    const family = BRANCH_FLOW_COLOR_FAMILIES[hashIndexPath(familyPath) % BRANCH_FLOW_COLOR_FAMILIES.length];
+    const variants = family[depth];
+    const variantKey = branchMarkers.length <= 1
+        ? familyPath
+        : indexPath.slice(branchMarkers[branchMarkers.length - 2], branchMarkers[branchMarkers.length - 1] + 2);
+
+    return variants[hashIndexPath(variantKey) % variants.length];
+}
+
+function hashIndexPath(indexPath: Array<string | number>) {
+    const key = indexPath.join(':');
+    let hash = 0;
+
+    for (let index = 0; index < key.length; index += 1) {
+        hash = (hash * 31 + key.charCodeAt(index)) >>> 0;
+    }
+
+    return hash;
 }
 
 function getFlowStorageKey(pathname?: string | null) {
@@ -107,7 +164,10 @@ function edgePath(from: EdgePoint, to: EdgePoint, radius: number, options: EdgeP
 }
 
 export {
+    COMPLETED_FLOW_COLOR,
+    DEFAULT_FLOW_COLOR,
     makeId,
+    getBranchColor,
     getFlowStorageKey,
     readFlowCheckedState,
     writeFlowCheckedState,

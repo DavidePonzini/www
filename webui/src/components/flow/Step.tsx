@@ -1,10 +1,8 @@
 import type { PropsWithChildren } from 'react';
 import { useEffect, useRef } from 'react';
 
-import { useFlow } from './FlowContext';
-
-const CHECKED_COLOR = '#2f9e44';
-const UNCHECKED_COLOR = '#f08c00';
+import { useFlow, useFlowColor } from './FlowContext';
+import { COMPLETED_FLOW_COLOR } from './FlowUtils';
 
 type StepProps = PropsWithChildren<{
     id?: string;
@@ -22,6 +20,7 @@ function Step({
         requestLayoutUpdate,
         toggleStepChecked
     } = useFlow();
+    const flowColor = useFlowColor();
     const anchorRef = useRef<HTMLDivElement | null>(null);
     const rowRef = useRef<HTMLDivElement | null>(null);
     const checked = id ? Boolean(checkedSteps[id]) : false;
@@ -34,7 +33,8 @@ function Step({
         registerAnchor(id, anchorRef.current, {
             kind: 'step',
             nextIds: nextId ? [nextId] : [],
-            checked
+            checked,
+            color: flowColor
         });
 
         requestLayoutUpdate();
@@ -42,7 +42,7 @@ function Step({
         return function() {
             registerAnchor(id, null, null);
         };
-    }, [checked, id, nextId, registerAnchor, requestLayoutUpdate]);
+    }, [checked, flowColor, id, nextId, registerAnchor, requestLayoutUpdate]);
 
     useEffect(function() {
         if (!rowRef.current) {
@@ -96,7 +96,7 @@ function Step({
                         width: '12px',
                         height: '12px',
                         borderRadius: '999px',
-                        backgroundColor: checked ? CHECKED_COLOR : UNCHECKED_COLOR
+                        backgroundColor: checked ? COMPLETED_FLOW_COLOR : flowColor
                     }}
                 />
             </div>
@@ -105,7 +105,7 @@ function Step({
                 style={{
                     minWidth: 0,
                     flex: '0 1 auto',
-                    color: checked ? 'rgba(0, 0, 0, 0.45)' : 'inherit',
+                    color: checked ? COMPLETED_FLOW_COLOR : 'inherit',
                 }}
             >
                 {children}
