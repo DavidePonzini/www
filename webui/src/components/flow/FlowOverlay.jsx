@@ -131,6 +131,7 @@ function FlowOverlay({ anchors, width, height, nodeRadius = 6, strokeWidth = 2 }
                         d={edge.d}
                         fill='none'
                         stroke={edge.stroke}
+                        strokeOpacity={edge.dashed ? 0.45 : 1}
                         strokeDasharray={edge.dashed ? '4 4' : undefined}
                         strokeWidth={strokeWidth}
                         strokeLinecap='round'
