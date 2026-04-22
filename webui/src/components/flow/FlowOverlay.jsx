@@ -102,6 +102,7 @@ function FlowOverlay({ anchors, width, height, nodeRadius = 6, strokeWidth = 2 }
             renderedEdges.push({
                 id: edgeKey,
                 stroke: getEdgeColor(anchor, nextAnchor),
+                dashed: nextAnchor.meta?.kind === 'join',
                 d: edgePath(anchor, nextAnchor, nodeRadius, {
                     sourceKind: anchor.meta?.kind,
                     targetKind: nextAnchor.meta?.kind
@@ -130,6 +131,7 @@ function FlowOverlay({ anchors, width, height, nodeRadius = 6, strokeWidth = 2 }
                         d={edge.d}
                         fill='none'
                         stroke={edge.stroke}
+                        strokeDasharray={edge.dashed ? '4 4' : undefined}
                         strokeWidth={strokeWidth}
                         strokeLinecap='round'
                         strokeLinejoin='round'
