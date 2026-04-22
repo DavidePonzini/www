@@ -81,7 +81,8 @@ function Parallel({
                         width: '12px',
                         minWidth: '12px',
                         height: '12px',
-                        flexShrink: 0
+                        flexShrink: 0,
+                        marginTop: '0.45em'
                     }}
                 >
                     <div
@@ -123,7 +124,8 @@ function Parallel({
                     width: '12px',
                     minWidth: '12px',
                     height: '12px',
-                    flexShrink: 0
+                    flexShrink: 0,
+                    marginTop: '0.15em'
                 }}
             >
                 <div
