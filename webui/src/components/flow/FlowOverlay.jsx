@@ -4,8 +4,62 @@ const CHECKED_COLOR = '#2f9e44';
 const UNCHECKED_COLOR = '#f08c00';
 
 function FlowOverlay({ anchors, width, height, nodeRadius = 6, strokeWidth = 2 }) {
+    const anchorMap = new Map(
+        anchors.map(function(anchor) {
+            return [anchor.id, anchor];
+        })
+    );
+    const incomingMap = new Map();
+
+    anchors.forEach(function(anchor) {
+        const nextIds = anchor.meta?.nextIds || [];
+
+        nextIds.forEach(function(nextId) {
+            const sources = incomingMap.get(nextId) || [];
+
+            sources.push(anchor.id);
+            incomingMap.set(nextId, sources);
+        });
+    });
+
+    const checkedStateCache = new Map();
+
+    function isAnchorChecked(anchorId) {
+        if (checkedStateCache.has(anchorId)) {
+            return checkedStateCache.get(anchorId);
+        }
+
+        const anchor = anchorMap.get(anchorId);
+
+        if (!anchor) {
+            return false;
+        }
+
+        let checked = false;
+
+        if (anchor.meta?.kind === 'step') {
+            checked = Boolean(anchor.meta?.checked);
+        } else if (anchor.meta?.kind === 'fork') {
+            const nextIds = anchor.meta?.nextIds || [];
+
+            checked = nextIds.length > 0 && nextIds.every(function(nextId) {
+                return isAnchorChecked(nextId);
+            });
+        } else if (anchor.meta?.kind === 'join') {
+            const incomingIds = incomingMap.get(anchorId) || [];
+
+            checked = incomingIds.length > 0 && incomingIds.every(function(sourceId) {
+                return isAnchorChecked(sourceId);
+            });
+        }
+
+        checkedStateCache.set(anchorId, checked);
+
+        return checked;
+    }
+
     function getAnchorColor(anchor) {
-        return anchor.meta?.checked ? CHECKED_COLOR : UNCHECKED_COLOR;
+        return isAnchorChecked(anchor.id) ? CHECKED_COLOR : UNCHECKED_COLOR;
     }
 
     function getEdgeColor(sourceAnchor, targetAnchor) {
@@ -17,14 +71,12 @@ function FlowOverlay({ anchors, width, height, nodeRadius = 6, strokeWidth = 2 }
             return getAnchorColor(targetAnchor);
         }
 
-        return UNCHECKED_COLOR;
-    }
+        if (sourceAnchor.meta?.kind === 'join') {
+            return getAnchorColor(targetAnchor);
+        }
 
-    const anchorMap = new Map(
-        anchors.map(function(anchor) {
-            return [anchor.id, anchor];
-        })
-    );
+        return getAnchorColor(sourceAnchor);
+    }
 
     const renderedEdges = [];
     const seen = new Set();
