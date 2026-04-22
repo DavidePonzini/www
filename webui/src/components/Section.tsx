@@ -1,6 +1,12 @@
+import type { PropsWithChildren, ReactNode } from 'react';
+
 import titleDecoration from '../res/heading-border-left-2.png'
 
-function Section({ title, children }) {
+type SectionProps = PropsWithChildren<{
+    title: ReactNode;
+}>;
+
+function Section({ title, children }: SectionProps) {
     return (
         <>
             <h1 style={{

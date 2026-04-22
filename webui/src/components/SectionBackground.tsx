@@ -1,4 +1,12 @@
-function SectionBackground({ img, dark = false, color, children }) {
+import type { PropsWithChildren } from 'react';
+
+type SectionBackgroundProps = PropsWithChildren<{
+    img?: string | null;
+    dark?: boolean;
+    color?: string;
+}>;
+
+function SectionBackground({ img = null, dark = false, color, children }: SectionBackgroundProps) {
     return (
         <div style={{
             backgroundImage: `url(${img})`,

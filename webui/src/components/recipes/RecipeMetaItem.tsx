@@ -1,4 +1,11 @@
-function RecipeMetaItem({ icon, children, detail = null }) {
+import type { PropsWithChildren, ReactNode } from 'react';
+
+type RecipeMetaItemProps = PropsWithChildren<{
+    icon: ReactNode;
+    detail?: ReactNode;
+}>;
+
+function RecipeMetaItem({ icon, children, detail = null }: RecipeMetaItemProps) {
     if (children === undefined || children === null || children === '') {
         return null;
     }

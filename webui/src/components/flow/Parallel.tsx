@@ -1,8 +1,18 @@
-import { Children, cloneElement, isValidElement, useEffect, useRef } from 'react';
+import type { PropsWithChildren, ReactElement } from 'react';
+import { Children, isValidElement, useEffect, useRef } from 'react';
 
 import { useFlow } from './FlowContext';
 import Sequence from './Sequence';
 import { makeId } from './FlowUtils';
+
+type BranchElement = ReactElement<PropsWithChildren>;
+
+type ParallelProps = PropsWithChildren<{
+    forkId?: string;
+    joinId?: string;
+    nextId?: string | null;
+    indexPath?: Array<string | number>;
+}>;
 
 function Parallel({
     children,
@@ -10,14 +20,14 @@ function Parallel({
     joinId,
     nextId = null,
     indexPath = [0]
-}) {
+}: ParallelProps) {
     const { registerAnchor, requestLayoutUpdate } = useFlow();
-    const forkRef = useRef(null);
-    const joinRef = useRef(null);
-    const wrapperRef = useRef(null);
+    const forkRef = useRef<HTMLDivElement | null>(null);
+    const joinRef = useRef<HTMLDivElement | null>(null);
+    const wrapperRef = useRef<HTMLDivElement | null>(null);
 
-    const branches = Children.toArray(children).filter(function(child) {
-        return isValidElement(child) && child.type?.__FLOW_TYPE__ === 'branch';
+    const branches = Children.toArray(children).filter(function(child): child is BranchElement {
+        return isValidElement(child) && (child.type as { __FLOW_TYPE__?: string })?.__FLOW_TYPE__ === 'branch';
     });
 
     const branchStartIds = branches.map(function(_, index) {
@@ -25,6 +35,10 @@ function Parallel({
     });
 
     useEffect(function() {
+        if (!forkId || !joinId) {
+            return;
+        }
+
         registerAnchor(forkId, forkRef.current, {
             kind: 'fork',
             nextIds: branchStartIds
@@ -111,7 +125,7 @@ function Parallel({
                             <div key={index} style={{ minWidth: 0 }}>
                                 <Sequence
                                     indexPath={[...indexPath, 'branch', index]}
-                                    exitToId={joinId}
+                                    exitToId={joinId ?? null}
                                 >
                                     {branch.props.children}
                                 </Sequence>

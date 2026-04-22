@@ -1,3 +1,4 @@
+import type { CSSProperties } from 'react';
 import { useEffect, useRef, useCallback } from 'react';
 
 import book from '../res/book.png';
@@ -7,11 +8,23 @@ const characters =
     '!@#$%^&*()=+[{]}|;:<>/?' +
     'αβγδεζηθικλμνξοπρστυφχψωΑΒΓΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ';
 
+type Letter = {
+    startX: number;
+    startY: number;
+    x: number;
+    y: number;
+    rotation: number;
+    char: string;
+    size: number;
+    speed: number;
+    color: string;
+};
+
 const Banner = () => {
-    const canvasRef = useRef(null);
-    const bookRef = useRef(null);
-    const letters = useRef([]);
-    const resizeTimeout = useRef();
+    const canvasRef = useRef<HTMLCanvasElement | null>(null);
+    const bookRef = useRef<HTMLImageElement | null>(null);
+    const letters = useRef<Letter[]>([]);
+    const resizeTimeout = useRef<number | null>(null);
     const ticking = useRef(false);
 
     const maxLetters = 500;
@@ -127,9 +140,15 @@ const Banner = () => {
         initialize();
 
         function handleResize() {
-            clearTimeout(resizeTimeout.current);
+            if (resizeTimeout.current !== null) {
+                clearTimeout(resizeTimeout.current);
+            }
 
             resizeTimeout.current = window.setTimeout(() => {
+                if (!canvasRef.current) {
+                    return;
+                }
+
                 canvasRef.current.width = window.innerWidth;
                 canvasRef.current.height = window.innerHeight;
                 
@@ -142,7 +161,7 @@ const Banner = () => {
         function handleScroll() {
             if (!ticking.current) {
                 requestAnimationFrame(() => {
-                    if (window.scrollY < canvasRef.current.height) {
+                    if (canvasRef.current && window.scrollY < canvasRef.current.height) {
                         updatePositions();
                         draw();
                     }
@@ -156,6 +175,9 @@ const Banner = () => {
         return () => {
             window.removeEventListener('resize', handleResize);
             window.removeEventListener('scroll', handleScroll);
+            if (resizeTimeout.current !== null) {
+                clearTimeout(resizeTimeout.current);
+            }
         };
     }, [initialize, updatePositions]);
 
@@ -177,7 +199,7 @@ const Banner = () => {
     );
 };
 
-const styles = {
+const styles: Record<string, CSSProperties> = {
     banner: {
         position: 'relative',
         width: '100%',

@@ -1,7 +1,9 @@
+import type { PropsWithChildren } from 'react';
 import { useCallback, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 import { FlowContext } from './FlowContext';
+import type { FlowAnchorMeta, FlowCheckedState } from './FlowContext';
 import FlowOverlay from './FlowOverlay';
 import {
     getFlowStorageKey,
@@ -10,17 +12,26 @@ import {
     writeFlowCheckedState
 } from './FlowUtils';
 
-function Flow({ children, storageKey: storageKeyProp = null }) {
+type FlowAnchor = {
+    element: HTMLElement;
+    meta: FlowAnchorMeta | null;
+};
+
+type FlowProps = PropsWithChildren<{
+    storageKey?: string | null;
+}>;
+
+function Flow({ children, storageKey: storageKeyProp = null }: FlowProps) {
     const location = useLocation();
-    const containerRef = useRef(null);
-    const anchorsRef = useRef(new Map());
-    const [layoutVersion, setLayoutVersion] = useState(0);
+    const containerRef = useRef<HTMLDivElement | null>(null);
+    const anchorsRef = useRef<Map<string, FlowAnchor>>(new Map());
+    const [, setLayoutVersion] = useState(0);
     const storageKey = storageKeyProp || getFlowStorageKey(location.pathname);
     const [containerSize, setContainerSize] = useState({
         width: 0,
         height: 0
     });
-    const [checkedSteps, setCheckedSteps] = useState(function() {
+    const [checkedSteps, setCheckedSteps] = useState<FlowCheckedState>(function() {
         return readFlowCheckedState(storageKey);
     });
 
@@ -33,8 +44,10 @@ function Flow({ children, storageKey: storageKeyProp = null }) {
     }, [checkedSteps, storageKey]);
 
     useEffect(function() {
-        function handleReset(event) {
-            if (event.detail?.storageKey !== storageKey) {
+        function handleReset(event: Event) {
+            const flowResetEvent = event as CustomEvent<{ storageKey?: string }>;
+
+            if (flowResetEvent.detail?.storageKey !== storageKey) {
                 return;
             }
 
@@ -48,7 +61,7 @@ function Flow({ children, storageKey: storageKeyProp = null }) {
         };
     }, [storageKey]);
 
-    const registerAnchor = useCallback(function(id, element, meta) {
+    const registerAnchor = useCallback(function(id: string, element: HTMLElement | null, meta: FlowAnchorMeta | null) {
         if (!element) {
             anchorsRef.current.delete(id);
             return;
@@ -66,7 +79,7 @@ function Flow({ children, storageKey: storageKeyProp = null }) {
         });
     }, []);
 
-    const setStepChecked = useCallback(function(id, checked) {
+    const setStepChecked = useCallback(function(id: string, checked: boolean) {
         setCheckedSteps(function(currentState) {
             if (!checked && !currentState[id]) {
                 return currentState;
@@ -90,7 +103,7 @@ function Flow({ children, storageKey: storageKeyProp = null }) {
         });
     }, []);
 
-    const toggleStepChecked = useCallback(function(id) {
+    const toggleStepChecked = useCallback(function(id: string) {
         setCheckedSteps(function(currentState) {
             const nextState = {
                 ...currentState
@@ -143,7 +156,7 @@ function Flow({ children, storageKey: storageKeyProp = null }) {
         };
     }, []);
 
-    const anchors = useMemo(function() {
+    const anchors = (function() {
         if (!containerRef.current) {
             return [];
         }
@@ -166,8 +179,8 @@ function Flow({ children, storageKey: storageKeyProp = null }) {
                 x: rect.left + rect.width / 2,
                 y: rect.top + rect.height / 2
             };
-        }).filter(Boolean);
-    }, [layoutVersion]);
+        }).filter(Boolean) as Array<{ id: string; meta: FlowAnchorMeta | null; x: number; y: number }>;
+    })();
 
     const contextValue = useMemo(function() {
         return {

@@ -47,7 +47,7 @@ function Redirects() {
                 ))}
 
                 <tr>
-                    <td colSpan='3'>
+                    <td colSpan={3}>
                         <RedirectsAdd refresh={fetchRedirects} />
                     </td>
                 </tr>

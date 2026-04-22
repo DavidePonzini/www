@@ -1,3 +1,4 @@
+import type { ChangeEvent, FormEvent } from 'react';
 import { useState } from 'react';
 import Layout from '../../components/Layout';
 import SectionBackground from '../../components/SectionBackground';
@@ -11,13 +12,19 @@ function PwdGen() {
     const [useSymbols, setUseSymbols] = useState(true);
     const [password, setPassword] = useState('');
     const [copyLabel, setCopyLabel] = useState('Copy');
+    const optionRows: Array<[string, boolean, (value: boolean) => void, string]> = [
+        ['Lowercase', useLower, setUseLower, 'charactersL'],
+        ['Uppercase', useUpper, setUseUpper, 'charactersU'],
+        ['Digits', useDigits, setUseDigits, 'charactersD'],
+        ['Symbols', useSymbols, setUseSymbols, 'charactersS']
+    ];
 
-    function getRandomChar(chars) {
+    function getRandomChar(chars: string) {
         const i = Math.floor(Math.random() * chars.length);
         return chars.charAt(i);
     }
 
-    function shuffle(str) {
+    function shuffle(str: string) {
         return str
             .split('')
             .map(c => ({ c, r: Math.random() }))
@@ -26,7 +33,7 @@ function PwdGen() {
             .join('');
     }
 
-    function generatePassword(len, lower, upper, digits, symbols) {
+    function generatePassword(len: number, lower: boolean, upper: boolean, digits: boolean, symbols: boolean) {
         const sets = {
             lower: 'abcdefghijklmnopqrstuvwxyz',
             upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
@@ -35,7 +42,7 @@ function PwdGen() {
         };
 
         let all = '';
-        let mustInclude = [];
+        let mustInclude: string[] = [];
 
         if (lower) {
             all += sets.lower;
@@ -64,7 +71,7 @@ function PwdGen() {
         return shuffle(result);
     }
 
-    function handleGenerate(e) {
+    function handleGenerate(e: FormEvent<HTMLFormElement>) {
         e.preventDefault();
         const pwd = generatePassword(length, useLower, useUpper, useDigits, useSymbols);
         setPassword(pwd);
@@ -96,16 +103,11 @@ function PwdGen() {
                                         value={length}
                                         min="1"
                                         max="255"
-                                        onChange={e => setLength(parseInt(e.target.value))}
+                                        onChange={(event: ChangeEvent<HTMLInputElement>) => setLength(parseInt(event.currentTarget.value, 10))}
                                     />
                                 </div>
 
-                                {[
-                                    ['Lowercase', useLower, setUseLower, 'charactersL'],
-                                    ['Uppercase', useUpper, setUseUpper, 'charactersU'],
-                                    ['Digits', useDigits, setUseDigits, 'charactersD'],
-                                    ['Symbols', useSymbols, setUseSymbols, 'charactersS']
-                                ].map(([label, val, setter, id], idx, arr) => (
+                                {optionRows.map(([label, val, setter, id], idx, arr) => (
                                     <div className={`input-group ${idx < arr.length - 1 ? 'mb-1' : 'mb-3'}`} key={id}>
                                         <div className="input-group-text">
                                             <div className="form-check form-switch">

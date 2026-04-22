@@ -1,26 +1,58 @@
+import type { PropsWithChildren } from 'react';
 import { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 
-const AuthContext = createContext();
+type UserInfo = {
+    username: string;
+    isAdmin: boolean;
+};
+
+type ApiRequestOptions = {
+    stream?: boolean;
+};
+
+type AuthContextValue = {
+    isLoggedIn: boolean;
+    userInfo: UserInfo | null;
+    loadingUser: boolean;
+    saveTokens: (access: string, refresh: string) => void;
+    logout: () => void;
+    apiRequest: <T = any>(endpoint: string, method?: string, body?: unknown, options?: ApiRequestOptions) => Promise<T | ReadableStream<Uint8Array>>;
+    loadUserInfo: () => Promise<void>;
+};
+
+const AuthContext = createContext<AuthContextValue | null>(null);
 
 class RequestSizeError extends Error {
-    constructor(size, maxSize) {
+    size: number;
+    maxSize: number;
+
+    constructor(size: number, maxSize: number) {
         super('Request size exceeds the maximum limit.');
         this.size = size;
         this.maxSize = maxSize;
     }
 }
 
+class HttpError extends Error {
+    status: number;
 
-function AuthProvider({ children }) {
+    constructor(status: number) {
+        super(`HTTP error ${status}`);
+        this.status = status;
+    }
+}
+
+
+function AuthProvider({ children }: PropsWithChildren) {
     const MAX_REQUEST_SIZE = 1024 * 1024 * 20; // 20 MB
 
-    const [accessToken, setAccessToken] = useState(sessionStorage.getItem('access_token'));
-    const [refreshToken, setRefreshToken] = useState(sessionStorage.getItem('refresh_token'));
-    const [userInfo, setUserInfo] = useState(null);
+    const [accessToken, setAccessToken] = useState<string | null>(sessionStorage.getItem('access_token'));
+    const [refreshToken, setRefreshToken] = useState<string | null>(sessionStorage.getItem('refresh_token'));
+    const [userInfo, setUserInfo] = useState<UserInfo | null>(null);
     const [loadingUser, setLoadingUser] = useState(false);
 
     // Tokens management
-    function saveTokens(access, refresh) {
+    function saveTokens(access: string, refresh: string) {
         sessionStorage.setItem('access_token', access);
         sessionStorage.setItem('refresh_token', refresh);
         setAccessToken(access);
@@ -58,10 +90,10 @@ function AuthProvider({ children }) {
         }
     }, [refreshToken]);
 
-    const apiRequest = useCallback(async (endpoint, method = 'GET', body = null, { stream = false } = {}) => {
+    const apiRequest = useCallback<AuthContextValue['apiRequest']>(async <T = any,>(endpoint: string, method = 'GET', body: unknown = null, { stream = false }: ApiRequestOptions = {}) => {
         let token = accessToken;
 
-        async function doRequest(currentToken) {
+        async function doRequest(currentToken: string | null) {
             let content = body ? JSON.stringify(body) : null;
             if (content && content.length > MAX_REQUEST_SIZE) {
                 throw new RequestSizeError(content.length, MAX_REQUEST_SIZE);
@@ -85,9 +117,7 @@ function AuthProvider({ children }) {
         }
 
         if (!response.ok) {
-            const error = new Error(`HTTP error ${response.status}`);
-            error.status = response.status;
-            throw error;
+            throw new HttpError(response.status);
         }
 
         if (stream) {
@@ -96,7 +126,7 @@ function AuthProvider({ children }) {
             }
             return response.body; // Return ReadableStream for caller to handle
         } else {
-            return response.json(); // Standard JSON handling
+            return response.json() as Promise<T>; // Standard JSON handling
         }
     }, [accessToken, refreshAccessToken, MAX_REQUEST_SIZE]);
 
@@ -109,7 +139,7 @@ function AuthProvider({ children }) {
         setLoadingUser(true);
         
         try {
-            const response = await apiRequest('/api/users/info');
+            const response = await apiRequest<{ username: string; is_admin: boolean }>('/api/users/info') as { username: string; is_admin: boolean };
 
             setUserInfo({
                 username: response.username,
@@ -130,7 +160,7 @@ function AuthProvider({ children }) {
         }
     }, [accessToken, userInfo, loadUserInfo]);
 
-    const value = useMemo(() => ({
+    const value = useMemo<AuthContextValue>(() => ({
         isLoggedIn: !!accessToken,
         userInfo,
         loadingUser,
@@ -146,7 +176,13 @@ function AuthProvider({ children }) {
 }
 
 function useAuth() {
-    return useContext(AuthContext);
+    const context = useContext(AuthContext);
+
+    if (!context) {
+        throw new Error('useAuth must be used inside <AuthProvider>.');
+    }
+
+    return context;
 }
 
 export { AuthProvider, useAuth, RequestSizeError };

@@ -1,4 +1,13 @@
-function NotesDash({ x, y, width, height }) {
+import type { CSSProperties, PropsWithChildren } from 'react';
+
+type NotesDashProps = {
+    x: CSSProperties['left'];
+    y: CSSProperties['top'];
+    width: CSSProperties['width'];
+    height: CSSProperties['height'];
+};
+
+function NotesDash({ x, y, width, height }: NotesDashProps) {
     return (
         <span
             style={{
@@ -13,7 +22,7 @@ function NotesDash({ x, y, width, height }) {
     );
 }
 
-function RecipeNotes({ children }) {
+function RecipeNotes({ children }: PropsWithChildren) {
     return (
         <div style={{ marginBottom: '1rem' }}>
             <div

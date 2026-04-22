@@ -3,7 +3,28 @@ import { edgePath } from './FlowUtils';
 const CHECKED_COLOR = '#2f9e44';
 const UNCHECKED_COLOR = '#f08c00';
 
-function FlowOverlay({ anchors, width, height, nodeRadius = 6, strokeWidth = 2 }) {
+type FlowAnchorMeta = {
+    kind: 'step' | 'fork' | 'join';
+    nextIds: string[];
+    checked?: boolean;
+};
+
+type FlowOverlayAnchor = {
+    id: string;
+    meta: FlowAnchorMeta | null;
+    x: number;
+    y: number;
+};
+
+type FlowOverlayProps = {
+    anchors: FlowOverlayAnchor[];
+    width: number;
+    height: number;
+    nodeRadius?: number;
+    strokeWidth?: number;
+};
+
+function FlowOverlay({ anchors, width, height, nodeRadius = 6, strokeWidth = 2 }: FlowOverlayProps) {
     const anchorMap = new Map(
         anchors.map(function(anchor) {
             return [anchor.id, anchor];
@@ -24,7 +45,7 @@ function FlowOverlay({ anchors, width, height, nodeRadius = 6, strokeWidth = 2 }
 
     const checkedStateCache = new Map();
 
-    function isAnchorChecked(anchorId) {
+    function isAnchorChecked(anchorId: string) {
         if (checkedStateCache.has(anchorId)) {
             return checkedStateCache.get(anchorId);
         }
@@ -58,11 +79,11 @@ function FlowOverlay({ anchors, width, height, nodeRadius = 6, strokeWidth = 2 }
         return checked;
     }
 
-    function getAnchorColor(anchor) {
+    function getAnchorColor(anchor: FlowOverlayAnchor) {
         return isAnchorChecked(anchor.id) ? CHECKED_COLOR : UNCHECKED_COLOR;
     }
 
-    function getEdgeColor(sourceAnchor, targetAnchor) {
+    function getEdgeColor(sourceAnchor: FlowOverlayAnchor, targetAnchor: FlowOverlayAnchor) {
         if (sourceAnchor.meta?.kind === 'step') {
             return getAnchorColor(sourceAnchor);
         }

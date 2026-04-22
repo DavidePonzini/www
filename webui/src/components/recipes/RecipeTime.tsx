@@ -1,7 +1,24 @@
+import type { PropsWithChildren, ReactNode } from 'react';
+
 import RecipeMetaItem from './RecipeMetaItem';
 import { formatRecipeDuration } from './RecipeFormat';
 
-function TimeDescription({ children }) {
+type SharedTimeProps = {
+    time: string | number;
+    description?: ReactNode;
+};
+
+type CookingTimeProps = SharedTimeProps & {
+    flame: ReactNode;
+};
+
+type BakingTimeProps = SharedTimeProps & {
+    temperature: ReactNode;
+    ovenIcon?: string;
+    temperatureUnit?: string;
+};
+
+function TimeDescription({ children }: PropsWithChildren) {
     if (!children) {
         return null;
     }
@@ -9,7 +26,7 @@ function TimeDescription({ children }) {
     return <em>{`(${children})`}</em>;
 }
 
-function PreparationTime({ time, description }) {
+function PreparationTime({ time, description }: SharedTimeProps) {
     return (
         <RecipeMetaItem icon='fa-solid fa-mitten'>
             <span>
@@ -20,7 +37,7 @@ function PreparationTime({ time, description }) {
     );
 }
 
-function PreparationWait({ time, description }) {
+function PreparationWait({ time, description }: SharedTimeProps) {
     return (
         <RecipeMetaItem icon='fa-regular fa-clock'>
             <span>
@@ -31,7 +48,7 @@ function PreparationWait({ time, description }) {
     );
 }
 
-function CookingTime({ time, flame, description }) {
+function CookingTime({ time, flame, description }: CookingTimeProps) {
     return (
         <RecipeMetaItem icon='fa-solid fa-fire-burner'>
             <span>
@@ -42,7 +59,7 @@ function CookingTime({ time, flame, description }) {
     );
 }
 
-function BakingTime({ time, temperature, ovenIcon, description, temperatureUnit = 'C' }) {
+function BakingTime({ time, temperature, ovenIcon, description, temperatureUnit = 'C' }: BakingTimeProps) {
     return (
         <RecipeMetaItem icon='fa-solid fa-temperature-high'>
             <span>
@@ -54,19 +71,19 @@ function BakingTime({ time, temperature, ovenIcon, description, temperatureUnit 
     );
 }
 
-function BakingTimeBottom(props) {
+function BakingTimeBottom(props: Omit<BakingTimeProps, 'ovenIcon'>) {
     return <BakingTime {...props} ovenIcon='fa-solid fa-arrow-down' />;
 }
 
-function BakingTimeTop(props) {
+function BakingTimeTop(props: Omit<BakingTimeProps, 'ovenIcon'>) {
     return <BakingTime {...props} ovenIcon='fa-solid fa-arrow-up' />;
 }
 
-function BakingTimeTopbottom(props) {
+function BakingTimeTopbottom(props: Omit<BakingTimeProps, 'ovenIcon'>) {
     return <BakingTime {...props} ovenIcon='fa-solid fa-arrows-up-down' />;
 }
 
-function BakingTimeFan(props) {
+function BakingTimeFan(props: Omit<BakingTimeProps, 'ovenIcon'>) {
     return <BakingTime {...props} ovenIcon='fa-solid fa-fan' />;
 }
 

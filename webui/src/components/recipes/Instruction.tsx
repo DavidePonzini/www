@@ -10,6 +10,11 @@ function Instruction ({ children }) {
     return (
         <li
             onClick={toggleChecked}
+            style={{
+                cursor: 'pointer',
+                textDecoration: isChecked ? 'line-through' : 'none',
+                opacity: isChecked ? 0.7 : 1,
+            }}
         >
             {children}
         </li>

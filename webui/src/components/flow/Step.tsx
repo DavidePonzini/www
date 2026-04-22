@@ -1,3 +1,4 @@
+import type { PropsWithChildren } from 'react';
 import { useEffect, useRef } from 'react';
 
 import { useFlow } from './FlowContext';
@@ -5,22 +6,31 @@ import { useFlow } from './FlowContext';
 const CHECKED_COLOR = '#2f9e44';
 const UNCHECKED_COLOR = '#f08c00';
 
+type StepProps = PropsWithChildren<{
+    id?: string;
+    nextId?: string | null;
+}>;
+
 function Step({
     children,
     id,
     nextId = null
-}) {
+}: StepProps) {
     const {
         checkedSteps,
         registerAnchor,
         requestLayoutUpdate,
         toggleStepChecked
     } = useFlow();
-    const anchorRef = useRef(null);
-    const rowRef = useRef(null);
-    const checked = Boolean(checkedSteps[id]);
+    const anchorRef = useRef<HTMLDivElement | null>(null);
+    const rowRef = useRef<HTMLDivElement | null>(null);
+    const checked = id ? Boolean(checkedSteps[id]) : false;
 
     useEffect(function() {
+        if (!id) {
+            return;
+        }
+
         registerAnchor(id, anchorRef.current, {
             kind: 'step',
             nextIds: nextId ? [nextId] : [],
@@ -58,7 +68,9 @@ function Step({
                     return;
                 }
 
-                toggleStepChecked(id);
+                if (id) {
+                    toggleStepChecked(id);
+                }
             }}
             style={{
                 display: 'flex',

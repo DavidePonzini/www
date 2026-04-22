@@ -1,10 +1,22 @@
-import PropTypes from 'prop-types';
+import type { CSSProperties, PropsWithChildren } from 'react';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { Card } from 'react-bootstrap';
 
-function LinkExternal({ href, isExternal = false, children }) {
-    const style = {
+type LinkExternalProps = PropsWithChildren<{
+    href: string;
+    isExternal?: boolean;
+}>;
+
+type ItemCardProps = PropsWithChildren<{
+    title: string;
+    href: string;
+    img: string;
+    isExternal?: boolean;
+}>;
+
+function LinkExternal({ href, isExternal = false, children }: LinkExternalProps) {
+    const style: CSSProperties = {
         textDecoration: 'none',
         color: 'inherit'
     };
@@ -24,7 +36,7 @@ function LinkExternal({ href, isExternal = false, children }) {
     );
 }
 
-function ItemCard({ title, href, img, isExternal = false, children }) {
+function ItemCard({ title, href, img, isExternal = false, children }: ItemCardProps) {
     const [isHovered, setIsHovered] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
 
@@ -40,7 +52,7 @@ function ItemCard({ title, href, img, isExternal = false, children }) {
         return () => mql.removeEventListener('change', handleResize);
     }, []);
 
-    const styles = {
+    const styles: { cardBase: CSSProperties } = {
         cardBase: {
             display: 'block',
             width: '18rem',
@@ -115,11 +127,5 @@ function ItemCard({ title, href, img, isExternal = false, children }) {
         </div>
     );
 }
-
-ItemCard.propTypes = {
-    title: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired,
-    img: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired
-};
 
 export default ItemCard;

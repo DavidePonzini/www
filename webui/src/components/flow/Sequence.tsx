@@ -1,18 +1,30 @@
+import type { PropsWithChildren, ReactElement, ReactNode } from 'react';
 import { Children, cloneElement, isValidElement } from 'react';
 import { Fragment } from 'react';
 import { makeId } from './FlowUtils';
+
+type FlowTypedElement = ReactElement<Record<string, unknown>> & {
+    type: {
+        __FLOW_TYPE__?: 'step' | 'parallel';
+    };
+};
+
+type SequenceProps = PropsWithChildren<{
+    indexPath?: Array<string | number>;
+    exitToId?: string | null;
+}>;
 
 function Sequence({
     children,
     indexPath = [0],
     exitToId = null
-}) {
+}: SequenceProps) {
     // if children is <></>, look into its content instead
-    if (children?.type === Fragment) {
-        children = children.props.children;
+    if (isValidElement(children) && children.type === Fragment) {
+        children = (children.props as { children?: ReactNode }).children;
     }
 
-    const items = Children.toArray(children).filter(function(child) {
+    const items = Children.toArray(children).filter(function(child): child is FlowTypedElement {
         return isValidElement(child);
     });
 

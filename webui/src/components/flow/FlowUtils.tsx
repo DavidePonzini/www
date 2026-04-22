@@ -1,12 +1,31 @@
-function makeId(prefix, indexPath) {
+type FlowCheckedState = Record<string, boolean>;
+
+type RelativeRect = {
+    left: number;
+    top: number;
+    width: number;
+    height: number;
+};
+
+type EdgePoint = {
+    x: number;
+    y: number;
+};
+
+type EdgePathOptions = {
+    sourceKind?: 'step' | 'fork' | 'join';
+    targetKind?: 'step' | 'fork' | 'join';
+};
+
+function makeId(prefix: string, indexPath: Array<string | number>) {
     return `${prefix}-${indexPath.join('-')}`;
 }
 
-function getFlowStorageKey(pathname) {
+function getFlowStorageKey(pathname?: string | null) {
     return `recipe-flow:${pathname || 'default'}`;
 }
 
-function readFlowCheckedState(storageKey) {
+function readFlowCheckedState(storageKey: string): FlowCheckedState {
     if (typeof window === 'undefined') {
         return {};
     }
@@ -30,7 +49,7 @@ function readFlowCheckedState(storageKey) {
     return {};
 }
 
-function writeFlowCheckedState(storageKey, checkedState) {
+function writeFlowCheckedState(storageKey: string, checkedState: FlowCheckedState) {
     if (typeof window === 'undefined') {
         return;
     }
@@ -45,7 +64,7 @@ function writeFlowCheckedState(storageKey, checkedState) {
     window.sessionStorage.setItem(storageKey, JSON.stringify(checkedState));
 }
 
-function getRelativeRect(element, container) {
+function getRelativeRect(element: Element, container: Element): RelativeRect {
     const elementRect = element.getBoundingClientRect();
     const containerRect = container.getBoundingClientRect();
 
@@ -57,7 +76,7 @@ function getRelativeRect(element, container) {
     };
 }
 
-function edgePath(from, to, radius, options = {}) {
+function edgePath(from: EdgePoint, to: EdgePoint, radius: number, options: EdgePathOptions = {}) {
     if (options.targetKind === 'join' && from.y < to.y) {
         const startY = from.y + radius;
         const endY = to.y - radius;
