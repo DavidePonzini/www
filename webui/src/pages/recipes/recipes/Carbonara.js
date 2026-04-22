@@ -1,23 +1,24 @@
 import RecipeLayout from "../../../components/recipes/RecipeLayout";
-import Instruction from "../../../components/recipes/Instruction";
 import Note from "../../../components/recipes/Note";
-import Step from "../../../components/recipes/Example";
-import { createContext, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
-
+import { CookingTime, PreparationTime, PreparationWait, BakingTimeFan, BakingTimeBottom, BakingTimeTop, BakingTimeTopbottom } from "../../../components/recipes/RecipeTime";
+import { Step, Parallel, Branch } from "../../../components/flow";
 
 function Carbonara() {
-    const FlowContext = createContext(null);
-
-    function useFlow() {
-        return useContext(FlowContext);
-    }
-
     return (
-
         <RecipeLayout
             title='Carbonara'
             servings={2}
             source='Davide Ponzini'
+            addedOn='22 aprile 2026'
+            times={<>
+                <PreparationTime time='10 min' />
+                <CookingTime time='8 min' flame='media' />
+                <BakingTimeFan time='2 min' temperature='180'/>
+                <BakingTimeBottom time='2 min' temperature='180'/>
+                <BakingTimeTop time='2 min' temperature='180'/>
+                <BakingTimeTopbottom time='2 min' temperature='180'/>
+                <PreparationWait time='2 min' description='Frigo'/>
+            </>}
             ingredients={[
                 { name: 'Spaghetti', quantity: 200, unit: 'g' },
                 { name: 'Guanciale', quantity: 100, unit: 'g' },
@@ -27,15 +28,31 @@ function Carbonara() {
                 { name: 'Sale', quantity: 'q.b.' },
             ]}
             instructions={<>
-                {/* <Instruction>Cuocere gli spaghetti in abbondante acqua salata fino a quando non sono al dente.</Instruction>
-                <Instruction>Nel frattempo, tagliare il guanciale a cubetti o strisce e rosolarlo in una padella fino a quando non diventa croccante.</Instruction>
-                <Instruction>In una ciotola, sbattere i tuorli d'uovo con il pecorino grattugiato e una generosa quantità di pepe nero.</Instruction>
-                <Instruction>Scolare gli spaghetti, conservando un po' di acqua di cottura.</Instruction>
-                <Instruction>Aggiungere gli spaghetti nella padella con il guanciale e mescolare bene.</Instruction>
-                <Instruction>Togliere la padella dal fuoco e aggiungere il composto di uova e formaggio, mescolando rapidamente per evitare che le uova si cuociano troppo.</Instruction>
-                <Instruction>Se necessario, aggiungere un po' di acqua di cottura degli spaghetti per ottenere una consistenza cremosa.</Instruction>
-                <Instruction>Servire immediatamente, guarnendo con ulteriore pecorino e pepe nero a piacere.</Instruction> */}
-                <Step />
+                <Step>
+                    <a href='https://example.com'>step 1</a>
+                </Step>
+
+                <Step>
+                    step 2 with some longer content that can wrap on smaller screens.
+                </Step>
+
+                <Parallel>
+                    <Branch>
+                        <Step>step 3a1</Step>
+                        <Step>step 3a2</Step>
+                    </Branch>
+
+                    <Branch>
+                        <Step>step 3b1</Step>
+                        <Step>step 3b2</Step>
+                        <Step>
+                            step 3b3 with a bit more text so you can test variable height
+                            and wrapping behaviour.
+                        </Step>
+                    </Branch>
+                </Parallel>
+
+                <Step>step 4</Step>
             </>
             }
             notes={<>

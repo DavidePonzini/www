@@ -1,5 +1,5 @@
 import { Children, cloneElement, isValidElement } from 'react';
-
+import { Fragment } from 'react';
 import { makeId } from './FlowUtils';
 
 function Sequence({
@@ -7,6 +7,11 @@ function Sequence({
     indexPath = [0],
     exitToId = null
 }) {
+    // if children is <></>, look into its content instead
+    if (children?.type === Fragment) {
+        children = children.props.children;
+    }
+
     const items = Children.toArray(children).filter(function(child) {
         return isValidElement(child);
     });

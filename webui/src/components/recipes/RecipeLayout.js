@@ -1,11 +1,11 @@
 import { useLocation, useSearchParams } from 'react-router-dom';
 
 import EditableValue from './EditableValue';
-import Source from './Source';
-import Servings from './Servings';
+import RecipeMetaItem from './RecipeMetaItem';
 
 import SectionBackground from '../SectionBackground';
 import { getFlowStorageKey } from '../flow/FlowUtils';
+import { Flow, Sequence } from '../flow';
 
 function RecipeLayout({
     title,
@@ -13,6 +13,8 @@ function RecipeLayout({
     servingsUnitSingular = 'porzione',
     servingsUnitPlural = 'porzioni',
     source,
+    addedOn,
+    times = null,
     ingredients = [],       // [{name: string, quantity: number, unit: string}]
     instructions = null,
     notes = null,
@@ -100,27 +102,47 @@ function RecipeLayout({
         }));
     }
 
+    function getServingsUnitLabel() {
+        return formatQuantity(servings) === 1 ? servingsUnitSingular : servingsUnitPlural;
+    }
+
     return (
         <SectionBackground img={null}>
-            <h2>{title}</h2>
+            <h1>{title}</h1>
 
             {/* Header */}
             <div className='row mb-4'>
                 <div className='col-lg-6'>
-                    <Servings>
-                        <EditableValue
-                            onChange={onServingsChange}
-                        >
-                            {formatQuantity(servings)}
-                        </EditableValue>
+                    <RecipeMetaItem icon='fa-solid fa-utensils'>
+                        <span>
+                            <EditableValue
+                                onChange={onServingsChange}
+                            >
+                                {formatQuantity(servings)}
+                            </EditableValue>
+                            {` ${getServingsUnitLabel()}`}
+                        </span>
+                    </RecipeMetaItem>
 
-                        {formatQuantity(servings) === 1 ? servingsUnitSingular : servingsUnitPlural}
-                    </Servings>
+                    <RecipeMetaItem icon='fa-solid fa-address-book'>
+                        {source}
+                    </RecipeMetaItem>
 
-                    <Source>{source}</Source>
+                    <RecipeMetaItem icon='fa-solid fa-calendar-days'>
+                        {addedOn}
+                    </RecipeMetaItem>
                 </div>
 
                 <div className='col-lg-6'>
+                    {times && (
+                        <>
+                            <h2>Tempi</h2>
+                            <table
+                            >
+                                <tbody>{times}</tbody>
+                            </table>
+                        </>
+                    )}
                 </div>
             </div>
 
@@ -136,7 +158,7 @@ function RecipeLayout({
                                 marginBottom: '.5rem'
                             }}
                         >
-                            <h3 style={{ marginBottom: 0 }}>Preparazione</h3>
+                            <h2 style={{ marginBottom: 0 }}>Preparazione</h2>
 
                             <button
                                 type='button'
@@ -147,15 +169,17 @@ function RecipeLayout({
                             </button>
                         </div>
 
-                        <ol>
-                            {instructions}
-                        </ol>
+                        <Flow>
+                            <Sequence>
+                                {instructions}
+                            </Sequence>
+                        </Flow>
                     </div>
                 )}
 
                 {ingredients && (
                     <div className='col-lg-6 order-1 order-lg-2'>
-                        <h3>Ingredienti</h3>
+                        <h2>Ingredienti</h2>
 
                         <table>
                             <tbody>
@@ -201,7 +225,7 @@ function RecipeLayout({
                 remark && (
                     <div className='row'>
                         <div className='col-12 mt-4'>
-                            <h3>Nota</h3>
+                            <h2>Nota</h2>
                             {remark}
                         </div>
                     </div>
