@@ -17,58 +17,59 @@ function Carbonara() {
             title='Carbonara'
             servings={2}
             source='Davide Ponzini'
-            addedOn='2025-5-2'
+            addedOn='Marzo 2025'
             times={<>
-                <PreparationTime time='00:10:00' />
-                <CookingTime time='00:08:00' flame='media' />
-                <BakingTimeFan time='00:02:00' temperature='180'/>
-                <BakingTimeBottom time='00:02:00' temperature='180'/>
-                <BakingTimeTop time='00:02:00' temperature='180'/>
-                <BakingTimeTopbottom time='00:02:00' temperature='180'/>
-                <PreparationWait time='00:02:00' description='Frigo'/>
+                <PreparationTime time='00:05:00' />
+                <CookingTime time='00:10:00' flame='alta' />
             </>}
             ingredients={[
                 { name: 'Spaghetti', quantity: 200, unit: 'g' },
-                { name: 'Guanciale', quantity: 100, unit: 'g' },
-                { name: 'Tuorli d\'uovo', quantity: 2, unit: '' },
-                { name: 'Pecorino Romano grattugiato', quantity: 50, unit: 'g' },
-                { name: 'Pepe nero macinato fresco', quantity: 'q.b.' },
-                { name: 'Sale', quantity: 'q.b.' },
+                { name: 'Guanciale', quantity: 160, unit: 'g' },
+                { name: 'Tuorli', quantity: 3, unit: '' },
+                { name: 'Pecorino romano', quantity: 60, unit: 'g' },
+                { name: 'Pepe nero', quantity: 'q.b.' },
+                { name: 'Schiumarola' },
             ]}
             instructions={<>
-                <Step>
-                    <a href='https://example.com'>step 1</a>
-                </Step>
-
-                <Step>
-                    step 2 with some longer content that can wrap on smaller screens.
-                </Step>
-
                 <Parallel>
                     <Branch>
-                        <Step>step 3a1</Step>
-                        <Step>step 3a2</Step>
+                        <Step>Far bollire l'acqua.</Step>
+                        <Step>Cuocere la pasta.</Step>
                     </Branch>
 
                     <Branch>
-                        <Step>step 3b1</Step>
-                        <Step>step 3b2</Step>
-                        <Step>
-                            step 3b3 with a bit more text so you can test variable height
-                            and wrapping behaviour.
-                        </Step>
+                        <Parallel>
+                            <Branch>
+                                <Step>Miscelare tuorli con Pecorino e metà pepe, fino a che sono ben addensati.</Step>
+                            </Branch>
+
+                            <Branch>
+                                <Step>Cuocere guanciale.</Step>
+                                <Step>Quando è quasi pronto, lasciare raffreddare.</Step>
+                            </Branch>
+                        </Parallel>
+
+                        <Parallel>
+                            <Branch>
+                                <Step>Unire guanciale ai tuorli e mescolare bene.</Step>
+                                <Step>Aggiungere acqua di cottura fino a renderla cremosa.</Step>
+                            </Branch>
+
+                            <Branch>
+                                <Step>Aggiungere l'altra metà di pepe al guanciale.</Step>
+                                <Step>Far rosolare fino a quando non è croccante.</Step>
+                            </Branch>
+                        </Parallel>
                     </Branch>
                 </Parallel>
 
-                <Step>step 4</Step>
-            </>
-            }
-            suggestions={<>
-                <Suggestion>Usare guanciale autentico per il miglior sapore.</Suggestion>
-                <Suggestion>Non usare panna; la cremosità deve venire dalle uova e dal formaggio.</Suggestion>
-                <Suggestion>Servire subito per gustare al meglio la carbonara.</Suggestion>
+                <Step>Quando la pasta è al dente, scolarla e unirla al guanciale.</Step>
+                <Step>Mescolare a fiamma spenta.</Step>
+                <Step>Quando la pasta si è raffreddata, unirla alle uova e mescolare bene.</Step>
             </>}
-            notes='<3'
+            suggestions={<>
+                <Suggestion>Attenzione: se si mette la pasta appena scolata sulle uova, diventano una frittata!</Suggestion>
+            </>}
         />
     );
 }
