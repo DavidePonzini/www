@@ -24,6 +24,18 @@ function RecipeLayout({
     const scale = Number(searchParams.get('scale') ?? 1);
     const flowStorageKey = getFlowStorageKey(location.pathname);
 
+    function quantityContainsNumber(quantity) {
+        if (typeof quantity === 'number') {
+            return Number.isFinite(quantity);
+        }
+
+        if (typeof quantity === 'string') {
+            return /\d/.test(quantity);
+        }
+
+        return false;
+    }
+
     function formatQuantity(quantity) {
         if (isNaN(scale) || scale < 0)
             return '';
@@ -152,11 +164,15 @@ function RecipeLayout({
                                         <td style={{ paddingRight: '1rem', textAlign: 'right', whiteSpace: 'nowrap' }}>
                                             {ingredient.quantity === undefined ?
                                                 '—' :
-                                                <EditableValue
-                                                    onChange={newQuantity => onQuantityChange(index, parseFloat(newQuantity))}
-                                                >
-                                                    {formatQuantity(ingredient.quantity)}
-                                                </EditableValue>
+                                                quantityContainsNumber(ingredient.quantity) ? (
+                                                    <EditableValue
+                                                        onChange={newQuantity => onQuantityChange(index, parseFloat(newQuantity))}
+                                                    >
+                                                        {formatQuantity(ingredient.quantity)}
+                                                    </EditableValue>
+                                                ) : (
+                                                    formatQuantity(ingredient.quantity)
+                                                )
                                             }
                                             {` ${ingredient.unit || ''}`}
                                         </td>

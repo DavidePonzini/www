@@ -1,14 +1,14 @@
-function EditableValue({ children, onChange, style }) {
+function EditableValue({ children, onChange, style, editable = true }) {
     return (
         <span
-            contentEditable={true}
-            suppressContentEditableWarning={true}
+            contentEditable={editable}
+            suppressContentEditableWarning={editable}
             style={{
-                cursor: 'text',
+                cursor: editable ? 'text' : 'inherit',
                 padding: '0 0.2rem',
                 ...style,
             }}
-            onBlur={e => onChange(e.target.innerText)}
+            onBlur={editable ? e => onChange(e.target.innerText) : undefined}
         >
             {children}
         </span>
