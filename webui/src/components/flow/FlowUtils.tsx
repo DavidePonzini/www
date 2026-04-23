@@ -21,22 +21,18 @@ const DEFAULT_FLOW_COLOR = '#f08c00';
 const COMPLETED_FLOW_COLOR = '#2f9e44';
 const COMPLETED_TEXT_COLOR = '#74b816';
 const BRANCH_FLOW_COLOR_FAMILIES = [
-    [
-        ['#c2255c', '#a61e4d', '#e64980'],
-        ['#862e9c', '#9c36b5', '#ae3ec9']
-    ],
-    [
-        ['#1971c2', '#1864ab', '#228be6'],
-        ['#0b7285', '#0c8599', '#1098ad']
-    ],
-    [
-        ['#d9480f', '#e8590c', '#f76707'],
-        ['#e67700', '#f08c00', '#f59f00']
-    ],
-    [
-        ['#5f3dc4', '#6741d9', '#7950f2'],
-        ['#7048e8', '#845ef7', '#9775fa']
-    ]
+    {
+        branch: '#1c7ed6',
+        subbranches: ['#4c6ef5', '#3b5bdb', '#5c7cfa']
+    },
+    {
+        branch: '#c92a2a',
+        subbranches: ['#f03e3e', '#e03131', '#ff6b6b']
+    },
+    {
+        branch: '#6741d9',
+        subbranches: ['#9c36b5', '#862e9c', '#ae3ec9']
+    },
 ];
 
 function makeId(prefix: string, indexPath: Array<string | number>) {
@@ -44,35 +40,28 @@ function makeId(prefix: string, indexPath: Array<string | number>) {
 }
 
 function getBranchColor(indexPath: Array<string | number>) {
-    const branchMarkers = indexPath.reduce<Array<number>>(function(result, part, index) {
-        if (part === 'branch') {
-            result.push(index);
+    const branchIndexes = indexPath.reduce<Array<number>>(function(result, part, index) {
+        if (part === 'branch' && typeof indexPath[index + 1] === 'number') {
+            result.push(indexPath[index + 1] as number);
         }
 
         return result;
     }, []);
-    const depth = Math.min(Math.max(branchMarkers.length - 1, 0), 1);
-    const familyPath = branchMarkers.length === 0
-        ? indexPath
-        : indexPath.slice(0, branchMarkers[0] + 2);
-    const family = BRANCH_FLOW_COLOR_FAMILIES[hashIndexPath(familyPath) % BRANCH_FLOW_COLOR_FAMILIES.length];
-    const variants = family[depth];
-    const variantKey = branchMarkers.length <= 1
-        ? familyPath
-        : indexPath.slice(branchMarkers[branchMarkers.length - 2], branchMarkers[branchMarkers.length - 1] + 2);
 
-    return variants[hashIndexPath(variantKey) % variants.length];
-}
-
-function hashIndexPath(indexPath: Array<string | number>) {
-    const key = indexPath.join(':');
-    let hash = 0;
-
-    for (let index = 0; index < key.length; index += 1) {
-        hash = (hash * 31 + key.charCodeAt(index)) >>> 0;
+    if (branchIndexes.length === 0) {
+        return BRANCH_FLOW_COLOR_FAMILIES[0].branch;
     }
 
-    return hash;
+    const parentBranchIndex = branchIndexes[0];
+    const family = BRANCH_FLOW_COLOR_FAMILIES[parentBranchIndex % BRANCH_FLOW_COLOR_FAMILIES.length];
+
+    if (branchIndexes.length === 1) {
+        return family.branch;
+    }
+
+    const subbranchIndex = branchIndexes[1];
+
+    return family.subbranches[subbranchIndex % family.subbranches.length];
 }
 
 function getFlowStorageKey(pathname?: string | null) {
