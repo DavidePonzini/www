@@ -14,8 +14,8 @@ function Carbonara() {
             source='Davide Ponzini'
             addedOn='Marzo 2025'
             times={<>
-                <PreparationTime time='00:05:00' />
-                <CookingTime time='00:10:00' flame='alta' />
+                <PreparationTime time='5 min' />
+                <CookingTime time='10 min' flame='alta' />
             </>}
             ingredients={[
                 { name: 'Spaghetti', quantity: 200, unit: 'g' },
