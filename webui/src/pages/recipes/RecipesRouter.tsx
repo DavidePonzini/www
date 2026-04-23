@@ -2,8 +2,9 @@ import { Route, Routes, Link } from 'react-router-dom';
 
 import Layout from '../../components/Layout';
 
-import Carbonara from './recipes/Carbonara';
 import SectionBackground from '../../components/SectionBackground';
+import Carbonara from './recipes/Carbonara';
+import Amatriciana from './recipes/Amatriciana';
 
 // List of all recipes
 function RecipeList() {
@@ -12,6 +13,7 @@ function RecipeList() {
             <h1>Primi</h1>
             <ul>
                 <li><Link to='carbonara'>Carbonara</Link></li>
+                <li><Link to='amatriciana'>Amatriciana</Link></li>
             </ul>
 
             <h1>Secondi</h1>
@@ -30,6 +32,7 @@ function RecipesRouter() {
                 <Route index element={<RecipeList />} />
 
                 <Route path='carbonara' element={<Carbonara />} />
+                <Route path='amatriciana' element={<Amatriciana />} />
             </Routes>
         </Layout>
     );
