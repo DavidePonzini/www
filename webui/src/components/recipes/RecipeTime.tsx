@@ -1,7 +1,6 @@
 import type { PropsWithChildren, ReactNode } from 'react';
 
 import RecipeMetaItem from './RecipeMetaItem';
-import { formatRecipeDuration } from './RecipeFormat';
 
 type SharedTimeProps = {
     time: string | number;
@@ -30,7 +29,7 @@ function PreparationTime({ time, description }: SharedTimeProps) {
     return (
         <RecipeMetaItem icon='fa-solid fa-mitten'>
             <span>
-                {formatRecipeDuration(time)}
+                {time}
                 {description && <> <TimeDescription>{description}</TimeDescription></>}
             </span>
         </RecipeMetaItem>
@@ -41,7 +40,7 @@ function PreparationWait({ time, description }: SharedTimeProps) {
     return (
         <RecipeMetaItem icon='fa-regular fa-clock'>
             <span>
-                {formatRecipeDuration(time)}
+                {time}
                 {description && <> <TimeDescription>{description}</TimeDescription></>}
             </span>
         </RecipeMetaItem>
@@ -52,7 +51,7 @@ function CookingTime({ time, flame, description }: CookingTimeProps) {
     return (
         <RecipeMetaItem icon='fa-solid fa-fire-burner'>
             <span>
-                {formatRecipeDuration(time)}, <i className='fa-solid fa-fire-flame-simple' aria-hidden='true' /> {flame}
+                {time}, <i className='fa-solid fa-fire-flame-simple' aria-hidden='true' /> {flame}
                 {description && <> <TimeDescription>{description}</TimeDescription></>}
             </span>
         </RecipeMetaItem>
@@ -63,7 +62,7 @@ function BakingTime({ time, temperature, ovenIcon, description, temperatureUnit 
     return (
         <RecipeMetaItem icon='fa-solid fa-temperature-high'>
             <span>
-                {formatRecipeDuration(time)}, <i className='fa-solid fa-temperature-three-quarters' aria-hidden='true' /> {temperature} °{temperatureUnit}{' '}
+                {time}, <i className='fa-solid fa-temperature-three-quarters' aria-hidden='true' /> {temperature} °{temperatureUnit}{' '}
                 <i className={ovenIcon} aria-hidden='true' />
                 {description && <> <TimeDescription>{description}</TimeDescription></>}
             </span>

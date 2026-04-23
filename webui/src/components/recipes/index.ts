@@ -7,11 +7,6 @@ export { default as RecipeNotes } from './RecipeNotes';
 export { default as RecipeSectionDivider } from './RecipeSectionDivider';
 
 export {
-    formatRecipeDate,
-    formatRecipeDuration,
-} from './RecipeFormat';
-
-export {
     BakingTimeBottom,
     BakingTimeFan,
     BakingTimeTop,
