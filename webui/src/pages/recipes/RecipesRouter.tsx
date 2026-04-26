@@ -34,6 +34,7 @@ function RecipesRouter() {
 
                 <Route path='carbonara' element={<Carbonara />} />
                 <Route path='amatriciana' element={<Amatriciana />} />
+                <Route path='pure-di-patate' element={<PureDiPatate />} />
             </Routes>
         </Layout>
     );
