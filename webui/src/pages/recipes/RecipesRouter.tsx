@@ -5,6 +5,7 @@ import Layout from '../../components/Layout';
 import SectionBackground from '../../components/SectionBackground';
 import Carbonara from './recipes/Carbonara';
 import Amatriciana from './recipes/Amatriciana';
+import PureDiPatate from './recipes/PureDiPatate';
 
 // List of all recipes
 function RecipeList() {
@@ -18,7 +19,7 @@ function RecipeList() {
 
             <h1>Secondi</h1>
             <ul>
-                {/* Future recipes go here */}
+                <li><Link to='pure-di-patate'>Purè di patate</Link></li>
             </ul>
         </SectionBackground>
     );
