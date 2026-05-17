@@ -8,6 +8,7 @@ import Amatriciana from './recipes/Amatriciana';
 import PureDiPatate from './recipes/PureDiPatate';
 import Sciroppo from './recipes/Sciroppo';
 import SciroppoCannella from './recipes/SciroppoCannella';
+import CremaCocco from './recipes/CremaCocco';
 
 // List of all recipes
 function RecipeList() {
@@ -28,6 +29,7 @@ function RecipeList() {
             <ul>
                 <li><Link to='sciroppo'>Sciroppo 62%</Link></li>
                 <li><Link to='sciroppo-cannella'>Sciroppo alla cannella</Link></li>
+                <li><Link to='crema-cocco'>Crema di cocco</Link></li>
             </ul>
         </SectionBackground>
     );
@@ -45,6 +47,7 @@ function RecipesRouter() {
                 <Route path='pure-di-patate' element={<PureDiPatate />} />
                 <Route path='sciroppo' element={<Sciroppo />} />
                 <Route path='sciroppo-cannella' element={<SciroppoCannella />} />
+                <Route path='crema-cocco' element={<CremaCocco />} />
             </Routes>
         </Layout>
     );
