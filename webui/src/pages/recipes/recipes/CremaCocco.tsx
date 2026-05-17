@@ -29,7 +29,7 @@ function CremaCocco() {
             instructions={<>
                 <Step>Versare il latte di cocco e lo zucchero in un pentolino sul fuoco.</Step>
                 <Step>Far cuocere e mescolare fino a che non si è sciolto tutto. Attenzione a non fare bollire.</Step>
-                <Step>Far raffreddare fino a 60°C</Step>
+                <Step>Far raffreddare fino a 60°C.</Step>
                 <Step>Aggiungere succo di limone e sale, mescolare bene.</Step>
             </>}
         />

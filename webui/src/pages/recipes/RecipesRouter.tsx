@@ -22,7 +22,17 @@ function RecipeList() {
 
             <h1>Secondi</h1>
             <ul>
+
+            </ul>
+
+            <h1>Contorni</h1>
+            <ul>
                 <li><Link to='pure-di-patate'>Purè di patate</Link></li>
+            </ul>
+
+            <h1>Dolci</h1>
+            <ul>
+
             </ul>
 
             <h1>Bevande</h1>
@@ -30,6 +40,11 @@ function RecipeList() {
                 <li><Link to='sciroppo'>Sciroppo 62%</Link></li>
                 <li><Link to='sciroppo-cannella'>Sciroppo alla cannella</Link></li>
                 <li><Link to='crema-cocco'>Crema di cocco</Link></li>
+            </ul>
+
+            <h1>Altro</h1>
+            <ul>
+
             </ul>
         </SectionBackground>
     );
