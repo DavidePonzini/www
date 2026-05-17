@@ -7,6 +7,7 @@ import Carbonara from './recipes/Carbonara';
 import Amatriciana from './recipes/Amatriciana';
 import PureDiPatate from './recipes/PureDiPatate';
 import Sciroppo from './recipes/Sciroppo';
+import SciroppoCannella from './recipes/SciroppoCannella';
 
 // List of all recipes
 function RecipeList() {
@@ -26,6 +27,7 @@ function RecipeList() {
             <h1>Bevande</h1>
             <ul>
                 <li><Link to='sciroppo'>Sciroppo 62%</Link></li>
+                <li><Link to='sciroppo-cannella'>Sciroppo alla cannella</Link></li>
             </ul>
         </SectionBackground>
     );
@@ -42,6 +44,7 @@ function RecipesRouter() {
                 <Route path='amatriciana' element={<Amatriciana />} />
                 <Route path='pure-di-patate' element={<PureDiPatate />} />
                 <Route path='sciroppo' element={<Sciroppo />} />
+                <Route path='sciroppo-cannella' element={<SciroppoCannella />} />
             </Routes>
         </Layout>
     );
