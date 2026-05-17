@@ -6,6 +6,7 @@ import SectionBackground from '../../components/SectionBackground';
 import Carbonara from './recipes/Carbonara';
 import Amatriciana from './recipes/Amatriciana';
 import PureDiPatate from './recipes/PureDiPatate';
+import Sciroppo from './recipes/Sciroppo';
 
 // List of all recipes
 function RecipeList() {
@@ -21,6 +22,11 @@ function RecipeList() {
             <ul>
                 <li><Link to='pure-di-patate'>Purè di patate</Link></li>
             </ul>
+
+            <h1>Bevande</h1>
+            <ul>
+                <li><Link to='sciroppo'>Sciroppo 62%</Link></li>
+            </ul>
         </SectionBackground>
     );
 }
@@ -35,6 +41,7 @@ function RecipesRouter() {
                 <Route path='carbonara' element={<Carbonara />} />
                 <Route path='amatriciana' element={<Amatriciana />} />
                 <Route path='pure-di-patate' element={<PureDiPatate />} />
+                <Route path='sciroppo' element={<Sciroppo />} />
             </Routes>
         </Layout>
     );
