@@ -9,6 +9,9 @@ import PureDiPatate from './recipes/PureDiPatate';
 import Sciroppo from './recipes/Sciroppo';
 import SciroppoCannella from './recipes/SciroppoCannella';
 import CremaCocco from './recipes/CremaCocco';
+import RisoJawad from './recipes/RisoJawad';
+import RisoJawadFagiolini from './recipes/RisoJawadFagiolini';
+import RisoJawadAglio from './recipes/RisoJawadAglio';
 
 // List of all recipes
 function RecipeList() {
@@ -18,6 +21,9 @@ function RecipeList() {
             <ul>
                 <li><Link to='carbonara'>Carbonara</Link></li>
                 <li><Link to='amatriciana'>Amatriciana</Link></li>
+                <li><Link to='riso-jawad'>Riso con pollo - Jawad</Link></li>
+                <li><Link to='riso-jawad-aglio'>Riso con pollo e aglio - Jawad</Link></li>
+                <li><Link to='riso-jawad-fagiolini'>Riso con pollo e fagiolini - Jawad</Link></li>
             </ul>
 
             <h1>Secondi</h1>
@@ -63,6 +69,9 @@ function RecipesRouter() {
                 <Route path='sciroppo' element={<Sciroppo />} />
                 <Route path='sciroppo-cannella' element={<SciroppoCannella />} />
                 <Route path='crema-cocco' element={<CremaCocco />} />
+                <Route path='riso-jawad' element={<RisoJawad />} />
+                <Route path='riso-jawad-fagiolini' element={<RisoJawadFagiolini />} />
+                <Route path='riso-jawad-aglio' element={<RisoJawadAglio />} />
             </Routes>
         </Layout>
     );
