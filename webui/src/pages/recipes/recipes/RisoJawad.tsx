@@ -5,8 +5,7 @@ import {
     PreparationWait,
     RecipeLayout,
 } from "../../../components/recipes";
-import { Step, Parallel, Branch } from "../../../components/flow";
-import { Link } from "react-router";
+import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 import { InlineMath } from 'react-katex';
 
 
@@ -37,7 +36,7 @@ function RisoJawad() {
             ]}
             instructions={<>
                 <Parallel>
-                    <Branch>
+                    <ParallelBranch>
                         <Step>Mettere in una pentola antiaderente olio e pastina.</Step>
                         <Step>Far rosolare fino a che la pasta diventa ben dorata.</Step>
                         <Step>Aggiungere riso e far scottare.</Step>
@@ -45,14 +44,14 @@ function RisoJawad() {
                         <Step>Cuocere col coperchio (o piatto, deve andare un po' sotto pressione).</Step>
                         <Step>Lasciare riposare.</Step>
                         <Step>Mescolare delicatamente dal basso verso l'alto.</Step>
-                    </Branch>
+                    </ParallelBranch>
 
-                    <Branch>
+                    <ParallelBranch>
                         <Step>Tagliare cipolle e pollo a cubetti.</Step>
                         <Step>Mettere olio in una padella antiaderente e soffriggere.</Step>
                         <Step>Quando il pollo ha cambiato colore, aggiungere sale e spezie.</Step>
                         <Step>Cuocere fino a che non è cotto.</Step>
-                    </Branch>
+                    </ParallelBranch>
                 </Parallel>
 
                 <Step>Unire e mescolare</Step>

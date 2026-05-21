@@ -1,10 +1,9 @@
 import {
     CookingTime,
-    Suggestion,
     PreparationTime,
     RecipeLayout,
 } from "../../../components/recipes";
-import { Step, Parallel, Branch } from "../../../components/flow";
+import { Step } from "../../../components/flow";
 
 function PureDiPatate() {
     return (

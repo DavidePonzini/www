@@ -4,9 +4,8 @@ import {
     PreparationTime,
     RecipeLayout,
 } from "../../../components/recipes";
-import { Step, Parallel, Branch } from "../../../components/flow";
+import { Step } from "../../../components/flow";
 import { Link } from "react-router";
-import { InlineMath } from "react-katex";
 
 function RisoJawadAglio() {
     return (

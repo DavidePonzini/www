@@ -1,6 +1,5 @@
 import {
     CookingTime,
-    Suggestion,
     PreparationWait,
     RecipeLayout,
 } from "../../../components/recipes";

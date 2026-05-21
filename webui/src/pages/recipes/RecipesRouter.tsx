@@ -12,6 +12,9 @@ import CremaCocco from './recipes/CremaCocco';
 import RisoJawad from './recipes/RisoJawad';
 import RisoJawadFagiolini from './recipes/RisoJawadFagiolini';
 import RisoJawadAglio from './recipes/RisoJawadAglio';
+import Besciamella from './recipes/Besciamella';
+import SalsaTahina from './recipes/SalsaTahina';
+import PolloAllaLigure from './recipes/PolloAllaLigure';
 
 // List of all recipes
 function RecipeList() {
@@ -28,12 +31,18 @@ function RecipeList() {
 
             <h1>Secondi</h1>
             <ul>
-
+                <li><Link to='pollo-alla-ligure'>Pollo alla ligure</Link></li>
             </ul>
 
             <h1>Contorni</h1>
             <ul>
                 <li><Link to='pure-di-patate'>Purè di patate</Link></li>
+            </ul>
+
+            <h1>Salse</h1>
+            <ul>
+                <li><Link to='besciamella'>Besciamella</Link></li>
+                <li><Link to='salsa-tahina'>Salsa Tahina</Link></li>
             </ul>
 
             <h1>Dolci</h1>
@@ -72,6 +81,9 @@ function RecipesRouter() {
                 <Route path='riso-jawad' element={<RisoJawad />} />
                 <Route path='riso-jawad-fagiolini' element={<RisoJawadFagiolini />} />
                 <Route path='riso-jawad-aglio' element={<RisoJawadAglio />} />
+                <Route path='besciamella' element={<Besciamella />} />
+                <Route path='salsa-tahina' element={<SalsaTahina />} />
+                <Route path='pollo-alla-ligure' element={<PolloAllaLigure />} />
             </Routes>
         </Layout>
     );

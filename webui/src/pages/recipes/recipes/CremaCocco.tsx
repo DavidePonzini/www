@@ -1,11 +1,9 @@
 import {
     CookingTime,
-    Suggestion,
     PreparationWait,
     RecipeLayout,
 } from "../../../components/recipes";
 import { Step } from "../../../components/flow";
-import { Link } from "react-router-dom";
 
 function CremaCocco() {
     return (

@@ -1,10 +1,9 @@
 import {
     CookingTime,
     Suggestion,
-    PreparationTime,
     RecipeLayout,
 } from "../../../components/recipes";
-import { Step, Parallel, Branch } from "../../../components/flow";
+import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
 function Amatriciana() {
     return (
@@ -29,16 +28,16 @@ function Amatriciana() {
             ]}
             instructions={<>
                 <Parallel>
-                    <Branch>
+                    <ParallelBranch>
                         <Step>Far bollire l'acqua e cuocere la pasta normalmente.</Step>
-                    </Branch>
+                    </ParallelBranch>
 
-                    <Branch>
+                    <ParallelBranch>
                         <Step>Far rosolare il guanciale in padella.</Step>
                         <Step>Sfumare col vino.</Step>
                         <Step>Aggiungere la salsa di pomodoro ed il peperoncino.</Step>
                         <Step>Cuocere a fiamma media per 10 min.</Step>
-                    </Branch>
+                    </ParallelBranch>
                 </Parallel>
 
                 <Step>Scolare la pasta e unirla alla salsa.</Step>

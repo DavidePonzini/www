@@ -4,7 +4,7 @@ import {
     PreparationTime,
     RecipeLayout,
 } from "../../../components/recipes";
-import { Step, Parallel, Branch } from "../../../components/flow";
+import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
 function Carbonara() {
     return (
@@ -27,35 +27,35 @@ function Carbonara() {
             ]}
             instructions={<>
                 <Parallel>
-                    <Branch>
+                    <ParallelBranch>
                         <Step>Far bollire l'acqua.</Step>
                         <Step>Cuocere la pasta.</Step>
-                    </Branch>
+                    </ParallelBranch>
 
-                    <Branch>
+                    <ParallelBranch>
                         <Parallel>
-                            <Branch>
+                            <ParallelBranch>
                                 <Step>Miscelare tuorli con Pecorino e metà pepe, fino a che sono ben addensati.</Step>
-                            </Branch>
+                            </ParallelBranch>
 
-                            <Branch>
+                            <ParallelBranch>
                                 <Step>Cuocere guanciale.</Step>
                                 <Step>Quando è quasi pronto, lasciare raffreddare.</Step>
-                            </Branch>
+                            </ParallelBranch>
                         </Parallel>
 
                         <Parallel>
-                            <Branch>
+                            <ParallelBranch>
                                 <Step>Unire guanciale ai tuorli e mescolare bene.</Step>
                                 <Step>Aggiungere acqua di cottura fino a renderla cremosa.</Step>
-                            </Branch>
+                            </ParallelBranch>
 
-                            <Branch>
+                            <ParallelBranch>
                                 <Step>Aggiungere l'altra metà di pepe al guanciale.</Step>
                                 <Step>Far rosolare fino a quando non è croccante.</Step>
-                            </Branch>
+                            </ParallelBranch>
                         </Parallel>
-                    </Branch>
+                    </ParallelBranch>
                 </Parallel>
 
                 <Step>Quando la pasta è al dente, scolarla e unirla al guanciale.</Step>
