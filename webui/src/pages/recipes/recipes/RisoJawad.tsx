@@ -9,10 +9,13 @@ import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 import { InlineMath } from 'react-katex';
 
 
+const TITLE = 'Riso con pollo - Jawad';
+const URL = 'riso-jawad';
+
 function RisoJawad() {
     return (
         <RecipeLayout
-            title='Riso con pollo - Jawad'
+            title={TITLE}
             servings={1}
             source='Jawad Shurrush'
             addedOn='Febbraio 2024'
@@ -62,5 +65,8 @@ function RisoJawad() {
         />
     );
 }
+
+RisoJawad.title = TITLE;
+RisoJawad.url = URL;
 
 export default RisoJawad;

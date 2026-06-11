@@ -5,10 +5,13 @@ import {
 } from "../../../components/recipes";
 import { Step } from "../../../components/flow";
 
+const TITLE = 'Crema di cocco';
+const URL = 'crema-cocco';
+
 function CremaCocco() {
     return (
         <RecipeLayout
-            title='Crema di cocco'
+            title={TITLE}
             servings={1}
             servingsUnitSingular='litro'
             servingsUnitPlural='litri'
@@ -33,5 +36,8 @@ function CremaCocco() {
         />
     );
 }
+
+CremaCocco.title = TITLE;
+CremaCocco.url = URL;
 
 export default CremaCocco;

@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
-function Template() {
+const TITLE = 'Cookies';
+const URL = 'cookies';
+
+function Cookies() {
     return (
         <RecipeLayout
-            title='Cookies'
+            title={TITLE}
             servings={30}
             servingsUnitSingular='cookie'
             servingsUnitPlural='cookies'
@@ -26,11 +29,6 @@ function Template() {
                 <BakingTimeTopbottom time='25-30 min' temperature={165} />
             </>}
             ingredients={[
-                // { name: 'Spaghetti', quantity: 200, unit: 'g' },  // Standard format
-                // { name: 'Spaghetti', quantity: 200 },  // Standard format, unit is implied
-                // { name: 'Spaghetti', quantity: 200, unit: 'g', category: 'Pasta' },  // Standard format with category
-                // { name: 'Sale', quantity: 'q.b.' },  // Quantity not specified
-                // { name: 'Pentola' },  // Quantity not applicable
                 { name: 'Farina 00', quantity: 250, unit: 'g' },
                 { name: 'Gocce di cioccolato fondente', quantity: 200, unit: 'g' },
                 { name: 'Burro', quantity: 150, unit: 'g' },
@@ -54,4 +52,7 @@ function Template() {
     );
 }
 
-export default Template;
+Cookies.title = TITLE;
+Cookies.url = URL;
+
+export default Cookies;

@@ -1,8 +1,11 @@
-import { SpezieCarne, SpeziePatate } from './Spezie';
+import { ComponentType, JSX } from 'react';
+
+import SpezieCarne from './SpezieCarne';
+import SpeziePatate from './SpeziePatate';
 import Carbonara from './Carbonara';
 import Amatriciana from './Amatriciana';
 import PureDiPatate from './PureDiPatate';
-import Sciroppo from './Sciroppo';
+import Sciroppo62 from './Sciroppo62';
 import SciroppoCannella from './SciroppoCannella';
 import CremaCocco from './CremaCocco';
 import RisoJawad from './RisoJawad';
@@ -36,7 +39,14 @@ import Sacher from './Sacher';
 import Cookies from './Cookies';
 import PomodoriPangrattato from './PomodoriPangrattato';
 
-const recipes: { [key: string]: any } = {
+
+type RecipeComponent = ComponentType & {
+    (): JSX.Element,
+    title: string,
+    url: string
+};
+
+const RECIPES: Record<string, RecipeComponent[]> = {
     'Primi': [
         Amatriciana,
         Carbonara,
@@ -81,7 +91,7 @@ const recipes: { [key: string]: any } = {
     ],
     'Bevande': [
         CremaCocco,
-        Sciroppo,
+        Sciroppo62,
         SciroppoCannella,
     ],
     'Altro': [
@@ -91,4 +101,4 @@ const recipes: { [key: string]: any } = {
     ],
 };
 
-export default recipes;
+export default RECIPES;

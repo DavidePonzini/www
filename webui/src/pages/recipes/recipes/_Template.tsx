@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = '';
+const URL = '';
+
 function Template() {
     return (
         <RecipeLayout
-            title=''
+            title={TITLE}
             servings={2}
             servingsUnitSingular=''
             servingsUnitPlural=''
@@ -39,5 +42,8 @@ function Template() {
         />
     );
 }
+
+Template.title = TITLE;
+Template.url = URL;
 
 export default Template;

@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Torta di riso';
+const URL = 'torta-di-riso';
+
 function TortaDiRiso() {
     return (
         <RecipeLayout
-            title='Torta di riso'
+            title={TITLE}
             servings={5}
             source='IPSEOA Marco Polo'
             addedOn='~ 2022'
@@ -25,11 +28,6 @@ function TortaDiRiso() {
                 <BakingTimeFan time='40-45 min' temperature={180} />
             </>}
             ingredients={[
-                // { name: 'Spaghetti', quantity: 200, unit: 'g' },  // Standard format
-                // { name: 'Spaghetti', quantity: 200 },  // Standard format, unit is implied
-                // { name: 'Spaghetti', quantity: 200, unit: 'g', category: 'Pasta' },  // Standard format with category
-                // { name: 'Sale', quantity: 'q.b.' },  // Quantity not specified
-                // { name: 'Pentola' },  // Quantity not applicable
                 { name: 'Farina "0', quantity: 150, unit: 'g', category: 'Pasta matta' },
                 { name: 'Acqua', quantity: 75, unit: 'g', category: 'Pasta matta' },
                 { name: 'Olio d\'oliva', quantity: 15, unit: 'g', category: 'Pasta matta' },
@@ -93,6 +91,9 @@ function TortaDiRiso() {
         />
     );
 }
+
+TortaDiRiso.title = TITLE;
+TortaDiRiso.url = URL;
 
 export default TortaDiRiso;
 

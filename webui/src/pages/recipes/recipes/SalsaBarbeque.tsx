@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Salsa Barbeque';
+const URL = 'salsa-barbeque';
+
 function SalsaBarbeque() {
     return (
         <RecipeLayout
-            title='Salsa Barbeque'
+            title={TITLE}
             servings={500}
             servingsUnitSingular='ml'
             servingsUnitPlural='ml'
@@ -25,11 +28,6 @@ function SalsaBarbeque() {
                 <CookingTime time='20 min' flame='bassa' />
             </>}
             ingredients={[
-                // { name: 'Spaghetti', quantity: 200, unit: 'g' },  // Standard format
-                // { name: 'Spaghetti', quantity: 200 },  // Standard format, unit is implied
-                // { name: 'Spaghetti', quantity: 200, unit: 'g', category: 'Pasta' },  // Standard format with category
-                // { name: 'Sale', quantity: 'q.b.' },  // Quantity not specified
-                // { name: 'Pentola' },  // Quantity not applicable
                 { name: 'Salsa pomodoro', quantity: 300, unit: 'g' },
                 { name: 'Concentrato pomodoro', quantity: 10, unit: 'g' },
                 { name: 'Aceto bianco', quantity: 60, unit: 'g' },
@@ -58,5 +56,8 @@ function SalsaBarbeque() {
         />
     );
 }
+
+SalsaBarbeque.title = TITLE;
+SalsaBarbeque.url = URL;
 
 export default SalsaBarbeque;

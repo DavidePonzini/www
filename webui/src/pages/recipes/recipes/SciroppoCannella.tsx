@@ -6,10 +6,15 @@ import {
 import { Step } from "../../../components/flow";
 import { Link } from "react-router-dom";
 
+import Sciroppo62 from "./Sciroppo62"; 
+
+const TITLE = 'Sciroppo alla cannella';
+const URL = 'sciroppo-cannella';
+
 function SciroppoCannella() {
     return (
         <RecipeLayout
-            title='Sciroppo alla cannella'
+            title={TITLE}
             servings={1}
             servingsUnitSingular='litro'
             servingsUnitPlural='litri'
@@ -31,10 +36,13 @@ function SciroppoCannella() {
                 <Step>Mettere acqua, zenzero, cannella e chiodi di garofano in un pentolino sul fuoco.</Step>
                 <Step>Far bollire per 10 minuti, col coperchio.</Step>
                 <Step>Scolare e rimuovere le spezie.</Step>
-                <Step>Pesare l'acqua rimasta e aggiungere zucchero di conseguenza (<Link to='../sciroppo'>Sciroppo 62%</Link>).</Step>
+                <Step>Pesare l'acqua rimasta e aggiungere zucchero di conseguenza (<Link to={`../${Sciroppo62.url}`}>{Sciroppo62.title}</Link>).</Step>
             </>}
         />
     );
 }
+
+SciroppoCannella.title = TITLE;
+SciroppoCannella.url = URL;
 
 export default SciroppoCannella;

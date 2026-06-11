@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Caramello Mou';
+const URL = 'caramello-mou';
+
 function CaramelloMou() {
     return (
         <RecipeLayout
-            title='Caramello Mou'
+            title={TITLE}
             servings={100}
             servingsUnitSingular='g'
             servingsUnitPlural='g'
@@ -25,11 +28,6 @@ function CaramelloMou() {
                 <CookingTime time='10 min' flame='bassa' />
             </>}
             ingredients={[
-                // { name: 'Spaghetti', quantity: 200, unit: 'g' },  // Standard format
-                // { name: 'Spaghetti', quantity: 200 },  // Standard format, unit is implied
-                // { name: 'Spaghetti', quantity: 200, unit: 'g', category: 'Pasta' },  // Standard format with category
-                // { name: 'Sale', quantity: 'q.b.' },  // Quantity not specified
-                // { name: 'Pentola' },  // Quantity not applicable
                 { name: 'Zucchero', quantity: 200, unit: 'g' },
                 { name: 'Panna fresca', quantity: 120, unit: 'g' },
             ]}
@@ -55,6 +53,9 @@ function CaramelloMou() {
         />
     );
 }
+
+CaramelloMou.title = TITLE;
+CaramelloMou.url = URL;
 
 export default CaramelloMou;
 

@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Pollo alla ligure';
+const URL = 'pollo-ligure';
+
 function PolloAllaLigure() {
     return (
         <RecipeLayout
-            title='Pollo alla ligure'
+            title={TITLE}
             servings={5}
             source='IPSEOA Marco Polo'
             addedOn='2022'
@@ -66,5 +69,8 @@ function PolloAllaLigure() {
         />
     );
 }
+
+PolloAllaLigure.title = TITLE;
+PolloAllaLigure.url = URL;
 
 export default PolloAllaLigure;

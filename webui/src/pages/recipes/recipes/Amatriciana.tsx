@@ -5,10 +5,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Amatriciana';
+const URL = 'amatriciana';
+
 function Amatriciana() {
     return (
         <RecipeLayout
-            title='Amatriciana'
+            title={TITLE}
             servings={2}
             source='Internet'
             addedOn='Agosto 2025'
@@ -49,5 +52,8 @@ function Amatriciana() {
         />
     );
 }
+
+Amatriciana.title = TITLE;
+Amatriciana.url = URL;
 
 export default Amatriciana;

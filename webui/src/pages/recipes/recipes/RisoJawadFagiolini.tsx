@@ -7,10 +7,15 @@ import {
 import { Step } from "../../../components/flow";
 import { Link } from "react-router";
 
+import RisoJawad from './RisoJawad';
+
+const TITLE = 'Riso con pollo e fagiolini - Jawad';
+const URL = 'riso-jawad-fagiolini';
+
 function RisoJawadFagiolini() {
     return (
         <RecipeLayout
-            title='Riso con pollo e fagiolini - Jawad'
+            title={TITLE}
             servings={2}
             source='Jawad Shurrush'
             addedOn='Aprile 2024'
@@ -37,10 +42,13 @@ function RisoJawadFagiolini() {
                 <Step>Lasciare cuocere fino a che la salsa non si è asciugata.</Step>
             </>}
             suggestions={<>
-                <Suggestion>Si consiglia di unirlo al <Link to='../riso-jawad'>riso con pastina</Link>.</Suggestion>
+                <Suggestion>Si consiglia di unirlo al <Link to={`../${RisoJawad.url}`}>{RisoJawad.title}</Link>.</Suggestion>
             </>}
         />
     );
 }
+
+RisoJawadFagiolini.title = TITLE;
+RisoJawadFagiolini.url = URL;
 
 export default RisoJawadFagiolini;

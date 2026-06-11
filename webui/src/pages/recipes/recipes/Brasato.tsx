@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Brasato';
+const URL = 'brasato';
+
 function Brasato() {
     return (
         <RecipeLayout
-            title='Brasato'
+            title={TITLE}
             servings={4}
             source='Internet'
             addedOn='~ 2022'
@@ -67,6 +70,9 @@ function Brasato() {
         />
     );
 }
+
+Brasato.title = TITLE;
+Brasato.url = URL;
 
 export default Brasato;
 

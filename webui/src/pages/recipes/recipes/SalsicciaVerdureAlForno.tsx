@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Salsiccia e verdure al forno';
+const URL = 'salsiccia-verdure-al-forno';
+
 function SalsicciaVerdureAlForno() {
     return (
         <RecipeLayout
-            title='Salsiccia e verdure al forno'
+            title={TITLE}
             servings={1}
             source='Abbate Maria Luisa'
             addedOn='~ 2018'
@@ -23,11 +26,6 @@ function SalsicciaVerdureAlForno() {
                 <BakingTimeTopbottom time='1 h' temperature={180} />
             </>}
             ingredients={[
-                // { name: 'Spaghetti', quantity: 200, unit: 'g' },  // Standard format
-                // { name: 'Spaghetti', quantity: 200 },  // Standard format, unit is implied
-                // { name: 'Spaghetti', quantity: 200, unit: 'g', category: 'Pasta' },  // Standard format with category
-                // { name: 'Sale', quantity: 'q.b.' },  // Quantity not specified
-                // { name: 'Pentola' },  // Quantity not applicable
                 { name: 'Salsiccia', quantity: 3, unit: 'pezzetti' },
                 { name: 'Patate', quantity: 1, unit: 'media' },
                 { name: 'Carote', quantity: 1, unit: 'grande' },
@@ -48,5 +46,8 @@ function SalsicciaVerdureAlForno() {
         />
     );
 }
+
+SalsicciaVerdureAlForno.title = TITLE;
+SalsicciaVerdureAlForno.url = URL;
 
 export default SalsicciaVerdureAlForno;

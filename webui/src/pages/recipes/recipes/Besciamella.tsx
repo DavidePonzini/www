@@ -6,10 +6,14 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+
+const TITLE = 'Besciamella';
+const URL = 'besciamella';
+
 function Besciamella() {
     return (
         <RecipeLayout
-            title='Besciamella'
+            title={TITLE}
             servings={500}
             servingsUnitSingular='g di carne per ragù'
             servingsUnitPlural='g di carne per ragù'
@@ -40,5 +44,8 @@ function Besciamella() {
         />
     );
 }
+
+Besciamella.title = TITLE;
+Besciamella.url = URL;
 
 export default Besciamella;

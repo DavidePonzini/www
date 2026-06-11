@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Uova sode';
+const URL = 'uova-sode';
+
 function UovaSode() {
     return (
         <RecipeLayout
-            title='Uova sode'
+            title={TITLE}
             servings={1}
             servingsUnitSingular='uovo'
             servingsUnitPlural='uova'
@@ -35,6 +38,9 @@ function UovaSode() {
         />
     );
 }
+
+UovaSode.title = TITLE;
+UovaSode.url = URL;
 
 export default UovaSode;
 

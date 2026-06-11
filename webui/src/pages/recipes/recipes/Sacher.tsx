@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'SacherTorte';
+const URL = 'sacher';
+
 function Sacher() {
     return (
         <RecipeLayout
-            title='SacherTorte'
+            title={TITLE}
             servings={8}
             source='Internet'
             addedOn='~ 2019'
@@ -23,11 +26,6 @@ function Sacher() {
                 <BakingTimeTopbottom time='35-40 min' temperature={170} />
             </>}
             ingredients={[
-                // { name: 'Spaghetti', quantity: 200, unit: 'g' },  // Standard format
-                // { name: 'Spaghetti', quantity: 200 },  // Standard format, unit is implied
-                // { name: 'Spaghetti', quantity: 200, unit: 'g', category: 'Pasta' },  // Standard format with category
-                // { name: 'Sale', quantity: 'q.b.' },  // Quantity not specified
-                // { name: 'Pentola' },  // Quantity not applicable
                 { name: 'Cioccolato fondente', quantity: 75, unit: 'g' },
                 { name: 'Albumi', quantity: 90, unit: 'g' },
                 { name: 'Tuorli', quantity: 60, unit: 'g' },
@@ -93,6 +91,9 @@ function Sacher() {
         />
     );
 }
+
+Sacher.title = TITLE;
+Sacher.url = URL;
 
 export default Sacher;
 

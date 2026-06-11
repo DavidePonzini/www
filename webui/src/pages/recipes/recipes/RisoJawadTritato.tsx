@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Riso con tritato - Jawad';
+const URL = 'riso-jawad-tritato';
+
 function RisoJawadTritato() {
     return (
         <RecipeLayout
-            title='Riso con tritato - Jawad'
+            title={TITLE}
             servings={1}
             source='Jawad Shurrush'
             addedOn='Marzo 2025'
@@ -45,6 +48,9 @@ function RisoJawadTritato() {
         />
     );
 }
+
+RisoJawadTritato.title = TITLE;
+RisoJawadTritato.url = URL;
 
 export default RisoJawadTritato;
 

@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Pomodori ripieni di pan grattato ed erbe di provenza';
+const URL = 'pomodori-pangrattato';
+
 function PomodoriPangrattato() {
     return (
         <RecipeLayout
-            title='Pomodori ripieni di pan grattato ed erbe di provenza'
+            title={TITLE}
             servings={1}
             source='Samuele Daga'
             addedOn='2021'
@@ -23,11 +26,6 @@ function PomodoriPangrattato() {
                 <BakingTimeFan time='10 min' temperature={180} />
             </>}
             ingredients={[
-                // { name: 'Spaghetti', quantity: 200, unit: 'g' },  // Standard format
-                // { name: 'Spaghetti', quantity: 200 },  // Standard format, unit is implied
-                // { name: 'Spaghetti', quantity: 200, unit: 'g', category: 'Pasta' },  // Standard format with category
-                // { name: 'Sale', quantity: 'q.b.' },  // Quantity not specified
-                // { name: 'Pentola' },  // Quantity not applicable
                 { name: 'Pomodori cuore di bue', quantity: 2 },
                 
                 { name: 'Olio d\'oliva', quantity: 'q.b.', category: 'Ripieno' },
@@ -48,6 +46,9 @@ function PomodoriPangrattato() {
         />
     );
 }
+
+PomodoriPangrattato.title = TITLE;
+PomodoriPangrattato.url = URL;
 
 export default PomodoriPangrattato;
 

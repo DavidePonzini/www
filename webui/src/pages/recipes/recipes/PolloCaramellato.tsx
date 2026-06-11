@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Pollo caramellato';
+const URL = 'pollo-caramellato';
+
 function PolloCaramellato() {
     return (
         <RecipeLayout
-            title='Pollo caramellato'
+            title={TITLE}
             servings={1}
             source='Internet'
             addedOn='~ 2019'
@@ -23,16 +26,11 @@ function PolloCaramellato() {
                 <CookingTime time='15 min' flame='media' />
             </>}
             ingredients={[
-                // { name: 'Spaghetti', quantity: 200, unit: 'g' },  // Standard format
-                // { name: 'Spaghetti', quantity: 200 },  // Standard format, unit is implied
-                // { name: 'Spaghetti', quantity: 200, unit: 'g', category: 'Pasta' },  // Standard format with category
-                // { name: 'Sale', quantity: 'q.b.' },  // Quantity not specified
-                // { name: 'Pentola' },  // Quantity not applicable
                 { name: 'Petto di pollo', quantity: 200, unit: 'g' },
                 { name: 'Zucchero', quantity: 50, unit: 'g' },
                 { name: 'Olio d\'oliva', quantity: 6, unit: 'g' },
                 { name: 'Salsa di soia', quantity: 20, unit: 'g' },
-                { name: 'Pepe' },
+                { name: 'Pepe', quantity: 'q.b.' },
             ]}
             instructions={<>
                 <Step>Tagliare il pollo a straccetti.</Step>
@@ -45,5 +43,8 @@ function PolloCaramellato() {
         />
     );
 }
+
+PolloCaramellato.title = TITLE;
+PolloCaramellato.url = URL;
 
 export default PolloCaramellato;

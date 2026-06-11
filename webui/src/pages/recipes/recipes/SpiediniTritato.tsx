@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Spiedini di tritato';
+const URL = 'spiedini-tritato';
+
 function SpiediniTritato() {
     return (
         <RecipeLayout
-            title='Spiedini di tritato'
+            title={TITLE}
             servings={5}
             servingsUnitSingular='spiedino'
             servingsUnitPlural='spiedini'
@@ -25,11 +28,6 @@ function SpiediniTritato() {
                 <CookingTime time='5 min' flame='bassa' />
             </>}
             ingredients={[
-                // { name: 'Spaghetti', quantity: 200, unit: 'g' },  // Standard format
-                // { name: 'Spaghetti', quantity: 200 },  // Standard format, unit is implied
-                // { name: 'Spaghetti', quantity: 200, unit: 'g', category: 'Pasta' },  // Standard format with category
-                // { name: 'Sale', quantity: 'q.b.' },  // Quantity not specified
-                // { name: 'Pentola' },  // Quantity not applicable
                 { name: 'Tritato bovino', quantity: 200, unit: 'g' },
                 { name: 'Prosciutto crudo', quantity: 150, unit: 'g', note: '(oppure speck)' },
                 { name: 'Sale' },
@@ -47,5 +45,8 @@ function SpiediniTritato() {
         />
     );
 }
+
+SpiediniTritato.title = TITLE;
+SpiediniTritato.url = URL;
 
 export default SpiediniTritato;

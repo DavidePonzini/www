@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Tiramisù';
+const URL = 'tiramisu';
+
 function Tiramisu() {
     return (
         <RecipeLayout
-            title='Tiramisù'
+            title={TITLE}
             servings={8}
             source='Internet'
             addedOn='Gennaio 2025'
@@ -59,5 +62,8 @@ function Tiramisu() {
         />
     );
 }
+
+Tiramisu.title = TITLE;
+Tiramisu.url = URL;
 
 export default Tiramisu;

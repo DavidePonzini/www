@@ -5,10 +5,13 @@ import {
 } from "../../../components/recipes";
 import { Step } from "../../../components/flow";
 
-function Sciroppo() {
+const TITLE = 'Sciroppo 62%';
+const URL = 'sciroppo62';
+
+function Sciroppo62() {
     return (
         <RecipeLayout
-            title='Sciroppo 62%'
+            title={TITLE}
             servings={1}
             servingsUnitSingular='litro'
             servingsUnitPlural='litri'
@@ -31,4 +34,7 @@ function Sciroppo() {
     );
 }
 
-export default Sciroppo;
+Sciroppo62.title = TITLE;
+Sciroppo62.url = URL;
+
+export default Sciroppo62;

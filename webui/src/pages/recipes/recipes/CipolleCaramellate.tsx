@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Cipolle caramellate';
+const URL = 'cipolle-caramellate';
+
 function CipolleCaramellate() {
     return (
         <RecipeLayout
-            title='Cipolle caramellate'
+            title={TITLE}
             servings={2}
             source='Internet'
             addedOn='Maggio 2025'
@@ -24,11 +27,6 @@ function CipolleCaramellate() {
                 <CookingTime time='20 min' flame='bassa' />
             </>}
             ingredients={[
-                // { name: 'Spaghetti', quantity: 200, unit: 'g' },  // Standard format
-                // { name: 'Spaghetti', quantity: 200 },  // Standard format, unit is implied
-                // { name: 'Spaghetti', quantity: 200, unit: 'g', category: 'Pasta' },  // Standard format with category
-                // { name: 'Sale', quantity: 'q.b.' },  // Quantity not specified
-                // { name: 'Pentola' },  // Quantity not applicable
                 { name: 'Cipolle', quantity: 2 },
                 { name: 'Olio', quantity: 'poco' },
                 { name: 'Sale', quantity: 'q.b.' },
@@ -43,6 +41,9 @@ function CipolleCaramellate() {
         />
     );
 }
+
+CipolleCaramellate.title = TITLE;
+CipolleCaramellate.url = URL;
 
 export default CipolleCaramellate;
 

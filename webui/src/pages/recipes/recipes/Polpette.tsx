@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Polpette';
+const URL = 'polpette';
+
 function Polpette() {
     return (
         <RecipeLayout
-            title='Polpette'
+            title={TITLE}
             servings={4}
             source='Maria Luisa Abbate'
             addedOn='Agosto 2024'
@@ -25,11 +28,6 @@ function Polpette() {
                 <BakingTimeTopbottom time='20 min' temperature={180} />
             </>}
             ingredients={[
-                // { name: 'Spaghetti', quantity: 200, unit: 'g' },  // Standard format
-                // { name: 'Spaghetti', quantity: 200 },  // Standard format, unit is implied
-                // { name: 'Spaghetti', quantity: 200, unit: 'g', category: 'Pasta' },  // Standard format with category
-                // { name: 'Sale', quantity: 'q.b.' },  // Quantity not specified
-                // { name: 'Pentola' },  // Quantity not applicable
                 { name: 'Patate', quantity: 1, unit: 'kg' },
                 { name: 'Tritato', quantity: 700, unit: 'g' },
                 { name: 'Uova', quantity: 2 },
@@ -50,5 +48,8 @@ function Polpette() {
         />
     );
 }
+
+Polpette.title = TITLE;
+Polpette.url = URL;
 
 export default Polpette;

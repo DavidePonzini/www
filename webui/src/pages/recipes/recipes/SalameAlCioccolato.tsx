@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Salame al cioccolato';
+const URL = 'salame-cioccolato';
+
 function SalameAlCioccolato() {
     return (
         <RecipeLayout
-            title='Salame al cioccolato'
+            title={TITLE}
             servings={6}
             source='Internet'
             addedOn='~ 2019'
@@ -23,11 +26,6 @@ function SalameAlCioccolato() {
                 <PreparationWait time='~ 8 h' description='Frigo' />
             </>}
             ingredients={[
-                // { name: 'Spaghetti', quantity: 200, unit: 'g' },  // Standard format
-                // { name: 'Spaghetti', quantity: 200 },  // Standard format, unit is implied
-                // { name: 'Spaghetti', quantity: 200, unit: 'g', category: 'Pasta' },  // Standard format with category
-                // { name: 'Sale', quantity: 'q.b.' },  // Quantity not specified
-                // { name: 'Pentola' },  // Quantity not applicable
                 { name: 'Cioccolato fondente', quantity: 200, unit: 'g' },
                 { name: 'Biscotti secchi', quantity: 200, unit: 'g' },
                 { name: 'Burro', quantity: 200, unit: 'g' },
@@ -67,6 +65,9 @@ function SalameAlCioccolato() {
         />
     );
 }
+
+SalameAlCioccolato.title = TITLE;
+SalameAlCioccolato.url = URL;
 
 export default SalameAlCioccolato;
 

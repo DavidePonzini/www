@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Risotto allo zafferano';
+const URL = 'risotto-zafferano';
+
 function RisottoZafferano() {
     return (
         <RecipeLayout
-            title='Risotto allo zafferano'
+            title={TITLE}
             servings={2}
             source='Internet'
             addedOn='2024'
@@ -23,11 +26,6 @@ function RisottoZafferano() {
                 <CookingTime time='10-15 min' flame='media' />
             </>}
             ingredients={[
-                // { name: 'Spaghetti', quantity: 200, unit: 'g' },  // Standard format
-                // { name: 'Spaghetti', quantity: 200 },  // Standard format, unit is implied
-                // { name: 'Spaghetti', quantity: 200, unit: 'g', category: 'Pasta' },  // Standard format with category
-                // { name: 'Sale', quantity: 'q.b.' },  // Quantity not specified
-                // { name: 'Pentola' },  // Quantity not applicable
                 { name: 'Riso', quantity: 200, unit: 'g' },
                 { name: 'Cipolla', quantity: 0.5 },
                 { name: 'Vino bianco' },
@@ -50,6 +48,9 @@ function RisottoZafferano() {
         />
     );
 }
+
+RisottoZafferano.title = TITLE;
+RisottoZafferano.url = URL;
 
 export default RisottoZafferano;
 

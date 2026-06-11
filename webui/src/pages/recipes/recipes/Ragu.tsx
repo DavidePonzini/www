@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Ragù';
+const URL = 'ragu';
+
 function Ragu() {
     return (
         <RecipeLayout
-            title='Ragù'
+            title={TITLE}
             servings={10}
             servingsUnitSingular='barattolo da 500 ml'
             servingsUnitPlural='barattoli da 500 ml'
@@ -64,5 +67,8 @@ function Ragu() {
         />
     );
 }
+
+Ragu.title = TITLE;
+Ragu.url = URL;
 
 export default Ragu;

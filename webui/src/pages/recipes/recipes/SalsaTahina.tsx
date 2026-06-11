@@ -5,10 +5,13 @@ import {
 } from "../../../components/recipes";
 import { Step } from "../../../components/flow";
 
+const TITLE = 'Salsa Tahina';
+const URL = 'salsa-tahina';
+
 function SalsaTahina() {
     return (
         <RecipeLayout
-            title='Salsa Tahina'
+            title={TITLE}
             source='Jawad Shurrush'
             addedOn='15 Luglio 2023'
             ingredients={[
@@ -28,5 +31,8 @@ function SalsaTahina() {
         />
     );
 }
+
+SalsaTahina.title = TITLE;
+SalsaTahina.url = URL;
 
 export default SalsaTahina;

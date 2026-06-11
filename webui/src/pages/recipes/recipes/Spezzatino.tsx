@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Spezzatino';
+const URL = 'spezzatino';
+
 function Spezzatino() {
     return (
         <RecipeLayout
-            title='Spezzatino'
+            title={TITLE}
             servings={4}
             source='Paolo Orunesu'
             addedOn='~ 2019'
@@ -24,11 +27,6 @@ function Spezzatino() {
                 <PreparationWait time='~ 8 h' />
             </>}
             ingredients={[
-                // { name: 'Spaghetti', quantity: 200, unit: 'g' },  // Standard format
-                // { name: 'Spaghetti', quantity: 200 },  // Standard format, unit is implied
-                // { name: 'Spaghetti', quantity: 200, unit: 'g', category: 'Pasta' },  // Standard format with category
-                // { name: 'Sale', quantity: 'q.b.' },  // Quantity not specified
-                // { name: 'Pentola' },  // Quantity not applicable
                 { name: 'Spezzatino', quantity: 1, unit: 'kg' },
                 { name: 'Sale' },
                 { name: 'Olio' },
@@ -59,6 +57,9 @@ function Spezzatino() {
         />
     );
 }
+
+Spezzatino.title = TITLE;
+Spezzatino.url = URL;
 
 export default Spezzatino;
 

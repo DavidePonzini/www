@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Risotto alle zucchine';
+const URL = 'risotto-zucchine';
+
 function RisottoZucchine() {
     return (
         <RecipeLayout
-            title='Risotto alle zucchine'
+            title={TITLE}
             servings={1}
             source='Davide Ponzini & Jawad Shurrush'
             addedOn='2024'
@@ -23,11 +26,6 @@ function RisottoZucchine() {
                 <CookingTime time='10-15 min' flame='media' />
             </>}
             ingredients={[
-                // { name: 'Spaghetti', quantity: 200, unit: 'g' },  // Standard format
-                // { name: 'Spaghetti', quantity: 200 },  // Standard format, unit is implied
-                // { name: 'Spaghetti', quantity: 200, unit: 'g', category: 'Pasta' },  // Standard format with category
-                // { name: 'Sale', quantity: 'q.b.' },  // Quantity not specified
-                // { name: 'Pentola' },  // Quantity not applicable
                 { name: 'Riso', quantity: 200, unit: 'g' },
                 { name: 'Cipolla', quantity: 0.5 },
                 { name: 'Zucchina', quantity: 1 },
@@ -52,6 +50,9 @@ function RisottoZucchine() {
         />
     );
 }
+
+RisottoZucchine.title = TITLE;
+RisottoZucchine.url = URL;
 
 export default RisottoZucchine;
 

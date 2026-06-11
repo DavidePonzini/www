@@ -7,10 +7,15 @@ import {
 import { Step } from "../../../components/flow";
 import { Link } from "react-router";
 
+import RisoJawad from './RisoJawad';
+
+const TITLE = 'Riso con pollo e aglio - Jawad';
+const URL = 'riso-jawad-aglio';
+
 function RisoJawadAglio() {
     return (
         <RecipeLayout
-            title='Riso con pollo e aglio - Jawad'
+            title={TITLE}
             servings={2}
             source='Jawad Shurrush'
             addedOn='Luglio 2023'
@@ -42,10 +47,13 @@ function RisoJawadAglio() {
                 <Step>Aggiungere limone a fine cottura, far rosolare un attimo.</Step>
             </>}
             suggestions={<>
-                <Suggestion>Si consiglia di unirlo al <Link to='../riso-jawad'>riso con pastina allo zafferano</Link>.</Suggestion>
+                <Suggestion>Si consiglia di unirlo al <Link to={`../${RisoJawad.url}`}>{RisoJawad.title}</Link>.</Suggestion>
             </>}
         />
     );
 }
+
+RisoJawadAglio.title = TITLE;
+RisoJawadAglio.url = URL;
 
 export default RisoJawadAglio;

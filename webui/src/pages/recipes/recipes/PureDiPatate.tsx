@@ -5,10 +5,13 @@ import {
 } from "../../../components/recipes";
 import { Step } from "../../../components/flow";
 
+const TITLE = 'Purè di patate';
+const URL = 'pure-patate';
+
 function PureDiPatate() {
     return (
         <RecipeLayout
-            title='Purè di patate'
+            title={TITLE}
             servings={4}
             source='Internet'
             addedOn='2023'
@@ -37,5 +40,8 @@ function PureDiPatate() {
         />
     );
 }
+
+PureDiPatate.title = TITLE;
+PureDiPatate.url = URL;
 
 export default PureDiPatate;

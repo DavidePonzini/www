@@ -11,10 +11,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Pisto';
+const URL = 'pisto';
+
 function Pisto() {
     return (
         <RecipeLayout
-            title='Pisto'
+            title={TITLE}
             servings={20}
             servingsUnitSingular='g'
             servingsUnitPlural='g'
@@ -24,11 +27,6 @@ function Pisto() {
                 <PreparationTime time='15 min' />
             </>}
             ingredients={[
-                // { name: 'Spaghetti', quantity: 200, unit: 'g' },  // Standard format
-                // { name: 'Spaghetti', quantity: 200 },  // Standard format, unit is implied
-                // { name: 'Spaghetti', quantity: 200, unit: 'g', category: 'Pasta' },  // Standard format with category
-                // { name: 'Sale', quantity: 'q.b.' },  // Quantity not specified
-                // { name: 'Pentola' },  // Quantity not applicable
                 { name: 'Pepe bianco', quantity: 7.5, unit: 'g' },
                 { name: 'Noce moscata', quantity: 2.5, unit: 'g' },
                 { name: 'Coriandolo', quantity: 2.5, unit: 'g' },
@@ -42,5 +40,8 @@ function Pisto() {
         />
     );
 }
+
+Pisto.title = TITLE;
+Pisto.url = URL;
 
 export default Pisto;
