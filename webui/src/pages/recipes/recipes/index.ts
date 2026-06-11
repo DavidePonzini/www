@@ -33,3 +33,5 @@ export { default as TortelliniPannaProsciutto } from './TortelliniPannaProsciutt
 export { default as CipolleCaramellate } from './CipolleCaramellate';
 export { default as TortaDiRiso } from './TortaDiRiso';
 export { default as Sacher } from './Sacher';
+export { default as Cookies } from './Cookies';
+export { default as PomodoriPangrattato } from './PomodoriPangrattato';

@@ -39,6 +39,7 @@ function RecipeList() {
                 <li><Link to='uova-sode'>Uova sode</Link></li>
                 <li><Link to='spiedini-tritato'>Spiedini di tritato</Link></li>
                 <li><Link to='cipolle-caramellate'>Cipolle caramellate</Link></li>
+                <li><Link to='pomodori-pangrattato'>Pomodori ripieni di pan grattato ed erbe di provenza</Link></li>
             </ul>
 
             <h1>Salse</h1>
@@ -52,11 +53,12 @@ function RecipeList() {
 
             <h1>Dolci</h1>
             <ul>
-                <li><Link to='salame-al-cioccolato'>Salame al cioccolato</Link></li>
-                <li><Link to='tiramisu'>Tiramisù</Link></li>
                 <li><Link to='caramello-mou'>Caramello Mou</Link></li>
                 <li><Link to='cioccolatini-mou'>Cioccolatini al Mou</Link></li>
+                <li><Link to='cookies'>Cookies</Link></li>
                 <li><Link to='sacher'>SacherTorte</Link></li>
+                <li><Link to='salame-al-cioccolato'>Salame al cioccolato</Link></li>
+                <li><Link to='tiramisu'>Tiramisù</Link></li>
             </ul>
 
             <h1>Bevande</h1>
@@ -84,6 +86,7 @@ function RecipesRouter() {
                 <Route index element={<RecipeList />} />
 
                 <Route path='carbonara' element={<Recipes.Carbonara />} />
+                <Route path='cookies' element={<Recipes.Cookies />} />
                 <Route path='amatriciana' element={<Recipes.Amatriciana />} />
                 <Route path='pure-di-patate' element={<Recipes.PureDiPatate />} />
                 <Route path='sciroppo' element={<Recipes.Sciroppo />} />
@@ -118,6 +121,7 @@ function RecipesRouter() {
                 <Route path='cioccolatini-mou' element={<Recipes.CioccolatiniMou />} />
                 <Route path='tortellini-panna-prosciutto' element={<Recipes.TortelliniPannaProsciutto />} />
                 <Route path='cipolle-caramellate' element={<Recipes.CipolleCaramellate />} />
+                <Route path='pomodori-pangrattato' element={<Recipes.PomodoriPangrattato />} />
                 <Route path='sacher' element={<Recipes.Sacher />} />
             </Routes>
         </Layout>
