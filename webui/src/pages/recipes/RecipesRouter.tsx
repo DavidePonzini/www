@@ -30,6 +30,8 @@ import RisottoZafferano from './recipes/RisottoZafferano';
 import RisottoZucchine from './recipes/RisottoZucchine';
 import PolloCaramellato from './recipes/PolloCaramellato';
 import Spezzatino from './recipes/Spezzatino';
+import SpiediniTritato from './recipes/SpiediniTritato';
+import SalameAlCioccolato from './recipes/SalameAlCioccolato';
 
 // List of all recipes
 function RecipeList() {
@@ -61,6 +63,7 @@ function RecipeList() {
                 <li><Link to='polpette'>Polpette</Link></li>
                 <li><Link to='pure-di-patate'>Purè di patate</Link></li>
                 <li><Link to='uova-sode'>Uova sode</Link></li>
+                <li><Link to='spiedini-tritato'>Spiedini di tritato</Link></li>
             </ul>
 
             <h1>Salse</h1>
@@ -74,6 +77,7 @@ function RecipeList() {
 
             <h1>Dolci</h1>
             <ul>
+                <li><Link to='salame-al-cioccolato'>Salame al cioccolato</Link></li>
                 <li><Link to='tiramisu'>Tiramisù</Link></li>
             </ul>
 
@@ -129,6 +133,8 @@ function RecipesRouter() {
                 <Route path='risotto-zucchine' element={<RisottoZucchine />} />
                 <Route path='pollo-caramellato' element={<PolloCaramellato />} />
                 <Route path='spezzatino' element={<Spezzatino />} />
+                <Route path='spiedini-tritato' element={<SpiediniTritato />} />
+                <Route path='salame-al-cioccolato' element={<SalameAlCioccolato />} />
             </Routes>
         </Layout>
     );
