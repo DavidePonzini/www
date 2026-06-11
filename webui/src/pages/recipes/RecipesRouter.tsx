@@ -19,6 +19,7 @@ function RecipeList() {
                 <li><Link to='riso-jawad-tritato'>Riso con tritato - Jawad</Link></li>
                 <li><Link to='risotto-zafferano'>Risotto allo zafferano</Link></li>
                 <li><Link to='risotto-zucchine'>Risotto alle zucchine</Link></li>
+                <li><Link to='torta-di-riso'>Torta di riso</Link></li>
                 <li><Link to='tortellini-panna-prosciutto'>Tortellini panna e prosciutto</Link></li>
             </ul>
 
@@ -37,6 +38,7 @@ function RecipeList() {
                 <li><Link to='pure-di-patate'>Purè di patate</Link></li>
                 <li><Link to='uova-sode'>Uova sode</Link></li>
                 <li><Link to='spiedini-tritato'>Spiedini di tritato</Link></li>
+                <li><Link to='cipolle-caramellate'>Cipolle caramellate</Link></li>
             </ul>
 
             <h1>Salse</h1>
@@ -54,6 +56,7 @@ function RecipeList() {
                 <li><Link to='tiramisu'>Tiramisù</Link></li>
                 <li><Link to='caramello-mou'>Caramello Mou</Link></li>
                 <li><Link to='cioccolatini-mou'>Cioccolatini al Mou</Link></li>
+                <li><Link to='sacher'>SacherTorte</Link></li>
             </ul>
 
             <h1>Bevande</h1>
@@ -95,6 +98,7 @@ function RecipesRouter() {
                 <Route path='pollo-alla-ligure' element={<Recipes.PolloAllaLigure />} />
                 <Route path='tiramisu' element={<Recipes.Tiramisu />} />
                 <Route path='uova-sode' element={<Recipes.UovaSode />} />
+                <Route path='torta-di-riso' element={<Recipes.TortaDiRiso />} />
                 <Route path='brasato' element={<Recipes.Brasato />} />
                 <Route path='salsa-barbeque' element={<Recipes.SalsaBarbeque />} />
                 <Route path='polpette' element={<Recipes.Polpette />} />
@@ -113,6 +117,8 @@ function RecipesRouter() {
                 <Route path='caramello-mou' element={<Recipes.CaramelloMou />} />
                 <Route path='cioccolatini-mou' element={<Recipes.CioccolatiniMou />} />
                 <Route path='tortellini-panna-prosciutto' element={<Recipes.TortelliniPannaProsciutto />} />
+                <Route path='cipolle-caramellate' element={<Recipes.CipolleCaramellate />} />
+                <Route path='sacher' element={<Recipes.Sacher />} />
             </Routes>
         </Layout>
     );
