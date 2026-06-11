@@ -247,24 +247,50 @@ function RecipeLayout({
                         <table>
                             <tbody>
                                 {ingredients.map((ingredient, index) => (
-                                    <tr key={index}>
-                                        <td style={{ paddingRight: '1rem', textAlign: 'right', whiteSpace: 'nowrap' }}>
-                                            {ingredient.quantity === undefined ?
-                                                '—' :
-                                                quantityContainsNumber(ingredient.quantity) ? (
-                                                    <EditableValue
-                                                        onChange={newQuantity => onQuantityChange(index, parseFloat(newQuantity))}
-                                                    >
-                                                        {formatQuantity(ingredient.quantity)}
-                                                    </EditableValue>
-                                                ) : (
-                                                    formatQuantity(ingredient.quantity)
-                                                )
-                                            }
-                                            {` ${ingredient.unit || ''}`}
-                                        </td>
-                                        <td>{ingredient.name}</td>
-                                    </tr>
+                                    <>
+                                        {
+                                            ingredient.category && (
+                                                <>
+                                                    {/* Empty line to separate categories */}
+                                                    {index > 0 && ingredients[index - 1].category !== ingredient.category ? (
+                                                        <tr>
+                                                            <td colSpan={2}>
+                                                                &nbsp;
+                                                            </td>
+                                                        </tr>
+                                                    ) : null}
+
+                                                    {/* Category Header */}
+                                                    {index === 0 || ingredients[index - 1].category !== ingredient.category ? (
+                                                        <tr>
+                                                            <td colSpan={2} style={{ fontWeight: 'bold', borderBottom: '1px solid #ccc' }}>
+                                                                {ingredient.category}:
+                                                            </td>
+                                                        </tr>
+                                                    ) : null}
+                                                </>
+                                            )
+                                        }
+
+                                        <tr key={index} >
+                                            <td style={{ paddingRight: '1rem', textAlign: 'right', whiteSpace: 'nowrap' }}>
+                                                {ingredient.quantity === undefined ?
+                                                    '—' :
+                                                    quantityContainsNumber(ingredient.quantity) ? (
+                                                        <EditableValue
+                                                            onChange={newQuantity => onQuantityChange(index, parseFloat(newQuantity))}
+                                                        >
+                                                            {formatQuantity(ingredient.quantity)}
+                                                        </EditableValue>
+                                                    ) : (
+                                                        formatQuantity(ingredient.quantity)
+                                                    )
+                                                }
+                                                {` ${ingredient.unit || ''}`}
+                                            </td>
+                                            <td>{ingredient.name}</td>
+                                        </tr>
+                                    </>
                                 ))}
                             </tbody>
                         </table>

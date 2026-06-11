@@ -16,6 +16,11 @@ import Besciamella from './recipes/Besciamella';
 import SalsaTahina from './recipes/SalsaTahina';
 import PolloAllaLigure from './recipes/PolloAllaLigure';
 import Tiramisu from './recipes/Tiramisu';
+import UovaSode from './recipes/UovaSode';
+import Brasato from './recipes/Brasato';
+import SalsaBarbeque from './recipes/SalsaBarbeque';
+import Polpette from './recipes/Polpette';
+import Pisto from './recipes/Pisto';
 
 // List of all recipes
 function RecipeList() {
@@ -32,17 +37,21 @@ function RecipeList() {
 
             <h1>Secondi</h1>
             <ul>
+                <li><Link to='brasato'>Brasato</Link></li>
                 <li><Link to='pollo-alla-ligure'>Pollo alla ligure</Link></li>
             </ul>
 
             <h1>Contorni</h1>
             <ul>
+                <li><Link to='polpette'>Polpette</Link></li>
                 <li><Link to='pure-di-patate'>Purè di patate</Link></li>
+                <li><Link to='uova-sode'>Uova sode</Link></li>
             </ul>
 
             <h1>Salse</h1>
             <ul>
                 <li><Link to='besciamella'>Besciamella</Link></li>
+                <li><Link to='salsa-barbeque'>Salsa Barbeque</Link></li>
                 <li><Link to='salsa-tahina'>Salsa Tahina</Link></li>
             </ul>
 
@@ -60,7 +69,7 @@ function RecipeList() {
 
             <h1>Altro</h1>
             <ul>
-
+                <li><Link to='pisto'>Pisto</Link></li>
             </ul>
         </SectionBackground>
     );
@@ -86,6 +95,11 @@ function RecipesRouter() {
                 <Route path='salsa-tahina' element={<SalsaTahina />} />
                 <Route path='pollo-alla-ligure' element={<PolloAllaLigure />} />
                 <Route path='tiramisu' element={<Tiramisu />} />
+                <Route path='uova-sode' element={<UovaSode />} />
+                <Route path='brasato' element={<Brasato />} />
+                <Route path='salsa-barbeque' element={<SalsaBarbeque />} />
+                <Route path='polpette' element={<Polpette />} />
+                <Route path='pisto' element={<Pisto />} />
             </Routes>
         </Layout>
     );
