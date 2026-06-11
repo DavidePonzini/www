@@ -33,22 +33,11 @@ maintenance:
 maintenance_stop:
 	docker compose down nginx_maintenance
 
-stop:
-	docker compose --profile dev --profile prod down
-
 psql:
 	docker exec -it $(COMPOSE_PROJECT_NAME)_db_admin psql -U postgres
 
 dump:
 	docker exec -t $(COMPOSE_PROJECT_NAME)_db_admin pg_dump -U postgres -n ww > dump_admin_$(shell date +'%Y.%m.%d-%H.%M.%S').sql
-
-maintenance:
-	docker compose down nginx_prod nginx_dev
-	docker compose up -d nginx_maintenance
-
-maintenance_stop:
-	docker compose down nginx_maintenance
-
 
 
 $(VENV):
