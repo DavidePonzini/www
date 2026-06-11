@@ -24,6 +24,10 @@ import Pisto from './recipes/Pisto';
 import SalsicciaVerdureAlForno from './recipes/SalsicciaVerdureAlForno';
 import Ragu from './recipes/Ragu';
 import Ragu2 from './recipes/Ragu2';
+import { SpezieCarne, SpeziePatate } from './recipes/Spezie';
+import RisoJawadTritato from './recipes/RisoJawadTritato';
+import RisottoZafferano from './recipes/RisottoZafferano';
+import RisottoZucchine from './recipes/RisottoZucchine';
 
 // List of all recipes
 function RecipeList() {
@@ -36,6 +40,9 @@ function RecipeList() {
                 <li><Link to='riso-jawad'>Riso con pollo - Jawad</Link></li>
                 <li><Link to='riso-jawad-aglio'>Riso con pollo e aglio - Jawad</Link></li>
                 <li><Link to='riso-jawad-fagiolini'>Riso con pollo e fagiolini - Jawad</Link></li>
+                <li><Link to='riso-jawad-tritato'>Riso con tritato - Jawad</Link></li>
+                <li><Link to='risotto-zafferano'>Risotto allo zafferano</Link></li>
+                <li><Link to='risotto-zucchine'>Risotto alle zucchine</Link></li>
             </ul>
 
             <h1>Secondi</h1>
@@ -76,6 +83,8 @@ function RecipeList() {
             <h1>Altro</h1>
             <ul>
                 <li><Link to='pisto'>Pisto</Link></li>
+                <li><Link to='spezie-carn'>Spezie per carni</Link></li>
+                <li><Link to='spezie-patate'>Spezie per patate</Link></li>
             </ul>
         </SectionBackground>
     );
@@ -95,6 +104,7 @@ function RecipesRouter() {
                 <Route path='sciroppo-cannella' element={<SciroppoCannella />} />
                 <Route path='crema-cocco' element={<CremaCocco />} />
                 <Route path='riso-jawad' element={<RisoJawad />} />
+                <Route path='riso-jawad-tritato' element={<RisoJawadTritato />} />
                 <Route path='riso-jawad-fagiolini' element={<RisoJawadFagiolini />} />
                 <Route path='riso-jawad-aglio' element={<RisoJawadAglio />} />
                 <Route path='besciamella' element={<Besciamella />} />
@@ -109,6 +119,10 @@ function RecipesRouter() {
                 <Route path='salsiccia-verdure-al-forno' element={<SalsicciaVerdureAlForno />} />
                 <Route path='ragu' element={<Ragu />} />
                 <Route path='ragu2' element={<Ragu2 />} />
+                <Route path='spezie-carn' element={<SpezieCarne />} />
+                <Route path='spezie-patate' element={<SpeziePatate />} />
+                <Route path='risotto-zafferano' element={<RisottoZafferano />} />
+                <Route path='risotto-zucchine' element={<RisottoZucchine />} />
             </Routes>
         </Layout>
     );
