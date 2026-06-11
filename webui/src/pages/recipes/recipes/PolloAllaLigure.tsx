@@ -41,9 +41,17 @@ function PolloAllaLigure() {
                     </ParallelBranch>
 
                     <ParallelBranch>
-                        <Step>Tagliare in pezzi il pollo.</Step>
-                        <Step>Tritare finemente aglio e rosmarino.</Step>
-                        <Step>Rosolare il pollo in una padella con olio.</Step>
+                        <Parallel>
+                            <ParallelBranch>
+                                <Step>Tritare finemente aglio e rosmarino.</Step>
+                            </ParallelBranch>
+
+                            <ParallelBranch>
+                                <Step>Tagliare in pezzi il pollo.</Step>
+                                <Step>Rosolare il pollo in una padella con olio.</Step>
+                            </ParallelBranch>
+                        </Parallel>
+
                         <Step>Aggiungere alloro, aglio e rosmarino.</Step>
                         <Step>Rosolare fino a quando non avrà preso un bel colorito dorato.</Step>
                         <Step>Sfumare con vino bianco e lasciare evaporare.</Step>
