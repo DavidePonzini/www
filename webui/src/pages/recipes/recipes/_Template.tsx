@@ -16,6 +16,8 @@ function Template() {
         <RecipeLayout
             title=''
             servings={2}
+            servingsUnitSingular=''
+            servingsUnitPlural=''
             source=''
             addedOn='Marzo 2025'
             times={<>
@@ -33,6 +35,7 @@ function Template() {
             </>}
             suggestions={<>
             </>}
+            notes=''
         />
     );
 }

@@ -1,37 +1,9 @@
 import { Route, Routes, Link } from 'react-router-dom';
 
 import Layout from '../../components/Layout';
-
 import SectionBackground from '../../components/SectionBackground';
-import Carbonara from './recipes/Carbonara';
-import Amatriciana from './recipes/Amatriciana';
-import PureDiPatate from './recipes/PureDiPatate';
-import Sciroppo from './recipes/Sciroppo';
-import SciroppoCannella from './recipes/SciroppoCannella';
-import CremaCocco from './recipes/CremaCocco';
-import RisoJawad from './recipes/RisoJawad';
-import RisoJawadFagiolini from './recipes/RisoJawadFagiolini';
-import RisoJawadAglio from './recipes/RisoJawadAglio';
-import Besciamella from './recipes/Besciamella';
-import SalsaTahina from './recipes/SalsaTahina';
-import PolloAllaLigure from './recipes/PolloAllaLigure';
-import Tiramisu from './recipes/Tiramisu';
-import UovaSode from './recipes/UovaSode';
-import Brasato from './recipes/Brasato';
-import SalsaBarbeque from './recipes/SalsaBarbeque';
-import Polpette from './recipes/Polpette';
-import Pisto from './recipes/Pisto';
-import SalsicciaVerdureAlForno from './recipes/SalsicciaVerdureAlForno';
-import Ragu from './recipes/Ragu';
-import Ragu2 from './recipes/Ragu2';
-import { SpezieCarne, SpeziePatate } from './recipes/Spezie';
-import RisoJawadTritato from './recipes/RisoJawadTritato';
-import RisottoZafferano from './recipes/RisottoZafferano';
-import RisottoZucchine from './recipes/RisottoZucchine';
-import PolloCaramellato from './recipes/PolloCaramellato';
-import Spezzatino from './recipes/Spezzatino';
-import SpiediniTritato from './recipes/SpiediniTritato';
-import SalameAlCioccolato from './recipes/SalameAlCioccolato';
+
+import * as Recipes from './recipes';
 
 // List of all recipes
 function RecipeList() {
@@ -47,6 +19,7 @@ function RecipeList() {
                 <li><Link to='riso-jawad-tritato'>Riso con tritato - Jawad</Link></li>
                 <li><Link to='risotto-zafferano'>Risotto allo zafferano</Link></li>
                 <li><Link to='risotto-zucchine'>Risotto alle zucchine</Link></li>
+                <li><Link to='tortellini-panna-prosciutto'>Tortellini panna e prosciutto</Link></li>
             </ul>
 
             <h1>Secondi</h1>
@@ -79,6 +52,8 @@ function RecipeList() {
             <ul>
                 <li><Link to='salame-al-cioccolato'>Salame al cioccolato</Link></li>
                 <li><Link to='tiramisu'>Tiramisù</Link></li>
+                <li><Link to='caramello-mou'>Caramello Mou</Link></li>
+                <li><Link to='cioccolatini-mou'>Cioccolatini al Mou</Link></li>
             </ul>
 
             <h1>Bevande</h1>
@@ -105,36 +80,39 @@ function RecipesRouter() {
             <Routes>
                 <Route index element={<RecipeList />} />
 
-                <Route path='carbonara' element={<Carbonara />} />
-                <Route path='amatriciana' element={<Amatriciana />} />
-                <Route path='pure-di-patate' element={<PureDiPatate />} />
-                <Route path='sciroppo' element={<Sciroppo />} />
-                <Route path='sciroppo-cannella' element={<SciroppoCannella />} />
-                <Route path='crema-cocco' element={<CremaCocco />} />
-                <Route path='riso-jawad' element={<RisoJawad />} />
-                <Route path='riso-jawad-tritato' element={<RisoJawadTritato />} />
-                <Route path='riso-jawad-fagiolini' element={<RisoJawadFagiolini />} />
-                <Route path='riso-jawad-aglio' element={<RisoJawadAglio />} />
-                <Route path='besciamella' element={<Besciamella />} />
-                <Route path='salsa-tahina' element={<SalsaTahina />} />
-                <Route path='pollo-alla-ligure' element={<PolloAllaLigure />} />
-                <Route path='tiramisu' element={<Tiramisu />} />
-                <Route path='uova-sode' element={<UovaSode />} />
-                <Route path='brasato' element={<Brasato />} />
-                <Route path='salsa-barbeque' element={<SalsaBarbeque />} />
-                <Route path='polpette' element={<Polpette />} />
-                <Route path='pisto' element={<Pisto />} />
-                <Route path='salsiccia-verdure-al-forno' element={<SalsicciaVerdureAlForno />} />
-                <Route path='ragu' element={<Ragu />} />
-                <Route path='ragu2' element={<Ragu2 />} />
-                <Route path='spezie-carn' element={<SpezieCarne />} />
-                <Route path='spezie-patate' element={<SpeziePatate />} />
-                <Route path='risotto-zafferano' element={<RisottoZafferano />} />
-                <Route path='risotto-zucchine' element={<RisottoZucchine />} />
-                <Route path='pollo-caramellato' element={<PolloCaramellato />} />
-                <Route path='spezzatino' element={<Spezzatino />} />
-                <Route path='spiedini-tritato' element={<SpiediniTritato />} />
-                <Route path='salame-al-cioccolato' element={<SalameAlCioccolato />} />
+                <Route path='carbonara' element={<Recipes.Carbonara />} />
+                <Route path='amatriciana' element={<Recipes.Amatriciana />} />
+                <Route path='pure-di-patate' element={<Recipes.PureDiPatate />} />
+                <Route path='sciroppo' element={<Recipes.Sciroppo />} />
+                <Route path='sciroppo-cannella' element={<Recipes.SciroppoCannella />} />
+                <Route path='crema-cocco' element={<Recipes.CremaCocco />} />
+                <Route path='riso-jawad' element={<Recipes.RisoJawad />} />
+                <Route path='riso-jawad-tritato' element={<Recipes.RisoJawadTritato />} />
+                <Route path='riso-jawad-fagiolini' element={<Recipes.RisoJawadFagiolini />} />
+                <Route path='riso-jawad-aglio' element={<Recipes.RisoJawadAglio />} />
+                <Route path='besciamella' element={<Recipes.Besciamella />} />
+                <Route path='salsa-tahina' element={<Recipes.SalsaTahina />} />
+                <Route path='pollo-alla-ligure' element={<Recipes.PolloAllaLigure />} />
+                <Route path='tiramisu' element={<Recipes.Tiramisu />} />
+                <Route path='uova-sode' element={<Recipes.UovaSode />} />
+                <Route path='brasato' element={<Recipes.Brasato />} />
+                <Route path='salsa-barbeque' element={<Recipes.SalsaBarbeque />} />
+                <Route path='polpette' element={<Recipes.Polpette />} />
+                <Route path='pisto' element={<Recipes.Pisto />} />
+                <Route path='salsiccia-verdure-al-forno' element={<Recipes.SalsicciaVerdureAlForno />} />
+                <Route path='ragu' element={<Recipes.Ragu />} />
+                <Route path='ragu2' element={<Recipes.Ragu2 />} />
+                <Route path='spezie-carn' element={<Recipes.SpezieCarne />} />
+                <Route path='spezie-patate' element={<Recipes.SpeziePatate />} />
+                <Route path='risotto-zafferano' element={<Recipes.RisottoZafferano />} />
+                <Route path='risotto-zucchine' element={<Recipes.RisottoZucchine />} />
+                <Route path='pollo-caramellato' element={<Recipes.PolloCaramellato />} />
+                <Route path='spezzatino' element={<Recipes.Spezzatino />} />
+                <Route path='spiedini-tritato' element={<Recipes.SpiediniTritato />} />
+                <Route path='salame-al-cioccolato' element={<Recipes.SalameAlCioccolato />} />
+                <Route path='caramello-mou' element={<Recipes.CaramelloMou />} />
+                <Route path='cioccolatini-mou' element={<Recipes.CioccolatiniMou />} />
+                <Route path='tortellini-panna-prosciutto' element={<Recipes.TortelliniPannaProsciutto />} />
             </Routes>
         </Layout>
     );
