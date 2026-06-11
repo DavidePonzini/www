@@ -17,6 +17,12 @@ function EditableValue({ children, onChange, style, editable = true }: EditableV
                 ...style,
             }}
             onBlur={editable ? event => onChange(event.currentTarget.innerText) : undefined}
+            onKeyDown={editable ? event => {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    event.currentTarget.blur();
+                }
+            } : undefined}
         >
             {children}
         </span>
