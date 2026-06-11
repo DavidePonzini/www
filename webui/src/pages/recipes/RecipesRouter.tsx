@@ -3,77 +3,25 @@ import { Route, Routes, Link } from 'react-router-dom';
 import Layout from '../../components/Layout';
 import SectionBackground from '../../components/SectionBackground';
 
-import * as Recipes from './recipes';
+// import * as Recipes from './recipes';
+import Recipes from './recipes';
 
 // List of all recipes
 function RecipeList() {
     return (
         <SectionBackground img={null}>
-            <h1>Primi</h1>
-            <ul>
-                <li><Link to='amatriciana'>Amatriciana</Link></li>
-                <li><Link to='carbonara'>Carbonara</Link></li>
-                <li><Link to='riso-jawad'>Riso con pollo - Jawad</Link></li>
-                <li><Link to='riso-jawad-aglio'>Riso con pollo e aglio - Jawad</Link></li>
-                <li><Link to='riso-jawad-fagiolini'>Riso con pollo e fagiolini - Jawad</Link></li>
-                <li><Link to='riso-jawad-tritato'>Riso con tritato - Jawad</Link></li>
-                <li><Link to='risotto-zafferano'>Risotto allo zafferano</Link></li>
-                <li><Link to='risotto-zucchine'>Risotto alle zucchine</Link></li>
-                <li><Link to='torta-di-riso'>Torta di riso</Link></li>
-                <li><Link to='tortellini-panna-prosciutto'>Tortellini panna e prosciutto</Link></li>
-            </ul>
-
-            <h1>Secondi</h1>
-            <ul>
-                <li><Link to='brasato'>Brasato</Link></li>
-                <li><Link to='pollo-alla-ligure'>Pollo alla ligure</Link></li>
-                <li><Link to='pollo-caramellato'>Pollo caramellato</Link></li>
-                <li><Link to='salsiccia-verdure-al-forno'>Salsiccia e verdure al forno</Link></li>
-                <li><Link to='spezzatino'>Spezzatino</Link></li>
-            </ul>
-
-            <h1>Contorni</h1>
-            <ul>
-                <li><Link to='polpette'>Polpette</Link></li>
-                <li><Link to='pure-di-patate'>Purè di patate</Link></li>
-                <li><Link to='uova-sode'>Uova sode</Link></li>
-                <li><Link to='spiedini-tritato'>Spiedini di tritato</Link></li>
-                <li><Link to='cipolle-caramellate'>Cipolle caramellate</Link></li>
-                <li><Link to='pomodori-pangrattato'>Pomodori ripieni di pan grattato ed erbe di provenza</Link></li>
-            </ul>
-
-            <h1>Salse</h1>
-            <ul>
-                <li><Link to='besciamella'>Besciamella</Link></li>
-                <li><Link to='ragu'>Ragù</Link></li>
-                <li><Link to='ragu2'>Ragù 2.0</Link></li>
-                <li><Link to='salsa-barbeque'>Salsa Barbeque</Link></li>
-                <li><Link to='salsa-tahina'>Salsa Tahina</Link></li>
-            </ul>
-
-            <h1>Dolci</h1>
-            <ul>
-                <li><Link to='caramello-mou'>Caramello Mou</Link></li>
-                <li><Link to='cioccolatini-mou'>Cioccolatini al Mou</Link></li>
-                <li><Link to='cookies'>Cookies</Link></li>
-                <li><Link to='sacher'>SacherTorte</Link></li>
-                <li><Link to='salame-al-cioccolato'>Salame al cioccolato</Link></li>
-                <li><Link to='tiramisu'>Tiramisù</Link></li>
-            </ul>
-
-            <h1>Bevande</h1>
-            <ul>
-                <li><Link to='crema-cocco'>Crema di cocco</Link></li>
-                <li><Link to='sciroppo'>Sciroppo 62%</Link></li>
-                <li><Link to='sciroppo-cannella'>Sciroppo alla cannella</Link></li>
-            </ul>
-
-            <h1>Altro</h1>
-            <ul>
-                <li><Link to='pisto'>Pisto</Link></li>
-                <li><Link to='spezie-carn'>Spezie per carni</Link></li>
-                <li><Link to='spezie-patate'>Spezie per patate</Link></li>
-            </ul>
+            {Object.keys(Recipes).map((category) => (
+                <div key={category}>
+                    <h1>{category}</h1>
+                    <ul>
+                        {Recipes[category].map((recipe) => (
+                            <li key={recipe.url}>
+                                <Link to={recipe.url}>{recipe.title}</Link>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ))}
         </SectionBackground>
     );
 }
@@ -85,7 +33,13 @@ function RecipesRouter() {
             <Routes>
                 <Route index element={<RecipeList />} />
 
-                <Route path='carbonara' element={<Recipes.Carbonara />} />
+                {Object.keys(Recipes).map((category) => (
+                    Recipes[category].map((recipe) => (
+                        <Route key={recipe.url} path={recipe.url} element={<recipe.component />} />
+                    ))
+                ))}
+
+                {/* <Route path='carbonara' element={<Recipes.Carbonara />} />
                 <Route path='cookies' element={<Recipes.Cookies />} />
                 <Route path='amatriciana' element={<Recipes.Amatriciana />} />
                 <Route path='pure-di-patate' element={<Recipes.PureDiPatate />} />
@@ -109,7 +63,7 @@ function RecipesRouter() {
                 <Route path='salsiccia-verdure-al-forno' element={<Recipes.SalsicciaVerdureAlForno />} />
                 <Route path='ragu' element={<Recipes.Ragu />} />
                 <Route path='ragu2' element={<Recipes.Ragu2 />} />
-                <Route path='spezie-carn' element={<Recipes.SpezieCarne />} />
+                <Route path='spezie-carne' element={<Recipes.SpezieCarne />} />
                 <Route path='spezie-patate' element={<Recipes.SpeziePatate />} />
                 <Route path='risotto-zafferano' element={<Recipes.RisottoZafferano />} />
                 <Route path='risotto-zucchine' element={<Recipes.RisottoZucchine />} />
@@ -122,7 +76,7 @@ function RecipesRouter() {
                 <Route path='tortellini-panna-prosciutto' element={<Recipes.TortelliniPannaProsciutto />} />
                 <Route path='cipolle-caramellate' element={<Recipes.CipolleCaramellate />} />
                 <Route path='pomodori-pangrattato' element={<Recipes.PomodoriPangrattato />} />
-                <Route path='sacher' element={<Recipes.Sacher />} />
+                <Route path='sacher' element={<Recipes.Sacher />} /> */}
             </Routes>
         </Layout>
     );

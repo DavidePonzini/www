@@ -1,37 +1,94 @@
-export { SpezieCarne, SpeziePatate } from './Spezie';
-export { default as Carbonara } from './Carbonara';
-export { default as Amatriciana } from './Amatriciana';
-export { default as PureDiPatate } from './PureDiPatate';
-export { default as Sciroppo } from './Sciroppo';
-export { default as SciroppoCannella } from './SciroppoCannella';
-export { default as CremaCocco } from './CremaCocco';
-export { default as RisoJawad } from './RisoJawad';
-export { default as RisoJawadFagiolini } from './RisoJawadFagiolini';
-export { default as RisoJawadAglio } from './RisoJawadAglio';
-export { default as Besciamella } from './Besciamella';
-export { default as SalsaTahina } from './SalsaTahina';
-export { default as PolloAllaLigure } from './PolloAllaLigure';
-export { default as Tiramisu } from './Tiramisu';
-export { default as UovaSode } from './UovaSode';
-export { default as Brasato } from './Brasato';
-export { default as SalsaBarbeque } from './SalsaBarbeque';
-export { default as Polpette } from './Polpette';
-export { default as Pisto } from './Pisto';
-export { default as SalsicciaVerdureAlForno } from './SalsicciaVerdureAlForno';
-export { default as Ragu } from './Ragu';
-export { default as Ragu2 } from './Ragu2';
-export { default as RisoJawadTritato } from './RisoJawadTritato';
-export { default as RisottoZafferano } from './RisottoZafferano';
-export { default as RisottoZucchine } from './RisottoZucchine';
-export { default as PolloCaramellato } from './PolloCaramellato';
-export { default as Spezzatino } from './Spezzatino';
-export { default as SpiediniTritato } from './SpiediniTritato';
-export { default as SalameAlCioccolato } from './SalameAlCioccolato';
-export { default as CaramelloMou } from './CaramelloMou';
-export { default as CioccolatiniMou } from './CioccolatiniMou';
-export { default as TortelliniPannaProsciutto } from './TortelliniPannaProsciutto';
-export { default as CipolleCaramellate } from './CipolleCaramellate';
-export { default as TortaDiRiso } from './TortaDiRiso';
-export { default as Sacher } from './Sacher';
-export { default as Cookies } from './Cookies';
-export { default as PomodoriPangrattato } from './PomodoriPangrattato';
+import { SpezieCarne, SpeziePatate } from './Spezie';
+import Carbonara from './Carbonara';
+import Amatriciana from './Amatriciana';
+import PureDiPatate from './PureDiPatate';
+import Sciroppo from './Sciroppo';
+import SciroppoCannella from './SciroppoCannella';
+import CremaCocco from './CremaCocco';
+import RisoJawad from './RisoJawad';
+import RisoJawadFagiolini from './RisoJawadFagiolini';
+import RisoJawadAglio from './RisoJawadAglio';
+import Besciamella from './Besciamella';
+import SalsaTahina from './SalsaTahina';
+import PolloAllaLigure from './PolloAllaLigure';
+import Tiramisu from './Tiramisu';
+import UovaSode from './UovaSode';
+import Brasato from './Brasato';
+import SalsaBarbeque from './SalsaBarbeque';
+import Polpette from './Polpette';
+import Pisto from './Pisto';
+import SalsicciaVerdureAlForno from './SalsicciaVerdureAlForno';
+import Ragu from './Ragu';
+import Ragu2 from './Ragu2';
+import RisoJawadTritato from './RisoJawadTritato';
+import RisottoZafferano from './RisottoZafferano';
+import RisottoZucchine from './RisottoZucchine';
+import PolloCaramellato from './PolloCaramellato';
+import Spezzatino from './Spezzatino';
+import SpiediniTritato from './SpiediniTritato';
+import SalameAlCioccolato from './SalameAlCioccolato';
+import CaramelloMou from './CaramelloMou';
+import CioccolatiniMou from './CioccolatiniMou';
+import TortelliniPannaProsciutto from './TortelliniPannaProsciutto';
+import CipolleCaramellate from './CipolleCaramellate';
+import TortaDiRiso from './TortaDiRiso';
+import Sacher from './Sacher';
+import Cookies from './Cookies';
+import PomodoriPangrattato from './PomodoriPangrattato';
+
+const recipes: { [key: string]: any } = {
+    'Primi': [
+        Amatriciana,
+        Carbonara,
+        RisoJawad,
+        RisoJawadAglio,
+        RisoJawadFagiolini,
+        RisoJawadTritato,
+        RisottoZafferano,
+        RisottoZucchine,
+        TortaDiRiso,
+        TortelliniPannaProsciutto,
+    ],
+    'Secondi': [
+        Brasato,
+        PolloAllaLigure,
+        PolloCaramellato,
+        SalsicciaVerdureAlForno,
+        Spezzatino,
+    ],
+    'Contorni': [
+        Polpette,
+        PureDiPatate,
+        UovaSode,
+        SpiediniTritato,
+        CipolleCaramellate,
+        PomodoriPangrattato,
+    ],
+    'Salse': [
+        Besciamella,
+        SalsaTahina,
+        SalsaBarbeque,
+        Ragu,
+        Ragu2,
+    ],
+    'Dolci': [
+        CaramelloMou,
+        CioccolatiniMou,
+        Cookies,
+        Sacher,
+        SalameAlCioccolato,
+        Tiramisu,
+    ],
+    'Bevande': [
+        CremaCocco,
+        Sciroppo,
+        SciroppoCannella,
+    ],
+    'Altro': [
+        Pisto,
+        SpezieCarne,
+        SpeziePatate,
+    ],
+};
+
+export default recipes;

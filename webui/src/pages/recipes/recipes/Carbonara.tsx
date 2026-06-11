@@ -6,10 +6,13 @@ import {
 } from "../../../components/recipes";
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
+const TITLE = 'Carbonara';
+const URL = 'carbonara';
+
 function Carbonara() {
     return (
         <RecipeLayout
-            title='Carbonara'
+            title={TITLE}
             servings={2}
             source='Davide Ponzini'
             addedOn='Marzo 2025'
@@ -68,5 +71,8 @@ function Carbonara() {
         />
     );
 }
+
+Carbonara.title = TITLE;
+Carbonara.url = URL;
 
 export default Carbonara;
