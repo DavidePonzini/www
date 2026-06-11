@@ -15,6 +15,7 @@ import RisoJawadAglio from './recipes/RisoJawadAglio';
 import Besciamella from './recipes/Besciamella';
 import SalsaTahina from './recipes/SalsaTahina';
 import PolloAllaLigure from './recipes/PolloAllaLigure';
+import Tiramisu from './recipes/tiramisu';
 
 // List of all recipes
 function RecipeList() {
@@ -22,8 +23,8 @@ function RecipeList() {
         <SectionBackground img={null}>
             <h1>Primi</h1>
             <ul>
-                <li><Link to='carbonara'>Carbonara</Link></li>
                 <li><Link to='amatriciana'>Amatriciana</Link></li>
+                <li><Link to='carbonara'>Carbonara</Link></li>
                 <li><Link to='riso-jawad'>Riso con pollo - Jawad</Link></li>
                 <li><Link to='riso-jawad-aglio'>Riso con pollo e aglio - Jawad</Link></li>
                 <li><Link to='riso-jawad-fagiolini'>Riso con pollo e fagiolini - Jawad</Link></li>
@@ -47,14 +48,14 @@ function RecipeList() {
 
             <h1>Dolci</h1>
             <ul>
-
+                <li><Link to='tiramisu'>Tiramisù</Link></li>
             </ul>
 
             <h1>Bevande</h1>
             <ul>
+                <li><Link to='crema-cocco'>Crema di cocco</Link></li>
                 <li><Link to='sciroppo'>Sciroppo 62%</Link></li>
                 <li><Link to='sciroppo-cannella'>Sciroppo alla cannella</Link></li>
-                <li><Link to='crema-cocco'>Crema di cocco</Link></li>
             </ul>
 
             <h1>Altro</h1>
@@ -84,6 +85,7 @@ function RecipesRouter() {
                 <Route path='besciamella' element={<Besciamella />} />
                 <Route path='salsa-tahina' element={<SalsaTahina />} />
                 <Route path='pollo-alla-ligure' element={<PolloAllaLigure />} />
+                <Route path='tiramisu' element={<Tiramisu />} />
             </Routes>
         </Layout>
     );
