@@ -15,7 +15,7 @@ import RisoJawadAglio from './recipes/RisoJawadAglio';
 import Besciamella from './recipes/Besciamella';
 import SalsaTahina from './recipes/SalsaTahina';
 import PolloAllaLigure from './recipes/PolloAllaLigure';
-import Tiramisu from './recipes/tiramisu';
+import Tiramisu from './recipes/Tiramisu';
 
 // List of all recipes
 function RecipeList() {
