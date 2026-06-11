@@ -21,6 +21,9 @@ import Brasato from './recipes/Brasato';
 import SalsaBarbeque from './recipes/SalsaBarbeque';
 import Polpette from './recipes/Polpette';
 import Pisto from './recipes/Pisto';
+import SalsicciaVerdureAlForno from './recipes/SalsicciaVerdureAlForno';
+import Ragu from './recipes/Ragu';
+import Ragu2 from './recipes/Ragu2';
 
 // List of all recipes
 function RecipeList() {
@@ -39,6 +42,7 @@ function RecipeList() {
             <ul>
                 <li><Link to='brasato'>Brasato</Link></li>
                 <li><Link to='pollo-alla-ligure'>Pollo alla ligure</Link></li>
+                <li><Link to='salsiccia-verdure-al-forno'>Salsiccia e verdure al forno</Link></li>
             </ul>
 
             <h1>Contorni</h1>
@@ -51,6 +55,8 @@ function RecipeList() {
             <h1>Salse</h1>
             <ul>
                 <li><Link to='besciamella'>Besciamella</Link></li>
+                <li><Link to='ragu'>Ragù</Link></li>
+                <li><Link to='ragu2'>Ragù 2.0</Link></li>
                 <li><Link to='salsa-barbeque'>Salsa Barbeque</Link></li>
                 <li><Link to='salsa-tahina'>Salsa Tahina</Link></li>
             </ul>
@@ -100,6 +106,9 @@ function RecipesRouter() {
                 <Route path='salsa-barbeque' element={<SalsaBarbeque />} />
                 <Route path='polpette' element={<Polpette />} />
                 <Route path='pisto' element={<Pisto />} />
+                <Route path='salsiccia-verdure-al-forno' element={<SalsicciaVerdureAlForno />} />
+                <Route path='ragu' element={<Ragu />} />
+                <Route path='ragu2' element={<Ragu2 />} />
             </Routes>
         </Layout>
     );
