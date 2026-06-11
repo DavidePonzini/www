@@ -28,6 +28,8 @@ import { SpezieCarne, SpeziePatate } from './recipes/Spezie';
 import RisoJawadTritato from './recipes/RisoJawadTritato';
 import RisottoZafferano from './recipes/RisottoZafferano';
 import RisottoZucchine from './recipes/RisottoZucchine';
+import PolloCaramellato from './recipes/PolloCaramellato';
+import Spezzatino from './recipes/Spezzatino';
 
 // List of all recipes
 function RecipeList() {
@@ -49,7 +51,9 @@ function RecipeList() {
             <ul>
                 <li><Link to='brasato'>Brasato</Link></li>
                 <li><Link to='pollo-alla-ligure'>Pollo alla ligure</Link></li>
+                <li><Link to='pollo-caramellato'>Pollo caramellato</Link></li>
                 <li><Link to='salsiccia-verdure-al-forno'>Salsiccia e verdure al forno</Link></li>
+                <li><Link to='spezzatino'>Spezzatino</Link></li>
             </ul>
 
             <h1>Contorni</h1>
@@ -123,6 +127,8 @@ function RecipesRouter() {
                 <Route path='spezie-patate' element={<SpeziePatate />} />
                 <Route path='risotto-zafferano' element={<RisottoZafferano />} />
                 <Route path='risotto-zucchine' element={<RisottoZucchine />} />
+                <Route path='pollo-caramellato' element={<PolloCaramellato />} />
+                <Route path='spezzatino' element={<Spezzatino />} />
             </Routes>
         </Layout>
     );
