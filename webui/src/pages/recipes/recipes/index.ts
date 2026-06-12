@@ -60,6 +60,14 @@ import PiselliConUova from './PiselliConUova';
 import Pizza from './Pizza';
 import PolentaSalsiccia from './PolentaSalsiccia';
 import LiquoreAnice from './LiquoreAnice';
+import PastaFattaInCasa from './PastaFattaInCasa';
+import PastaZuccaSalsiccia from './PastaZuccaSalsiccia';
+import PastaTonnoPrezzemoloLimone from './PastaTonnoPrezzemoloLimone';
+import PastaBurroSalvia from './PastaBurroSalvia';
+import PastaPomodoroFrescoCrudo from './PastaPomodoroFrescoCrudo';
+import PastaPomodoroFrescoCotto from './PastaPomodoroFrescoCotto';
+import PastaAglioOlioPeperoncino from './PastaAglioOlioPeperoncino';
+import PastaPannaZafferano from './PastaPannaZafferano';
 
 const RECIPES: Record<string, RecipeComponent[]> = {
     'Primi': [
@@ -68,6 +76,14 @@ const RECIPES: Record<string, RecipeComponent[]> = {
         Gnocchi,
         InsalataDiRiso,
         Lasagne,
+        PastaAglioOlioPeperoncino,
+        PastaBurroSalvia,
+        PastaFattaInCasa,
+        PastaPannaZafferano,
+        PastaPomodoroFrescoCotto,
+        PastaPomodoroFrescoCrudo,
+        PastaTonnoPrezzemoloLimone,
+        PastaZuccaSalsiccia,
         PolentaSalsiccia,
         Pizza,
         RisoJawad,
