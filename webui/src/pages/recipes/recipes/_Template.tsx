@@ -10,8 +10,8 @@ import {
     BakingTimeTop,
     BakingTimeTopbottom,
     PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step, Parallel, ParallelBranch } from '../../../components/flow';
 
 const TITLE = '';
 
@@ -43,6 +43,5 @@ function Template() {
         />
     );
 }
-
 
 export default defineRecipe(Template, TITLE);
