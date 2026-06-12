@@ -17,7 +17,7 @@ function Gelato() {
             source='Abbate Maria Luisa (modificata)'
             addedOn='Agosto 2023'
             times={<>
-                <PreparationWait time='24 h' description='Congelatore — vaschette' />
+                <PreparationWait time='24 h'>Congelatore — vaschette</PreparationWait>
                 <PreparationTime time='30 min' />
             </>}
             ingredients={[

@@ -51,12 +51,25 @@ import TortaRosaria from './TortaRosaria';
 import Nutellotti from './Nutellotti';
 import NoccioleTostate from './NoccioleTostate';
 import Mostaccioli from './Mostaccioli';
+import InsalataDiRiso from './InsalataDiRiso';
+import Lasagne from './Lasagne';
+import Pane from './Pane';
+import PatateDuchessa from './PatateDuchessa';
+import PatatineFritte from './PatatineFritte';
+import PiselliConUova from './PiselliConUova';
+import Pizza from './Pizza';
+import PolentaSalsiccia from './PolentaSalsiccia';
+import LiquoreAnice from './LiquoreAnice';
 
 const RECIPES: Record<string, RecipeComponent[]> = {
     'Primi': [
         Amatriciana,
         Carbonara,
         Gnocchi,
+        InsalataDiRiso,
+        Lasagne,
+        PolentaSalsiccia,
+        Pizza,
         RisoJawad,
         RisoJawadAglio,
         RisoJawadFagiolini,
@@ -80,6 +93,10 @@ const RECIPES: Record<string, RecipeComponent[]> = {
         CipolleCaramellate,
         Focaccia,
         FrittellePatate,
+        Pane,
+        PatateDuchessa,
+        PatatineFritte,
+        PiselliConUova,
         PomodoriPangrattato,
         PureDiPatate,
         SpiediniTritato,
@@ -109,6 +126,7 @@ const RECIPES: Record<string, RecipeComponent[]> = {
     ],
     'Bevande': [
         CremaCocco,
+        LiquoreAnice,
         Sciroppo62,
         SciroppoCannella,
     ],

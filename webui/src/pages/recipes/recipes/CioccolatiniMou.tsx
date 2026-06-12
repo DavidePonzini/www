@@ -23,10 +23,10 @@ function CioccolatiniMou() {
             source='Internet'
             addedOn='Aprile 2019'
             times={<>
-                <CookingTime time='5 min' flame='bassa' description='Cioccolato' />
-                <PreparationTime time='30 min' description='Rivestimento esterno' />
+                <CookingTime time='5 min' flame='bassa'>Cioccolato</CookingTime>
+                <PreparationTime time='30 min'>Rivestimento esterno</PreparationTime>
                 <PreparationWait time='20 min' />
-                <PreparationTime time='30 min' description='Farcitura' />
+                <PreparationTime time='30 min'>Farcitura</PreparationTime>
                 <PreparationWait time='1 h' />
             </>}
             ingredients={[

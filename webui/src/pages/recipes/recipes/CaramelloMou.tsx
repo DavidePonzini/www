@@ -5,11 +5,6 @@ import {
     Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
-    BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
-    PreparationWait,
 } from '../../../components/recipes';
 import { Step, Parallel, ParallelBranch } from '../../../components/flow';
 

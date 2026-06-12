@@ -9,7 +9,6 @@ import {
 import { Step } from '../../../components/flow';
 
 const TITLE = 'Gnocchi di patate';
-const URL = 'gnocchi';
 
 function Gnocchi() {
     return (
@@ -20,8 +19,8 @@ function Gnocchi() {
             addedOn='~ 2022'
             times={<>
                 <PreparationTime time='20 min' />
-                <CookingTime time='45 min' flame='alta' description='Bollitura' />
-                <CookingTime time='2 min' flame='alta' description='Cottura' />
+                <CookingTime time='45 min' flame='alta'>Bollitura</CookingTime>
+                <CookingTime time='2 min' flame='alta'>Cottura</CookingTime>
             </>}
             ingredients={[
                 { name: 'Patate', quantity: 200, unit: 'g' },

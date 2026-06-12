@@ -19,7 +19,7 @@ function TortaDiRiso() {
             addedOn='~ 2022'
             times={<>
                 <PreparationTime time='1 h' />
-                <CookingTime time='~ 10 min' flame='medio-bassa' description='Risotto' />
+                <CookingTime time='~ 10 min' flame='medio-bassa'>Risotto</CookingTime>
                 <PreparationTime time='15 min' />
                 <BakingTimeFan time='40-45 min' temperature={180} />
             </>}

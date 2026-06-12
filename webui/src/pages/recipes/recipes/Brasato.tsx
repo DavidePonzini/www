@@ -19,7 +19,7 @@ function Brasato() {
             addedOn='~ 2022'
             times={<>
                 <PreparationTime time='15 min' />
-                <PreparationWait time='12 h' description='Riposo in frigo' />
+                <PreparationWait time='12 h'>Riposo in frigo</PreparationWait>
                 <PreparationTime time='30 min' />
                 <CookingTime time='2 h 30 min' flame='bassa' />
             </>}
@@ -30,16 +30,16 @@ function Brasato() {
                 { name: 'Cipolle dorate', quantity: 100, unit: 'g', category: 'Marinatura' },
                 { name: 'Sedano', quantity: 100, unit: 'g', category: 'Marinatura' },
                 { name: 'Aglio', quantity: 1, unit: 'spicchio', category: 'Marinatura' },
-                
+
                 { name: 'Garza sterile', category: 'Sacchettino aromatico' },
                 { name: 'Spago', category: 'Sacchettino aromatico' },
                 { name: 'Pepe nero', quantity: 4, unit: 'chicchi', category: 'Sacchettino aromatico' },
                 { name: 'Chiodi di garofano', quantity: 3, category: 'Sacchettino aromatico' },
                 { name: 'Cannella', quantity: 1, unit: 'stecca', category: 'Sacchettino aromatico' },
-                
+
                 { name: 'Rosmarino', quantity: 1, unit: 'rametto', category: 'Altre spezie' },
                 { name: 'Alloro', quantity: 2, unit: 'foglie', category: 'Altre spezie' },
-                
+
                 { name: 'Burro', quantity: 20, unit: 'g', category: 'Cottura' },
                 { name: 'Olio', quantity: 50, unit: 'g', category: 'Cottura' },
                 { name: 'Sale', category: 'Cottura', unit: 'q.b.' },

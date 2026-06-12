@@ -10,11 +10,11 @@ type RecipeFunction = (() => JSX.Element) & {
     url?: string
 };
 
-function classNameToUrl(name: string) {
-    return name
-        .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
-        .toLowerCase();
-}
+// function classNameToUrl(name: string) {
+//     return name
+//         .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
+//         .toLowerCase();
+// }
 
 function titleToUrl(title: string) {
     return title

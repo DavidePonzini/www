@@ -18,7 +18,7 @@ function SalameAlCioccolato() {
             addedOn='~ 2019'
             times={<>
                 <PreparationTime time='1 h' />
-                <PreparationWait time='~ 8 h' description='Frigo' />
+                <PreparationWait time='~ 8 h'>Frigorifero</PreparationWait>
             </>}
             ingredients={[
                 { name: 'Cioccolato fondente', quantity: 200, unit: 'g' },

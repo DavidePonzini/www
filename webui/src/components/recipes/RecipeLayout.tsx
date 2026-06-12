@@ -7,6 +7,7 @@ import RecipeSectionDivider from './RecipeSectionDivider';
 import SectionBackground from '../SectionBackground';
 import { getFlowStorageKey } from '../flow/FlowUtils';
 import { Flow, Sequence } from '../flow';
+import { Fragment } from 'react/jsx-runtime';
 
 const sectionHeadingStyle = {
     marginBottom: '.9rem',
@@ -249,7 +250,7 @@ function RecipeLayout({
                         <table>
                             <tbody>
                                 {ingredients.map((ingredient, index) => (
-                                    <>
+                                    <Fragment key={index}>
                                         {
                                             ingredient.category && (
                                                 <>
@@ -265,7 +266,7 @@ function RecipeLayout({
                                                     {/* Category Header */}
                                                     {index === 0 || ingredients[index - 1].category !== ingredient.category ? (
                                                         <tr>
-                                                            <td colSpan={2} style={{ fontWeight: 'bold', borderBottom: '1px solid #ccc' }}>
+                                                            <td colSpan={2} style={{ fontWeight: 'bold' }}>
                                                                 {ingredient.category}:
                                                             </td>
                                                         </tr>
@@ -274,7 +275,7 @@ function RecipeLayout({
                                             )
                                         }
 
-                                        <tr key={index} >
+                                        <tr>
                                             <td style={{ paddingRight: '1rem', textAlign: 'right', whiteSpace: 'nowrap' }}>
                                                 {ingredient.quantity === undefined ?
                                                     '—' :
@@ -298,7 +299,7 @@ function RecipeLayout({
                                                 )}
                                             </td>
                                         </tr>
-                                    </>
+                                    </Fragment>
                                 ))}
                             </tbody>
                         </table>

@@ -4,7 +4,7 @@ import RecipeMetaItem from './RecipeMetaItem';
 
 type SharedTimeProps = {
     time: string | number;
-    description?: ReactNode;
+    children?: ReactNode;
 };
 
 type CookingTimeProps = SharedTimeProps & {
@@ -25,46 +25,46 @@ function TimeDescription({ children }: PropsWithChildren) {
     return <em>{`(${children})`}</em>;
 }
 
-function PreparationTime({ time, description }: SharedTimeProps) {
+function PreparationTime({ time, children }: SharedTimeProps) {
     return (
         <RecipeMetaItem icon='fa-solid fa-mitten'>
             <span>
                 {time}
-                {description && <> <TimeDescription>{description}</TimeDescription></>}
+                {children && <> <TimeDescription>{children}</TimeDescription></>}
             </span>
         </RecipeMetaItem>
     );
 }
 
-function PreparationWait({ time, description }: SharedTimeProps) {
+function PreparationWait({ time, children }: SharedTimeProps) {
     return (
         <RecipeMetaItem icon='fa-regular fa-clock'>
             <span>
                 {time}
-                {description && <> <TimeDescription>{description}</TimeDescription></>}
+                {children && <> <TimeDescription>{children}</TimeDescription></>}
             </span>
         </RecipeMetaItem>
     );
 }
 
-function CookingTime({ time, flame, description }: CookingTimeProps) {
+function CookingTime({ time, flame, children }: CookingTimeProps) {
     return (
         <RecipeMetaItem icon='fa-solid fa-fire-burner'>
             <span>
                 {time}, <i className='fa-solid fa-fire-flame-simple' aria-hidden='true' /> {flame}
-                {description && <> <TimeDescription>{description}</TimeDescription></>}
+                {children && <> <TimeDescription>{children}</TimeDescription></>}
             </span>
         </RecipeMetaItem>
     );
 }
 
-function BakingTime({ time, temperature, ovenIcon, description, temperatureUnit = 'C' }: BakingTimeProps) {
+function BakingTime({ time, temperature, ovenIcon, children, temperatureUnit = 'C' }: BakingTimeProps) {
     return (
         <RecipeMetaItem icon='fa-solid fa-temperature-high'>
             <span>
                 {time}, <i className='fa-solid fa-temperature-three-quarters' aria-hidden='true' /> {temperature} °{temperatureUnit}{' '}
                 <i className={ovenIcon} aria-hidden='true' />
-                {description && <> <TimeDescription>{description}</TimeDescription></>}
+                {children && <> <TimeDescription>{children}</TimeDescription></>}
             </span>
         </RecipeMetaItem>
     );

@@ -17,7 +17,7 @@ function Polpette() {
             source='Maria Luisa Abbate'
             addedOn='Agosto 2024'
             times={<>
-                <PreparationTime time='40 min' description='(Per patate)' />
+                <PreparationTime time='40 min'>Per patate</PreparationTime>
                 <PreparationTime time='30 min' />
                 <BakingTimeTopbottom time='25 min' temperature={180} />
                 <BakingTimeTopbottom time='20 min' temperature={180} />

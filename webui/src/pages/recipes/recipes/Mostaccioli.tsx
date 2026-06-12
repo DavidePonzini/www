@@ -23,13 +23,13 @@ function Mostaccioli() {
             addedOn='Dicembre 2024'
             times={<>
                 <PreparationTime time='10 min' />
-                <PreparationWait time='1 h' description='Frigorifero' />
+                <PreparationWait time='1 h'>Frigorifero</PreparationWait>
                 <PreparationTime time='15 min' />
                 <BakingTimeTopbottom time='18 min' temperature={180} />
-                <PreparationTime time='15 min' description='Glassa, sopra e lati' />
-                <PreparationWait time='10 min' description='Glassa, sopra e lati' />
-                <PreparationTime time='5 min' description='Glassa, sotto' />
-                <PreparationWait time='1 h' description='Glassa' />
+                <PreparationTime time='15 min'>Glassa, sopra e lati</PreparationTime>
+                <PreparationWait time='10 min'>Glassa, sopra e lati</PreparationWait>
+                <PreparationTime time='5 min'>Glassa, sotto</PreparationTime>
+                <PreparationWait time='1 h'>Glassa</PreparationWait>
             </>}
             ingredients={[
                 { name: 'Farina \'00', quantity: 500, unit: 'g' },

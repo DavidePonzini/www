@@ -125,7 +125,7 @@ function edgePath(from: EdgePoint, to: EdgePoint, radius: number, options: EdgeP
         const endY = to.y - radius;
         const verticalSpan = Math.max(endY - startY, 0);
         const turnY = startY + Math.min(Math.max(verticalSpan * 0.22, 10), 18);
-        const approachY = Math.max(endY - 10, turnY);
+        // const approachY = Math.max(endY - 10, turnY);
 
         return `M ${from.x} ${startY} C ${from.x} ${turnY}, ${to.x} ${turnY}, ${to.x} ${endY}`;
     }

@@ -12,6 +12,7 @@ import {
     PreparationWait,
 } from '../../../components/recipes';
 import { Step, Parallel, ParallelBranch } from '../../../components/flow';
+import { InlineMath } from 'react-katex';
 
 const TITLE = '';
 
@@ -34,6 +35,7 @@ function Template() {
                 // { name: 'Spaghetti', quantity: 200 },                                    // Standard format, unit is implied in the ingredient name
                 // { name: 'Sale', quantity: 'q.b.' },                                      // Quantity not specified
                 // { name: 'Pentola' },                                                     // Quantity not applicable, defaults to dashed line
+
             ]}
             instructions={<>
             </>}

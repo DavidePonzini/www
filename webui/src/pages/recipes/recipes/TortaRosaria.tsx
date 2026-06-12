@@ -20,7 +20,7 @@ function TortaRosaria() {
             times={<>
                 <PreparationTime time='40 min' />
                 <BakingTimeFan time='15-20 min' temperature={160} />
-                <PreparationWait time='2 h' description='In frigorifero' />
+                <PreparationWait time='2 h'>Frigorifero</PreparationWait>
             </>}
             ingredients={[
                 { name: 'Cioccolata fondente', quantity: 200, unit: 'g' },

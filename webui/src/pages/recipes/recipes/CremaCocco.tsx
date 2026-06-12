@@ -8,7 +8,6 @@ import {
 import { Step } from '../../../components/flow';
 
 const TITLE = 'Crema di cocco';
-const URL = 'crema-cocco';
 
 function CremaCocco() {
     return (
