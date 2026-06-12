@@ -1,16 +1,17 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
     Suggestion,
     PreparationTime,
     RecipeLayout,
-} from "../../../components/recipes";
-import { Step } from "../../../components/flow";
-import { Link } from "react-router";
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
+import { Link } from 'react-router';
 
 import RisoJawad from './RisoJawad';
 
 const TITLE = 'Riso con pollo e aglio - Jawad';
-const URL = 'riso-jawad-aglio';
 
 function RisoJawadAglio() {
     return (
@@ -47,13 +48,10 @@ function RisoJawadAglio() {
                 <Step>Aggiungere limone a fine cottura, far rosolare un attimo.</Step>
             </>}
             suggestions={<>
-                <Suggestion>Si consiglia di unirlo al <Link to={`../${RisoJawad.url}`}>{RisoJawad.title}</Link>.</Suggestion>
+                <Suggestion>Si consiglia di unirlo al <Link to={`/recipes/${RisoJawad.url}`}>{RisoJawad.title}</Link>.</Suggestion>
             </>}
         />
     );
 }
 
-RisoJawadAglio.title = TITLE;
-RisoJawadAglio.url = URL;
-
-export default RisoJawadAglio;
+export default defineRecipe(RisoJawadAglio, TITLE);

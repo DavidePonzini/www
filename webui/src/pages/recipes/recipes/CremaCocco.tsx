@@ -1,9 +1,11 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
     PreparationWait,
     RecipeLayout,
-} from "../../../components/recipes";
-import { Step } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
 
 const TITLE = 'Crema di cocco';
 const URL = 'crema-cocco';
@@ -37,7 +39,4 @@ function CremaCocco() {
     );
 }
 
-CremaCocco.title = TITLE;
-CremaCocco.url = URL;
-
-export default CremaCocco;
+export default defineRecipe(CremaCocco, TITLE);

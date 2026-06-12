@@ -1,21 +1,16 @@
+import { defineRecipe } from './Util';
+
 import {
-    CookingTime,
-    Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
-    BakingTimeFan,
-    BakingTimeTop,
     BakingTimeTopbottom,
     PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
-import { Link } from "react-router-dom";
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
 
-import Pisto from "./Pisto";
+import Pisto from './Pisto';
 
 const TITLE = 'Mostaccioli napoletani';
-const URL = 'mostaccioli';
 
 function Mostaccioli() {
     return (
@@ -43,7 +38,7 @@ function Mostaccioli() {
                 { name: 'Acqua', quantity: 250, unit: 'g' },
                 { name: 'Cacao amaro in polvere', quantity: 30, unit: 'g' },
                 { name: 'Scorza d\'arancia', quantity: 1, unit: 'arancia' },
-                { name: 'Pisto', quantity: 5, unit: 'g' },
+                { name: 'Pisto', quantity: 5, unit: 'g', url: Pisto.url },
                 { name: 'Ammoniaca per dolci', quantity: 3, unit: 'g' },
 
                 { name: 'Cioccolato fondente', quantity: 1, unit: 'kg', category: 'Copertura' },
@@ -53,7 +48,7 @@ function Mostaccioli() {
                 { name: 'Gratella per dolci', category: 'Strumenti' },
             ]}
             instructions={<>
-                <Step>Mescolare bene farina, granella, zucchero, cacao (setacciato), <Link to={Pisto.url}>pisto</Link>, ammoniaca e scorza d'arancia.</Step>
+                <Step>Mescolare bene farina, granella, zucchero, cacao (setacciato), pisto, ammoniaca e scorza d'arancia.</Step>
                 <Step>Aggiungere acqua ed impastare.</Step>
                 <Step>Lasciare riposare il panetto in frigo, avvolto nella carta forno.</Step>
                 <Step>Stendere l'impasto, lasciandolo spesso 7-8 mm.</Step>
@@ -70,7 +65,4 @@ function Mostaccioli() {
     );
 }
 
-Mostaccioli.title = TITLE;
-Mostaccioli.url = URL;
-
-export default Mostaccioli;
+export default defineRecipe(Mostaccioli, TITLE);

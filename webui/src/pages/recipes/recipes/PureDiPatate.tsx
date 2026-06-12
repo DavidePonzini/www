@@ -1,12 +1,13 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
     PreparationTime,
     RecipeLayout,
-} from "../../../components/recipes";
-import { Step } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
 
 const TITLE = 'Purè di patate';
-const URL = 'pure-patate';
 
 function PureDiPatate() {
     return (
@@ -41,7 +42,4 @@ function PureDiPatate() {
     );
 }
 
-PureDiPatate.title = TITLE;
-PureDiPatate.url = URL;
-
-export default PureDiPatate;
+export default defineRecipe(PureDiPatate, TITLE)

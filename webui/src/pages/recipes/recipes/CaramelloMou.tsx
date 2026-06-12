@@ -1,3 +1,5 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
     Suggestion,
@@ -8,11 +10,10 @@ import {
     BakingTimeTop,
     BakingTimeTopbottom,
     PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step, Parallel, ParallelBranch } from '../../../components/flow';
 
 const TITLE = 'Caramello Mou';
-const URL = 'caramello-mou';
 
 function CaramelloMou() {
     return (
@@ -54,8 +55,4 @@ function CaramelloMou() {
     );
 }
 
-CaramelloMou.title = TITLE;
-CaramelloMou.url = URL;
-
-export default CaramelloMou;
-
+export default defineRecipe(CaramelloMou, TITLE);

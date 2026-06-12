@@ -1,18 +1,14 @@
+import { defineRecipe } from './Util';
+
 import {
-    CookingTime,
-    Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
     BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
     PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step, Parallel, ParallelBranch } from '../../../components/flow';
 
 const TITLE = 'Torta di Rosaria';
-const URL = 'torta-rosaria';
 
 function TortaRosaria() {
     return (
@@ -61,7 +57,4 @@ function TortaRosaria() {
     );
 }
 
-TortaRosaria.title = TITLE;
-TortaRosaria.url = URL;
-
-export default TortaRosaria;
+export default defineRecipe(TortaRosaria, TITLE);

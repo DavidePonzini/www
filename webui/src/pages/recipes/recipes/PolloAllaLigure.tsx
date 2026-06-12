@@ -1,18 +1,13 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
-    Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
-    BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
-    PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step, Parallel, ParallelBranch } from '../../../components/flow';
 
 const TITLE = 'Pollo alla ligure';
-const URL = 'pollo-ligure';
 
 function PolloAllaLigure() {
     return (
@@ -70,7 +65,4 @@ function PolloAllaLigure() {
     );
 }
 
-PolloAllaLigure.title = TITLE;
-PolloAllaLigure.url = URL;
-
-export default PolloAllaLigure;
+export default defineRecipe(PolloAllaLigure, TITLE);

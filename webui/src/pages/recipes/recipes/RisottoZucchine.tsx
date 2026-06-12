@@ -1,18 +1,13 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
-    Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
-    BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
-    PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
 
 const TITLE = 'Risotto alle zucchine';
-const URL = 'risotto-zucchine';
 
 function RisottoZucchine() {
     return (
@@ -51,8 +46,4 @@ function RisottoZucchine() {
     );
 }
 
-RisottoZucchine.title = TITLE;
-RisottoZucchine.url = URL;
-
-export default RisottoZucchine;
-
+export default defineRecipe(RisottoZucchine, TITLE);

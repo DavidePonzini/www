@@ -1,18 +1,10 @@
+import { defineRecipe } from './Util';
+
 import {
-    CookingTime,
-    Suggestion,
-    PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
-    BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
-    PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
 
 const TITLE = 'Spezie per carni';
-const URL = 'spezie-carne';
     
 function SpezieCarne() {
     return (
@@ -34,7 +26,4 @@ function SpezieCarne() {
     );
 }
 
-SpezieCarne.title = TITLE;
-SpezieCarne.url = URL;
-
-export default SpezieCarne;
+export default defineRecipe(SpezieCarne, TITLE);

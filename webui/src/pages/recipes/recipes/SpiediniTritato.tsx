@@ -1,18 +1,13 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
-    Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
-    BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
-    PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
 
 const TITLE = 'Spiedini di tritato';
-const URL = 'spiedini-tritato';
 
 function SpiediniTritato() {
     return (
@@ -46,7 +41,4 @@ function SpiediniTritato() {
     );
 }
 
-SpiediniTritato.title = TITLE;
-SpiediniTritato.url = URL;
-
-export default SpiediniTritato;
+export default defineRecipe(SpiediniTritato, TITLE);

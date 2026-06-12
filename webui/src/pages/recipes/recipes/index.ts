@@ -1,4 +1,4 @@
-import { ComponentType, JSX } from 'react';
+import { RecipeComponent } from './Util';
 
 import SpezieCarne from './SpezieCarne';
 import SpeziePatate from './SpeziePatate';
@@ -51,12 +51,6 @@ import TortaRosaria from './TortaRosaria';
 import Nutellotti from './Nutellotti';
 import NoccioleTostate from './NoccioleTostate';
 import Mostaccioli from './Mostaccioli';
-
-type RecipeComponent = ComponentType & {
-    (): JSX.Element,
-    title: string,
-    url: string
-};
 
 const RECIPES: Record<string, RecipeComponent[]> = {
     'Primi': [

@@ -1,18 +1,14 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
     Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
-    BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
-    PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
 
 const TITLE = 'Salsa Barbeque';
-const URL = 'salsa-barbeque';
 
 function SalsaBarbeque() {
     return (
@@ -57,7 +53,4 @@ function SalsaBarbeque() {
     );
 }
 
-SalsaBarbeque.title = TITLE;
-SalsaBarbeque.url = URL;
-
-export default SalsaBarbeque;
+export default defineRecipe(SalsaBarbeque, TITLE);

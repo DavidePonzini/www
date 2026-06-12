@@ -1,12 +1,13 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
     Suggestion,
     RecipeLayout,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step, Parallel, ParallelBranch } from '../../../components/flow';
 
 const TITLE = 'Amatriciana';
-const URL = 'amatriciana';
 
 function Amatriciana() {
     return (
@@ -53,7 +54,4 @@ function Amatriciana() {
     );
 }
 
-Amatriciana.title = TITLE;
-Amatriciana.url = URL;
-
-export default Amatriciana;
+export default defineRecipe(Amatriciana, TITLE);

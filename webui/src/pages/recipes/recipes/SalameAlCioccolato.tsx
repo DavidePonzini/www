@@ -1,18 +1,13 @@
+import { defineRecipe } from './Util';
+
 import {
-    CookingTime,
-    Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
-    BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
     PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step, Parallel, ParallelBranch } from '../../../components/flow';
 
 const TITLE = 'Salame al cioccolato';
-const URL = 'salame-cioccolato';
 
 function SalameAlCioccolato() {
     return (
@@ -66,8 +61,4 @@ function SalameAlCioccolato() {
     );
 }
 
-SalameAlCioccolato.title = TITLE;
-SalameAlCioccolato.url = URL;
-
-export default SalameAlCioccolato;
-
+export default defineRecipe(SalameAlCioccolato, TITLE);

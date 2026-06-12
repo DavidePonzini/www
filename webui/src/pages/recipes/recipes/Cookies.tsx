@@ -1,18 +1,14 @@
+import { defineRecipe } from './Util';
+
 import {
-    CookingTime,
-    Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
-    BakingTimeFan,
-    BakingTimeTop,
     BakingTimeTopbottom,
     PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
 
 const TITLE = 'Cookies';
-const URL = 'cookies';
 
 function Cookies() {
     return (
@@ -52,7 +48,4 @@ function Cookies() {
     );
 }
 
-Cookies.title = TITLE;
-Cookies.url = URL;
-
-export default Cookies;
+export default defineRecipe(Cookies, TITLE);

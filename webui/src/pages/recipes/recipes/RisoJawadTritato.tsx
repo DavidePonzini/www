@@ -1,18 +1,13 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
-    Suggestion,
-    PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
-    BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
     PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
 
 const TITLE = 'Riso con tritato - Jawad';
-const URL = 'riso-jawad-tritato';
 
 function RisoJawadTritato() {
     return (
@@ -49,8 +44,4 @@ function RisoJawadTritato() {
     );
 }
 
-RisoJawadTritato.title = TITLE;
-RisoJawadTritato.url = URL;
-
-export default RisoJawadTritato;
-
+export default defineRecipe(RisoJawadTritato, TITLE);

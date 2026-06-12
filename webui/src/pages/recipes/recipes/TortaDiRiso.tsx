@@ -1,18 +1,14 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
-    Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
     BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
-    PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step, Parallel, ParallelBranch } from '../../../components/flow';
 
 const TITLE = 'Torta di riso';
-const URL = 'torta-di-riso';
 
 function TortaDiRiso() {
     return (
@@ -28,7 +24,7 @@ function TortaDiRiso() {
                 <BakingTimeFan time='40-45 min' temperature={180} />
             </>}
             ingredients={[
-                { name: 'Farina "0', quantity: 150, unit: 'g', category: 'Pasta matta' },
+                { name: 'Farina "0"', quantity: 150, unit: 'g', category: 'Pasta matta' },
                 { name: 'Acqua', quantity: 75, unit: 'g', category: 'Pasta matta' },
                 { name: 'Olio d\'oliva', quantity: 15, unit: 'g', category: 'Pasta matta' },
                 { name: 'Sale fino', quantity: 4, unit: 'g', category: 'Pasta matta' },
@@ -92,8 +88,4 @@ function TortaDiRiso() {
     );
 }
 
-TortaDiRiso.title = TITLE;
-TortaDiRiso.url = URL;
-
-export default TortaDiRiso;
-
+export default defineRecipe(TortaDiRiso, TITLE);

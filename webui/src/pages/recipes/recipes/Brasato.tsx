@@ -1,18 +1,14 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
-    Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
-    BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
     PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
 
 const TITLE = 'Brasato';
-const URL = 'brasato';
 
 function Brasato() {
     return (
@@ -71,8 +67,4 @@ function Brasato() {
     );
 }
 
-Brasato.title = TITLE;
-Brasato.url = URL;
-
-export default Brasato;
-
+export default defineRecipe(Brasato, TITLE);

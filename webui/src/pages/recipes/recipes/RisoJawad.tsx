@@ -1,16 +1,17 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
     Suggestion,
     PreparationTime,
     PreparationWait,
     RecipeLayout,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step, Parallel, ParallelBranch } from '../../../components/flow';
 import { InlineMath } from 'react-katex';
 
 
 const TITLE = 'Riso con pollo - Jawad';
-const URL = 'riso-jawad';
 
 function RisoJawad() {
     return (
@@ -66,7 +67,4 @@ function RisoJawad() {
     );
 }
 
-RisoJawad.title = TITLE;
-RisoJawad.url = URL;
-
-export default RisoJawad;
+export default defineRecipe(RisoJawad, TITLE);

@@ -1,18 +1,12 @@
+import { defineRecipe } from './Util';
+
 import {
-    CookingTime,
-    Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
-    BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
-    PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
 
 const TITLE = 'Crema di nocciole "tipo Nutella"';
-const URL = 'crema-nocciole-nutella';
 
 function CremaNoccioleNutella() {
     return (
@@ -41,7 +35,4 @@ function CremaNoccioleNutella() {
     );
 }
 
-CremaNoccioleNutella.title = TITLE;
-CremaNoccioleNutella.url = URL;
-
-export default CremaNoccioleNutella;
+export default defineRecipe(CremaNoccioleNutella, TITLE);

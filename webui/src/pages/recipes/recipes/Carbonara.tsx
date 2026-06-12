@@ -1,13 +1,14 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
     Suggestion,
     PreparationTime,
     RecipeLayout,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step, Parallel, ParallelBranch } from '../../../components/flow';
 
 const TITLE = 'Carbonara';
-const URL = 'carbonara';
 
 function Carbonara() {
     return (
@@ -72,7 +73,4 @@ function Carbonara() {
     );
 }
 
-Carbonara.title = TITLE;
-Carbonara.url = URL;
-
-export default Carbonara;
+export default defineRecipe(Carbonara, TITLE);

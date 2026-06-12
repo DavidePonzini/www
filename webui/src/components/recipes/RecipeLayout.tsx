@@ -1,4 +1,4 @@
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 
 import EditableValue from './EditableValue';
 import RecipeMetaItem from './RecipeMetaItem';
@@ -290,7 +290,13 @@ function RecipeLayout({
                                                 }
                                                 {` ${ingredient.unit || ''}`}
                                             </td>
-                                            <td>{ingredient.name}</td>
+                                            <td>
+                                                {ingredient.url === undefined ? (
+                                                    ingredient.name
+                                                ) : (
+                                                    <Link to={`/recipes/${ingredient.url}`}>{ingredient.name}</Link>
+                                                )}
+                                            </td>
                                         </tr>
                                     </>
                                 ))}

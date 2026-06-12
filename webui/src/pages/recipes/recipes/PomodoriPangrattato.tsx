@@ -1,18 +1,14 @@
+import { defineRecipe } from './Util';
+
 import {
-    CookingTime,
     Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
     BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
-    PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
 
 const TITLE = 'Pomodori ripieni di pan grattato ed erbe di provenza';
-const URL = 'pomodori-pangrattato';
 
 function PomodoriPangrattato() {
     return (
@@ -47,8 +43,4 @@ function PomodoriPangrattato() {
     );
 }
 
-PomodoriPangrattato.title = TITLE;
-PomodoriPangrattato.url = URL;
-
-export default PomodoriPangrattato;
-
+export default defineRecipe(PomodoriPangrattato, TITLE);

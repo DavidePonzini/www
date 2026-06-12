@@ -1,18 +1,14 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
     Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
-    BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
-    PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
 
 const TITLE = 'Fonduta di formaggio';
-const URL = 'fonduta-formaggio';
 
 function FondutaFormaggio() {
     return (
@@ -46,7 +42,4 @@ function FondutaFormaggio() {
     );
 }
 
-FondutaFormaggio.title = TITLE;
-FondutaFormaggio.url = URL;
-
-export default FondutaFormaggio;
+export default defineRecipe(FondutaFormaggio, TITLE);

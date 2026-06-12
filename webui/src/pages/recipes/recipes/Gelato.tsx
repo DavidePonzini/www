@@ -1,18 +1,13 @@
+import { defineRecipe } from './Util';
+
 import {
-    CookingTime,
-    Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
-    BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
     PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step, Parallel, ParallelBranch } from '../../../components/flow';
 
 const TITLE = 'Gelato';
-const URL = 'gelato';
 
 function Gelato() {
     return (
@@ -66,8 +61,4 @@ function Gelato() {
     );
 }
 
-Gelato.title = TITLE;
-Gelato.url = URL;
-
-export default Gelato;
-
+export default defineRecipe(Gelato, TITLE);

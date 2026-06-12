@@ -1,12 +1,11 @@
+import { defineRecipe } from './Util';
+
 import {
-    CookingTime,
-    PreparationWait,
     RecipeLayout,
-} from "../../../components/recipes";
-import { Step } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
 
 const TITLE = 'Salsa Tahina';
-const URL = 'salsa-tahina';
 
 function SalsaTahina() {
     return (
@@ -32,7 +31,4 @@ function SalsaTahina() {
     );
 }
 
-SalsaTahina.title = TITLE;
-SalsaTahina.url = URL;
-
-export default SalsaTahina;
+export default defineRecipe(SalsaTahina, TITLE);

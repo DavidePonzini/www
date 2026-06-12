@@ -1,18 +1,13 @@
+import { defineRecipe } from './Util';
+
 import {
-    CookingTime,
-    Suggestion,
-    PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
-    BakingTimeFan,
-    BakingTimeTop,
     BakingTimeTopbottom,
     PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
 
 const TITLE = 'Nocciole tostate';
-const URL = 'nocciole-tostate';
 
 function NoccioleTostate() {
     return (
@@ -35,7 +30,4 @@ function NoccioleTostate() {
     );
 }
 
-NoccioleTostate.title = TITLE;
-NoccioleTostate.url = URL;
-
-export default NoccioleTostate;
+export default defineRecipe(NoccioleTostate, TITLE);

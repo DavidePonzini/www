@@ -1,18 +1,14 @@
+import { defineRecipe } from './Util';
+
 import {
-    CookingTime,
-    Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
     BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
     PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
 
 const TITLE = 'Focaccia';
-const URL = 'focaccia';
 
 function Focaccia() {
     return (
@@ -60,7 +56,4 @@ function Focaccia() {
     );
 }
 
-Focaccia.title = TITLE;
-Focaccia.url = URL;
-
-export default Focaccia;
+export default defineRecipe(Focaccia, TITLE);

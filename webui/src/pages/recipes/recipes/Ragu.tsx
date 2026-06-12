@@ -1,18 +1,14 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
     Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
-    BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
-    PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step, Parallel, ParallelBranch } from '../../../components/flow';
 
 const TITLE = 'Ragù';
-const URL = 'ragu';
 
 function Ragu() {
     return (
@@ -68,7 +64,4 @@ function Ragu() {
     );
 }
 
-Ragu.title = TITLE;
-Ragu.url = URL;
-
-export default Ragu;
+export default defineRecipe(Ragu, TITLE);

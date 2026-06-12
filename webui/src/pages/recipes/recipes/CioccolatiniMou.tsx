@@ -1,21 +1,17 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
     Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
-    BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
     PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
-import { Link } from "react-router-dom";
+} from '../../../components/recipes';
+import { Step, Parallel, ParallelBranch } from '../../../components/flow';
 
-import CaramelloMou from "./CaramelloMou";
+import CaramelloMou from './CaramelloMou';
 
 const TITLE = 'Cioccolatini al Mou';
-const URL = 'cioccolatini-mou';
 
 function CioccolatiniMou() {
     return (
@@ -35,13 +31,13 @@ function CioccolatiniMou() {
             </>}
             ingredients={[
                 { name: 'Cioccolato fondente 70%', quantity: 300, unit: 'g' },
-                { name: 'Caramello Mou', quantity: 120, unit: 'g' },
+                { name: 'Caramello Mou', quantity: 120, unit: 'g', url: CaramelloMou.url },
                 { name: 'Stampini per cioccolatini' },
             ]}
             instructions={<>
             <Parallel>
                 <ParallelBranch>
-                    <Step>Preparare <Link to={`../${CaramelloMou.url}`}>Mou</Link>.</Step>
+                    <Step>Preparare Mou.</Step>
                 </ParallelBranch>
 
                 <ParallelBranch>
@@ -63,8 +59,4 @@ function CioccolatiniMou() {
     );
 }
 
-CioccolatiniMou.title = TITLE;
-CioccolatiniMou.url = URL;
-
-export default CioccolatiniMou;
-
+export default defineRecipe(CioccolatiniMou, TITLE);

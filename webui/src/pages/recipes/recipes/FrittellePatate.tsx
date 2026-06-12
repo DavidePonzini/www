@@ -1,18 +1,14 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
     Suggestion,
     PreparationTime,
     RecipeLayout,
-    BakingTimeBottom,
-    BakingTimeFan,
-    BakingTimeTop,
-    BakingTimeTopbottom,
-    PreparationWait,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
 
 const TITLE = 'Frittelle di patate';
-const URL = 'frittelle-patate';
 
 function FrittellePatate() {
     return (
@@ -48,8 +44,4 @@ function FrittellePatate() {
     );
 }
 
-FrittellePatate.title = TITLE;
-FrittellePatate.url = URL;
-
-export default FrittellePatate;
-
+export default defineRecipe(FrittellePatate, TITLE);

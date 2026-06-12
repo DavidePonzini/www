@@ -1,3 +1,5 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
     Suggestion,
@@ -12,7 +14,6 @@ import {
 import { Step, Parallel, ParallelBranch } from "../../../components/flow";
 
 const TITLE = '';
-const URL = '';
 
 function Template() {
     return (
@@ -28,11 +29,11 @@ function Template() {
                 <CookingTime time='10 min' flame='alta' />
             </>}
             ingredients={[
-                // { name: 'Spaghetti', quantity: 200, unit: 'g' },  // Standard format
-                // { name: 'Spaghetti', quantity: 200 },  // Standard format, unit is implied
-                // { name: 'Spaghetti', quantity: 200, unit: 'g', category: 'Pasta' },  // Standard format with category
-                // { name: 'Sale', quantity: 'q.b.' },  // Quantity not specified
-                // { name: 'Pentola' },  // Quantity not applicable
+                // { name: 'Spaghetti', quantity: 200, unit: 'g' },                         // Standard format
+                // { name: 'Spaghetti', quantity: 200, unit: 'g', category: 'Pasta' },      // Standard format with category
+                // { name: 'Spaghetti', quantity: 200 },                                    // Standard format, unit is implied in the ingredient name
+                // { name: 'Sale', quantity: 'q.b.' },                                      // Quantity not specified
+                // { name: 'Pentola' },                                                     // Quantity not applicable, defaults to dashed line
             ]}
             instructions={<>
             </>}
@@ -43,7 +44,4 @@ function Template() {
     );
 }
 
-Template.title = TITLE;
-Template.url = URL;
-
-export default Template;
+export default defineRecipe(Template, TITLE);

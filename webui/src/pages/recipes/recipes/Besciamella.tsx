@@ -1,14 +1,14 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
     Suggestion,
     PreparationTime,
     RecipeLayout,
-} from "../../../components/recipes";
-import { Step, Parallel, ParallelBranch } from "../../../components/flow";
-
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
 
 const TITLE = 'Besciamella';
-const URL = 'besciamella';
 
 function Besciamella() {
     return (
@@ -45,7 +45,4 @@ function Besciamella() {
     );
 }
 
-Besciamella.title = TITLE;
-Besciamella.url = URL;
-
-export default Besciamella;
+export default defineRecipe(Besciamella, TITLE);

@@ -1,12 +1,13 @@
+import { defineRecipe } from './Util';
+
 import {
     CookingTime,
     PreparationWait,
     RecipeLayout,
-} from "../../../components/recipes";
-import { Step } from "../../../components/flow";
+} from '../../../components/recipes';
+import { Step } from '../../../components/flow';
 
 const TITLE = 'Sciroppo 62%';
-const URL = 'sciroppo62';
 
 function Sciroppo62() {
     return (
@@ -34,7 +35,4 @@ function Sciroppo62() {
     );
 }
 
-Sciroppo62.title = TITLE;
-Sciroppo62.url = URL;
-
-export default Sciroppo62;
+export default defineRecipe(Sciroppo62, TITLE);
