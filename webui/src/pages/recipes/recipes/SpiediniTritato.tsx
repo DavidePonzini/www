@@ -24,7 +24,7 @@ function SpiediniTritato() {
             </>}
             ingredients={[
                 { name: 'Tritato bovino', quantity: 200, unit: 'g' },
-                { name: 'Prosciutto crudo', quantity: 150, unit: 'g', note: '(oppure speck)' },
+                { name: 'Prosciutto crudo (oppure speck)', quantity: 150, unit: 'g' },
                 { name: 'Sale' },
                 { name: 'Pepe' },
                 { name: 'Spezie per carni' },

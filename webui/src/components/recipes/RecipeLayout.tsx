@@ -18,6 +18,29 @@ const sectionHeadingStyle = {
     color: '#7f2318',
 };
 
+type Ingredient = {
+    name: string;
+    quantity?: number | string;
+    unit?: string;
+    url?: string;
+    category?: string;
+};
+
+type RecipeLayoutProps = {
+    title: string;
+    servings?: number | null;
+    servingsUnitSingular?: string;
+    servingsUnitPlural?: string;
+    source: string;
+    addedOn: string;
+    times?: React.ReactNode;
+    ingredients?: Ingredient[];
+    instructions?: React.ReactNode;
+    suggestions?: React.ReactNode;
+    notes?: string;
+    children?: React.ReactNode;
+};
+
 function RecipeLayout({
     title,
     servings = null,
@@ -26,12 +49,13 @@ function RecipeLayout({
     source,
     addedOn,
     times = null,
-    ingredients = [],       // [{name: string, quantity: number, unit: string}]
+    ingredients = [],
     instructions = null,
     suggestions = null,
     notes = '',
+    children,
 
-}) {
+} : RecipeLayoutProps) {
     const location = useLocation();
     const [searchParams, setSearchParams] = useSearchParams();
     const scale = Number(searchParams.get('scale') ?? 1);
@@ -68,7 +92,6 @@ function RecipeLayout({
     }
 
     function onQuantityChange(idx, newQuantity) {
-
         if (isNaN(newQuantity) || newQuantity < 0) {
             setSearchParams(prev => {
                 const next = new URLSearchParams(prev);
@@ -77,7 +100,14 @@ function RecipeLayout({
             }, { replace: true });
         }
 
-        const newScale = newQuantity / ingredients[idx].quantity;
+        
+        let quantity = ingredients[idx].quantity;
+        
+        if (typeof quantity !== 'number') {
+            return;
+        }
+
+        const newScale = newQuantity / quantity;
 
         setSearchParams(prev => {
             const next = new URLSearchParams(prev);
@@ -329,6 +359,8 @@ function RecipeLayout({
                     </div>
                 )
             }
+
+            {children}
 
             {/* Notes */}
             {
