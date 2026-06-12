@@ -1,9 +1,13 @@
-import { ComponentType, JSX } from 'react';
+import { JSX } from 'react';
 
-type RecipeComponent = ComponentType & {
-    (): JSX.Element,
+type RecipeComponent = (() => JSX.Element) & {
     title: string,
     url: string
+};
+
+type RecipeFunction = (() => JSX.Element) & {
+    title?: string,
+    url?: string
 };
 
 function classNameToUrl(name: string) {
@@ -12,13 +16,20 @@ function classNameToUrl(name: string) {
         .toLowerCase();
 }
 
-function defineRecipe(Component: ComponentType, title: string) {
-    const RecipeComponent = Component as RecipeComponent;
+function titleToUrl(title: string) {
+    return title
+        .normalize('NFD')                    // à -> a + `
+        .replace(/[\u0300-\u036f]/g, '')     // remove accents
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')         // spaces and punctuation -> -
+        .replace(/^-+|-+$/g, '');            // trim leading/trailing -
+}
 
-    RecipeComponent.title = title;
-    RecipeComponent.url = classNameToUrl(Component.name);
+function defineRecipe(Component: RecipeFunction, title: string) {
+    Component.title = title;
+    Component.url = titleToUrl(title);
 
-    return RecipeComponent;
+    return Component as RecipeComponent;
 }
 
 export { defineRecipe };
