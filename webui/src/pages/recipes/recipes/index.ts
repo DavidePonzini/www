@@ -38,7 +38,15 @@ import TortaDiRiso from './TortaDiRiso';
 import Sacher from './Sacher';
 import Cookies from './Cookies';
 import PomodoriPangrattato from './PomodoriPangrattato';
-
+import CremaNoccioleNutella from './CremaNoccioleNutella';
+import Focaccia from './Focaccia';
+import FondutaFormaggio from './FondutaFormaggio';
+import Frittata from './Frittata';
+import Omelette from './Omelette';
+import FrittellePatate from './FrittellePatate';
+import Gelato from './Gelato';
+import Ginevrini from './Ginevrini';
+import Gnocchi from './Gnocchi';
 
 type RecipeComponent = ComponentType & {
     (): JSX.Element,
@@ -50,6 +58,7 @@ const RECIPES: Record<string, RecipeComponent[]> = {
     'Primi': [
         Amatriciana,
         Carbonara,
+        Gnocchi,
         RisoJawad,
         RisoJawadAglio,
         RisoJawadFagiolini,
@@ -61,21 +70,26 @@ const RECIPES: Record<string, RecipeComponent[]> = {
     ],
     'Secondi': [
         Brasato,
+        Frittata,
+        Omelette,
         PolloAllaLigure,
         PolloCaramellato,
+        Polpette,
         SalsicciaVerdureAlForno,
         Spezzatino,
     ],
     'Contorni': [
-        Polpette,
-        PureDiPatate,
-        UovaSode,
-        SpiediniTritato,
         CipolleCaramellate,
+        Focaccia,
+        FrittellePatate,
         PomodoriPangrattato,
+        PureDiPatate,
+        SpiediniTritato,
+        UovaSode,
     ],
     'Salse': [
         Besciamella,
+        FondutaFormaggio,
         SalsaTahina,
         SalsaBarbeque,
         Ragu,
@@ -85,6 +99,9 @@ const RECIPES: Record<string, RecipeComponent[]> = {
         CaramelloMou,
         CioccolatiniMou,
         Cookies,
+        CremaNoccioleNutella,
+        Gelato,
+        Ginevrini,
         Sacher,
         SalameAlCioccolato,
         Tiramisu,
