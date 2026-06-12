@@ -68,6 +68,7 @@ import PastaPomodoroFrescoCrudo from './PastaPomodoroFrescoCrudo';
 import PastaPomodoroFrescoCotto from './PastaPomodoroFrescoCotto';
 import PastaAglioOlioPeperoncino from './PastaAglioOlioPeperoncino';
 import PastaPannaZafferano from './PastaPannaZafferano';
+import Kebab from './Kebab';
 
 const RECIPES: Record<string, RecipeComponent[]> = {
     'Primi': [
@@ -98,6 +99,7 @@ const RECIPES: Record<string, RecipeComponent[]> = {
     'Secondi': [
         Brasato,
         Frittata,
+        Kebab,
         Omelette,
         PolloAllaLigure,
         PolloCaramellato,
