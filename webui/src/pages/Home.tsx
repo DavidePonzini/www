@@ -19,16 +19,16 @@ function Home() {
             <div className="text-center">
                 <SectionBackground img={bgGlass}>
                     <Section title="Content">
+                        <ItemCard title="Recipes" href="/recipes" img={bgRecipes}>
+                            Personal collection of recipes
+                        </ItemCard>
+
                         <ItemCard title="Utilities" href="/utils" img={bgUtilities}>
                             Handy utilities for common tasks
                         </ItemCard>
 
                         <ItemCard title="Portfolio" href="/portfolio" img={bgPortfolio}>
                             Showcase of websites I developed
-                        </ItemCard>
-
-                        <ItemCard title="Recipes" href="/recipes" img={bgRecipes}>
-                            Personal collection of recipes
                         </ItemCard>
                     </Section>
                 </SectionBackground>
