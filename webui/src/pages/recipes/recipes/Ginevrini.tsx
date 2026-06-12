@@ -18,7 +18,6 @@ function Ginevrini() {
     return (
         <RecipeLayout
             title={TITLE}
-            servings={1}
             source='Internet'
             addedOn='Aprile 2019'
             times={<>

@@ -47,6 +47,10 @@ import FrittellePatate from './FrittellePatate';
 import Gelato from './Gelato';
 import Ginevrini from './Ginevrini';
 import Gnocchi from './Gnocchi';
+import TortaRosaria from './TortaRosaria';
+import Nutellotti from './Nutellotti';
+import NoccioleTostate from './NoccioleTostate';
+import Mostaccioli from './Mostaccioli';
 
 type RecipeComponent = ComponentType & {
     (): JSX.Element,
@@ -102,8 +106,11 @@ const RECIPES: Record<string, RecipeComponent[]> = {
         CremaNoccioleNutella,
         Gelato,
         Ginevrini,
+        Mostaccioli,
+        Nutellotti,
         Sacher,
         SalameAlCioccolato,
+        TortaRosaria,
         Tiramisu,
     ],
     'Bevande': [
@@ -112,6 +119,7 @@ const RECIPES: Record<string, RecipeComponent[]> = {
         SciroppoCannella,
     ],
     'Altro': [
+        NoccioleTostate,
         Pisto,
         SpezieCarne,
         SpeziePatate,

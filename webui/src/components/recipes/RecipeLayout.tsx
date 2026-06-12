@@ -19,7 +19,7 @@ const sectionHeadingStyle = {
 
 function RecipeLayout({
     title,
-    servings = 1,
+    servings = null,
     servingsUnitSingular = 'porzione',
     servingsUnitPlural = 'porzioni',
     source,
@@ -171,16 +171,18 @@ function RecipeLayout({
                     <h2 style={sectionHeadingStyle}>Informazioni</h2>
                     <table>
                         <tbody>
-                            <RecipeMetaItem icon='fa-solid fa-utensils'>
-                                <span>
-                                    <EditableValue
-                                        onChange={onServingsChange}
-                                    >
-                                        {formatQuantity(servings)}
-                                    </EditableValue>
-                                    {` ${getServingsUnitLabel()}`}
-                                </span>
-                            </RecipeMetaItem>
+                            {servings !== null && (
+                                <RecipeMetaItem icon='fa-solid fa-utensils'>
+                                    <span>
+                                        <EditableValue
+                                            onChange={onServingsChange}
+                                        >
+                                            {formatQuantity(servings)}
+                                        </EditableValue>
+                                        {` ${getServingsUnitLabel()}`}
+                                    </span>
+                                </RecipeMetaItem>
+                            )}
 
                             <RecipeMetaItem icon='fa-solid fa-address-book'>
                                 {source}
