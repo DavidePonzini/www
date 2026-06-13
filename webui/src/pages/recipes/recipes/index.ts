@@ -72,92 +72,136 @@ import Kebab from './Kebab';
 import RotoliDiPolloConVerdure from './RotoliDiPolloConVerdure';
 import Hamburger from './Hamburger';
 
-const RECIPES: Record<string, RecipeComponent[]> = {
-    'Primi': [
-        Amatriciana,
-        Carbonara,
-        Gnocchi,
-        InsalataDiRiso,
-        Lasagne,
-        PastaAglioOlioPeperoncino,
-        PastaBurroSalvia,
-        PastaFattaInCasa,
-        PastaPannaZafferano,
-        PastaPomodoroFrescoCotto,
-        PastaPomodoroFrescoCrudo,
-        PastaTonnoPrezzemoloLimone,
-        PastaZuccaSalsiccia,
-        PolentaSalsiccia,
-        Pizza,
-        RisoJawad,
-        RisoJawadAglio,
-        RisoJawadFagiolini,
-        RisoJawadTritato,
-        RisottoZafferano,
-        RisottoZucchine,
-        TortaDiRiso,
-        TortelliniPannaProsciutto,
-    ],
-    'Secondi': [
-        Brasato,
-        Frittata,
-        Hamburger,
-        Kebab,
-        Omelette,
-        PolloAllaLigure,
-        PolloCaramellato,
-        Polpette,
-        RotoliDiPolloConVerdure,
-        SalsicciaVerdureAlForno,
-        Spezzatino,
-    ],
-    'Contorni': [
-        CipolleCaramellate,
-        Focaccia,
-        FrittellePatate,
-        Pane,
-        PatateDuchessa,
-        PatatineFritte,
-        PiselliConUova,
-        PomodoriPangrattato,
-        PureDiPatate,
-        SpiediniTritato,
-        UovaSode,
-    ],
-    'Salse': [
-        Besciamella,
-        FondutaFormaggio,
-        SalsaTahina,
-        SalsaBarbeque,
-        Ragu,
-        Ragu2,
-    ],
-    'Dolci': [
-        CaramelloMou,
-        CioccolatiniMou,
-        Cookies,
-        CremaNoccioleNutella,
-        Gelato,
-        Ginevrini,
-        Mostaccioli,
-        Nutellotti,
-        Sacher,
-        SalameAlCioccolato,
-        TortaRosaria,
-        Tiramisu,
-    ],
-    'Bevande': [
-        CremaCocco,
-        LiquoreAnice,
-        Sciroppo62,
-        SciroppoCannella,
-    ],
-    'Altro': [
-        NoccioleTostate,
-        Pisto,
-        SpezieCarne,
-        SpeziePatate,
-    ],
-};
+// NOTE: only export RecipeComponent[] arrays here, otherwise the router will break.
 
-export default RECIPES;
+export const primiPasta: RecipeComponent[] = [
+    Amatriciana,
+    Carbonara,
+    Gnocchi,
+    Lasagne,
+    PastaAglioOlioPeperoncino,
+    PastaBurroSalvia,
+    PastaFattaInCasa,
+    PastaPannaZafferano,
+    PastaPomodoroFrescoCotto,
+    PastaPomodoroFrescoCrudo,
+    PastaTonnoPrezzemoloLimone,
+    PastaZuccaSalsiccia,
+    TortelliniPannaProsciutto,
+];
+export const primiRiso: RecipeComponent[] = [
+    InsalataDiRiso,
+    RisoJawad,
+    RisoJawadAglio,
+    RisoJawadFagiolini,
+    RisoJawadTritato,
+    RisottoZafferano,
+    RisottoZucchine,
+    TortaDiRiso,
+];
+
+export const primiPolenta: RecipeComponent[] = [
+    PolentaSalsiccia,
+];
+
+export const primiCondimenti: RecipeComponent[] = [
+    Besciamella,
+    FondutaFormaggio,
+    Ragu,
+    Ragu2,
+];
+
+export const secondiCarne: RecipeComponent[] = [
+    Brasato,
+    Hamburger,
+    Kebab,
+    PolloAllaLigure,
+    PolloCaramellato,
+    Polpette,
+    RotoliDiPolloConVerdure,
+    SalsicciaVerdureAlForno,
+    Spezzatino,
+    SpiediniTritato,
+];
+
+export const secondiPesce: RecipeComponent[] = [];
+
+export const secondiUova: RecipeComponent[] = [
+    Frittata,
+    Omelette,
+    PiselliConUova,
+    UovaSode,
+];
+
+export const secondiContorni: RecipeComponent[] = [
+    CipolleCaramellate,
+    FrittellePatate,
+    PatateDuchessa,
+    PatatineFritte,
+    PomodoriPangrattato,
+    PureDiPatate,
+];
+
+export const panetteria: RecipeComponent[] = [
+    Focaccia,
+    Pane,
+    Pizza,
+];
+
+export const salse: RecipeComponent[] = [
+    SalsaBarbeque,
+    SalsaTahina,
+];
+
+export const spezie: RecipeComponent[] = [
+    Pisto,
+    SpezieCarne,
+    SpeziePatate,
+];
+
+export const dolciBiscotti: RecipeComponent[] = [
+    Cookies,
+    Mostaccioli,
+    Nutellotti,
+];
+
+export const dolciTorte: RecipeComponent[] = [
+    Sacher,
+    TortaRosaria,
+];
+
+export const dolciCaramelleCioccolatini: RecipeComponent[] = [
+    CioccolatiniMou,
+    Ginevrini,
+];
+
+export const dolciCreme: RecipeComponent[] = [
+    CaramelloMou,
+    CremaNoccioleNutella,
+];
+
+export const dolciCucchiaio: RecipeComponent[] = [
+    Gelato,
+    Tiramisu,
+];
+
+export const dolciAltro: RecipeComponent[] = [
+    SalameAlCioccolato,
+];
+
+export const barCocktail: RecipeComponent[] = [];
+
+export const barSciroppi: RecipeComponent[] = [
+    CremaCocco,
+    Sciroppo62,
+    SciroppoCannella,
+];
+
+export const barLiquori: RecipeComponent[] = [
+    LiquoreAnice,
+];
+
+export const varie: RecipeComponent[] = [
+    NoccioleTostate,
+];
+
