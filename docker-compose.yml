@@ -61,6 +61,15 @@ services:
       - "3000:3000"
     profiles:
       - dev
+    # environment:
+    #   - CHOKIDAR_USEPOLLING=true
+    #   - WATCHPACK_POLLING=true
+    volumes:
+      - ./webui:/app
+      - /app/node_modules
+    stdin_open: true
+    tty: true
+
 
   portfolio_daniwebtutorial_webui:
     image: davideponzini/daniwebtutorial_webui
