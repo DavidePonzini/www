@@ -12,7 +12,6 @@ import bgDolci from '../../res/bg_glass.jpg';
 import bgBar from '../../res/eggsorcist.png';
 import bgVarie from '../../res/database.jpg';
 
-// import * as Recipes from './recipes';
 import * as Recipes from './recipes';
 
 // List of all recipes
