@@ -8,6 +8,7 @@ import DynamicRedirect from './DynamicRedirect';
 import Login from './Login';
 import Register from './Register';
 import Admin from './admin/Admin';
+import TravelChecklist from './TravelChecklist';
 import RecipesRouter from './recipes/RecipesRouter';
 
 import useAuth from '../hooks/useAuth';
@@ -35,6 +36,9 @@ function App() {
                         <Route index element={<Utilities />} />
                         <Route path='pwd-gen' element={<PwdGen />} />
                     </Route>
+
+                    {/* Travel Checklist */}
+                    <Route path='/travel-checklist' element={<TravelChecklist />} />
 
                     {/* Portfolio */}
                     <Route path='/portfolio' element={<Portfolio />} />

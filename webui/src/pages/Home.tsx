@@ -11,6 +11,7 @@ import bgUtilities from '../res/html.jpg';
 import bgPortfolio from '../res/eggsorcist.png';
 import bgLensql from '../res/database.jpg';
 import bgRecipes from '../res/ragu-di-carne.jpg';
+import bgSpace from '../res/bg_space.jpg';
 
 function Home() {
     return (
@@ -29,6 +30,10 @@ function Home() {
 
                         <ItemCard title="Portfolio" href="/portfolio" img={bgPortfolio}>
                             Showcase of websites I developed
+                        </ItemCard>
+
+                        <ItemCard title="Travel Checklist" href="/travel-checklist" img={bgSpace}>
+                            Checklist for travel preparation
                         </ItemCard>
                     </Section>
                 </SectionBackground>
