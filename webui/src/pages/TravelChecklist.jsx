@@ -27,7 +27,9 @@ const ITEMS = [
             'Dentifricio',
             'Spazzolino denti',
             'Rasoio',
-            'Sapone & Shampoo',
+            'Sapone',
+            'Shampoo',
+            'Balsamo',
             'Burro cacao',
             'Crema solare',
             'Asciugamano',
@@ -39,7 +41,7 @@ const ITEMS = [
             'Presa universale',
             'Caricatore orologio',
             'Cavo USB C - C',
-            'Adattatore UBC C - Lightning',
+            'Adattatore USB C - Lightning',
             'Auricolari',
             'Power bank',
         ],
@@ -120,16 +122,21 @@ function TravelChecklist() {
     return (
         <Layout>
             <SectionBackground>
+                <Section title="Travel Checklist" />
                 <button
                     type='button'
-                    className='btn btn-outline-secondary'
+                    className='btn btn-outline-secondary mb-3'
                     onClick={onReset}
                 >
                     Reset
                 </button>
 
                 {ITEMS.map((section) => (
-                    <Section key={section.category} title={section.category}>
+                    <div key={section.category}>
+                        <h2 key={section.category} className="mt-2">
+                            {section.category}
+                        </h2>
+
                         <div className="text-start" style={{ columnCount: 'auto', columnWidth: '300px' }}>
                             {section.items.map((item) => (
                                 <div key={item}>
@@ -154,7 +161,7 @@ function TravelChecklist() {
                                 </div>
                             ))}
                         </div>
-                    </Section>
+                    </div>
                 ))}
             </SectionBackground>
         </Layout>
