@@ -3,7 +3,7 @@ import SectionBackground from '../components/SectionBackground';
 import Section from '../components/Section';
 import { useState, useEffect } from 'react';
 
-const CHECKLIST_KEY = 'travelChecklistItems';
+const CHECKLIST_KEY = 'travel-checklist-items';
 
 const ITEMS = [
     {
@@ -138,9 +138,18 @@ function TravelChecklist() {
                                             type="checkbox"
                                             checked={checked.includes(item)}
                                             onChange={() => toggleItem(item)}
-                                            style={{ marginRight: '0.5rem' }}
+                                            style={{
+                                                marginRight: '0.5rem',
+                                                accentColor: checked.includes(item) ? 'gray' : 'inherit',
+                                            }}
                                         />
-                                        {item}
+                                        <span
+                                            style={{
+                                                color: checked.includes(item) ? 'gray' : 'inherit',
+                                                textDecoration: checked.includes(item) ? 'line-through' : 'none'
+                                            }}>
+                                            {item}
+                                        </span>
                                     </label>
                                 </div>
                             ))}
