@@ -4,232 +4,80 @@ import Layout from '../../components/Layout';
 import SectionBackground from '../../components/SectionBackground';
 import Section from '../../components/Section';
 
-import bgPrimi from '../../res/bg_time.jpg';
-import bgSecondi from '../../res/bg_space.jpg';
-import bgPanetteria from '../../res/bg_time.jpg';
-import bgSalse from '../../res/bg_time2.jpg';
 import bgSpezie from '../../res/spices.jpg';
-import bgDolci from '../../res/bg_glass.jpg';
-import bgBar from '../../res/eggsorcist.png';
-import bgVarie from '../../res/database.jpg';
 
 import * as Recipes from './recipes';
+import { RecipeComponent } from './recipes/Util';
 
-// List of all recipes
-function RecipeList() {
+
+function RecipeList({ title, recipes }: { title?: string; recipes: RecipeComponent[] }) {
     return (
         <>
-            <SectionBackground img={bgPrimi}>
-                <Section title="Primi">
-                    <h2>Pasta</h2>
-                    <ul>
-                        {Recipes.primiPasta.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
+            {title && <h2>{title}</h2>}
 
-                    <h2>Riso</h2>
-                    <ul>
-                        {Recipes.primiRiso.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                    
-                    <h2>Polenta</h2>
-                    <ul>
-                        {Recipes.primiPolenta.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                    
-                    <h2>Condimenti</h2>
-                    <ul>
-                        {Recipes.primiCondimenti.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                </Section>
-            </SectionBackground>
+            <ul style={{
+                columnCount: 'auto',
+                columnWidth: '300px',
+            }}>
+                {recipes.map((recipe) => (
+                    <li key={recipe.url}>
+                        <Link to={recipe.url}>{recipe.title}</Link>
+                    </li>
+                ))}
+            </ul>
+        </>
+    );
+};
 
-            <SectionBackground img={bgSecondi}>
-                <Section title="Secondi">
-                        <h2>Carne</h2>
-                        <ul>
-                            {Recipes.secondiCarne.map((recipe) => (
-                                <li key={recipe.url}>
-                                    <Link to={recipe.url}>{recipe.title}</Link>
-                                </li>
-                            ))}
-                        </ul>
 
-                        <h2>Pesce</h2>
-                        <ul>
-                            {Recipes.secondiPesce.map((recipe) => (
-                                <li key={recipe.url}>
-                                    <Link to={recipe.url}>{recipe.title}</Link>
-                                </li>
-                            ))}
-                        </ul>
-
-                        <h2>Uova</h2>
-                        <ul>
-                            {Recipes.secondiUova.map((recipe) => (
-                                <li key={recipe.url}>
-                                    <Link to={recipe.url}>{recipe.title}</Link>
-                                </li>
-                            ))}
-                        </ul>
-                        
-                        <h2>Contorni</h2>
-                        <ul>
-                            {Recipes.secondiContorni.map((recipe) => (
-                                <li key={recipe.url}>
-                                    <Link to={recipe.url}>{recipe.title}</Link>
-                                </li>
-                            ))}
-                        </ul>
-                </Section>
-            </SectionBackground>
-
-            <SectionBackground img={bgPanetteria}>
-                <Section title="Panetteria">
-                    <ul>
-                        {Recipes.panetteria.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                </Section>
-            </SectionBackground>
-
-            <SectionBackground img={bgSalse}>
-                <Section title="Salse">
-                    <ul>
-                        {Recipes.salse.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                </Section>
-            </SectionBackground>
-
+// List of all recipes
+function RecipeIndex() {
+    return (
+        <>
             <SectionBackground img={bgSpezie}>
+                <Section title="Primi">
+                    <RecipeList title="Pasta" recipes={Recipes.primiPasta} />
+                    <RecipeList title="Riso" recipes={Recipes.primiRiso} />
+                    <RecipeList title="Polenta" recipes={Recipes.primiPolenta} />
+                    <RecipeList title="Condimenti" recipes={Recipes.primiCondimenti} />
+                </Section>
+
+                <Section title="Secondi">
+                    <RecipeList title="Carne" recipes={Recipes.secondiCarne} />
+                    <RecipeList title="Pesce" recipes={Recipes.secondiPesce} />
+                    <RecipeList title="Uova" recipes={Recipes.secondiUova} />
+                    <RecipeList title="Contorni" recipes={Recipes.secondiContorni} />
+                </Section>
+
+                <Section title="Panetteria">
+                    <RecipeList recipes={Recipes.panetteria} />
+                </Section>
+
+                <Section title="Salse">
+                    <RecipeList recipes={Recipes.salse} />
+                </Section>
+
                 <Section title="Spezie">
-                    <ul>
-                        {Recipes.spezie.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
+                    <RecipeList recipes={Recipes.spezie} />
                 </Section>
-            </SectionBackground>
 
-            <SectionBackground img={bgDolci}>
                 <Section title="Dolci">
-                    <ul>
-                        <li>Biscotti</li>
-                        <ul>
-                            {Recipes.dolciBiscotti.map((recipe) => (
-                                <li key={recipe.url}>
-                                    <Link to={recipe.url}>{recipe.title}</Link>
-                                </li>
-                            ))}
-                        </ul>
-                        <li>Torte</li>
-                        <ul>
-                            {Recipes.dolciTorte.map((recipe) => (
-                                <li key={recipe.url}>
-                                    <Link to={recipe.url}>{recipe.title}</Link>
-                                </li>
-                            ))}
-                        </ul>
-                        <li>Caramelle e Cioccolatini</li>
-                        <ul>
-                            {Recipes.dolciCaramelleCioccolatini.map((recipe) => (
-                                <li key={recipe.url}>
-                                    <Link to={recipe.url}>{recipe.title}</Link>
-                                </li>
-                            ))}
-                        </ul>
-                        <li>Creme</li>
-                        <ul>
-                            {Recipes.dolciCreme.map((recipe) => (
-                                <li key={recipe.url}>
-                                    <Link to={recipe.url}>{recipe.title}</Link>
-                                </li>
-                            ))}
-                        </ul>
-                        <li>Al cucchiaio</li>
-                        <ul>
-                            {Recipes.dolciCucchiaio.map((recipe) => (
-                                <li key={recipe.url}>
-                                    <Link to={recipe.url}>{recipe.title}</Link>
-                                </li>
-                            ))}
-                        </ul>
-                        <li>Altro</li>
-                        <ul>
-                            {Recipes.dolciAltro.map((recipe) => (
-                                <li key={recipe.url}>
-                                    <Link to={recipe.url}>{recipe.title}</Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </ul>
+                    <RecipeList title="Biscotti" recipes={Recipes.dolciBiscotti} />
+                    <RecipeList title="Torte" recipes={Recipes.dolciTorte} />
+                    <RecipeList title="Caramelle e Cioccolatini" recipes={Recipes.dolciCaramelleCioccolatini} />
+                    <RecipeList title="Creme" recipes={Recipes.dolciCreme} />
+                    <RecipeList title="Al cucchiaio" recipes={Recipes.dolciCucchiaio} />
+                    <RecipeList title="Altro" recipes={Recipes.dolciAltro} />
                 </Section>
-            </SectionBackground>
 
-            <SectionBackground img={bgBar}>
                 <Section title="Bar">
-                    <ul>
-                        <li>Cocktail</li>
-                        <ul>
-                            {Recipes.barCocktail.map((recipe) => (
-                                <li key={recipe.url}>
-                                    <Link to={recipe.url}>{recipe.title}</Link>
-                                </li>
-                            ))}
-                        </ul>
-                        <li>Sciroppi</li>
-                        <ul>
-                            {Recipes.barSciroppi.map((recipe) => (
-                                <li key={recipe.url}>
-                                    <Link to={recipe.url}>{recipe.title}</Link>
-                                </li>
-                            ))}
-                        </ul>
-                        <li>Liquori</li>
-                        <ul>
-                            {Recipes.barLiquori.map((recipe) => (
-                                <li key={recipe.url}>
-                                    <Link to={recipe.url}>{recipe.title}</Link>
-                                </li>
-                            ))}
-                        </ul>
-                    </ul>
+                    <RecipeList title="Cocktail" recipes={Recipes.barCocktail} />
+                    <RecipeList title="Sciroppi" recipes={Recipes.barSciroppi} />
+                    <RecipeList title="Liquori" recipes={Recipes.barLiquori} />
                 </Section>
-            </SectionBackground>
 
-            <SectionBackground img={bgVarie}>
                 <Section title="Varie">
-                    <ul>
-                        {Recipes.varie.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
+                    <RecipeList recipes={Recipes.varie} />
                 </Section>
             </SectionBackground>
         </>
@@ -241,7 +89,7 @@ function RecipesRouter() {
     return (
         <Layout>
             <Routes>
-                <Route index element={<RecipeList />} />
+                <Route index element={<RecipeIndex />} />
 
                 {Object.values(Recipes).flat().map((Recipe) => (
                     <Route key={Recipe.url} path={Recipe.url} element={<Recipe />} />
