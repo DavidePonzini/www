@@ -2,6 +2,7 @@ import { Route, Routes, Link } from 'react-router-dom';
 
 import Layout from '../../components/Layout';
 import SectionBackground from '../../components/SectionBackground';
+import Section from '../../components/Section';
 
 import bgPrimi from '../../res/bg_time.jpg';
 import bgSecondi from '../../res/bg_space.jpg';
@@ -19,9 +20,8 @@ function RecipeList() {
     return (
         <>
             <SectionBackground img={bgPrimi}>
-                <h1>Primi</h1>
-                <ul>
-                    <li>Pasta</li>
+                <Section title="Primi">
+                    <h2>Pasta</h2>
                     <ul>
                         {Recipes.primiPasta.map((recipe) => (
                             <li key={recipe.url}>
@@ -29,7 +29,8 @@ function RecipeList() {
                             </li>
                         ))}
                     </ul>
-                    <li>Riso</li>
+
+                    <h2>Riso</h2>
                     <ul>
                         {Recipes.primiRiso.map((recipe) => (
                             <li key={recipe.url}>
@@ -37,7 +38,8 @@ function RecipeList() {
                             </li>
                         ))}
                     </ul>
-                    <li>Polenta</li>
+                    
+                    <h2>Polenta</h2>
                     <ul>
                         {Recipes.primiPolenta.map((recipe) => (
                             <li key={recipe.url}>
@@ -45,7 +47,8 @@ function RecipeList() {
                             </li>
                         ))}
                     </ul>
-                    <li>Condimenti</li>
+                    
+                    <h2>Condimenti</h2>
                     <ul>
                         {Recipes.primiCondimenti.map((recipe) => (
                             <li key={recipe.url}>
@@ -53,178 +56,181 @@ function RecipeList() {
                             </li>
                         ))}
                     </ul>
-                </ul>
+                </Section>
             </SectionBackground>
 
             <SectionBackground img={bgSecondi}>
-                <h1>Secondi</h1>
-                <ul>
-                    <li>Carne</li>
-                    <ul>
-                        {Recipes.secondiCarne.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                    <li>Pesce</li>
-                    <ul>
-                        {Recipes.secondiPesce.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                    <li>Uova</li>
-                    <ul>
-                        {Recipes.secondiUova.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                    <li>Contorni</li>
-                    <ul>
-                        {Recipes.secondiContorni.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                </ul>
+                <Section title="Secondi">
+                        <h2>Carne</h2>
+                        <ul>
+                            {Recipes.secondiCarne.map((recipe) => (
+                                <li key={recipe.url}>
+                                    <Link to={recipe.url}>{recipe.title}</Link>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <h2>Pesce</h2>
+                        <ul>
+                            {Recipes.secondiPesce.map((recipe) => (
+                                <li key={recipe.url}>
+                                    <Link to={recipe.url}>{recipe.title}</Link>
+                                </li>
+                            ))}
+                        </ul>
+
+                        <h2>Uova</h2>
+                        <ul>
+                            {Recipes.secondiUova.map((recipe) => (
+                                <li key={recipe.url}>
+                                    <Link to={recipe.url}>{recipe.title}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                        
+                        <h2>Contorni</h2>
+                        <ul>
+                            {Recipes.secondiContorni.map((recipe) => (
+                                <li key={recipe.url}>
+                                    <Link to={recipe.url}>{recipe.title}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                </Section>
             </SectionBackground>
 
             <SectionBackground img={bgPanetteria}>
-                <h1>Panetteria</h1>
-                <ul>
-                    {Recipes.panetteria.map((recipe) => (
-                        <li key={recipe.url}>
-                            <Link to={recipe.url}>{recipe.title}</Link>
-                        </li>
-                    ))}
-                </ul>
-
+                <Section title="Panetteria">
+                    <ul>
+                        {Recipes.panetteria.map((recipe) => (
+                            <li key={recipe.url}>
+                                <Link to={recipe.url}>{recipe.title}</Link>
+                            </li>
+                        ))}
+                    </ul>
+                </Section>
             </SectionBackground>
 
             <SectionBackground img={bgSalse}>
-                <h1>Salse</h1>
-                <ul>
-                    {Recipes.salse.map((recipe) => (
-                        <li key={recipe.url}>
-                            <Link to={recipe.url}>{recipe.title}</Link>
-                        </li>
-                    ))}
-                </ul>
-
+                <Section title="Salse">
+                    <ul>
+                        {Recipes.salse.map((recipe) => (
+                            <li key={recipe.url}>
+                                <Link to={recipe.url}>{recipe.title}</Link>
+                            </li>
+                        ))}
+                    </ul>
+                </Section>
             </SectionBackground>
 
             <SectionBackground img={bgSpezie}>
-                <h1>Spezie</h1>
-                <ul>
-                    {Recipes.spezie.map((recipe) => (
-                        <li key={recipe.url}>
-                            <Link to={recipe.url}>{recipe.title}</Link>
-                        </li>
-                    ))}
-                </ul>
-
+                <Section title="Spezie">
+                    <ul>
+                        {Recipes.spezie.map((recipe) => (
+                            <li key={recipe.url}>
+                                <Link to={recipe.url}>{recipe.title}</Link>
+                            </li>
+                        ))}
+                    </ul>
+                </Section>
             </SectionBackground>
 
             <SectionBackground img={bgDolci}>
-                <h1>Dolci</h1>
-                <ul>
-                    <li>Biscotti</li>
+                <Section title="Dolci">
                     <ul>
-                        {Recipes.dolciBiscotti.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
+                        <li>Biscotti</li>
+                        <ul>
+                            {Recipes.dolciBiscotti.map((recipe) => (
+                                <li key={recipe.url}>
+                                    <Link to={recipe.url}>{recipe.title}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                        <li>Torte</li>
+                        <ul>
+                            {Recipes.dolciTorte.map((recipe) => (
+                                <li key={recipe.url}>
+                                    <Link to={recipe.url}>{recipe.title}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                        <li>Caramelle e Cioccolatini</li>
+                        <ul>
+                            {Recipes.dolciCaramelleCioccolatini.map((recipe) => (
+                                <li key={recipe.url}>
+                                    <Link to={recipe.url}>{recipe.title}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                        <li>Creme</li>
+                        <ul>
+                            {Recipes.dolciCreme.map((recipe) => (
+                                <li key={recipe.url}>
+                                    <Link to={recipe.url}>{recipe.title}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                        <li>Al cucchiaio</li>
+                        <ul>
+                            {Recipes.dolciCucchiaio.map((recipe) => (
+                                <li key={recipe.url}>
+                                    <Link to={recipe.url}>{recipe.title}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                        <li>Altro</li>
+                        <ul>
+                            {Recipes.dolciAltro.map((recipe) => (
+                                <li key={recipe.url}>
+                                    <Link to={recipe.url}>{recipe.title}</Link>
+                                </li>
+                            ))}
+                        </ul>
                     </ul>
-                    <li>Torte</li>
-                    <ul>
-                        {Recipes.dolciTorte.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                    <li>Caramelle e Cioccolatini</li>
-                    <ul>
-                        {Recipes.dolciCaramelleCioccolatini.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                    <li>Creme</li>
-                    <ul>
-                        {Recipes.dolciCreme.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                    <li>Al cucchiaio</li>
-                    <ul>
-                        {Recipes.dolciCucchiaio.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                    <li>Altro</li>
-                    <ul>
-                        {Recipes.dolciAltro.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                </ul>
-
+                </Section>
             </SectionBackground>
 
             <SectionBackground img={bgBar}>
-                <h1>Bar</h1>
-                <ul>
-                    <li>Cocktail</li>
+                <Section title="Bar">
                     <ul>
-                        {Recipes.barCocktail.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
+                        <li>Cocktail</li>
+                        <ul>
+                            {Recipes.barCocktail.map((recipe) => (
+                                <li key={recipe.url}>
+                                    <Link to={recipe.url}>{recipe.title}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                        <li>Sciroppi</li>
+                        <ul>
+                            {Recipes.barSciroppi.map((recipe) => (
+                                <li key={recipe.url}>
+                                    <Link to={recipe.url}>{recipe.title}</Link>
+                                </li>
+                            ))}
+                        </ul>
+                        <li>Liquori</li>
+                        <ul>
+                            {Recipes.barLiquori.map((recipe) => (
+                                <li key={recipe.url}>
+                                    <Link to={recipe.url}>{recipe.title}</Link>
+                                </li>
+                            ))}
+                        </ul>
                     </ul>
-                    <li>Sciroppi</li>
-                    <ul>
-                        {Recipes.barSciroppi.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                    <li>Liquori</li>
-                    <ul>
-                        {Recipes.barLiquori.map((recipe) => (
-                            <li key={recipe.url}>
-                                <Link to={recipe.url}>{recipe.title}</Link>
-                            </li>
-                        ))}
-                    </ul>
-                </ul>
-
+                </Section>
             </SectionBackground>
 
             <SectionBackground img={bgVarie}>
-                <h1>Varie</h1>
-                <ul>
-                    {Recipes.varie.map((recipe) => (
-                        <li key={recipe.url}>
-                            <Link to={recipe.url}>{recipe.title}</Link>
-                        </li>
-                    ))}
-                </ul>
+                <Section title="Varie">
+                    <ul>
+                        {Recipes.varie.map((recipe) => (
+                            <li key={recipe.url}>
+                                <Link to={recipe.url}>{recipe.title}</Link>
+                            </li>
+                        ))}
+                    </ul>
+                </Section>
             </SectionBackground>
         </>
     );
