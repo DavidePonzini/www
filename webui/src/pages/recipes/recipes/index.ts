@@ -71,11 +71,13 @@ import PastaPannaZafferano from './PastaPannaZafferano';
 import Kebab from './Kebab';
 import RotoliDiPolloConVerdure from './RotoliDiPolloConVerdure';
 import Hamburger from './Hamburger';
+import CacioPepe from './CacioPepe';
 
 // NOTE: only export RecipeComponent[] arrays here, otherwise the router will break.
 
 export const primiPasta: RecipeComponent[] = [
     Amatriciana,
+    CacioPepe,
     Carbonara,
     Gnocchi,
     Lasagne,
