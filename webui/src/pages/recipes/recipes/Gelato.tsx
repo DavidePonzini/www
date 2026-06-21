@@ -14,11 +14,14 @@ function Gelato() {
         <RecipeLayout
             title={TITLE}
             servings={1}
+            servingsUnitSingular='litro (circa)'
+            servingsUnitPlural='litri (circa)'
             source='Abbate Maria Luisa (modificata)'
             addedOn='Agosto 2023'
             times={<>
                 <PreparationWait time='24 h'>Congelatore — vaschette</PreparationWait>
                 <PreparationTime time='30 min' />
+                <PreparationWait time='30 min'>Macchina per gelati</PreparationWait>
             </>}
             ingredients={[
                 { name: 'Panna fresca', quantity: 250, unit: 'ml' },
@@ -32,31 +35,28 @@ function Gelato() {
 
                 { name: 'Cioccolato fondente a scaglie', category: 'Stracciatella' },
 
-                { name: 'Vaniglia', quantity: 'q.b.', category: 'Fiordilatte' },
+                { name: 'Vaniglia', quantity: 5, unit: 'ml', category: 'Fiordilatte' },
             ]}
             instructions={<>
                 <Step>Far raffreddare in congelatore le vaschette.</Step>
 
                 <Parallel>
                     <ParallelBranch>
-                        <Step>Montare la panna.</Step>
+                        <Step>Mescolare bene neutro e zucchero.</Step>
+                        <Step>Unire al latte e mescolare.</Step>
                     </ParallelBranch>
 
                     <ParallelBranch>
-                        <Step>Mescolare bene neutro e zucchero.</Step>
-                        <Step>Unire al latte e mescolare.</Step>
-                        <Step>Mescolare a mano insieme ad eventuali altri ingredienti.</Step>
+                        <Step>Montare parzialmente la panna.</Step>
                     </ParallelBranch>
                 </Parallel>
 
                 <Step>Unire il composto alla panna.</Step>
                 <Step>Azionare la macchina per i gelati e versare il composto.</Step>
+                <Step>Aggiungere eventuali ingredienti solidi.</Step>
                 <Step>Aspettare che il gelato abbia raggiunto una consistenza adeguata.</Step>
                 <Step>Riporre il preparato nel congelatore.</Step>
             </>}
-            suggestions={<>
-            </>}
-            notes=''
         />
     );
 }
