@@ -2,7 +2,7 @@
 
 ## Python environment
 
-This project uses a local virtual environment managed through the Makefile and stored in `.venv/`.
+This project uses a local virtual environment managed through the Makefile and stored in `venv/`.
 
 Agents must always use the project virtual environment and never rely on the system Python installation.
 

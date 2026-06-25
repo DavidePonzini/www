@@ -34,10 +34,10 @@ maintenance_stop:
 	docker compose down nginx_maintenance
 
 psql:
-	docker exec -it $(COMPOSE_PROJECT_NAME)_db_admin psql -U postgres
+	docker exec -it $(COMPOSE_PROJECT_NAME)_db psql -U postgres
 
 dump:
-	docker exec -t $(COMPOSE_PROJECT_NAME)_db_admin pg_dump -U postgres -n ww > dump_admin_$(shell date +'%Y.%m.%d-%H.%M.%S').sql
+	docker exec -t $(COMPOSE_PROJECT_NAME)_db pg_dump -U postgres -n ww > dump_admin_$(shell date +'%Y.%m.%d-%H.%M.%S').sql
 
 
 $(VENV):

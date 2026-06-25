@@ -65,6 +65,7 @@ function Login() {
                 headers: {
                     'Content-Type': 'application/json'
                 },
+                credentials: 'include',
                 body: JSON.stringify({ username: usernameInput, password: passwordInput })
             });
 
@@ -72,7 +73,7 @@ function Login() {
 
             if (data.success) {
                 setError('');
-                saveTokens(data.access_token, data.refresh_token);
+                saveTokens();
                 navigate('/');
             } else {
                 setError(data.message || 'Login failed');
@@ -172,7 +173,7 @@ function Login() {
                                 <div className="pt-1 mb-4">
                                     <button
                                         className="btn btn-primary btn-lg btn-block w-100"
-                                        onClick={handleLogin}
+                                        type="submit"
                                         disabled={!isUsernameValid || !isPasswordValid}
                                     >
                                         Login
