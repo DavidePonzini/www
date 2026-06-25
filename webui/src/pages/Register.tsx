@@ -1,11 +1,7 @@
 import type { ChangeEvent, FormEvent } from 'react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import SectionBackground from '../components/SectionBackground';
-import Layout from '../components/Layout';
-
-import bg from '../res/database.jpg';
-import bgCard from '../res/bg_glass.jpg';
+import AuthShell from '../components/AuthShell';
 
 function Register() {
     const [usernameInput, setUsernameInput] = useState('');
@@ -78,7 +74,7 @@ function Register() {
         return true;
     }
 
-    async function handleRegister(event: FormEvent<HTMLFormElement> | FormEvent<HTMLButtonElement>) {
+    async function handleRegister(event: FormEvent<HTMLFormElement>) {
         event.preventDefault();
 
         try {
@@ -108,116 +104,93 @@ function Register() {
     }
 
     return (
-        <Layout>
-            <SectionBackground img={bg}>
-                <div className="row g-0">
-                    <div className="col-md-6 col-lg-5 d-none d-md-block" style={{
-                        borderRadius: '1rem 0 0 1rem',
-                        backgroundImage: `url(${bgCard})`,
-                        // backgroundAttachment: 'fixed',
-                        backgroundPosition: 'center',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundSize: 'cover',
-                        position: 'sticky',
-                        zIndex: 100,
-                    }}></div>
-                    <div className="col-md-6 col-lg-7 d-flex align-items-center">
-                        <div className="card-body p-4 p-lg-5 text-black">
-                            <form onSubmit={handleRegister} noValidate>
-                                <div className="d-flex align-items-center mb-3 pb-1">
-                                    <span className="h1 fw-bold mb-0">PonziDav</span>
-                                </div>
-                                <h5 className="fw-normal mb-1" style={{ letterSpacing: 1 }}>Register a new account</h5>
-
-                                <Link to="/login" className="text-muted mb-4 d-block">
-                                    Already have an account? Log in here
-                                </Link>
-
-                                {error && (
-                                    <div className="alert alert-danger" role="alert">
-                                        {error}
-                                    </div>
-                                )}
-
-                                {success && (
-                                    <div className="alert alert-success" role="alert">
-                                        Registration successful! You can now log in with your new account.
-                                        <br />
-                                        <Link to="/login" className="alert-link">Go to Login</Link>
-                                    </div>
-                                )}
-
-                                <div className="form-outline mb-4">
-                                    <label className="form-label" htmlFor="login-username">
-                                        Username
-                                    </label>
-                                    <input
-                                        type="text"
-                                        id="login-username"
-                                        className={`form-control form-control-lg ${usernameError ? 'is-invalid' : ''}`}
-                                        placeholder="Username"
-                                        value={usernameInput}
-                                        onChange={(event: ChangeEvent<HTMLInputElement>) => checkUsername(event.currentTarget.value)}
-                                        autoFocus={true}
-                                    />
-                                    {usernameError && (
-                                        <div className="invalid-feedback">
-                                            {usernameError}
-                                        </div>
-                                    )}
-                                </div>
-
-                                <div className="form-outline mb-4">
-                                    <label className="form-label" htmlFor="login-password">
-                                        Password
-                                    </label>
-
-                                    <div className="input-group">
-                                        <input
-                                            type={showPassword ? 'text' : 'password'}
-                                            id="login-password"
-                                            className={`form-control form-control-lg pe-5 ${passwordError ? 'is-invalid' : ''}`}
-                                            placeholder="Password"
-                                            value={passwordInput}
-                                            onChange={(event: ChangeEvent<HTMLInputElement>) => checkPassword(event.currentTarget.value)}
-                                        />
-                                        <div
-                                            className='input-group-text'
-                                            style={{ cursor: 'pointer' }}
-                                        >
-                                            <i
-                                                className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}
-                                                onClick={() => setShowPassword(!showPassword)}
-                                                aria-label={showPassword ? 'Hide password' : 'Show password'}
-                                                style={{ width: '1.5rem' }}
-                                            ></i>
-                                        </div>
-                                        {passwordError && (
-                                            <div className="invalid-feedback">
-                                                {passwordError}
-                                            </div>
-                                        )}
-                                    </div>
-                                </div>
-
-                                <div className="pt-1 mb-4">
-                                    <button
-                                        className="btn btn-primary btn-lg btn-block w-100"
-                                        onClick={handleRegister}
-                                        disabled={
-                                            !isUsernameValid ||
-                                            !isPasswordValid
-                                        }
-                                    >
-                                        Register
-                                    </button>
-                                </div>
-                            </form>
+        <AuthShell
+            title="Register a new account"
+            alternateHref="/login"
+            alternateLabel="Already have an account? Log in here"
+            feedback={(
+                <>
+                    {error && (
+                        <div className="alert alert-danger" role="alert">
+                            {error}
                         </div>
+                    )}
+
+                    {success && (
+                        <div className="alert alert-success" role="alert">
+                            Registration successful! You can now log in with your new account.
+                            <br />
+                            <Link to="/login" className="alert-link">Go to Login</Link>
+                        </div>
+                    )}
+                </>
+            )}
+        >
+            <form onSubmit={handleRegister} noValidate>
+                <div className="form-outline mb-4">
+                    <label className="form-label" htmlFor="login-username">
+                        Username
+                    </label>
+                    <input
+                        type="text"
+                        id="login-username"
+                        className={`form-control form-control-lg ${usernameError ? 'is-invalid' : ''}`}
+                        placeholder="Username"
+                        value={usernameInput}
+                        onChange={(event: ChangeEvent<HTMLInputElement>) => checkUsername(event.currentTarget.value)}
+                        autoFocus={true}
+                    />
+                    {usernameError && (
+                        <div className="invalid-feedback">
+                            {usernameError}
+                        </div>
+                    )}
+                </div>
+
+                <div className="form-outline mb-4">
+                    <label className="form-label" htmlFor="login-password">
+                        Password
+                    </label>
+
+                    <div className="input-group">
+                        <input
+                            type={showPassword ? 'text' : 'password'}
+                            id="login-password"
+                            className={`form-control form-control-lg pe-5 ${passwordError ? 'is-invalid' : ''}`}
+                            placeholder="Password"
+                            value={passwordInput}
+                            onChange={(event: ChangeEvent<HTMLInputElement>) => checkPassword(event.currentTarget.value)}
+                        />
+                        <div
+                            className="input-group-text"
+                            style={{ cursor: 'pointer' }}
+                        >
+                            <i
+                                className={`fas ${showPassword ? 'fa-eye-slash' : 'fa-eye'}`}
+                                onClick={() => setShowPassword(!showPassword)}
+                                aria-label={showPassword ? 'Hide password' : 'Show password'}
+                                style={{ width: '1.5rem' }}
+                            ></i>
+                        </div>
+                        {passwordError && (
+                            <div className="invalid-feedback">
+                                {passwordError}
+                            </div>
+                        )}
                     </div>
                 </div>
-            </SectionBackground>
-        </Layout>
+
+                <div className="pt-1 mb-4">
+                    <button
+                        className="btn btn-primary btn-lg btn-block w-100"
+                        type="submit"
+                        disabled={!isUsernameValid || !isPasswordValid}
+                    >
+                        Register
+                    </button>
+                </div>
+            </form>
+        </AuthShell>
     );
 }
 
