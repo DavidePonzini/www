@@ -63,6 +63,17 @@ const ITEMS = [
         ],
     },
     {
+        category: 'Mare',
+        items: [
+            'Crema solare',
+            'Occhiali da sole',
+            'Cappellino',
+            'Costume',
+            'Asciugamano',
+            'Acqua',
+        ]
+    },
+    {
         category: 'Viaggi all\'estero',
         items: [
             'Passaporto',
