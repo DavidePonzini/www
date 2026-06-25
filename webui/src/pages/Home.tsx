@@ -39,7 +39,7 @@ function Home() {
                 </SectionBackground>
 
                 <SectionBackground img={bgWip}>
-                    <Section title="Works in Progress">
+                    <Section title="Research">
                         <ItemCard title="LensQL" href="https://lensql.ponzidav.com" isExternal img={bgLensql}>
                             AI-powered tool for learning SQL
                         </ItemCard>
