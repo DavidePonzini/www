@@ -2,8 +2,11 @@ import type { ChangeEvent, FormEvent } from 'react';
 import { useState } from 'react';
 import useAuth from '../hooks/useAuth';
 import { useNavigate, Link } from 'react-router-dom';
+import SectionBackground from '../components/SectionBackground';
+import Layout from '../components/Layout';
 
 import bg from '../res/database.jpg';
+import bgCard from '../res/bg_glass.jpg';
 
 function Login() {
     const navigate = useNavigate();
@@ -84,13 +87,13 @@ function Login() {
     }
 
     return (
-        <div className='container-md'>
-            <section>
+        <Layout>
+            <SectionBackground img={bg}>
                 <div className="row g-0">
                     <div className="col-md-6 col-lg-5 d-none d-md-block" style={{
                         borderRadius: '1rem 0 0 1rem',
-                        backgroundImage: `url(${bg})`,
-                        backgroundAttachment: 'fixed',
+                        backgroundImage: `url(${bgCard})`,
+                        // backgroundAttachment: 'fixed',
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
                         backgroundSize: 'cover',
@@ -101,8 +104,7 @@ function Login() {
                         <div className="card-body p-4 p-lg-5 text-black">
                             <form onSubmit={handleLogin} noValidate>
                                 <div className="d-flex align-items-center mb-3 pb-1">
-                                    <i className="fas fa-search fa-2x me-3" style={{ color: 'var(--logo-color)' }} />
-                                    <span className="h1 fw-bold mb-0">LensQL</span>
+                                    <span className="h1 fw-bold mb-0">PonziDav</span>
                                 </div>
                                 <h5 className="fw-normal mb-1" style={{ letterSpacing: 1 }}>Sign into your account</h5>
 
@@ -183,8 +185,8 @@ function Login() {
                         </div>
                     </div>
                 </div>
-            </section>
-        </div>
+            </SectionBackground>
+        </Layout>
     );
 }
 
