@@ -7,6 +7,9 @@ import Portfolio from './Portfolio';
 import DynamicRedirect from './DynamicRedirect';
 import Login from './Login';
 import Register from './Register';
+import Cookies from './Cookies';
+import Privacy from './Privacy';
+import Terms from './Terms';
 import Admin from './admin/Admin';
 import TravelChecklist from './TravelChecklist';
 import RecipesRouter from './recipes/RecipesRouter';
@@ -48,6 +51,11 @@ function App() {
 
                     {/* Recipes (has its own router) */}
                     <Route path='/recipes/*' element={<RecipesRouter />} />
+
+                    {/* Legal */}
+                    <Route path='cookies' element={<Cookies />} />
+                    <Route path='privacy' element={<Privacy />} />
+                    <Route path='terms' element={<Terms />} />
 
                     {isLoggedIn ? (
                         <>

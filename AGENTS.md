@@ -22,7 +22,7 @@ Upgrade/update the environment and dependencies:
 make venv_upgrade
 ```
 
-Before running Python commands, ensure `.venv/` exists.  
+Before running Python commands, ensure `venv/` exists.  
 If it does not exist, create it with:
 
 ```bash
@@ -36,15 +36,15 @@ make venv
 Always use the virtual environment executables directly:
 
 ```bash
-.venv/bin/python
-.venv/bin/pip
+venv/bin/python
+venv/bin/pip
 ```
 
 Examples:
 
 ```bash
-.venv/bin/python main.py
-.venv/bin/python -m pytest
+venv/bin/python main.py
+venv/bin/python -m pytest
 ```
 
 ---
@@ -56,13 +56,13 @@ This project uses `requirements.txt`.
 When installing a new package:
 
 ```bash
-.venv/bin/pip install <package>
+venv/bin/pip install <package>
 ```
 
 the agent must also update `requirements.txt`:
 
 ```bash
-.venv/bin/pip freeze > requirements.txt
+venv/bin/pip freeze > requirements.txt
 ```
 
 Never install packages globally.
@@ -73,9 +73,9 @@ Never install packages globally.
 
 The agent must:
 
-1. Ensure `.venv/` exists before executing Python code.
-2. Use `.venv/bin/python` for Python execution.
-3. Use `.venv/bin/pip` for package installation.
+1. Ensure `venv/` exists before executing Python code.
+2. Use `venv/bin/python` for Python execution.
+3. Use `venv/bin/pip` for package installation.
 4. Update `requirements.txt` whenever dependencies change.
 5. Prefer Makefile targets when available.
 6. Never use the system Python environment or global package installation.

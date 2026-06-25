@@ -5,6 +5,8 @@ import FooterDonations from './FooterDonations';
 // import FooterDeviceInfo from './FooterDeviceInfo';
 
 function Footer() {
+    const year = new Date().getFullYear();
+
     return (
         <footer style={{
             width: '100%',
@@ -16,6 +18,10 @@ function Footer() {
             <div className="container-fluid">
                 <div className="center" style={{ fontFamily: 'monospace' }}>
                     Developed by Davide Ponzini.
+                </div>
+
+                <div className="center">
+                    © {year} ponzidav.com · <a href="mailto:davide.ponzini95@gmail.com">Contact</a> · <a href="/cookies">Cookies</a> · <a href="/privacy">Privacy</a> · <a href="/terms">Terms</a>
                 </div>
 
                 <div className="center">
