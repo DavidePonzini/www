@@ -32,10 +32,11 @@ def create_app() -> Flask:
     jwt.init_app(app)
 
     # Register blueprints
-    from . import auth, redirects, users
+    from . import auth, redirects, travel_checklist, users
 
     app.register_blueprint(auth.bp, url_prefix='/auth')
     app.register_blueprint(redirects.bp, url_prefix='/redirects')
+    app.register_blueprint(travel_checklist.bp, url_prefix='/travel-checklist')
     app.register_blueprint(users.bp, url_prefix='/users')
 
     return app
