@@ -16,28 +16,36 @@ endif
 
 prod: stop
 	export PORT=$(PORT) && docker compose --profile prod up -d --build
+	@tput cnorm
 
 dev: stop
 	export PORT=$(PORT) && docker compose --profile dev up --build
+	@tput cnorm
 
 logs:
 	docker compose --profile dev --profile prod --profile maintenance logs -f
+	@tput cnorm
 
 stop:
 	docker compose --profile dev --profile prod --profile maintenance down
+	@tput cnorm
 
 maintenance:
 	docker compose down nginx_prod nginx_dev
 	docker compose up -d nginx_maintenance
+	@tput cnorm
 
 maintenance_stop:
 	docker compose down nginx_maintenance
+	@tput cnorm
 
 psql:
 	docker exec -it $(COMPOSE_PROJECT_NAME)_db psql -U postgres
+	@tput cnorm
 
 dump:
 	docker exec -t $(COMPOSE_PROJECT_NAME)_db pg_dump -U postgres -n ww > dump_admin_$(shell date +'%Y.%m.%d-%H.%M.%S').sql
+	@tput cnorm
 
 
 $(VENV):
