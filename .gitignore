@@ -1,7 +1,7 @@
 # custom
 .env
 .codex
-venv/
+.venv/
 __pycache__/
 
 # build output

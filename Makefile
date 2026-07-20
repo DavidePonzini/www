@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-VENV=./venv
+VENV=.venv
 REQUIREMENTS_SERVER=server/requirements.txt
 
 COMPOSE_PROJECT_NAME=$(subst .,,$(notdir $(patsubst %/,%,$(CURDIR))))
@@ -46,7 +46,6 @@ psql:
 dump:
 	docker exec -t $(COMPOSE_PROJECT_NAME)_db pg_dump -U postgres -n ww > dump_admin_$(shell date +'%Y.%m.%d-%H.%M.%S').sql
 	@tput cnorm
-
 
 $(VENV):
 	python -m venv $(VENV)
