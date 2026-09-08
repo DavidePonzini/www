@@ -19,6 +19,10 @@ function Utilities() {
                     </Section>
 
                     <Section title="Web Development">
+                        <ItemCard title="Screen Size" href="/utils/php/screen-size.html" img={cardServer} isExternal>
+                            Display the screen size of the client
+                        </ItemCard>
+
                         <ItemCard title="HTTP Code" href="/utils/php/http-code.php" img={cardServer} isExternal>
                             HTTP response code selector
                         </ItemCard>
