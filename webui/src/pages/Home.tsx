@@ -35,6 +35,10 @@ function Home() {
                         <ItemCard title="Travel Checklist" href="/travel-checklist" img={bgSpace}>
                             Checklist for travel preparation
                         </ItemCard>
+
+                        <ItemCard title="D&D" href="https://dnd.ponzidav.com" img={bgSpace}>
+                            Collection of tools for D&D
+                        </ItemCard>
                     </Section>
                 </SectionBackground>
 
