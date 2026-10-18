@@ -41,8 +41,9 @@ function TravelChecklist() {
     const [sections, setSections] = useState([]);
     const [draftSections, setDraftSections] = useState([]);
     const [checked, setChecked] = useState([]);
-    const [savingSelections, setSavingSelections] = useState(false);
-    const selectionSavePending = useRef(false);
+    const selectionSaveQueue = useRef(Promise.resolve());
+    const checkedRef = useRef([]);
+    const savedSelections = useRef([]);
     const owner = isLoggedIn ? userInfo?.username : 'guest';
     const [loadedOwner, setLoadedOwner] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -74,6 +75,8 @@ function TravelChecklist() {
                 if (cancelled) return;
                 setSections(data.data);
                 setDraftSections(cloneSections(data.data));
+                checkedRef.current = labels;
+                savedSelections.current = labels;
                 setChecked(labels);
                 setLoadedOwner(owner);
             } catch (error) {
@@ -87,31 +90,37 @@ function TravelChecklist() {
         return () => { cancelled = true; };
     }, [loadingUser, owner, isLoggedIn, apiRequest]);
 
-    async function saveSelections(labels) {
-        if (!selectionsReady || selectionSavePending.current) return;
-        selectionSavePending.current = true;
-        setSavingSelections(true);
+    function saveSelections(labels) {
+        if (!selectionsReady) return;
+        checkedRef.current = labels;
+        setChecked(labels);
         setError('');
-        try {
-            if (isLoggedIn) {
-                const response = await apiRequest('/api/travel-checklist/selections', 'PUT', { labels });
-                if (!response.success) throw new Error(response.message || 'Failed to save selections.');
-            } else {
-                localStorage.setItem(CHECKLIST_KEY, JSON.stringify(labels));
+
+        // Keep writes ordered while allowing immediate checkbox updates.
+        selectionSaveQueue.current = selectionSaveQueue.current.then(async () => {
+            try {
+                if (isLoggedIn) {
+                    const response = await apiRequest('/api/travel-checklist/selections', 'PUT', { labels });
+                    if (!response.success) throw new Error('Failed to save selections.');
+                } else {
+                    localStorage.setItem(CHECKLIST_KEY, JSON.stringify(labels));
+                }
+                savedSelections.current = labels;
+            } catch {
+                if (checkedRef.current === labels) {
+                    checkedRef.current = savedSelections.current;
+                    setChecked(savedSelections.current);
+                    setError('Could not save your selections. Please try again.');
+                }
             }
-            setChecked(labels);
-        } catch {
-            setError('Could not save your selections. Please try again.');
-        } finally {
-            selectionSavePending.current = false;
-            setSavingSelections(false);
-        }
+        });
     }
 
     function toggleItem(itemLabel) {
-        saveSelections(checked.includes(itemLabel)
-            ? checked.filter((label) => label !== itemLabel)
-            : [...checked, itemLabel]);
+        const current = checkedRef.current;
+        saveSelections(current.includes(itemLabel)
+            ? current.filter((label) => label !== itemLabel)
+            : [...current, itemLabel]);
     }
 
     function onReset() {
@@ -249,7 +258,7 @@ function TravelChecklist() {
                         type="button"
                         className="btn btn-outline-secondary"
                         onClick={onReset}
-                        disabled={!selectionsReady || savingSelections}
+                        disabled={!selectionsReady}
                     >
                         Reset
                     </button>
@@ -443,7 +452,7 @@ function TravelChecklist() {
                                         <label>
                                             <input
                                                 type="checkbox"
-                                                disabled={!selectionsReady || savingSelections}
+                                                disabled={!selectionsReady}
                                                 checked={selectionsReady && checked.includes(item.label)}
                                                 onChange={() => toggleItem(item.label)}
                                                 style={{

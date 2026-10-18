@@ -50,3 +50,30 @@ test('failed loads preserve guest selections', async () => {
     expect(JSON.parse(localStorage.getItem(key))).toEqual(['Water']);
     expect(screen.getByText('Reset').disabled).toBe(true);
 });
+
+test('checkboxes stay enabled and rapid changes save in order', async () => {
+    let finishFirstSave;
+    const firstSave = new Promise((resolve) => { finishFirstSave = resolve; });
+    const apiRequest = jest.fn()
+        .mockResolvedValueOnce({ success: true, data: [] })
+        .mockReturnValueOnce(firstSave)
+        .mockResolvedValue({ success: true });
+    useAuth.mockReturnValue({ isLoggedIn: true, loadingUser: false, userInfo: { username: 'alice' }, apiRequest });
+    global.fetch.mockResolvedValue({ json: async () => ({ success: true, data: [{
+        ...sections[0], items: [...sections[0].items, { id: 2, label: 'Passport' }],
+    }] }) });
+    render(<TravelChecklist />);
+    const water = await screen.findByRole('checkbox', { name: 'Water' });
+    const passport = screen.getByRole('checkbox', { name: 'Passport' });
+    fireEvent.click(water);
+    expect(water.checked).toBe(true);
+    expect(water.disabled).toBe(false);
+    expect(passport.disabled).toBe(false);
+    fireEvent.click(passport);
+    expect(passport.checked).toBe(true);
+    await waitFor(() => expect(apiRequest).toHaveBeenCalledTimes(2));
+    expect(apiRequest).toHaveBeenLastCalledWith('/api/travel-checklist/selections', 'PUT', { labels: ['Water'] });
+    finishFirstSave({ success: true });
+    await waitFor(() => expect(apiRequest).toHaveBeenCalledTimes(3));
+    expect(apiRequest).toHaveBeenLastCalledWith('/api/travel-checklist/selections', 'PUT', { labels: ['Water', 'Passport'] });
+});
