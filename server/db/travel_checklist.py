@@ -1,6 +1,28 @@
 from dav_tools import database
+import json
 
 from ._connection import SCHEMA, db
+
+
+def get_selections(username: str) -> list[str]:
+    query = database.sql.SQL('''
+        SELECT labels FROM {schema}.travel_checklist_selections
+        WHERE username = {username}
+    ''').format(schema=database.sql.Identifier(SCHEMA),
+               username=database.sql.Placeholder('username'))
+    rows = db.execute_and_fetch(query, {'username': username})
+    return rows[0][0] if rows else []
+
+
+def save_selections(username: str, labels: list[str]) -> None:
+    query = database.sql.SQL('''
+        INSERT INTO {schema}.travel_checklist_selections (username, labels)
+        VALUES ({username}, {labels}::jsonb)
+        ON CONFLICT (username) DO UPDATE SET labels = EXCLUDED.labels
+    ''').format(schema=database.sql.Identifier(SCHEMA),
+               username=database.sql.Placeholder('username'),
+               labels=database.sql.Placeholder('labels'))
+    db.execute(query, {'username': username, 'labels': json.dumps(labels)})
 
 
 def _normalize_structure(rows: list[tuple]) -> list[dict]:

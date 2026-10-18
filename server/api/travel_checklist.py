@@ -50,3 +50,22 @@ class TravelChecklistAPI(MethodView):
 
 
 bp.add_url_rule('', view_func=TravelChecklistAPI.as_view('travel_checklist_api'))
+
+
+@bp.route('/selections', methods=['GET', 'PUT'])
+@jwt_required()
+def selections():
+    username = get_jwt_identity()
+    if request.method == 'GET':
+        return responses.response(True, data=db.travel_checklist.get_selections(username))
+
+    data = request.get_json(silent=True)
+    labels = data.get('labels') if isinstance(data, dict) else None
+    if not isinstance(labels, list) or any(
+        not isinstance(label, str) or not label or len(label) > 255
+        for label in labels
+    ):
+        return responses.response(False, message='Invalid checklist selections')
+
+    db.travel_checklist.save_selections(username, list(dict.fromkeys(labels)))
+    return responses.response(True)
