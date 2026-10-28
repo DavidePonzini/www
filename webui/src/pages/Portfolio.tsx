@@ -14,7 +14,7 @@ function Portfolio() {
                     <Section title="Websites">
                         <ItemCard
                             title="Sito Brutto"
-                            href="/portfolio/2016-sito-brutto"
+                            href="/portfolio/2016-sito-brutto/"
                             isExternal
                             img="/portfolio/2016-sito-brutto/antonio.jpg"
                         >
@@ -23,7 +23,7 @@ function Portfolio() {
 
                         <ItemCard
                             title="Scenarios from the Future"
-                            href="/portfolio/2018-scenarios-from-the-future"
+                            href="/portfolio/2018-scenarios-from-the-future/"
                             isExternal
                             img="/portfolio/2018-scenarios-from-the-future/res/chart-linechart.png"
                         >
@@ -32,7 +32,7 @@ function Portfolio() {
 
                         <ItemCard
                             title="Chicken Chasers"
-                            href="/portfolio/2019-chicken-chasers"
+                            href="/portfolio/2019-chicken-chasers/"
                             isExternal
                             img="/portfolio/2019-chicken-chasers/res/chicken_kicking.jpg"
                         >
