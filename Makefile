@@ -15,6 +15,7 @@ endif
 .PHONY: $(VENV)_upgrade dev prod stop stop_app stop_user_dbs psql dump clean maintenance maintenance_stop logs
 
 prod: stop
+	docker compose pull
 	export PORT=$(PORT) && docker compose --profile prod up -d --build
 	@tput cnorm
 
