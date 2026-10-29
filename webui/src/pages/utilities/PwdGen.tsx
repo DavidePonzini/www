@@ -10,6 +10,8 @@ function PwdGen() {
     const [useUpper, setUseUpper] = useState(true);
     const [useDigits, setUseDigits] = useState(true);
     const [useSymbols, setUseSymbols] = useState(true);
+    const [symbolCharacters, setSymbolCharacters] = useState('!@#$%&*?.,<>;/');
+    const [showSymbolSettings, setShowSymbolSettings] = useState(false);
     const [password, setPassword] = useState('');
     const [copyLabel, setCopyLabel] = useState('Copy');
     const optionRows: Array<[string, boolean, (value: boolean) => void, string]> = [
@@ -38,7 +40,7 @@ function PwdGen() {
             lower: 'abcdefghijklmnopqrstuvwxyz',
             upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
             digits: '0123456789',
-            symbols: '!@#$%&*?.,<>;/'
+            symbols: Array.from(new Set(symbolCharacters)).join('')
         };
 
         let all = '';
@@ -94,6 +96,7 @@ function PwdGen() {
                     <form onSubmit={handleGenerate}>
                         <div className="row justify-content-center">
                             <div className='col' />
+
                             <div className="col-lg">
                                 <div className="input-group mb-3">
                                     <span className="input-group-text">Password length</span>
@@ -108,7 +111,7 @@ function PwdGen() {
                                 </div>
 
                                 {optionRows.map(([label, val, setter, id], idx, arr) => (
-                                    <div className={`input-group ${idx < arr.length - 1 ? 'mb-1' : 'mb-3'}`} key={id}>
+                                    <div className='input-group mt-1' key={id}>
                                         <div className="input-group-text">
                                             <div className="form-check form-switch">
                                                 <input
@@ -126,15 +129,44 @@ function PwdGen() {
                                             value={label}
                                             disabled
                                         />
+                                        {id === 'charactersS' && (
+                                            <button
+                                                type="button"
+                                                className="input-group-text"
+                                                aria-label="Symbol settings"
+                                                title="Symbol settings"
+                                                aria-expanded={showSymbolSettings}
+                                                aria-controls="symbolSettings"
+                                                onClick={() => setShowSymbolSettings(!showSymbolSettings)}
+                                            >
+                                                <i className="fa-solid fa-gear" aria-hidden="true" />
+                                            </button>
+                                        )}
                                     </div>
                                 ))}
 
-                                <button type="submit" className="btn btn-primary mb-3" id="submit"
-                                    disabled={!length || (!useLower && !useUpper && !useDigits && !useSymbols)}
+                                {showSymbolSettings && (
+                                    <div className="mt-1" id="symbolSettings">
+                                        <input
+                                            type="text"
+                                            className="form-control monospace"
+                                            id="symbolCharacters"
+                                            value={symbolCharacters}
+                                            disabled={!useSymbols}
+                                            required={useSymbols}
+                                            onChange={(event: ChangeEvent<HTMLInputElement>) => setSymbolCharacters(event.currentTarget.value)}
+                                            aria-label="Special characters"
+                                        />
+                                    </div>
+                                )}
+
+                                <button type="submit" className="btn btn-primary my-3" id="submit"
+                                    disabled={!length || (useSymbols && !symbolCharacters) || (!useLower && !useUpper && !useDigits && !useSymbols)}
                                 >
                                     Generate password
                                 </button>
                             </div>
+
                             <div className='col' />
                         </div>
 
